@@ -3,11 +3,9 @@
 Panduan cepat untuk memulai menggunakan library Baileys yang sudah di-patch ini.
 
 ## 1. Instalasi
-Karena library ini berada di repositori personal Anda, instal menggunakan URL GitHub:
+Karena library ini berada di repositori personal Anda, instal menggunakan Bun:
 
 ```bash
-npm install github:vanes430/baileys
-# atau
 bun add github:vanes430/baileys
 ```
 
