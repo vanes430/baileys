@@ -101,6 +101,12 @@ const interactiveMessage = {
 };
 ```
 
+---
+
+## 4. Advanced List
+Untuk membuat list yang lebih kompleks dengan dukungan banyak tombol select dan kustomisasi *Bottom Sheet*, silakan baca:
+**[Panduan Advanced List](./AdvancedList.md)**
+
 ## 📝 Tips Tambahan
 * **ID Tombol:** Anda bisa menyertakan prefix (seperti `.ping`) agar saat diklik, bot langsung memprosesnya sebagai perintah teks.
 * **Header:** Anda bisa menambahkan `imageMessage` atau `videoMessage` di dalam properti `header` untuk membuat tampilan lebih menarik.
