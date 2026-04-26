@@ -104,4 +104,39 @@ const interactiveMessage = {
 ## 📝 Tips Tambahan
 * **ID Tombol:** Anda bisa menyertakan prefix (seperti `.ping`) agar saat diklik, bot langsung memprosesnya sebagai perintah teks.
 * **Header:** Anda bisa menambahkan `imageMessage` atau `videoMessage` di dalam properti `header` untuk membuat tampilan lebih menarik.
-* **Parsing:** Pastikan handler pesan Anda sudah mendukung ekstraksi teks dari `interactiveResponseMessage`.
+
+---
+
+## 📥 Handling Response (Parsing)
+Saat pengguna mengklik tombol *Quick Reply* atau memilih opsi dari *Single Select*, WhatsApp akan mengirimkan tipe pesan `interactiveResponseMessage`. Gunakan fungsi berikut untuk mengekstrak ID-nya agar bisa diproses sebagai perintah:
+
+```javascript
+export function getMessageText(m) {
+  const msg = m.message;
+  
+  // Ambil konten asli jika pesan dibungkus viewOnce
+  const content = msg?.viewOnceMessageV2?.message || 
+                  msg?.viewOnceMessage?.message || 
+                  msg;
+
+  // 1. Cek teks biasa
+  if (content?.conversation) return content.conversation;
+  if (content?.extendedTextMessage?.text) return content.extendedTextMessage.text;
+
+  // 2. Cek respons tombol (Native Flow)
+  if (content?.interactiveResponseMessage?.nativeFlowResponseMessage?.paramsJson) {
+    try {
+      const params = JSON.parse(content.interactiveResponseMessage.nativeFlowResponseMessage.paramsJson);
+      return params.id || ""; // Mengembalikan ID tombol (misal: .ping)
+    } catch {
+      return "";
+    }
+  }
+
+  // 3. Cek respons tombol gaya lama (Legacy)
+  if (content?.buttonsResponseMessage?.selectedButtonId) return content.buttonsResponseMessage.selectedButtonId;
+  if (content?.templateButtonReplyMessage?.selectedId) return content.templateButtonReplyMessage.selectedId;
+
+  return "";
+}
+```
