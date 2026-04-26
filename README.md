@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/WhiskeySockets/Baileys/refs/heads/master/Media/logo.png" width="150" height="150" alt="Baileys Logo">
+  <img src="https://raw.githubusercontent.com/WhiskeySockets/Baileys/refs/heads/master/Media/logo.png" width="300" alt="Baileys Logo">
 </p>
 
 <h1 align="center">Baileys - Bun Optimized Patch</h1>
