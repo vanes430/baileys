@@ -24,27 +24,29 @@
 ---
 
 ## 🌟 Exclusive Features
-
-Repositori ini telah dimodifikasi dengan berbagai peningkatan fitur yang tidak tersedia di library standar:
-
-*   🚀 **Bun Native Optimization** - Performa maksimal tanpa hambatan kompatibilitas modul.
-*   🔘 **Stable Native Flow Support** - Dukungan tombol interaktif, list, dan carousel yang stabil di WhatsApp versi 2024-2026.
-*   🗄️ **SQLite Auth (Single File)** - Simpan seluruh sesi Anda hanya dalam satu file `.db` yang cepat dan aman.
-*   🔑 **Custom Pairing Code** - Bebas menentukan 8 karakter pairing code kustom Anda sendiri.
-*   🛡️ **Hybrid Biz Node Patch** - Injeksi data low-level untuk memastikan pesan interaktif dirender dengan benar.
-
----
-
-## 📂 Documentation
-
-Jelajahi panduan lengkap cara penggunaan fitur-fitur di atas:
-
-| Fitur | Deskripsi | Link |
-| :--- | :--- | :--- |
-| 🚀 **Quick Start** | Cara instalasi dan koneksi pertama kali. | [Read Here](docs/QuickStart.md) |
-| 🔘 **Interactive** | Tutorial mengirim Native Flow & List Menu. | [Read Here](docs/Interactive.md) |
-| 🗄️ **SQLite Auth** | Panduan setup Single File Auth (SQLite). | [Read Here](docs/SqliteAuth.md) |
-| 🔑 **Pairing Code** | Aturan penggunaan Custom Pairing Code. | [Read Here](docs/CustomPairing.md) |
+ 
+ Repositori ini telah dimodifikasi dengan berbagai peningkatan fitur yang tidak tersedia di library standar:
+ 
+ *   🚀 **Bun Native Optimization** - Performa maksimal tanpa hambatan kompatibilitas modul.
+ *   🔄 **Dynamic WAProto Auto-Update** - Pembaruan skema `.proto` dan modul secara dinamis langsung dari WhatsApp Web menggunakan Bun AST parsing.
+ *   🔘 **Stable Native Flow Support** - Dukungan tombol interaktif, list, dan carousel yang stabil di WhatsApp versi 2024-2026.
+ *   🗄️ **SQLite Auth (Single File)** - Simpan seluruh sesi Anda hanya dalam satu file `.db` yang cepat dan aman.
+ *   🔑 **Custom Pairing Code** - Bebas menentukan 8 karakter pairing code kustom Anda sendiri.
+ *   🛡️ **Hybrid Biz Node Patch** - Injeksi data low-level untuk memastikan pesan interaktif dirender dengan benar.
+ 
+ ---
+ 
+ ## 📂 Documentation
+ 
+ Jelajahi panduan lengkap cara penggunaan fitur-fitur di atas:
+ 
+ | Fitur | Deskripsi | Link |
+ | :--- | :--- | :--- |
+ | 🚀 **Quick Start** | Cara instalasi dan koneksi pertama kali. | [Read Here](docs/QuickStart.md) |
+ | 🔄 **WAProto Auto-Update** | Dokumentasi alur kerja pembaruan skema WAProto. | [Read Here](docs/WAProtoUpdate.md) |
+ | 🔘 **Interactive** | Tutorial mengirim Native Flow & List Menu. | [Read Here](docs/Interactive.md) |
+ | 🗄️ **SQLite Auth** | Panduan setup Single File Auth (SQLite). | [Read Here](docs/SqliteAuth.md) |
+ | 🔑 **Pairing Code** | Aturan penggunaan Custom Pairing Code. | [Read Here](docs/CustomPairing.md) |
 
 ---
 
