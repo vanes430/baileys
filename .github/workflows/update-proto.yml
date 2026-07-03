@@ -1,0 +1,51 @@
+name: Auto Update WAProto
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    # Berjalan otomatis sekali seminggu (setiap hari Minggu jam 00:00 UTC)
+    - cron: "0 0 * * 0"
+  workflow_dispatch: # Memungkinkan untuk dijalankan secara manual dari UI GitHub
+
+permissions:
+  contents: write
+
+jobs:
+  update-proto:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install Dependencies
+        run: bun install
+
+      - name: Fetch and Compile Proto
+        run: bun run update-proto
+
+      - name: Check for Changes
+        id: check_changes
+        run: |
+          git diff --quiet || echo "changes_detected=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and Push Changes
+        if: steps.check_changes.outputs.changes_detected == 'true'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          VERSION=$(grep -oP '(?<=WhatsApp Version: )[0-9.]+' ./WAProto/WAProto.proto || echo "latest")
+          git commit -m "chore: auto update WAProto to WhatsApp version $VERSION"
+          git push
