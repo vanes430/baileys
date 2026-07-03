@@ -38,7 +38,7 @@
     "music-metadata": "^11.2.0",
     "p-queue": "^9.1.0",
     "pino": "^9.6",
-    "protobufjs": "^8.0.0",
+    "protobufjs": "^7.4.0",
     "whatsapp-rust-bridge": "0.5.2"
   },
   "peerDependencies": {
