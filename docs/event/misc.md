@@ -23,6 +23,18 @@ interface CallEvent {
 }
 ```
 
+### 🛡️ Fitur Auto-Reject Panggilan (Kustom)
+Anda dapat mengaktifkan penolakan otomatis (Auto-Reject) untuk semua panggilan masuk dengan menambahkan parameter kustom `rejectCalls: true` pada konfigurasi socket saat inisialisasi:
+
+```javascript
+const sock = makeWASocket({
+  auth: state,
+  logger,
+  rejectCalls: true // <-- Aktifkan penolakan panggilan otomatis kustom
+});
+```
+Ketika diaktifkan, panggilan masuk akan ditolak otomatis di tingkat protokol tanpa bot Anda perlu memanggil fungsi `rejectCall` secara manual. Anda tetap akan menerima event `call` untuk mencatat riwayat atau mengirimkan pesan auto-respon di chat.
+
 ---
 
 ## 2. `blocklist.update`

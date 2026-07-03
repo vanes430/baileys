@@ -106,3 +106,25 @@ interface MessageReceiptUpdate {
   };
 }
 ```
+
+---
+
+## 6. `messages.recall`
+Event kustom eksklusif yang dipicu ketika pengirim menarik kembali pesannya ("Delete for Everyone"). Ini memudahkan deteksi pesan ditarik tanpa perlu memproses `messages.update` secara manual.
+
+### Payload Structure:
+```typescript
+interface MessageRecall {
+  /** Kunci pesan asli yang ditarik oleh pengirim */
+  key: WAMessageKey;
+  /** Nomor JID pengirim yang menarik pesan tersebut */
+  sender: string;
+}
+```
+
+### Contoh Penggunaan:
+```javascript
+sock.ev.on('messages.recall', ({ key, sender }) => {
+  console.log(`Pesan ditarik! ID: ${key.id}, Pengirim: ${sender}`);
+});
+```
