@@ -45,6 +45,7 @@
  | 🚀 **Quick Start** | Cara instalasi dan koneksi pertama kali. | [Read Here](docs/QuickStart.md) |
  | 🔄 **WAProto Auto-Update** | Dokumentasi alur kerja pembaruan skema WAProto. | [Read Here](docs/WAProtoUpdate.md) |
  | 🔘 **Interactive** | Tutorial mengirim Native Flow & List Menu. | [Read Here](docs/Interactive.md) |
+ | 📢 **System Events** | Referensi lengkap seluruh event sistem Baileys. | [Read Here](docs/event/README.md) |
  | 🗄️ **SQLite Auth** | Panduan setup Single File Auth (SQLite). | [Read Here](docs/SqliteAuth.md) |
  | 🔑 **Pairing Code** | Aturan penggunaan Custom Pairing Code. | [Read Here](docs/CustomPairing.md) |
 
