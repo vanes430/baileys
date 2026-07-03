@@ -7,12 +7,12 @@
     "whatsapp",
     "automation"
   ],
-  "homepage": "https://github.com/WhiskeySockets/Baileys/",
+  "homepage": "https://github.com/vanes430/baileys",
   "repository": {
-    "url": "git@github.com:WhiskeySockets/Baileys.git"
+    "url": "git+https://github.com/vanes430/baileys.git"
   },
   "license": "MIT",
-  "author": "Rajeh Taher",
+  "author": "vanes430 <vanessimbolon2020@gmail.com>",
   "main": "lib/index.js",
   "files": [
     "lib/**/*",
