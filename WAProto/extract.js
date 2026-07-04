@@ -500,4 +500,42 @@ async function findAppModules() {
   await fs.writeFile(destinationPath, decodedProtoStr);
 
   console.log(`Extracted protobuf schema to "${destinationPath}"`);
+
+  const versionParts = whatsAppVersion.split('.').map((x) => parseInt(x, 10));
+  if (versionParts.length === 3 && !versionParts.some(isNaN)) {
+    // 1. Update baileys-version.json
+    const jsonPath = './lib/Defaults/baileys-version.json';
+    await fs.writeFile(jsonPath, JSON.stringify({ version: versionParts }));
+    console.log(`Updated baileys version in "${jsonPath}" to ${JSON.stringify(versionParts)}`);
+
+    // 2. Update Defaults/index.js
+    const defaultsPath = './lib/Defaults/index.js';
+    try {
+      let defaultsContent = await fs.readFile(defaultsPath, 'utf8');
+      defaultsContent = defaultsContent.replace(
+        /const version = \[\d+,\s*\d+,\s*\d+\];/,
+        `const version = [${versionParts.join(', ')}];`
+      );
+      await fs.writeFile(defaultsPath, defaultsContent);
+      console.log(`Updated baileys version in "${defaultsPath}" to ${JSON.stringify(versionParts)}`);
+    } catch (e) {
+      console.error(`Failed to update ${defaultsPath}:`, e);
+    }
+
+    // 3. Update Utils/generics.js
+    const genericsPath = './lib/Utils/generics.js';
+    try {
+      let genericsContent = await fs.readFile(genericsPath, 'utf8');
+      genericsContent = genericsContent.replace(
+        /const baileysVersion = \[\d+,\s*\d+,\s*\d+\];/,
+        `const baileysVersion = [${versionParts.join(', ')}];`
+      );
+      await fs.writeFile(genericsPath, genericsContent);
+      console.log(`Updated baileys version in "${genericsPath}" to ${JSON.stringify(versionParts)}`);
+    } catch (e) {
+      console.error(`Failed to update ${genericsPath}:`, e);
+    }
+  } else {
+    console.warn(`Could not parse WhatsApp version parts from "${whatsAppVersion}"`);
+  }
 })();
