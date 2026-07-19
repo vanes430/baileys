@@ -24326,6 +24326,7 @@ $root.proto = (function() {
                 case 54:
                 case 55:
                 case 56:
+                case 57:
                     break;
                 }
             }
@@ -24553,6 +24554,10 @@ $root.proto = (function() {
             case "NEW_CHAT_LIST":
             case 56:
                 message.botEntryPointOrigin = 56;
+                break;
+            case "CONTACTS_TAB":
+            case 57:
+                message.botEntryPointOrigin = 57;
                 break;
             }
             if (object.forwardScore != null)
@@ -26513,6 +26518,7 @@ $root.proto = (function() {
      * @property {number} GROUP_MEMBER=54 GROUP_MEMBER value
      * @property {number} CHATLIST_SEARCH=55 CHATLIST_SEARCH value
      * @property {number} NEW_CHAT_LIST=56 NEW_CHAT_LIST value
+     * @property {number} CONTACTS_TAB=57 CONTACTS_TAB value
      */
     proto.BotMetricsEntryPoint = (function() {
         var valuesById = {}, values = Object.create(valuesById);
@@ -26564,6 +26570,7 @@ $root.proto = (function() {
         values[valuesById[54] = "GROUP_MEMBER"] = 54;
         values[valuesById[55] = "CHATLIST_SEARCH"] = 55;
         values[valuesById[56] = "NEW_CHAT_LIST"] = 56;
+        values[valuesById[57] = "CONTACTS_TAB"] = 57;
         return values;
     })();
 
@@ -26822,6 +26829,7 @@ $root.proto = (function() {
                 case 54:
                 case 55:
                 case 56:
+                case 57:
                     break;
                 }
             }
@@ -27059,6 +27067,10 @@ $root.proto = (function() {
             case "NEW_CHAT_LIST":
             case 56:
                 message.destinationEntryPoint = 56;
+                break;
+            case "CONTACTS_TAB":
+            case 57:
+                message.destinationEntryPoint = 57;
                 break;
             }
             switch (object.threadOrigin) {
@@ -45115,6 +45127,7 @@ $root.proto = (function() {
                     case 35:
                     case 36:
                     case 37:
+                    case 38:
                         break;
                     }
                 }
@@ -45402,6 +45415,10 @@ $root.proto = (function() {
                 case "AR_WRIST":
                 case 37:
                     message.platform = 37;
+                    break;
+                case "WAIL":
+                case 38:
+                    message.platform = 38;
                     break;
                 }
                 if (object.appVersion != null) {
@@ -46095,6 +46112,7 @@ $root.proto = (function() {
              * @property {number} SMART_GLASSES=35 SMART_GLASSES value
              * @property {number} BLUE_VR=36 BLUE_VR value
              * @property {number} AR_WRIST=37 AR_WRIST value
+             * @property {number} WAIL=38 WAIL value
              */
             UserAgent.Platform = (function() {
                 var valuesById = {}, values = Object.create(valuesById);
@@ -46136,6 +46154,7 @@ $root.proto = (function() {
                 values[valuesById[35] = "SMART_GLASSES"] = 35;
                 values[valuesById[36] = "BLUE_VR"] = 36;
                 values[valuesById[37] = "AR_WRIST"] = 37;
+                values[valuesById[38] = "WAIL"] = 38;
                 return values;
             })();
 
@@ -95786,6 +95805,7 @@ $root.proto = (function() {
              * @property {string|null} [deeplinkPayload] Call deeplinkPayload
              * @property {proto.IMessageContextInfo|null} [messageContextInfo] Call messageContextInfo
              * @property {number|null} [callEntryPoint] Call callEntryPoint
+             * @property {string|null} [callReason] Call callReason
              */
 
             /**
@@ -95891,6 +95911,14 @@ $root.proto = (function() {
              */
             Call.prototype.callEntryPoint = null;
 
+            /**
+             * Call callReason.
+             * @member {string|null|undefined} callReason
+             * @memberof proto.Message.Call
+             * @instance
+             */
+            Call.prototype.callReason = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
@@ -95960,6 +95988,12 @@ $root.proto = (function() {
                 set: $util.oneOfSetter($oneOfFields)
             });
 
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(Call.prototype, "_callReason", {
+                get: $util.oneOfGetter($oneOfFields = ["callReason"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
             /**
              * Creates a new Call instance using the specified properties.
              * @function create
@@ -96010,6 +96044,8 @@ $root.proto = (function() {
                     $root.proto.MessageContextInfo.encode(message.messageContextInfo, writer.uint32(/* id 10, wireType 2 =*/82).fork(), q + 1).ldelim();
                 if (message.callEntryPoint != null && Object.hasOwnProperty.call(message, "callEntryPoint"))
                     writer.uint32(/* id 11, wireType 0 =*/88).uint32(message.callEntryPoint);
+                if (message.callReason != null && Object.hasOwnProperty.call(message, "callReason"))
+                    writer.uint32(/* id 12, wireType 2 =*/98).string(message.callReason);
                 return writer;
             };
 
@@ -96092,6 +96128,10 @@ $root.proto = (function() {
                         }
                     case 11: {
                             message.callEntryPoint = reader.uint32();
+                            break;
+                        }
+                    case 12: {
+                            message.callReason = reader.string();
                             break;
                         }
                     default:
@@ -96195,6 +96235,11 @@ $root.proto = (function() {
                     if (!$util.isInteger(message.callEntryPoint))
                         return "callEntryPoint: integer expected";
                 }
+                if (message.callReason != null && Object.hasOwnProperty.call(message, "callReason")) {
+                    properties._callReason = 1;
+                    if (!$util.isString(message.callReason))
+                        return "callReason: string expected";
+                }
                 return null;
             };
 
@@ -96253,6 +96298,8 @@ $root.proto = (function() {
                 }
                 if (object.callEntryPoint != null)
                     message.callEntryPoint = object.callEntryPoint >>> 0;
+                if (object.callReason != null)
+                    message.callReason = String(object.callReason);
                 return message;
             };
 
@@ -96327,6 +96374,11 @@ $root.proto = (function() {
                     object.callEntryPoint = message.callEntryPoint;
                     if (options.oneofs)
                         object._callEntryPoint = "callEntryPoint";
+                }
+                if (message.callReason != null && Object.hasOwnProperty.call(message, "callReason")) {
+                    object.callReason = message.callReason;
+                    if (options.oneofs)
+                        object._callReason = "callReason";
                 }
                 return object;
             };
@@ -144953,6 +145005,7 @@ $root.proto = (function() {
              * @property {proto.IAIMetadataOperation|null} [aiMetadataOperation] ProtocolMessage aiMetadataOperation
              * @property {proto.Message.IMarkAsVerifiedAction|null} [markAsVerifiedAction] ProtocolMessage markAsVerifiedAction
              * @property {proto.ICoexStateSync|null} [coexStateSync] ProtocolMessage coexStateSync
+             * @property {proto.Message.ISyncRequestMutationRetry|null} [syncRequestMutationRetry] ProtocolMessage syncRequestMutationRetry
              */
 
             /**
@@ -145210,6 +145263,14 @@ $root.proto = (function() {
              */
             ProtocolMessage.prototype.coexStateSync = null;
 
+            /**
+             * ProtocolMessage syncRequestMutationRetry.
+             * @member {proto.Message.ISyncRequestMutationRetry|null|undefined} syncRequestMutationRetry
+             * @memberof proto.Message.ProtocolMessage
+             * @instance
+             */
+            ProtocolMessage.prototype.syncRequestMutationRetry = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
@@ -145393,6 +145454,12 @@ $root.proto = (function() {
                 set: $util.oneOfSetter($oneOfFields)
             });
 
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(ProtocolMessage.prototype, "_syncRequestMutationRetry", {
+                get: $util.oneOfGetter($oneOfFields = ["syncRequestMutationRetry"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
             /**
              * Creates a new ProtocolMessage instance using the specified properties.
              * @function create
@@ -145481,6 +145548,8 @@ $root.proto = (function() {
                     $root.proto.Message.MarkAsVerifiedAction.encode(message.markAsVerifiedAction, writer.uint32(/* id 32, wireType 2 =*/258).fork(), q + 1).ldelim();
                 if (message.coexStateSync != null && Object.hasOwnProperty.call(message, "coexStateSync"))
                     $root.proto.CoexStateSync.encode(message.coexStateSync, writer.uint32(/* id 33, wireType 2 =*/266).fork(), q + 1).ldelim();
+                if (message.syncRequestMutationRetry != null && Object.hasOwnProperty.call(message, "syncRequestMutationRetry"))
+                    $root.proto.Message.SyncRequestMutationRetry.encode(message.syncRequestMutationRetry, writer.uint32(/* id 34, wireType 2 =*/274).fork(), q + 1).ldelim();
                 return writer;
             };
 
@@ -145641,6 +145710,10 @@ $root.proto = (function() {
                             message.coexStateSync = $root.proto.CoexStateSync.decode(reader, reader.uint32(), undefined, long + 1);
                             break;
                         }
+                    case 34: {
+                            message.syncRequestMutationRetry = $root.proto.Message.SyncRequestMutationRetry.decode(reader, reader.uint32(), undefined, long + 1);
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7, long);
                         break;
@@ -145726,6 +145799,7 @@ $root.proto = (function() {
                     case 35:
                     case 36:
                     case 37:
+                    case 38:
                         break;
                     }
                 }
@@ -145935,6 +146009,14 @@ $root.proto = (function() {
                             return "coexStateSync." + error;
                     }
                 }
+                if (message.syncRequestMutationRetry != null && Object.hasOwnProperty.call(message, "syncRequestMutationRetry")) {
+                    properties._syncRequestMutationRetry = 1;
+                    {
+                        var error = $root.proto.Message.SyncRequestMutationRetry.verify(message.syncRequestMutationRetry, long + 1);
+                        if (error)
+                            return "syncRequestMutationRetry." + error;
+                    }
+                }
                 return null;
             };
 
@@ -146096,6 +146178,10 @@ $root.proto = (function() {
                 case 37:
                     message.type = 37;
                     break;
+                case "SYNC_REQUEST_MUTATION_RETRY":
+                case 38:
+                    message.type = 38;
+                    break;
                 }
                 if (object.ephemeralExpiration != null)
                     message.ephemeralExpiration = object.ephemeralExpiration >>> 0;
@@ -146235,6 +146321,11 @@ $root.proto = (function() {
                     if (!$util.isObject(object.coexStateSync))
                         throw TypeError(".proto.Message.ProtocolMessage.coexStateSync: object expected");
                     message.coexStateSync = $root.proto.CoexStateSync.fromObject(object.coexStateSync, long + 1);
+                }
+                if (object.syncRequestMutationRetry != null) {
+                    if (!$util.isObject(object.syncRequestMutationRetry))
+                        throw TypeError(".proto.Message.ProtocolMessage.syncRequestMutationRetry: object expected");
+                    message.syncRequestMutationRetry = $root.proto.Message.SyncRequestMutationRetry.fromObject(object.syncRequestMutationRetry, long + 1);
                 }
                 return message;
             };
@@ -146416,6 +146507,11 @@ $root.proto = (function() {
                     if (options.oneofs)
                         object._coexStateSync = "coexStateSync";
                 }
+                if (message.syncRequestMutationRetry != null && Object.hasOwnProperty.call(message, "syncRequestMutationRetry")) {
+                    object.syncRequestMutationRetry = $root.proto.Message.SyncRequestMutationRetry.toObject(message.syncRequestMutationRetry, options, q + 1);
+                    if (options.oneofs)
+                        object._syncRequestMutationRetry = "syncRequestMutationRetry";
+                }
                 return object;
             };
 
@@ -146481,6 +146577,7 @@ $root.proto = (function() {
              * @property {number} AI_METADATA_OPERATION=35 AI_METADATA_OPERATION value
              * @property {number} MARK_AS_VERIFIED_ACTION=36 MARK_AS_VERIFIED_ACTION value
              * @property {number} COEX_STATE_SYNC=37 COEX_STATE_SYNC value
+             * @property {number} SYNC_REQUEST_MUTATION_RETRY=38 SYNC_REQUEST_MUTATION_RETRY value
              */
             ProtocolMessage.Type = (function() {
                 var valuesById = {}, values = Object.create(valuesById);
@@ -146516,6 +146613,7 @@ $root.proto = (function() {
                 values[valuesById[35] = "AI_METADATA_OPERATION"] = 35;
                 values[valuesById[36] = "MARK_AS_VERIFIED_ACTION"] = 36;
                 values[valuesById[37] = "COEX_STATE_SYNC"] = 37;
+                values[valuesById[38] = "SYNC_REQUEST_MUTATION_RETRY"] = 38;
                 return values;
             })();
 
@@ -155505,6 +155603,576 @@ $root.proto = (function() {
             };
 
             return StickerSyncRMRMessage;
+        })();
+
+        Message.SyncRequestMutationRetry = (function() {
+
+            /**
+             * Properties of a SyncRequestMutationRetry.
+             * @memberof proto.Message
+             * @interface ISyncRequestMutationRetry
+             * @property {Array.<proto.Message.SyncRequestMutationRetry.ICollection>|null} [collections] SyncRequestMutationRetry collections
+             * @property {number|null} [count] SyncRequestMutationRetry count
+             */
+
+            /**
+             * Constructs a new SyncRequestMutationRetry.
+             * @memberof proto.Message
+             * @classdesc Represents a SyncRequestMutationRetry.
+             * @implements ISyncRequestMutationRetry
+             * @constructor
+             * @param {proto.Message.ISyncRequestMutationRetry=} [properties] Properties to set
+             */
+            function SyncRequestMutationRetry(properties) {
+                this.collections = [];
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * SyncRequestMutationRetry collections.
+             * @member {Array.<proto.Message.SyncRequestMutationRetry.ICollection>} collections
+             * @memberof proto.Message.SyncRequestMutationRetry
+             * @instance
+             */
+            SyncRequestMutationRetry.prototype.collections = $util.emptyArray;
+
+            /**
+             * SyncRequestMutationRetry count.
+             * @member {number|null|undefined} count
+             * @memberof proto.Message.SyncRequestMutationRetry
+             * @instance
+             */
+            SyncRequestMutationRetry.prototype.count = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(SyncRequestMutationRetry.prototype, "_count", {
+                get: $util.oneOfGetter($oneOfFields = ["count"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new SyncRequestMutationRetry instance using the specified properties.
+             * @function create
+             * @memberof proto.Message.SyncRequestMutationRetry
+             * @static
+             * @param {proto.Message.ISyncRequestMutationRetry=} [properties] Properties to set
+             * @returns {proto.Message.SyncRequestMutationRetry} SyncRequestMutationRetry instance
+             */
+            SyncRequestMutationRetry.create = function create(properties) {
+                return new SyncRequestMutationRetry(properties);
+            };
+
+            /**
+             * Encodes the specified SyncRequestMutationRetry message. Does not implicitly {@link proto.Message.SyncRequestMutationRetry.verify|verify} messages.
+             * @function encode
+             * @memberof proto.Message.SyncRequestMutationRetry
+             * @static
+             * @param {proto.Message.ISyncRequestMutationRetry} message SyncRequestMutationRetry message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SyncRequestMutationRetry.encode = function encode(message, writer, q) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                if (message.collections != null && message.collections.length)
+                    for (var i = 0; i < message.collections.length; ++i)
+                        $root.proto.Message.SyncRequestMutationRetry.Collection.encode(message.collections[i], writer.uint32(/* id 1, wireType 2 =*/10).fork(), q + 1).ldelim();
+                if (message.count != null && Object.hasOwnProperty.call(message, "count"))
+                    writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.count);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified SyncRequestMutationRetry message, length delimited. Does not implicitly {@link proto.Message.SyncRequestMutationRetry.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof proto.Message.SyncRequestMutationRetry
+             * @static
+             * @param {proto.Message.ISyncRequestMutationRetry} message SyncRequestMutationRetry message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SyncRequestMutationRetry.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer && writer.len ? writer.fork() : writer).ldelim();
+            };
+
+            /**
+             * Decodes a SyncRequestMutationRetry message from the specified reader or buffer.
+             * @function decode
+             * @memberof proto.Message.SyncRequestMutationRetry
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {proto.Message.SyncRequestMutationRetry} SyncRequestMutationRetry
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SyncRequestMutationRetry.decode = function decode(reader, length, error, long) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (long === undefined)
+                    long = 0;
+                if (long > $Reader.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.proto.Message.SyncRequestMutationRetry();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            if (!(message.collections && message.collections.length))
+                                message.collections = [];
+                            message.collections.push($root.proto.Message.SyncRequestMutationRetry.Collection.decode(reader, reader.uint32(), undefined, long + 1));
+                            break;
+                        }
+                    case 2: {
+                            message.count = reader.uint32();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7, long);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a SyncRequestMutationRetry message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof proto.Message.SyncRequestMutationRetry
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {proto.Message.SyncRequestMutationRetry} SyncRequestMutationRetry
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SyncRequestMutationRetry.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a SyncRequestMutationRetry message.
+             * @function verify
+             * @memberof proto.Message.SyncRequestMutationRetry
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            SyncRequestMutationRetry.verify = function verify(message, long) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    return "maximum nesting depth exceeded";
+                var properties = {};
+                if (message.collections != null && Object.hasOwnProperty.call(message, "collections")) {
+                    if (!Array.isArray(message.collections))
+                        return "collections: array expected";
+                    for (var i = 0; i < message.collections.length; ++i) {
+                        var error = $root.proto.Message.SyncRequestMutationRetry.Collection.verify(message.collections[i], long + 1);
+                        if (error)
+                            return "collections." + error;
+                    }
+                }
+                if (message.count != null && Object.hasOwnProperty.call(message, "count")) {
+                    properties._count = 1;
+                    if (!$util.isInteger(message.count))
+                        return "count: integer expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a SyncRequestMutationRetry message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof proto.Message.SyncRequestMutationRetry
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {proto.Message.SyncRequestMutationRetry} SyncRequestMutationRetry
+             */
+            SyncRequestMutationRetry.fromObject = function fromObject(object, long) {
+                if (object instanceof $root.proto.Message.SyncRequestMutationRetry)
+                    return object;
+                if (!$util.isObject(object))
+                    throw TypeError(".proto.Message.SyncRequestMutationRetry: object expected");
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var message = new $root.proto.Message.SyncRequestMutationRetry();
+                if (object.collections) {
+                    if (!Array.isArray(object.collections))
+                        throw TypeError(".proto.Message.SyncRequestMutationRetry.collections: array expected");
+                    message.collections = [];
+                    for (var i = 0; i < object.collections.length; ++i) {
+                        if (!$util.isObject(object.collections[i]))
+                            throw TypeError(".proto.Message.SyncRequestMutationRetry.collections: object expected");
+                        message.collections[i] = $root.proto.Message.SyncRequestMutationRetry.Collection.fromObject(object.collections[i], long + 1);
+                    }
+                }
+                if (object.count != null)
+                    message.count = object.count >>> 0;
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a SyncRequestMutationRetry message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof proto.Message.SyncRequestMutationRetry
+             * @static
+             * @param {proto.Message.SyncRequestMutationRetry} message SyncRequestMutationRetry
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            SyncRequestMutationRetry.toObject = function toObject(message, options, q) {
+                if (!options)
+                    options = {};
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                var object = {};
+                if (options.arrays || options.defaults)
+                    object.collections = [];
+                if (message.collections && message.collections.length) {
+                    object.collections = [];
+                    for (var j = 0; j < message.collections.length; ++j)
+                        object.collections[j] = $root.proto.Message.SyncRequestMutationRetry.Collection.toObject(message.collections[j], options, q + 1);
+                }
+                if (message.count != null && Object.hasOwnProperty.call(message, "count")) {
+                    object.count = message.count;
+                    if (options.oneofs)
+                        object._count = "count";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this SyncRequestMutationRetry to JSON.
+             * @function toJSON
+             * @memberof proto.Message.SyncRequestMutationRetry
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            SyncRequestMutationRetry.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for SyncRequestMutationRetry
+             * @function getTypeUrl
+             * @memberof proto.Message.SyncRequestMutationRetry
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            SyncRequestMutationRetry.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/proto.Message.SyncRequestMutationRetry";
+            };
+
+            SyncRequestMutationRetry.Collection = (function() {
+
+                /**
+                 * Properties of a Collection.
+                 * @memberof proto.Message.SyncRequestMutationRetry
+                 * @interface ICollection
+                 * @property {string|null} [name] Collection name
+                 * @property {number|Long|null} [storedSyncdVersion] Collection storedSyncdVersion
+                 */
+
+                /**
+                 * Constructs a new Collection.
+                 * @memberof proto.Message.SyncRequestMutationRetry
+                 * @classdesc Represents a Collection.
+                 * @implements ICollection
+                 * @constructor
+                 * @param {proto.Message.SyncRequestMutationRetry.ICollection=} [properties] Properties to set
+                 */
+                function Collection(properties) {
+                    if (properties)
+                        for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                            if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                                this[keys[i]] = properties[keys[i]];
+                }
+
+                /**
+                 * Collection name.
+                 * @member {string|null|undefined} name
+                 * @memberof proto.Message.SyncRequestMutationRetry.Collection
+                 * @instance
+                 */
+                Collection.prototype.name = null;
+
+                /**
+                 * Collection storedSyncdVersion.
+                 * @member {number|Long|null|undefined} storedSyncdVersion
+                 * @memberof proto.Message.SyncRequestMutationRetry.Collection
+                 * @instance
+                 */
+                Collection.prototype.storedSyncdVersion = null;
+
+                // OneOf field names bound to virtual getters and setters
+                var $oneOfFields;
+
+                // Virtual OneOf for proto3 optional field
+                Object.defineProperty(Collection.prototype, "_name", {
+                    get: $util.oneOfGetter($oneOfFields = ["name"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
+                // Virtual OneOf for proto3 optional field
+                Object.defineProperty(Collection.prototype, "_storedSyncdVersion", {
+                    get: $util.oneOfGetter($oneOfFields = ["storedSyncdVersion"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
+                /**
+                 * Creates a new Collection instance using the specified properties.
+                 * @function create
+                 * @memberof proto.Message.SyncRequestMutationRetry.Collection
+                 * @static
+                 * @param {proto.Message.SyncRequestMutationRetry.ICollection=} [properties] Properties to set
+                 * @returns {proto.Message.SyncRequestMutationRetry.Collection} Collection instance
+                 */
+                Collection.create = function create(properties) {
+                    return new Collection(properties);
+                };
+
+                /**
+                 * Encodes the specified Collection message. Does not implicitly {@link proto.Message.SyncRequestMutationRetry.Collection.verify|verify} messages.
+                 * @function encode
+                 * @memberof proto.Message.SyncRequestMutationRetry.Collection
+                 * @static
+                 * @param {proto.Message.SyncRequestMutationRetry.ICollection} message Collection message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                Collection.encode = function encode(message, writer, q) {
+                    if (!writer)
+                        writer = $Writer.create();
+                    if (q === undefined)
+                        q = 0;
+                    if (q > $util.recursionLimit)
+                        throw Error("max depth exceeded");
+                    if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                        writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+                    if (message.storedSyncdVersion != null && Object.hasOwnProperty.call(message, "storedSyncdVersion"))
+                        writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.storedSyncdVersion);
+                    return writer;
+                };
+
+                /**
+                 * Encodes the specified Collection message, length delimited. Does not implicitly {@link proto.Message.SyncRequestMutationRetry.Collection.verify|verify} messages.
+                 * @function encodeDelimited
+                 * @memberof proto.Message.SyncRequestMutationRetry.Collection
+                 * @static
+                 * @param {proto.Message.SyncRequestMutationRetry.ICollection} message Collection message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                Collection.encodeDelimited = function encodeDelimited(message, writer) {
+                    return this.encode(message, writer && writer.len ? writer.fork() : writer).ldelim();
+                };
+
+                /**
+                 * Decodes a Collection message from the specified reader or buffer.
+                 * @function decode
+                 * @memberof proto.Message.SyncRequestMutationRetry.Collection
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @param {number} [length] Message length if known beforehand
+                 * @returns {proto.Message.SyncRequestMutationRetry.Collection} Collection
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                Collection.decode = function decode(reader, length, error, long) {
+                    if (!(reader instanceof $Reader))
+                        reader = $Reader.create(reader);
+                    if (long === undefined)
+                        long = 0;
+                    if (long > $Reader.recursionLimit)
+                        throw Error("maximum nesting depth exceeded");
+                    var end = length === undefined ? reader.len : reader.pos + length, message = new $root.proto.Message.SyncRequestMutationRetry.Collection();
+                    while (reader.pos < end) {
+                        var tag = reader.uint32();
+                        if (tag === error)
+                            break;
+                        switch (tag >>> 3) {
+                        case 1: {
+                                message.name = reader.string();
+                                break;
+                            }
+                        case 2: {
+                                message.storedSyncdVersion = reader.uint64();
+                                break;
+                            }
+                        default:
+                            reader.skipType(tag & 7, long);
+                            break;
+                        }
+                    }
+                    return message;
+                };
+
+                /**
+                 * Decodes a Collection message from the specified reader or buffer, length delimited.
+                 * @function decodeDelimited
+                 * @memberof proto.Message.SyncRequestMutationRetry.Collection
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @returns {proto.Message.SyncRequestMutationRetry.Collection} Collection
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                Collection.decodeDelimited = function decodeDelimited(reader) {
+                    if (!(reader instanceof $Reader))
+                        reader = new $Reader(reader);
+                    return this.decode(reader, reader.uint32());
+                };
+
+                /**
+                 * Verifies a Collection message.
+                 * @function verify
+                 * @memberof proto.Message.SyncRequestMutationRetry.Collection
+                 * @static
+                 * @param {Object.<string,*>} message Plain object to verify
+                 * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                 */
+                Collection.verify = function verify(message, long) {
+                    if (typeof message !== "object" || message === null)
+                        return "object expected";
+                    if (long === undefined)
+                        long = 0;
+                    if (long > $util.recursionLimit)
+                        return "maximum nesting depth exceeded";
+                    var properties = {};
+                    if (message.name != null && Object.hasOwnProperty.call(message, "name")) {
+                        properties._name = 1;
+                        if (!$util.isString(message.name))
+                            return "name: string expected";
+                    }
+                    if (message.storedSyncdVersion != null && Object.hasOwnProperty.call(message, "storedSyncdVersion")) {
+                        properties._storedSyncdVersion = 1;
+                        if (!$util.isInteger(message.storedSyncdVersion) && !(message.storedSyncdVersion && $util.isInteger(message.storedSyncdVersion.low) && $util.isInteger(message.storedSyncdVersion.high)))
+                            return "storedSyncdVersion: integer|Long expected";
+                    }
+                    return null;
+                };
+
+                /**
+                 * Creates a Collection message from a plain object. Also converts values to their respective internal types.
+                 * @function fromObject
+                 * @memberof proto.Message.SyncRequestMutationRetry.Collection
+                 * @static
+                 * @param {Object.<string,*>} object Plain object
+                 * @returns {proto.Message.SyncRequestMutationRetry.Collection} Collection
+                 */
+                Collection.fromObject = function fromObject(object, long) {
+                    if (object instanceof $root.proto.Message.SyncRequestMutationRetry.Collection)
+                        return object;
+                    if (!$util.isObject(object))
+                        throw TypeError(".proto.Message.SyncRequestMutationRetry.Collection: object expected");
+                    if (long === undefined)
+                        long = 0;
+                    if (long > $util.recursionLimit)
+                        throw Error("maximum nesting depth exceeded");
+                    var message = new $root.proto.Message.SyncRequestMutationRetry.Collection();
+                    if (object.name != null)
+                        message.name = String(object.name);
+                    if (object.storedSyncdVersion != null)
+                        if ($util.Long)
+                            message.storedSyncdVersion = $util.Long.fromValue(object.storedSyncdVersion, true);
+                        else if (typeof object.storedSyncdVersion === "string")
+                            message.storedSyncdVersion = parseInt(object.storedSyncdVersion, 10);
+                        else if (typeof object.storedSyncdVersion === "number")
+                            message.storedSyncdVersion = object.storedSyncdVersion;
+                        else if (typeof object.storedSyncdVersion === "object")
+                            message.storedSyncdVersion = new $util.LongBits(object.storedSyncdVersion.low >>> 0, object.storedSyncdVersion.high >>> 0).toNumber(true);
+                    return message;
+                };
+
+                /**
+                 * Creates a plain object from a Collection message. Also converts values to other types if specified.
+                 * @function toObject
+                 * @memberof proto.Message.SyncRequestMutationRetry.Collection
+                 * @static
+                 * @param {proto.Message.SyncRequestMutationRetry.Collection} message Collection
+                 * @param {$protobuf.IConversionOptions} [options] Conversion options
+                 * @returns {Object.<string,*>} Plain object
+                 */
+                Collection.toObject = function toObject(message, options, q) {
+                    if (!options)
+                        options = {};
+                    if (q === undefined)
+                        q = 0;
+                    if (q > $util.recursionLimit)
+                        throw Error("max depth exceeded");
+                    var object = {};
+                    if (message.name != null && Object.hasOwnProperty.call(message, "name")) {
+                        object.name = message.name;
+                        if (options.oneofs)
+                            object._name = "name";
+                    }
+                    if (message.storedSyncdVersion != null && Object.hasOwnProperty.call(message, "storedSyncdVersion")) {
+                        if (typeof BigInt !== "undefined" && options.longs === BigInt)
+                            object.storedSyncdVersion = typeof message.storedSyncdVersion === "number" ? BigInt(message.storedSyncdVersion) : $util.Long.fromBits(message.storedSyncdVersion.low >>> 0, message.storedSyncdVersion.high >>> 0, true).toBigInt();
+                        else if (typeof message.storedSyncdVersion === "number")
+                            object.storedSyncdVersion = options.longs === String ? String(message.storedSyncdVersion) : message.storedSyncdVersion;
+                        else
+                            object.storedSyncdVersion = options.longs === String ? $util.Long.prototype.toString.call(message.storedSyncdVersion) : options.longs === Number ? new $util.LongBits(message.storedSyncdVersion.low >>> 0, message.storedSyncdVersion.high >>> 0).toNumber(true) : message.storedSyncdVersion;
+                        if (options.oneofs)
+                            object._storedSyncdVersion = "storedSyncdVersion";
+                    }
+                    return object;
+                };
+
+                /**
+                 * Converts this Collection to JSON.
+                 * @function toJSON
+                 * @memberof proto.Message.SyncRequestMutationRetry.Collection
+                 * @instance
+                 * @returns {Object.<string,*>} JSON object
+                 */
+                Collection.prototype.toJSON = function toJSON() {
+                    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                };
+
+                /**
+                 * Gets the default type url for Collection
+                 * @function getTypeUrl
+                 * @memberof proto.Message.SyncRequestMutationRetry.Collection
+                 * @static
+                 * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns {string} The default type url
+                 */
+                Collection.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                    if (typeUrlPrefix === undefined) {
+                        typeUrlPrefix = "type.googleapis.com";
+                    }
+                    return typeUrlPrefix + "/proto.Message.SyncRequestMutationRetry.Collection";
+                };
+
+                return Collection;
+            })();
+
+            return SyncRequestMutationRetry;
         })();
 
         Message.TemplateButtonReplyMessage = (function() {
@@ -166455,6 +167123,7 @@ $root.proto = (function() {
      * @property {number} COEX_V2_VERSION_ACTION=88 COEX_V2_VERSION_ACTION value
      * @property {number} WASA_ROOT_SECRET_ACTION=89 WASA_ROOT_SECRET_ACTION value
      * @property {number} BUBBLE_LOCK_MESSAGE_ACTION=90 BUBBLE_LOCK_MESSAGE_ACTION value
+     * @property {number} LABEL_SUBLIST_ACTION=91 LABEL_SUBLIST_ACTION value
      * @property {number} SHARE_OWN_PN=10001 SHARE_OWN_PN value
      * @property {number} BUSINESS_BROADCAST_ACTION=10002 BUSINESS_BROADCAST_ACTION value
      * @property {number} AI_THREAD_DELETE_ACTION=10003 AI_THREAD_DELETE_ACTION value
@@ -166545,6 +167214,7 @@ $root.proto = (function() {
         values[valuesById[88] = "COEX_V2_VERSION_ACTION"] = 88;
         values[valuesById[89] = "WASA_ROOT_SECRET_ACTION"] = 89;
         values[valuesById[90] = "BUBBLE_LOCK_MESSAGE_ACTION"] = 90;
+        values[valuesById[91] = "LABEL_SUBLIST_ACTION"] = 91;
         values[valuesById[10001] = "SHARE_OWN_PN"] = 10001;
         values[valuesById[10002] = "BUSINESS_BROADCAST_ACTION"] = 10002;
         values[valuesById[10003] = "AI_THREAD_DELETE_ACTION"] = 10003;
@@ -189742,6 +190412,7 @@ $root.proto = (function() {
          * @property {proto.SyncActionValue.ICoexV2VersionAction|null} [coexV2VersionAction] SyncActionValue coexV2VersionAction
          * @property {proto.SyncActionValue.IWASARootSecretAction|null} [wasaRootSecretAction] SyncActionValue wasaRootSecretAction
          * @property {proto.SyncActionValue.IBubbleLockMessageAction|null} [bubbleLockMessageAction] SyncActionValue bubbleLockMessageAction
+         * @property {proto.SyncActionValue.ILabelSublistAction|null} [labelSublistAction] SyncActionValue labelSublistAction
          */
 
         /**
@@ -190407,6 +191078,14 @@ $root.proto = (function() {
          */
         SyncActionValue.prototype.bubbleLockMessageAction = null;
 
+        /**
+         * SyncActionValue labelSublistAction.
+         * @member {proto.SyncActionValue.ILabelSublistAction|null|undefined} labelSublistAction
+         * @memberof proto.SyncActionValue
+         * @instance
+         */
+        SyncActionValue.prototype.labelSublistAction = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -190896,6 +191575,12 @@ $root.proto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(SyncActionValue.prototype, "_labelSublistAction", {
+            get: $util.oneOfGetter($oneOfFields = ["labelSublistAction"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new SyncActionValue instance using the specified properties.
          * @function create
@@ -191086,6 +191771,8 @@ $root.proto = (function() {
                 $root.proto.SyncActionValue.WASARootSecretAction.encode(message.wasaRootSecretAction, writer.uint32(/* id 89, wireType 2 =*/714).fork(), q + 1).ldelim();
             if (message.bubbleLockMessageAction != null && Object.hasOwnProperty.call(message, "bubbleLockMessageAction"))
                 $root.proto.SyncActionValue.BubbleLockMessageAction.encode(message.bubbleLockMessageAction, writer.uint32(/* id 90, wireType 2 =*/722).fork(), q + 1).ldelim();
+            if (message.labelSublistAction != null && Object.hasOwnProperty.call(message, "labelSublistAction"))
+                $root.proto.SyncActionValue.LabelSublistAction.encode(message.labelSublistAction, writer.uint32(/* id 91, wireType 2 =*/730).fork(), q + 1).ldelim();
             return writer;
         };
 
@@ -191448,6 +192135,10 @@ $root.proto = (function() {
                     }
                 case 90: {
                         message.bubbleLockMessageAction = $root.proto.SyncActionValue.BubbleLockMessageAction.decode(reader, reader.uint32(), undefined, long + 1);
+                        break;
+                    }
+                case 91: {
+                        message.labelSublistAction = $root.proto.SyncActionValue.LabelSublistAction.decode(reader, reader.uint32(), undefined, long + 1);
                         break;
                     }
                 default:
@@ -192135,6 +192826,14 @@ $root.proto = (function() {
                         return "bubbleLockMessageAction." + error;
                 }
             }
+            if (message.labelSublistAction != null && Object.hasOwnProperty.call(message, "labelSublistAction")) {
+                properties._labelSublistAction = 1;
+                {
+                    var error = $root.proto.SyncActionValue.LabelSublistAction.verify(message.labelSublistAction, long + 1);
+                    if (error)
+                        return "labelSublistAction." + error;
+                }
+            }
             return null;
         };
 
@@ -192565,6 +193264,11 @@ $root.proto = (function() {
                     throw TypeError(".proto.SyncActionValue.bubbleLockMessageAction: object expected");
                 message.bubbleLockMessageAction = $root.proto.SyncActionValue.BubbleLockMessageAction.fromObject(object.bubbleLockMessageAction, long + 1);
             }
+            if (object.labelSublistAction != null) {
+                if (!$util.isObject(object.labelSublistAction))
+                    throw TypeError(".proto.SyncActionValue.labelSublistAction: object expected");
+                message.labelSublistAction = $root.proto.SyncActionValue.LabelSublistAction.fromObject(object.labelSublistAction, long + 1);
+            }
             return message;
         };
 
@@ -192994,6 +193698,11 @@ $root.proto = (function() {
                 object.bubbleLockMessageAction = $root.proto.SyncActionValue.BubbleLockMessageAction.toObject(message.bubbleLockMessageAction, options, q + 1);
                 if (options.oneofs)
                     object._bubbleLockMessageAction = "bubbleLockMessageAction";
+            }
+            if (message.labelSublistAction != null && Object.hasOwnProperty.call(message, "labelSublistAction")) {
+                object.labelSublistAction = $root.proto.SyncActionValue.LabelSublistAction.toObject(message.labelSublistAction, options, q + 1);
+                if (options.oneofs)
+                    object._labelSublistAction = "labelSublistAction";
             }
             return object;
         };
@@ -204255,6 +204964,246 @@ $root.proto = (function() {
             };
 
             return LabelReorderingAction;
+        })();
+
+        SyncActionValue.LabelSublistAction = (function() {
+
+            /**
+             * Properties of a LabelSublistAction.
+             * @memberof proto.SyncActionValue
+             * @interface ILabelSublistAction
+             * @property {number|null} [subListId] LabelSublistAction subListId
+             */
+
+            /**
+             * Constructs a new LabelSublistAction.
+             * @memberof proto.SyncActionValue
+             * @classdesc Represents a LabelSublistAction.
+             * @implements ILabelSublistAction
+             * @constructor
+             * @param {proto.SyncActionValue.ILabelSublistAction=} [properties] Properties to set
+             */
+            function LabelSublistAction(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * LabelSublistAction subListId.
+             * @member {number|null|undefined} subListId
+             * @memberof proto.SyncActionValue.LabelSublistAction
+             * @instance
+             */
+            LabelSublistAction.prototype.subListId = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(LabelSublistAction.prototype, "_subListId", {
+                get: $util.oneOfGetter($oneOfFields = ["subListId"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new LabelSublistAction instance using the specified properties.
+             * @function create
+             * @memberof proto.SyncActionValue.LabelSublistAction
+             * @static
+             * @param {proto.SyncActionValue.ILabelSublistAction=} [properties] Properties to set
+             * @returns {proto.SyncActionValue.LabelSublistAction} LabelSublistAction instance
+             */
+            LabelSublistAction.create = function create(properties) {
+                return new LabelSublistAction(properties);
+            };
+
+            /**
+             * Encodes the specified LabelSublistAction message. Does not implicitly {@link proto.SyncActionValue.LabelSublistAction.verify|verify} messages.
+             * @function encode
+             * @memberof proto.SyncActionValue.LabelSublistAction
+             * @static
+             * @param {proto.SyncActionValue.ILabelSublistAction} message LabelSublistAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            LabelSublistAction.encode = function encode(message, writer, q) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                if (message.subListId != null && Object.hasOwnProperty.call(message, "subListId"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).int32(message.subListId);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified LabelSublistAction message, length delimited. Does not implicitly {@link proto.SyncActionValue.LabelSublistAction.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof proto.SyncActionValue.LabelSublistAction
+             * @static
+             * @param {proto.SyncActionValue.ILabelSublistAction} message LabelSublistAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            LabelSublistAction.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer && writer.len ? writer.fork() : writer).ldelim();
+            };
+
+            /**
+             * Decodes a LabelSublistAction message from the specified reader or buffer.
+             * @function decode
+             * @memberof proto.SyncActionValue.LabelSublistAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {proto.SyncActionValue.LabelSublistAction} LabelSublistAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            LabelSublistAction.decode = function decode(reader, length, error, long) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (long === undefined)
+                    long = 0;
+                if (long > $Reader.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.proto.SyncActionValue.LabelSublistAction();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.subListId = reader.int32();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7, long);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a LabelSublistAction message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof proto.SyncActionValue.LabelSublistAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {proto.SyncActionValue.LabelSublistAction} LabelSublistAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            LabelSublistAction.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a LabelSublistAction message.
+             * @function verify
+             * @memberof proto.SyncActionValue.LabelSublistAction
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            LabelSublistAction.verify = function verify(message, long) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    return "maximum nesting depth exceeded";
+                var properties = {};
+                if (message.subListId != null && Object.hasOwnProperty.call(message, "subListId")) {
+                    properties._subListId = 1;
+                    if (!$util.isInteger(message.subListId))
+                        return "subListId: integer expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a LabelSublistAction message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof proto.SyncActionValue.LabelSublistAction
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {proto.SyncActionValue.LabelSublistAction} LabelSublistAction
+             */
+            LabelSublistAction.fromObject = function fromObject(object, long) {
+                if (object instanceof $root.proto.SyncActionValue.LabelSublistAction)
+                    return object;
+                if (!$util.isObject(object))
+                    throw TypeError(".proto.SyncActionValue.LabelSublistAction: object expected");
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var message = new $root.proto.SyncActionValue.LabelSublistAction();
+                if (object.subListId != null)
+                    message.subListId = object.subListId | 0;
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a LabelSublistAction message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof proto.SyncActionValue.LabelSublistAction
+             * @static
+             * @param {proto.SyncActionValue.LabelSublistAction} message LabelSublistAction
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            LabelSublistAction.toObject = function toObject(message, options, q) {
+                if (!options)
+                    options = {};
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                var object = {};
+                if (message.subListId != null && Object.hasOwnProperty.call(message, "subListId")) {
+                    object.subListId = message.subListId;
+                    if (options.oneofs)
+                        object._subListId = "subListId";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this LabelSublistAction to JSON.
+             * @function toJSON
+             * @memberof proto.SyncActionValue.LabelSublistAction
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            LabelSublistAction.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for LabelSublistAction
+             * @function getTypeUrl
+             * @memberof proto.SyncActionValue.LabelSublistAction
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            LabelSublistAction.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/proto.SyncActionValue.LabelSublistAction";
+            };
+
+            return LabelSublistAction;
         })();
 
         SyncActionValue.LidContactAction = (function() {
@@ -220187,6 +221136,7 @@ $root.proto = (function() {
                  * @property {string|null} [id] RootSecretEntry id
                  * @property {Uint8Array|null} [rootSecret] RootSecretEntry rootSecret
                  * @property {number|Long|null} [epoch] RootSecretEntry epoch
+                 * @property {proto.SyncActionValue.WASARootSecretAction.RootSecretEntry.Status|null} [status] RootSecretEntry status
                  */
 
                 /**
@@ -220228,6 +221178,14 @@ $root.proto = (function() {
                  */
                 RootSecretEntry.prototype.epoch = null;
 
+                /**
+                 * RootSecretEntry status.
+                 * @member {proto.SyncActionValue.WASARootSecretAction.RootSecretEntry.Status|null|undefined} status
+                 * @memberof proto.SyncActionValue.WASARootSecretAction.RootSecretEntry
+                 * @instance
+                 */
+                RootSecretEntry.prototype.status = null;
+
                 // OneOf field names bound to virtual getters and setters
                 var $oneOfFields;
 
@@ -220246,6 +221204,12 @@ $root.proto = (function() {
                 // Virtual OneOf for proto3 optional field
                 Object.defineProperty(RootSecretEntry.prototype, "_epoch", {
                     get: $util.oneOfGetter($oneOfFields = ["epoch"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
+                // Virtual OneOf for proto3 optional field
+                Object.defineProperty(RootSecretEntry.prototype, "_status", {
+                    get: $util.oneOfGetter($oneOfFields = ["status"]),
                     set: $util.oneOfSetter($oneOfFields)
                 });
 
@@ -220283,6 +221247,8 @@ $root.proto = (function() {
                         writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.rootSecret);
                     if (message.epoch != null && Object.hasOwnProperty.call(message, "epoch"))
                         writer.uint32(/* id 3, wireType 0 =*/24).int64(message.epoch);
+                    if (message.status != null && Object.hasOwnProperty.call(message, "status"))
+                        writer.uint32(/* id 4, wireType 0 =*/32).int32(message.status);
                     return writer;
                 };
 
@@ -220333,6 +221299,10 @@ $root.proto = (function() {
                             }
                         case 3: {
                                 message.epoch = reader.int64();
+                                break;
+                            }
+                        case 4: {
+                                message.status = reader.int32();
                                 break;
                             }
                         default:
@@ -220390,6 +221360,16 @@ $root.proto = (function() {
                         if (!$util.isInteger(message.epoch) && !(message.epoch && $util.isInteger(message.epoch.low) && $util.isInteger(message.epoch.high)))
                             return "epoch: integer|Long expected";
                     }
+                    if (message.status != null && Object.hasOwnProperty.call(message, "status")) {
+                        properties._status = 1;
+                        switch (message.status) {
+                        default:
+                            return "status: enum value expected";
+                        case 0:
+                        case 1:
+                            break;
+                        }
+                    }
                     return null;
                 };
 
@@ -220427,6 +221407,22 @@ $root.proto = (function() {
                             message.epoch = object.epoch;
                         else if (typeof object.epoch === "object")
                             message.epoch = new $util.LongBits(object.epoch.low >>> 0, object.epoch.high >>> 0).toNumber();
+                    switch (object.status) {
+                    default:
+                        if (typeof object.status === "number") {
+                            message.status = object.status;
+                            break;
+                        }
+                        break;
+                    case "INACTIVE":
+                    case 0:
+                        message.status = 0;
+                        break;
+                    case "ACTIVE":
+                    case 1:
+                        message.status = 1;
+                        break;
+                    }
                     return message;
                 };
 
@@ -220467,6 +221463,11 @@ $root.proto = (function() {
                         if (options.oneofs)
                             object._epoch = "epoch";
                     }
+                    if (message.status != null && Object.hasOwnProperty.call(message, "status")) {
+                        object.status = options.enums === String ? $root.proto.SyncActionValue.WASARootSecretAction.RootSecretEntry.Status[message.status] === undefined ? message.status : $root.proto.SyncActionValue.WASARootSecretAction.RootSecretEntry.Status[message.status] : message.status;
+                        if (options.oneofs)
+                            object._status = "status";
+                    }
                     return object;
                 };
 
@@ -220495,6 +221496,20 @@ $root.proto = (function() {
                     }
                     return typeUrlPrefix + "/proto.SyncActionValue.WASARootSecretAction.RootSecretEntry";
                 };
+
+                /**
+                 * Status enum.
+                 * @name proto.SyncActionValue.WASARootSecretAction.RootSecretEntry.Status
+                 * @enum {number}
+                 * @property {number} INACTIVE=0 INACTIVE value
+                 * @property {number} ACTIVE=1 ACTIVE value
+                 */
+                RootSecretEntry.Status = (function() {
+                    var valuesById = {}, values = Object.create(valuesById);
+                    values[valuesById[0] = "INACTIVE"] = 0;
+                    values[valuesById[1] = "ACTIVE"] = 1;
+                    return values;
+                })();
 
                 return RootSecretEntry;
             })();
