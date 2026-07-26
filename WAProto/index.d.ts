@@ -5423,7 +5423,10 @@ export namespace proto {
             UNIFIED_RESPONSE_MARKDOWN_LINKS_ENABLED = 63,
             AI_RICH_RESPONSE_MAPS_V2_ENABLED = 64,
             AI_SUBSCRIPTION_METERING_ENABLED = 65,
-            RICH_RESPONSE_SPORTS_WIDGET_ENABLED = 66
+            RICH_RESPONSE_SPORTS_WIDGET_ENABLED = 66,
+            AI_RICH_RESPONSE_ARTIFACTS_ENABLED = 67,
+            AI_RICH_RESPONSE_EMAIL_CALENDAR_ENABLED = 68,
+            AI_RICH_RESPONSE_REMINDERS_ENABLED = 69
         }
     }
 
@@ -42555,7 +42558,8 @@ export namespace proto {
             HISTORY_SYNC_CHUNK_RETRY = 10,
             GALAXY_FLOW_ACTION = 11,
             BUSINESS_BROADCAST_INSIGHTS_DELIVERED_TO = 12,
-            BUSINESS_BROADCAST_INSIGHTS_REFRESH = 13
+            BUSINESS_BROADCAST_INSIGHTS_REFRESH = 13,
+            CONTACT_REFRESH_REQUEST = 14
         }
 
         /** Properties of a PinInChatMessage. */
@@ -59343,7 +59347,8 @@ export namespace proto {
                 RESPONSE_SETTINGS = 2,
                 EXAMPLE_RESPONSES = 3,
                 KNOWLEDGE = 4,
-                LEAD_GEN = 5
+                LEAD_GEN = 5,
+                HANDOFF_REMOVAL_TIMING = 6
             }
         }
 
@@ -62493,7 +62498,8 @@ export namespace proto {
                 ARCHIVED = 12,
                 LOCKED = 13,
                 INVITES = 14,
-                THIRD_PARTY = 15
+                THIRD_PARTY = 15,
+                LEAD = 16
             }
         }
 

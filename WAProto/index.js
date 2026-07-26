@@ -15917,6 +15917,9 @@ $root.proto = (function() {
                     case 64:
                     case 65:
                     case 66:
+                    case 67:
+                    case 68:
+                    case 69:
                         break;
                     }
             }
@@ -16220,6 +16223,18 @@ $root.proto = (function() {
                     case 66:
                         message.capabilities[i] = 66;
                         break;
+                    case "AI_RICH_RESPONSE_ARTIFACTS_ENABLED":
+                    case 67:
+                        message.capabilities[i] = 67;
+                        break;
+                    case "AI_RICH_RESPONSE_EMAIL_CALENDAR_ENABLED":
+                    case 68:
+                        message.capabilities[i] = 68;
+                        break;
+                    case "AI_RICH_RESPONSE_REMINDERS_ENABLED":
+                    case 69:
+                        message.capabilities[i] = 69;
+                        break;
                     }
             }
             return message;
@@ -16349,6 +16364,9 @@ $root.proto = (function() {
          * @property {number} AI_RICH_RESPONSE_MAPS_V2_ENABLED=64 AI_RICH_RESPONSE_MAPS_V2_ENABLED value
          * @property {number} AI_SUBSCRIPTION_METERING_ENABLED=65 AI_SUBSCRIPTION_METERING_ENABLED value
          * @property {number} RICH_RESPONSE_SPORTS_WIDGET_ENABLED=66 RICH_RESPONSE_SPORTS_WIDGET_ENABLED value
+         * @property {number} AI_RICH_RESPONSE_ARTIFACTS_ENABLED=67 AI_RICH_RESPONSE_ARTIFACTS_ENABLED value
+         * @property {number} AI_RICH_RESPONSE_EMAIL_CALENDAR_ENABLED=68 AI_RICH_RESPONSE_EMAIL_CALENDAR_ENABLED value
+         * @property {number} AI_RICH_RESPONSE_REMINDERS_ENABLED=69 AI_RICH_RESPONSE_REMINDERS_ENABLED value
          */
         BotCapabilityMetadata.BotCapabilityType = (function() {
             var valuesById = {}, values = Object.create(valuesById);
@@ -16419,6 +16437,9 @@ $root.proto = (function() {
             values[valuesById[64] = "AI_RICH_RESPONSE_MAPS_V2_ENABLED"] = 64;
             values[valuesById[65] = "AI_SUBSCRIPTION_METERING_ENABLED"] = 65;
             values[valuesById[66] = "RICH_RESPONSE_SPORTS_WIDGET_ENABLED"] = 66;
+            values[valuesById[67] = "AI_RICH_RESPONSE_ARTIFACTS_ENABLED"] = 67;
+            values[valuesById[68] = "AI_RICH_RESPONSE_EMAIL_CALENDAR_ENABLED"] = 68;
+            values[valuesById[69] = "AI_RICH_RESPONSE_REMINDERS_ENABLED"] = 69;
             return values;
         })();
 
@@ -130329,6 +130350,7 @@ $root.proto = (function() {
                     case 11:
                     case 12:
                     case 13:
+                    case 14:
                         break;
                     }
                 }
@@ -130506,6 +130528,10 @@ $root.proto = (function() {
                 case "BUSINESS_BROADCAST_INSIGHTS_REFRESH":
                 case 13:
                     message.peerDataOperationRequestType = 13;
+                    break;
+                case "CONTACT_REFRESH_REQUEST":
+                case 14:
+                    message.peerDataOperationRequestType = 14;
                     break;
                 }
                 if (object.requestStickerReupload) {
@@ -134245,6 +134271,7 @@ $root.proto = (function() {
                     case 11:
                     case 12:
                     case 13:
+                    case 14:
                         break;
                     }
                 }
@@ -134345,6 +134372,10 @@ $root.proto = (function() {
                 case "BUSINESS_BROADCAST_INSIGHTS_REFRESH":
                 case 13:
                     message.peerDataOperationRequestType = 13;
+                    break;
+                case "CONTACT_REFRESH_REQUEST":
+                case 14:
+                    message.peerDataOperationRequestType = 14;
                     break;
                 }
                 if (object.stanzaId != null)
@@ -139841,6 +139872,7 @@ $root.proto = (function() {
          * @property {number} GALAXY_FLOW_ACTION=11 GALAXY_FLOW_ACTION value
          * @property {number} BUSINESS_BROADCAST_INSIGHTS_DELIVERED_TO=12 BUSINESS_BROADCAST_INSIGHTS_DELIVERED_TO value
          * @property {number} BUSINESS_BROADCAST_INSIGHTS_REFRESH=13 BUSINESS_BROADCAST_INSIGHTS_REFRESH value
+         * @property {number} CONTACT_REFRESH_REQUEST=14 CONTACT_REFRESH_REQUEST value
          */
         Message.PeerDataOperationRequestType = (function() {
             var valuesById = {}, values = Object.create(valuesById);
@@ -139858,6 +139890,7 @@ $root.proto = (function() {
             values[valuesById[11] = "GALAXY_FLOW_ACTION"] = 11;
             values[valuesById[12] = "BUSINESS_BROADCAST_INSIGHTS_DELIVERED_TO"] = 12;
             values[valuesById[13] = "BUSINESS_BROADCAST_INSIGHTS_REFRESH"] = 13;
+            values[valuesById[14] = "CONTACT_REFRESH_REQUEST"] = 14;
             return values;
         })();
 
@@ -195571,6 +195604,7 @@ $root.proto = (function() {
                     case 3:
                     case 4:
                     case 5:
+                    case 6:
                         break;
                     }
                 }
@@ -195635,6 +195669,10 @@ $root.proto = (function() {
                 case "LEAD_GEN":
                 case 5:
                     message.category = 5;
+                    break;
+                case "HANDOFF_REMOVAL_TIMING":
+                case 6:
+                    message.category = 6;
                     break;
                 }
                 if (object.version != null)
@@ -195739,6 +195777,7 @@ $root.proto = (function() {
              * @property {number} EXAMPLE_RESPONSES=3 EXAMPLE_RESPONSES value
              * @property {number} KNOWLEDGE=4 KNOWLEDGE value
              * @property {number} LEAD_GEN=5 LEAD_GEN value
+             * @property {number} HANDOFF_REMOVAL_TIMING=6 HANDOFF_REMOVAL_TIMING value
              */
             BizAISettingsNudgeAction.BizAISettingsCategory = (function() {
                 var valuesById = {}, values = Object.create(valuesById);
@@ -195748,6 +195787,7 @@ $root.proto = (function() {
                 values[valuesById[3] = "EXAMPLE_RESPONSES"] = 3;
                 values[valuesById[4] = "KNOWLEDGE"] = 4;
                 values[valuesById[5] = "LEAD_GEN"] = 5;
+                values[valuesById[6] = "HANDOFF_REMOVAL_TIMING"] = 6;
                 return values;
             })();
 
@@ -204442,6 +204482,7 @@ $root.proto = (function() {
                     case 13:
                     case 14:
                     case 15:
+                    case 16:
                         break;
                     }
                 }
@@ -204558,6 +204599,10 @@ $root.proto = (function() {
                 case "THIRD_PARTY":
                 case 15:
                     message.type = 15;
+                    break;
+                case "LEAD":
+                case 16:
+                    message.type = 16;
                     break;
                 }
                 if (object.isImmutable != null)
@@ -204690,6 +204735,7 @@ $root.proto = (function() {
              * @property {number} LOCKED=13 LOCKED value
              * @property {number} INVITES=14 INVITES value
              * @property {number} THIRD_PARTY=15 THIRD_PARTY value
+             * @property {number} LEAD=16 LEAD value
              */
             LabelEditAction.ListType = (function() {
                 var valuesById = {}, values = Object.create(valuesById);
@@ -204709,6 +204755,7 @@ $root.proto = (function() {
                 values[valuesById[13] = "LOCKED"] = 13;
                 values[valuesById[14] = "INVITES"] = 14;
                 values[valuesById[15] = "THIRD_PARTY"] = 15;
+                values[valuesById[16] = "LEAD"] = 16;
                 return values;
             })();
 
