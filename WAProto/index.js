@@ -134474,6 +134474,7 @@ $root.proto = (function() {
                  * @property {proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.IHistorySyncChunkRetryResponse|null} [historySyncChunkRetryResponse] PeerDataOperationResult historySyncChunkRetryResponse
                  * @property {proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.IFlowResponsesCsvBundle|null} [flowResponsesCsvBundle] PeerDataOperationResult flowResponsesCsvBundle
                  * @property {proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.IBizBroadcastInsightsContactListResponse|null} [bizBroadcastInsightsContactListResponse] PeerDataOperationResult bizBroadcastInsightsContactListResponse
+                 * @property {proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.IContactRefreshResponse|null} [contactRefreshResponse] PeerDataOperationResult contactRefreshResponse
                  */
 
                 /**
@@ -134587,6 +134588,14 @@ $root.proto = (function() {
                  */
                 PeerDataOperationResult.prototype.bizBroadcastInsightsContactListResponse = null;
 
+                /**
+                 * PeerDataOperationResult contactRefreshResponse.
+                 * @member {proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.IContactRefreshResponse|null|undefined} contactRefreshResponse
+                 * @memberof proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult
+                 * @instance
+                 */
+                PeerDataOperationResult.prototype.contactRefreshResponse = null;
+
                 // OneOf field names bound to virtual getters and setters
                 var $oneOfFields;
 
@@ -134662,6 +134671,12 @@ $root.proto = (function() {
                     set: $util.oneOfSetter($oneOfFields)
                 });
 
+                // Virtual OneOf for proto3 optional field
+                Object.defineProperty(PeerDataOperationResult.prototype, "_contactRefreshResponse", {
+                    get: $util.oneOfGetter($oneOfFields = ["contactRefreshResponse"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
                 /**
                  * Creates a new PeerDataOperationResult instance using the specified properties.
                  * @function create
@@ -134714,6 +134729,8 @@ $root.proto = (function() {
                         $root.proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.FlowResponsesCsvBundle.encode(message.flowResponsesCsvBundle, writer.uint32(/* id 11, wireType 2 =*/90).fork(), q + 1).ldelim();
                     if (message.bizBroadcastInsightsContactListResponse != null && Object.hasOwnProperty.call(message, "bizBroadcastInsightsContactListResponse"))
                         $root.proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.BizBroadcastInsightsContactListResponse.encode(message.bizBroadcastInsightsContactListResponse, writer.uint32(/* id 12, wireType 2 =*/98).fork(), q + 1).ldelim();
+                    if (message.contactRefreshResponse != null && Object.hasOwnProperty.call(message, "contactRefreshResponse"))
+                        $root.proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.encode(message.contactRefreshResponse, writer.uint32(/* id 13, wireType 2 =*/106).fork(), q + 1).ldelim();
                     return writer;
                 };
 
@@ -134800,6 +134817,10 @@ $root.proto = (function() {
                             }
                         case 12: {
                                 message.bizBroadcastInsightsContactListResponse = $root.proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.BizBroadcastInsightsContactListResponse.decode(reader, reader.uint32(), undefined, long + 1);
+                                break;
+                            }
+                        case 13: {
+                                message.contactRefreshResponse = $root.proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.decode(reader, reader.uint32(), undefined, long + 1);
                                 break;
                             }
                         default:
@@ -134942,6 +134963,14 @@ $root.proto = (function() {
                                 return "bizBroadcastInsightsContactListResponse." + error;
                         }
                     }
+                    if (message.contactRefreshResponse != null && Object.hasOwnProperty.call(message, "contactRefreshResponse")) {
+                        properties._contactRefreshResponse = 1;
+                        {
+                            var error = $root.proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.verify(message.contactRefreshResponse, long + 1);
+                            if (error)
+                                return "contactRefreshResponse." + error;
+                        }
+                    }
                     return null;
                 };
 
@@ -135042,6 +135071,11 @@ $root.proto = (function() {
                             throw TypeError(".proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.bizBroadcastInsightsContactListResponse: object expected");
                         message.bizBroadcastInsightsContactListResponse = $root.proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.BizBroadcastInsightsContactListResponse.fromObject(object.bizBroadcastInsightsContactListResponse, long + 1);
                     }
+                    if (object.contactRefreshResponse != null) {
+                        if (!$util.isObject(object.contactRefreshResponse))
+                            throw TypeError(".proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.contactRefreshResponse: object expected");
+                        message.contactRefreshResponse = $root.proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.fromObject(object.contactRefreshResponse, long + 1);
+                    }
                     return message;
                 };
 
@@ -135121,6 +135155,11 @@ $root.proto = (function() {
                         object.bizBroadcastInsightsContactListResponse = $root.proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.BizBroadcastInsightsContactListResponse.toObject(message.bizBroadcastInsightsContactListResponse, options, q + 1);
                         if (options.oneofs)
                             object._bizBroadcastInsightsContactListResponse = "bizBroadcastInsightsContactListResponse";
+                    }
+                    if (message.contactRefreshResponse != null && Object.hasOwnProperty.call(message, "contactRefreshResponse")) {
+                        object.contactRefreshResponse = $root.proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.toObject(message.contactRefreshResponse, options, q + 1);
+                        if (options.oneofs)
+                            object._contactRefreshResponse = "contactRefreshResponse";
                     }
                     return object;
                 };
@@ -136332,6 +136371,376 @@ $root.proto = (function() {
                     };
 
                     return CompanionMetaNonceFetchResponse;
+                })();
+
+                PeerDataOperationResult.ContactRefreshResponse = (function() {
+
+                    /**
+                     * Properties of a ContactRefreshResponse.
+                     * @memberof proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult
+                     * @interface IContactRefreshResponse
+                     * @property {Array.<string>|null} [coveredRequestIds] ContactRefreshResponse coveredRequestIds
+                     * @property {number|Long|null} [collectionVersion] ContactRefreshResponse collectionVersion
+                     * @property {number|Long|null} [primaryDurationMs] ContactRefreshResponse primaryDurationMs
+                     * @property {number|null} [uniqueContactCount] ContactRefreshResponse uniqueContactCount
+                     */
+
+                    /**
+                     * Constructs a new ContactRefreshResponse.
+                     * @memberof proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult
+                     * @classdesc Represents a ContactRefreshResponse.
+                     * @implements IContactRefreshResponse
+                     * @constructor
+                     * @param {proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.IContactRefreshResponse=} [properties] Properties to set
+                     */
+                    function ContactRefreshResponse(properties) {
+                        this.coveredRequestIds = [];
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+
+                    /**
+                     * ContactRefreshResponse coveredRequestIds.
+                     * @member {Array.<string>} coveredRequestIds
+                     * @memberof proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @instance
+                     */
+                    ContactRefreshResponse.prototype.coveredRequestIds = $util.emptyArray;
+
+                    /**
+                     * ContactRefreshResponse collectionVersion.
+                     * @member {number|Long|null|undefined} collectionVersion
+                     * @memberof proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @instance
+                     */
+                    ContactRefreshResponse.prototype.collectionVersion = null;
+
+                    /**
+                     * ContactRefreshResponse primaryDurationMs.
+                     * @member {number|Long|null|undefined} primaryDurationMs
+                     * @memberof proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @instance
+                     */
+                    ContactRefreshResponse.prototype.primaryDurationMs = null;
+
+                    /**
+                     * ContactRefreshResponse uniqueContactCount.
+                     * @member {number|null|undefined} uniqueContactCount
+                     * @memberof proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @instance
+                     */
+                    ContactRefreshResponse.prototype.uniqueContactCount = null;
+
+                    // OneOf field names bound to virtual getters and setters
+                    var $oneOfFields;
+
+                    // Virtual OneOf for proto3 optional field
+                    Object.defineProperty(ContactRefreshResponse.prototype, "_collectionVersion", {
+                        get: $util.oneOfGetter($oneOfFields = ["collectionVersion"]),
+                        set: $util.oneOfSetter($oneOfFields)
+                    });
+
+                    // Virtual OneOf for proto3 optional field
+                    Object.defineProperty(ContactRefreshResponse.prototype, "_primaryDurationMs", {
+                        get: $util.oneOfGetter($oneOfFields = ["primaryDurationMs"]),
+                        set: $util.oneOfSetter($oneOfFields)
+                    });
+
+                    // Virtual OneOf for proto3 optional field
+                    Object.defineProperty(ContactRefreshResponse.prototype, "_uniqueContactCount", {
+                        get: $util.oneOfGetter($oneOfFields = ["uniqueContactCount"]),
+                        set: $util.oneOfSetter($oneOfFields)
+                    });
+
+                    /**
+                     * Creates a new ContactRefreshResponse instance using the specified properties.
+                     * @function create
+                     * @memberof proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @static
+                     * @param {proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.IContactRefreshResponse=} [properties] Properties to set
+                     * @returns {proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse} ContactRefreshResponse instance
+                     */
+                    ContactRefreshResponse.create = function create(properties) {
+                        return new ContactRefreshResponse(properties);
+                    };
+
+                    /**
+                     * Encodes the specified ContactRefreshResponse message. Does not implicitly {@link proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.verify|verify} messages.
+                     * @function encode
+                     * @memberof proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @static
+                     * @param {proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.IContactRefreshResponse} message ContactRefreshResponse message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    ContactRefreshResponse.encode = function encode(message, writer, q) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (q === undefined)
+                            q = 0;
+                        if (q > $util.recursionLimit)
+                            throw Error("max depth exceeded");
+                        if (message.coveredRequestIds != null && message.coveredRequestIds.length)
+                            for (var i = 0; i < message.coveredRequestIds.length; ++i)
+                                writer.uint32(/* id 1, wireType 2 =*/10).string(message.coveredRequestIds[i]);
+                        if (message.collectionVersion != null && Object.hasOwnProperty.call(message, "collectionVersion"))
+                            writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.collectionVersion);
+                        if (message.primaryDurationMs != null && Object.hasOwnProperty.call(message, "primaryDurationMs"))
+                            writer.uint32(/* id 3, wireType 0 =*/24).int64(message.primaryDurationMs);
+                        if (message.uniqueContactCount != null && Object.hasOwnProperty.call(message, "uniqueContactCount"))
+                            writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.uniqueContactCount);
+                        return writer;
+                    };
+
+                    /**
+                     * Encodes the specified ContactRefreshResponse message, length delimited. Does not implicitly {@link proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @static
+                     * @param {proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.IContactRefreshResponse} message ContactRefreshResponse message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    ContactRefreshResponse.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer && writer.len ? writer.fork() : writer).ldelim();
+                    };
+
+                    /**
+                     * Decodes a ContactRefreshResponse message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse} ContactRefreshResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    ContactRefreshResponse.decode = function decode(reader, length, error, long) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        if (long === undefined)
+                            long = 0;
+                        if (long > $Reader.recursionLimit)
+                            throw Error("maximum nesting depth exceeded");
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            if (tag === error)
+                                break;
+                            switch (tag >>> 3) {
+                            case 1: {
+                                    if (!(message.coveredRequestIds && message.coveredRequestIds.length))
+                                        message.coveredRequestIds = [];
+                                    message.coveredRequestIds.push(reader.string());
+                                    break;
+                                }
+                            case 2: {
+                                    message.collectionVersion = reader.uint64();
+                                    break;
+                                }
+                            case 3: {
+                                    message.primaryDurationMs = reader.int64();
+                                    break;
+                                }
+                            case 4: {
+                                    message.uniqueContactCount = reader.uint32();
+                                    break;
+                                }
+                            default:
+                                reader.skipType(tag & 7, long);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+
+                    /**
+                     * Decodes a ContactRefreshResponse message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse} ContactRefreshResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    ContactRefreshResponse.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+
+                    /**
+                     * Verifies a ContactRefreshResponse message.
+                     * @function verify
+                     * @memberof proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    ContactRefreshResponse.verify = function verify(message, long) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (long === undefined)
+                            long = 0;
+                        if (long > $util.recursionLimit)
+                            return "maximum nesting depth exceeded";
+                        var properties = {};
+                        if (message.coveredRequestIds != null && Object.hasOwnProperty.call(message, "coveredRequestIds")) {
+                            if (!Array.isArray(message.coveredRequestIds))
+                                return "coveredRequestIds: array expected";
+                            for (var i = 0; i < message.coveredRequestIds.length; ++i)
+                                if (!$util.isString(message.coveredRequestIds[i]))
+                                    return "coveredRequestIds: string[] expected";
+                        }
+                        if (message.collectionVersion != null && Object.hasOwnProperty.call(message, "collectionVersion")) {
+                            properties._collectionVersion = 1;
+                            if (!$util.isInteger(message.collectionVersion) && !(message.collectionVersion && $util.isInteger(message.collectionVersion.low) && $util.isInteger(message.collectionVersion.high)))
+                                return "collectionVersion: integer|Long expected";
+                        }
+                        if (message.primaryDurationMs != null && Object.hasOwnProperty.call(message, "primaryDurationMs")) {
+                            properties._primaryDurationMs = 1;
+                            if (!$util.isInteger(message.primaryDurationMs) && !(message.primaryDurationMs && $util.isInteger(message.primaryDurationMs.low) && $util.isInteger(message.primaryDurationMs.high)))
+                                return "primaryDurationMs: integer|Long expected";
+                        }
+                        if (message.uniqueContactCount != null && Object.hasOwnProperty.call(message, "uniqueContactCount")) {
+                            properties._uniqueContactCount = 1;
+                            if (!$util.isInteger(message.uniqueContactCount))
+                                return "uniqueContactCount: integer expected";
+                        }
+                        return null;
+                    };
+
+                    /**
+                     * Creates a ContactRefreshResponse message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse} ContactRefreshResponse
+                     */
+                    ContactRefreshResponse.fromObject = function fromObject(object, long) {
+                        if (object instanceof $root.proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse)
+                            return object;
+                        if (!$util.isObject(object))
+                            throw TypeError(".proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse: object expected");
+                        if (long === undefined)
+                            long = 0;
+                        if (long > $util.recursionLimit)
+                            throw Error("maximum nesting depth exceeded");
+                        var message = new $root.proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse();
+                        if (object.coveredRequestIds) {
+                            if (!Array.isArray(object.coveredRequestIds))
+                                throw TypeError(".proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.coveredRequestIds: array expected");
+                            message.coveredRequestIds = [];
+                            for (var i = 0; i < object.coveredRequestIds.length; ++i)
+                                message.coveredRequestIds[i] = String(object.coveredRequestIds[i]);
+                        }
+                        if (object.collectionVersion != null)
+                            if ($util.Long)
+                                message.collectionVersion = $util.Long.fromValue(object.collectionVersion, true);
+                            else if (typeof object.collectionVersion === "string")
+                                message.collectionVersion = parseInt(object.collectionVersion, 10);
+                            else if (typeof object.collectionVersion === "number")
+                                message.collectionVersion = object.collectionVersion;
+                            else if (typeof object.collectionVersion === "object")
+                                message.collectionVersion = new $util.LongBits(object.collectionVersion.low >>> 0, object.collectionVersion.high >>> 0).toNumber(true);
+                        if (object.primaryDurationMs != null)
+                            if ($util.Long)
+                                message.primaryDurationMs = $util.Long.fromValue(object.primaryDurationMs, false);
+                            else if (typeof object.primaryDurationMs === "string")
+                                message.primaryDurationMs = parseInt(object.primaryDurationMs, 10);
+                            else if (typeof object.primaryDurationMs === "number")
+                                message.primaryDurationMs = object.primaryDurationMs;
+                            else if (typeof object.primaryDurationMs === "object")
+                                message.primaryDurationMs = new $util.LongBits(object.primaryDurationMs.low >>> 0, object.primaryDurationMs.high >>> 0).toNumber();
+                        if (object.uniqueContactCount != null)
+                            message.uniqueContactCount = object.uniqueContactCount >>> 0;
+                        return message;
+                    };
+
+                    /**
+                     * Creates a plain object from a ContactRefreshResponse message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @static
+                     * @param {proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse} message ContactRefreshResponse
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    ContactRefreshResponse.toObject = function toObject(message, options, q) {
+                        if (!options)
+                            options = {};
+                        if (q === undefined)
+                            q = 0;
+                        if (q > $util.recursionLimit)
+                            throw Error("max depth exceeded");
+                        var object = {};
+                        if (options.arrays || options.defaults)
+                            object.coveredRequestIds = [];
+                        if (message.coveredRequestIds && message.coveredRequestIds.length) {
+                            object.coveredRequestIds = [];
+                            for (var j = 0; j < message.coveredRequestIds.length; ++j)
+                                object.coveredRequestIds[j] = message.coveredRequestIds[j];
+                        }
+                        if (message.collectionVersion != null && Object.hasOwnProperty.call(message, "collectionVersion")) {
+                            if (typeof BigInt !== "undefined" && options.longs === BigInt)
+                                object.collectionVersion = typeof message.collectionVersion === "number" ? BigInt(message.collectionVersion) : $util.Long.fromBits(message.collectionVersion.low >>> 0, message.collectionVersion.high >>> 0, true).toBigInt();
+                            else if (typeof message.collectionVersion === "number")
+                                object.collectionVersion = options.longs === String ? String(message.collectionVersion) : message.collectionVersion;
+                            else
+                                object.collectionVersion = options.longs === String ? $util.Long.prototype.toString.call(message.collectionVersion) : options.longs === Number ? new $util.LongBits(message.collectionVersion.low >>> 0, message.collectionVersion.high >>> 0).toNumber(true) : message.collectionVersion;
+                            if (options.oneofs)
+                                object._collectionVersion = "collectionVersion";
+                        }
+                        if (message.primaryDurationMs != null && Object.hasOwnProperty.call(message, "primaryDurationMs")) {
+                            if (typeof BigInt !== "undefined" && options.longs === BigInt)
+                                object.primaryDurationMs = typeof message.primaryDurationMs === "number" ? BigInt(message.primaryDurationMs) : $util.Long.fromBits(message.primaryDurationMs.low >>> 0, message.primaryDurationMs.high >>> 0, false).toBigInt();
+                            else if (typeof message.primaryDurationMs === "number")
+                                object.primaryDurationMs = options.longs === String ? String(message.primaryDurationMs) : message.primaryDurationMs;
+                            else
+                                object.primaryDurationMs = options.longs === String ? $util.Long.prototype.toString.call(message.primaryDurationMs) : options.longs === Number ? new $util.LongBits(message.primaryDurationMs.low >>> 0, message.primaryDurationMs.high >>> 0).toNumber() : message.primaryDurationMs;
+                            if (options.oneofs)
+                                object._primaryDurationMs = "primaryDurationMs";
+                        }
+                        if (message.uniqueContactCount != null && Object.hasOwnProperty.call(message, "uniqueContactCount")) {
+                            object.uniqueContactCount = message.uniqueContactCount;
+                            if (options.oneofs)
+                                object._uniqueContactCount = "uniqueContactCount";
+                        }
+                        return object;
+                    };
+
+                    /**
+                     * Converts this ContactRefreshResponse to JSON.
+                     * @function toJSON
+                     * @memberof proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    ContactRefreshResponse.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+
+                    /**
+                     * Gets the default type url for ContactRefreshResponse
+                     * @function getTypeUrl
+                     * @memberof proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @static
+                     * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                     * @returns {string} The default type url
+                     */
+                    ContactRefreshResponse.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                        if (typeUrlPrefix === undefined) {
+                            typeUrlPrefix = "type.googleapis.com";
+                        }
+                        return typeUrlPrefix + "/proto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse";
+                    };
+
+                    return ContactRefreshResponse;
                 })();
 
                 PeerDataOperationResult.FlowResponsesCsvBundle = (function() {
@@ -186128,6 +186537,7 @@ $root.proto = (function() {
                 case 9:
                 case 10:
                 case 11:
+                case 12:
                     break;
                 }
             }
@@ -186269,6 +186679,10 @@ $root.proto = (function() {
             case "PAID_PARTNERSHIP":
             case 11:
                 message.type = 11;
+                break;
+            case "USERNAME_STATUS":
+            case 12:
+                message.type = 12;
                 break;
             }
             if (object.actionUrl != null)
@@ -188741,6 +189155,7 @@ $root.proto = (function() {
          * @property {number} NEWSLETTER_STATUS=9 NEWSLETTER_STATUS value
          * @property {number} STATUS_CLOSE_SHARING=10 STATUS_CLOSE_SHARING value
          * @property {number} PAID_PARTNERSHIP=11 PAID_PARTNERSHIP value
+         * @property {number} USERNAME_STATUS=12 USERNAME_STATUS value
          */
         StatusAttribution.Type = (function() {
             var valuesById = {}, values = Object.create(valuesById);
@@ -188756,6 +189171,7 @@ $root.proto = (function() {
             values[valuesById[9] = "NEWSLETTER_STATUS"] = 9;
             values[valuesById[10] = "STATUS_CLOSE_SHARING"] = 10;
             values[valuesById[11] = "PAID_PARTNERSHIP"] = 11;
+            values[valuesById[12] = "USERNAME_STATUS"] = 12;
             return values;
         })();
 
