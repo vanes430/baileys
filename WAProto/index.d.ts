@@ -18797,6 +18797,9 @@ export namespace proto {
 
         /** DeviceCapabilities bizAiSettingsSync */
         bizAiSettingsSync?: (proto.DeviceCapabilities.IBizAiSettingsSync|null);
+
+        /** DeviceCapabilities contactRefresh */
+        contactRefresh?: (proto.DeviceCapabilities.IContactRefresh|null);
     }
 
     /** Represents a DeviceCapabilities. */
@@ -18831,6 +18834,9 @@ export namespace proto {
 
         /** DeviceCapabilities bizAiSettingsSync. */
         public bizAiSettingsSync?: (proto.DeviceCapabilities.IBizAiSettingsSync|null);
+
+        /** DeviceCapabilities contactRefresh. */
+        public contactRefresh?: (proto.DeviceCapabilities.IContactRefresh|null);
 
         /**
          * Creates a new DeviceCapabilities instance using the specified properties.
@@ -19339,6 +19345,103 @@ export namespace proto {
             NONE = 0,
             MINIMAL = 1,
             FULL = 2
+        }
+
+        /** Properties of a ContactRefresh. */
+        interface IContactRefresh {
+
+            /** ContactRefresh refreshSupported */
+            refreshSupported?: (boolean|null);
+        }
+
+        /** Represents a ContactRefresh. */
+        class ContactRefresh implements IContactRefresh {
+
+            /**
+             * Constructs a new ContactRefresh.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: proto.DeviceCapabilities.IContactRefresh);
+
+            /** ContactRefresh refreshSupported. */
+            public refreshSupported?: (boolean|null);
+
+            /**
+             * Creates a new ContactRefresh instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns ContactRefresh instance
+             */
+            public static create(properties?: proto.DeviceCapabilities.IContactRefresh): proto.DeviceCapabilities.ContactRefresh;
+
+            /**
+             * Encodes the specified ContactRefresh message. Does not implicitly {@link proto.DeviceCapabilities.ContactRefresh.verify|verify} messages.
+             * @param message ContactRefresh message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: proto.DeviceCapabilities.IContactRefresh, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified ContactRefresh message, length delimited. Does not implicitly {@link proto.DeviceCapabilities.ContactRefresh.verify|verify} messages.
+             * @param message ContactRefresh message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: proto.DeviceCapabilities.IContactRefresh, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a ContactRefresh message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns ContactRefresh
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.DeviceCapabilities.ContactRefresh;
+
+            /**
+             * Decodes a ContactRefresh message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns ContactRefresh
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.DeviceCapabilities.ContactRefresh;
+
+            /**
+             * Verifies a ContactRefresh message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a ContactRefresh message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns ContactRefresh
+             */
+            public static fromObject(object: { [k: string]: any }): proto.DeviceCapabilities.ContactRefresh;
+
+            /**
+             * Creates a plain object from a ContactRefresh message. Also converts values to other types if specified.
+             * @param message ContactRefresh
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: proto.DeviceCapabilities.ContactRefresh, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this ContactRefresh to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for ContactRefresh
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
         }
 
         /** Properties of a LIDMigration. */
@@ -50932,6 +51035,7 @@ export namespace proto {
         BUBBLE_LOCK_MESSAGE_ACTION = 90,
         LABEL_SUBLIST_ACTION = 91,
         DEVICE_CAPABILITIES_V2 = 92,
+        CTWA_MESSAGE_RECEIVED_ACTION = 93,
         SHARE_OWN_PN = 10001,
         BUSINESS_BROADCAST_ACTION = 10002,
         AI_THREAD_DELETE_ACTION = 10003
@@ -58660,6 +58764,9 @@ export namespace proto {
 
         /** SyncActionValue deviceCapabilitiesV2 */
         deviceCapabilitiesV2?: (proto.IDeviceCapabilities|null);
+
+        /** SyncActionValue ctwaMessageReceivedAction */
+        ctwaMessageReceivedAction?: (proto.SyncActionValue.ICtwaMessageReceivedAction|null);
     }
 
     /** Represents a SyncActionValue. */
@@ -58919,6 +59026,9 @@ export namespace proto {
 
         /** SyncActionValue deviceCapabilitiesV2. */
         public deviceCapabilitiesV2?: (proto.IDeviceCapabilities|null);
+
+        /** SyncActionValue ctwaMessageReceivedAction. */
+        public ctwaMessageReceivedAction?: (proto.SyncActionValue.ICtwaMessageReceivedAction|null);
 
         /**
          * Creates a new SyncActionValue instance using the specified properties.
@@ -61141,6 +61251,103 @@ export namespace proto {
 
             /**
              * Gets the default type url for ContactAction
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** Properties of a CtwaMessageReceivedAction. */
+        interface ICtwaMessageReceivedAction {
+
+            /** CtwaMessageReceivedAction isCtwaMessageReceived */
+            isCtwaMessageReceived?: (boolean|null);
+        }
+
+        /** Represents a CtwaMessageReceivedAction. */
+        class CtwaMessageReceivedAction implements ICtwaMessageReceivedAction {
+
+            /**
+             * Constructs a new CtwaMessageReceivedAction.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: proto.SyncActionValue.ICtwaMessageReceivedAction);
+
+            /** CtwaMessageReceivedAction isCtwaMessageReceived. */
+            public isCtwaMessageReceived?: (boolean|null);
+
+            /**
+             * Creates a new CtwaMessageReceivedAction instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns CtwaMessageReceivedAction instance
+             */
+            public static create(properties?: proto.SyncActionValue.ICtwaMessageReceivedAction): proto.SyncActionValue.CtwaMessageReceivedAction;
+
+            /**
+             * Encodes the specified CtwaMessageReceivedAction message. Does not implicitly {@link proto.SyncActionValue.CtwaMessageReceivedAction.verify|verify} messages.
+             * @param message CtwaMessageReceivedAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: proto.SyncActionValue.ICtwaMessageReceivedAction, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified CtwaMessageReceivedAction message, length delimited. Does not implicitly {@link proto.SyncActionValue.CtwaMessageReceivedAction.verify|verify} messages.
+             * @param message CtwaMessageReceivedAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: proto.SyncActionValue.ICtwaMessageReceivedAction, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a CtwaMessageReceivedAction message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns CtwaMessageReceivedAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.SyncActionValue.CtwaMessageReceivedAction;
+
+            /**
+             * Decodes a CtwaMessageReceivedAction message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns CtwaMessageReceivedAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.SyncActionValue.CtwaMessageReceivedAction;
+
+            /**
+             * Verifies a CtwaMessageReceivedAction message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a CtwaMessageReceivedAction message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns CtwaMessageReceivedAction
+             */
+            public static fromObject(object: { [k: string]: any }): proto.SyncActionValue.CtwaMessageReceivedAction;
+
+            /**
+             * Creates a plain object from a CtwaMessageReceivedAction message. Also converts values to other types if specified.
+             * @param message CtwaMessageReceivedAction
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: proto.SyncActionValue.CtwaMessageReceivedAction, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this CtwaMessageReceivedAction to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for CtwaMessageReceivedAction
              * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns The default type url
              */

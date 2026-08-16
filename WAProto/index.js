@@ -61759,6 +61759,7 @@ $root.proto = (function() {
          * @property {proto.DeviceCapabilities.IAiThread|null} [aiThread] DeviceCapabilities aiThread
          * @property {proto.DeviceCapabilities.IAiFbidMigration|null} [aiFbidMigration] DeviceCapabilities aiFbidMigration
          * @property {proto.DeviceCapabilities.IBizAiSettingsSync|null} [bizAiSettingsSync] DeviceCapabilities bizAiSettingsSync
+         * @property {proto.DeviceCapabilities.IContactRefresh|null} [contactRefresh] DeviceCapabilities contactRefresh
          */
 
         /**
@@ -61840,6 +61841,14 @@ $root.proto = (function() {
          */
         DeviceCapabilities.prototype.bizAiSettingsSync = null;
 
+        /**
+         * DeviceCapabilities contactRefresh.
+         * @member {proto.DeviceCapabilities.IContactRefresh|null|undefined} contactRefresh
+         * @memberof proto.DeviceCapabilities
+         * @instance
+         */
+        DeviceCapabilities.prototype.contactRefresh = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -61891,6 +61900,12 @@ $root.proto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(DeviceCapabilities.prototype, "_contactRefresh", {
+            get: $util.oneOfGetter($oneOfFields = ["contactRefresh"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new DeviceCapabilities instance using the specified properties.
          * @function create
@@ -61935,6 +61950,8 @@ $root.proto = (function() {
                 $root.proto.DeviceCapabilities.AiFbidMigration.encode(message.aiFbidMigration, writer.uint32(/* id 7, wireType 2 =*/58).fork(), q + 1).ldelim();
             if (message.bizAiSettingsSync != null && Object.hasOwnProperty.call(message, "bizAiSettingsSync"))
                 $root.proto.DeviceCapabilities.BizAiSettingsSync.encode(message.bizAiSettingsSync, writer.uint32(/* id 8, wireType 2 =*/66).fork(), q + 1).ldelim();
+            if (message.contactRefresh != null && Object.hasOwnProperty.call(message, "contactRefresh"))
+                $root.proto.DeviceCapabilities.ContactRefresh.encode(message.contactRefresh, writer.uint32(/* id 9, wireType 2 =*/74).fork(), q + 1).ldelim();
             return writer;
         };
 
@@ -62005,6 +62022,10 @@ $root.proto = (function() {
                     }
                 case 8: {
                         message.bizAiSettingsSync = $root.proto.DeviceCapabilities.BizAiSettingsSync.decode(reader, reader.uint32(), undefined, long + 1);
+                        break;
+                    }
+                case 9: {
+                        message.contactRefresh = $root.proto.DeviceCapabilities.ContactRefresh.decode(reader, reader.uint32(), undefined, long + 1);
                         break;
                     }
                 default:
@@ -62117,6 +62138,14 @@ $root.proto = (function() {
                         return "bizAiSettingsSync." + error;
                 }
             }
+            if (message.contactRefresh != null && Object.hasOwnProperty.call(message, "contactRefresh")) {
+                properties._contactRefresh = 1;
+                {
+                    var error = $root.proto.DeviceCapabilities.ContactRefresh.verify(message.contactRefresh, long + 1);
+                    if (error)
+                        return "contactRefresh." + error;
+                }
+            }
             return null;
         };
 
@@ -62208,6 +62237,11 @@ $root.proto = (function() {
                     throw TypeError(".proto.DeviceCapabilities.bizAiSettingsSync: object expected");
                 message.bizAiSettingsSync = $root.proto.DeviceCapabilities.BizAiSettingsSync.fromObject(object.bizAiSettingsSync, long + 1);
             }
+            if (object.contactRefresh != null) {
+                if (!$util.isObject(object.contactRefresh))
+                    throw TypeError(".proto.DeviceCapabilities.contactRefresh: object expected");
+                message.contactRefresh = $root.proto.DeviceCapabilities.ContactRefresh.fromObject(object.contactRefresh, long + 1);
+            }
             return message;
         };
 
@@ -62267,6 +62301,11 @@ $root.proto = (function() {
                 object.bizAiSettingsSync = $root.proto.DeviceCapabilities.BizAiSettingsSync.toObject(message.bizAiSettingsSync, options, q + 1);
                 if (options.oneofs)
                     object._bizAiSettingsSync = "bizAiSettingsSync";
+            }
+            if (message.contactRefresh != null && Object.hasOwnProperty.call(message, "contactRefresh")) {
+                object.contactRefresh = $root.proto.DeviceCapabilities.ContactRefresh.toObject(message.contactRefresh, options, q + 1);
+                if (options.oneofs)
+                    object._contactRefresh = "contactRefresh";
             }
             return object;
         };
@@ -63455,6 +63494,246 @@ $root.proto = (function() {
             values[valuesById[1] = "MINIMAL"] = 1;
             values[valuesById[2] = "FULL"] = 2;
             return values;
+        })();
+
+        DeviceCapabilities.ContactRefresh = (function() {
+
+            /**
+             * Properties of a ContactRefresh.
+             * @memberof proto.DeviceCapabilities
+             * @interface IContactRefresh
+             * @property {boolean|null} [refreshSupported] ContactRefresh refreshSupported
+             */
+
+            /**
+             * Constructs a new ContactRefresh.
+             * @memberof proto.DeviceCapabilities
+             * @classdesc Represents a ContactRefresh.
+             * @implements IContactRefresh
+             * @constructor
+             * @param {proto.DeviceCapabilities.IContactRefresh=} [properties] Properties to set
+             */
+            function ContactRefresh(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * ContactRefresh refreshSupported.
+             * @member {boolean|null|undefined} refreshSupported
+             * @memberof proto.DeviceCapabilities.ContactRefresh
+             * @instance
+             */
+            ContactRefresh.prototype.refreshSupported = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(ContactRefresh.prototype, "_refreshSupported", {
+                get: $util.oneOfGetter($oneOfFields = ["refreshSupported"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new ContactRefresh instance using the specified properties.
+             * @function create
+             * @memberof proto.DeviceCapabilities.ContactRefresh
+             * @static
+             * @param {proto.DeviceCapabilities.IContactRefresh=} [properties] Properties to set
+             * @returns {proto.DeviceCapabilities.ContactRefresh} ContactRefresh instance
+             */
+            ContactRefresh.create = function create(properties) {
+                return new ContactRefresh(properties);
+            };
+
+            /**
+             * Encodes the specified ContactRefresh message. Does not implicitly {@link proto.DeviceCapabilities.ContactRefresh.verify|verify} messages.
+             * @function encode
+             * @memberof proto.DeviceCapabilities.ContactRefresh
+             * @static
+             * @param {proto.DeviceCapabilities.IContactRefresh} message ContactRefresh message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            ContactRefresh.encode = function encode(message, writer, q) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                if (message.refreshSupported != null && Object.hasOwnProperty.call(message, "refreshSupported"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).bool(message.refreshSupported);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified ContactRefresh message, length delimited. Does not implicitly {@link proto.DeviceCapabilities.ContactRefresh.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof proto.DeviceCapabilities.ContactRefresh
+             * @static
+             * @param {proto.DeviceCapabilities.IContactRefresh} message ContactRefresh message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            ContactRefresh.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer && writer.len ? writer.fork() : writer).ldelim();
+            };
+
+            /**
+             * Decodes a ContactRefresh message from the specified reader or buffer.
+             * @function decode
+             * @memberof proto.DeviceCapabilities.ContactRefresh
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {proto.DeviceCapabilities.ContactRefresh} ContactRefresh
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            ContactRefresh.decode = function decode(reader, length, error, long) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (long === undefined)
+                    long = 0;
+                if (long > $Reader.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.proto.DeviceCapabilities.ContactRefresh();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.refreshSupported = reader.bool();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7, long);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a ContactRefresh message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof proto.DeviceCapabilities.ContactRefresh
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {proto.DeviceCapabilities.ContactRefresh} ContactRefresh
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            ContactRefresh.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a ContactRefresh message.
+             * @function verify
+             * @memberof proto.DeviceCapabilities.ContactRefresh
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            ContactRefresh.verify = function verify(message, long) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    return "maximum nesting depth exceeded";
+                var properties = {};
+                if (message.refreshSupported != null && Object.hasOwnProperty.call(message, "refreshSupported")) {
+                    properties._refreshSupported = 1;
+                    if (typeof message.refreshSupported !== "boolean")
+                        return "refreshSupported: boolean expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a ContactRefresh message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof proto.DeviceCapabilities.ContactRefresh
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {proto.DeviceCapabilities.ContactRefresh} ContactRefresh
+             */
+            ContactRefresh.fromObject = function fromObject(object, long) {
+                if (object instanceof $root.proto.DeviceCapabilities.ContactRefresh)
+                    return object;
+                if (!$util.isObject(object))
+                    throw TypeError(".proto.DeviceCapabilities.ContactRefresh: object expected");
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var message = new $root.proto.DeviceCapabilities.ContactRefresh();
+                if (object.refreshSupported != null)
+                    message.refreshSupported = Boolean(object.refreshSupported);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a ContactRefresh message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof proto.DeviceCapabilities.ContactRefresh
+             * @static
+             * @param {proto.DeviceCapabilities.ContactRefresh} message ContactRefresh
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            ContactRefresh.toObject = function toObject(message, options, q) {
+                if (!options)
+                    options = {};
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                var object = {};
+                if (message.refreshSupported != null && Object.hasOwnProperty.call(message, "refreshSupported")) {
+                    object.refreshSupported = message.refreshSupported;
+                    if (options.oneofs)
+                        object._refreshSupported = "refreshSupported";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this ContactRefresh to JSON.
+             * @function toJSON
+             * @memberof proto.DeviceCapabilities.ContactRefresh
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            ContactRefresh.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for ContactRefresh
+             * @function getTypeUrl
+             * @memberof proto.DeviceCapabilities.ContactRefresh
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            ContactRefresh.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/proto.DeviceCapabilities.ContactRefresh";
+            };
+
+            return ContactRefresh;
         })();
 
         DeviceCapabilities.LIDMigration = (function() {
@@ -168439,6 +168718,7 @@ $root.proto = (function() {
      * @property {number} BUBBLE_LOCK_MESSAGE_ACTION=90 BUBBLE_LOCK_MESSAGE_ACTION value
      * @property {number} LABEL_SUBLIST_ACTION=91 LABEL_SUBLIST_ACTION value
      * @property {number} DEVICE_CAPABILITIES_V2=92 DEVICE_CAPABILITIES_V2 value
+     * @property {number} CTWA_MESSAGE_RECEIVED_ACTION=93 CTWA_MESSAGE_RECEIVED_ACTION value
      * @property {number} SHARE_OWN_PN=10001 SHARE_OWN_PN value
      * @property {number} BUSINESS_BROADCAST_ACTION=10002 BUSINESS_BROADCAST_ACTION value
      * @property {number} AI_THREAD_DELETE_ACTION=10003 AI_THREAD_DELETE_ACTION value
@@ -168531,6 +168811,7 @@ $root.proto = (function() {
         values[valuesById[90] = "BUBBLE_LOCK_MESSAGE_ACTION"] = 90;
         values[valuesById[91] = "LABEL_SUBLIST_ACTION"] = 91;
         values[valuesById[92] = "DEVICE_CAPABILITIES_V2"] = 92;
+        values[valuesById[93] = "CTWA_MESSAGE_RECEIVED_ACTION"] = 93;
         values[valuesById[10001] = "SHARE_OWN_PN"] = 10001;
         values[valuesById[10002] = "BUSINESS_BROADCAST_ACTION"] = 10002;
         values[valuesById[10003] = "AI_THREAD_DELETE_ACTION"] = 10003;
@@ -191737,6 +192018,7 @@ $root.proto = (function() {
          * @property {proto.SyncActionValue.IBubbleLockMessageAction|null} [bubbleLockMessageAction] SyncActionValue bubbleLockMessageAction
          * @property {proto.SyncActionValue.ILabelSublistAction|null} [labelSublistAction] SyncActionValue labelSublistAction
          * @property {proto.IDeviceCapabilities|null} [deviceCapabilitiesV2] SyncActionValue deviceCapabilitiesV2
+         * @property {proto.SyncActionValue.ICtwaMessageReceivedAction|null} [ctwaMessageReceivedAction] SyncActionValue ctwaMessageReceivedAction
          */
 
         /**
@@ -192418,6 +192700,14 @@ $root.proto = (function() {
          */
         SyncActionValue.prototype.deviceCapabilitiesV2 = null;
 
+        /**
+         * SyncActionValue ctwaMessageReceivedAction.
+         * @member {proto.SyncActionValue.ICtwaMessageReceivedAction|null|undefined} ctwaMessageReceivedAction
+         * @memberof proto.SyncActionValue
+         * @instance
+         */
+        SyncActionValue.prototype.ctwaMessageReceivedAction = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -192919,6 +193209,12 @@ $root.proto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(SyncActionValue.prototype, "_ctwaMessageReceivedAction", {
+            get: $util.oneOfGetter($oneOfFields = ["ctwaMessageReceivedAction"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new SyncActionValue instance using the specified properties.
          * @function create
@@ -193113,6 +193409,8 @@ $root.proto = (function() {
                 $root.proto.SyncActionValue.LabelSublistAction.encode(message.labelSublistAction, writer.uint32(/* id 91, wireType 2 =*/730).fork(), q + 1).ldelim();
             if (message.deviceCapabilitiesV2 != null && Object.hasOwnProperty.call(message, "deviceCapabilitiesV2"))
                 $root.proto.DeviceCapabilities.encode(message.deviceCapabilitiesV2, writer.uint32(/* id 92, wireType 2 =*/738).fork(), q + 1).ldelim();
+            if (message.ctwaMessageReceivedAction != null && Object.hasOwnProperty.call(message, "ctwaMessageReceivedAction"))
+                $root.proto.SyncActionValue.CtwaMessageReceivedAction.encode(message.ctwaMessageReceivedAction, writer.uint32(/* id 93, wireType 2 =*/746).fork(), q + 1).ldelim();
             return writer;
         };
 
@@ -193483,6 +193781,10 @@ $root.proto = (function() {
                     }
                 case 92: {
                         message.deviceCapabilitiesV2 = $root.proto.DeviceCapabilities.decode(reader, reader.uint32(), undefined, long + 1);
+                        break;
+                    }
+                case 93: {
+                        message.ctwaMessageReceivedAction = $root.proto.SyncActionValue.CtwaMessageReceivedAction.decode(reader, reader.uint32(), undefined, long + 1);
                         break;
                     }
                 default:
@@ -194186,6 +194488,14 @@ $root.proto = (function() {
                         return "deviceCapabilitiesV2." + error;
                 }
             }
+            if (message.ctwaMessageReceivedAction != null && Object.hasOwnProperty.call(message, "ctwaMessageReceivedAction")) {
+                properties._ctwaMessageReceivedAction = 1;
+                {
+                    var error = $root.proto.SyncActionValue.CtwaMessageReceivedAction.verify(message.ctwaMessageReceivedAction, long + 1);
+                    if (error)
+                        return "ctwaMessageReceivedAction." + error;
+                }
+            }
             return null;
         };
 
@@ -194626,6 +194936,11 @@ $root.proto = (function() {
                     throw TypeError(".proto.SyncActionValue.deviceCapabilitiesV2: object expected");
                 message.deviceCapabilitiesV2 = $root.proto.DeviceCapabilities.fromObject(object.deviceCapabilitiesV2, long + 1);
             }
+            if (object.ctwaMessageReceivedAction != null) {
+                if (!$util.isObject(object.ctwaMessageReceivedAction))
+                    throw TypeError(".proto.SyncActionValue.ctwaMessageReceivedAction: object expected");
+                message.ctwaMessageReceivedAction = $root.proto.SyncActionValue.CtwaMessageReceivedAction.fromObject(object.ctwaMessageReceivedAction, long + 1);
+            }
             return message;
         };
 
@@ -195065,6 +195380,11 @@ $root.proto = (function() {
                 object.deviceCapabilitiesV2 = $root.proto.DeviceCapabilities.toObject(message.deviceCapabilitiesV2, options, q + 1);
                 if (options.oneofs)
                     object._deviceCapabilitiesV2 = "deviceCapabilitiesV2";
+            }
+            if (message.ctwaMessageReceivedAction != null && Object.hasOwnProperty.call(message, "ctwaMessageReceivedAction")) {
+                object.ctwaMessageReceivedAction = $root.proto.SyncActionValue.CtwaMessageReceivedAction.toObject(message.ctwaMessageReceivedAction, options, q + 1);
+                if (options.oneofs)
+                    object._ctwaMessageReceivedAction = "ctwaMessageReceivedAction";
             }
             return object;
         };
@@ -201121,6 +201441,246 @@ $root.proto = (function() {
             };
 
             return ContactAction;
+        })();
+
+        SyncActionValue.CtwaMessageReceivedAction = (function() {
+
+            /**
+             * Properties of a CtwaMessageReceivedAction.
+             * @memberof proto.SyncActionValue
+             * @interface ICtwaMessageReceivedAction
+             * @property {boolean|null} [isCtwaMessageReceived] CtwaMessageReceivedAction isCtwaMessageReceived
+             */
+
+            /**
+             * Constructs a new CtwaMessageReceivedAction.
+             * @memberof proto.SyncActionValue
+             * @classdesc Represents a CtwaMessageReceivedAction.
+             * @implements ICtwaMessageReceivedAction
+             * @constructor
+             * @param {proto.SyncActionValue.ICtwaMessageReceivedAction=} [properties] Properties to set
+             */
+            function CtwaMessageReceivedAction(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * CtwaMessageReceivedAction isCtwaMessageReceived.
+             * @member {boolean|null|undefined} isCtwaMessageReceived
+             * @memberof proto.SyncActionValue.CtwaMessageReceivedAction
+             * @instance
+             */
+            CtwaMessageReceivedAction.prototype.isCtwaMessageReceived = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(CtwaMessageReceivedAction.prototype, "_isCtwaMessageReceived", {
+                get: $util.oneOfGetter($oneOfFields = ["isCtwaMessageReceived"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new CtwaMessageReceivedAction instance using the specified properties.
+             * @function create
+             * @memberof proto.SyncActionValue.CtwaMessageReceivedAction
+             * @static
+             * @param {proto.SyncActionValue.ICtwaMessageReceivedAction=} [properties] Properties to set
+             * @returns {proto.SyncActionValue.CtwaMessageReceivedAction} CtwaMessageReceivedAction instance
+             */
+            CtwaMessageReceivedAction.create = function create(properties) {
+                return new CtwaMessageReceivedAction(properties);
+            };
+
+            /**
+             * Encodes the specified CtwaMessageReceivedAction message. Does not implicitly {@link proto.SyncActionValue.CtwaMessageReceivedAction.verify|verify} messages.
+             * @function encode
+             * @memberof proto.SyncActionValue.CtwaMessageReceivedAction
+             * @static
+             * @param {proto.SyncActionValue.ICtwaMessageReceivedAction} message CtwaMessageReceivedAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            CtwaMessageReceivedAction.encode = function encode(message, writer, q) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                if (message.isCtwaMessageReceived != null && Object.hasOwnProperty.call(message, "isCtwaMessageReceived"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).bool(message.isCtwaMessageReceived);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified CtwaMessageReceivedAction message, length delimited. Does not implicitly {@link proto.SyncActionValue.CtwaMessageReceivedAction.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof proto.SyncActionValue.CtwaMessageReceivedAction
+             * @static
+             * @param {proto.SyncActionValue.ICtwaMessageReceivedAction} message CtwaMessageReceivedAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            CtwaMessageReceivedAction.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer && writer.len ? writer.fork() : writer).ldelim();
+            };
+
+            /**
+             * Decodes a CtwaMessageReceivedAction message from the specified reader or buffer.
+             * @function decode
+             * @memberof proto.SyncActionValue.CtwaMessageReceivedAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {proto.SyncActionValue.CtwaMessageReceivedAction} CtwaMessageReceivedAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            CtwaMessageReceivedAction.decode = function decode(reader, length, error, long) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (long === undefined)
+                    long = 0;
+                if (long > $Reader.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.proto.SyncActionValue.CtwaMessageReceivedAction();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.isCtwaMessageReceived = reader.bool();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7, long);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a CtwaMessageReceivedAction message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof proto.SyncActionValue.CtwaMessageReceivedAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {proto.SyncActionValue.CtwaMessageReceivedAction} CtwaMessageReceivedAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            CtwaMessageReceivedAction.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a CtwaMessageReceivedAction message.
+             * @function verify
+             * @memberof proto.SyncActionValue.CtwaMessageReceivedAction
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            CtwaMessageReceivedAction.verify = function verify(message, long) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    return "maximum nesting depth exceeded";
+                var properties = {};
+                if (message.isCtwaMessageReceived != null && Object.hasOwnProperty.call(message, "isCtwaMessageReceived")) {
+                    properties._isCtwaMessageReceived = 1;
+                    if (typeof message.isCtwaMessageReceived !== "boolean")
+                        return "isCtwaMessageReceived: boolean expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a CtwaMessageReceivedAction message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof proto.SyncActionValue.CtwaMessageReceivedAction
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {proto.SyncActionValue.CtwaMessageReceivedAction} CtwaMessageReceivedAction
+             */
+            CtwaMessageReceivedAction.fromObject = function fromObject(object, long) {
+                if (object instanceof $root.proto.SyncActionValue.CtwaMessageReceivedAction)
+                    return object;
+                if (!$util.isObject(object))
+                    throw TypeError(".proto.SyncActionValue.CtwaMessageReceivedAction: object expected");
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var message = new $root.proto.SyncActionValue.CtwaMessageReceivedAction();
+                if (object.isCtwaMessageReceived != null)
+                    message.isCtwaMessageReceived = Boolean(object.isCtwaMessageReceived);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a CtwaMessageReceivedAction message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof proto.SyncActionValue.CtwaMessageReceivedAction
+             * @static
+             * @param {proto.SyncActionValue.CtwaMessageReceivedAction} message CtwaMessageReceivedAction
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            CtwaMessageReceivedAction.toObject = function toObject(message, options, q) {
+                if (!options)
+                    options = {};
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                var object = {};
+                if (message.isCtwaMessageReceived != null && Object.hasOwnProperty.call(message, "isCtwaMessageReceived")) {
+                    object.isCtwaMessageReceived = message.isCtwaMessageReceived;
+                    if (options.oneofs)
+                        object._isCtwaMessageReceived = "isCtwaMessageReceived";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this CtwaMessageReceivedAction to JSON.
+             * @function toJSON
+             * @memberof proto.SyncActionValue.CtwaMessageReceivedAction
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            CtwaMessageReceivedAction.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for CtwaMessageReceivedAction
+             * @function getTypeUrl
+             * @memberof proto.SyncActionValue.CtwaMessageReceivedAction
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            CtwaMessageReceivedAction.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/proto.SyncActionValue.CtwaMessageReceivedAction";
+            };
+
+            return CtwaMessageReceivedAction;
         })();
 
         SyncActionValue.CtwaPerCustomerDataSharingAction = (function() {
