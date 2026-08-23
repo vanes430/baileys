@@ -86761,7 +86761,6 @@ $root.proto = (function() {
          * @property {proto.Message.INewsletterFollowerInviteMessage|null} [newsletterFollowerInviteMessageV2] Message newsletterFollowerInviteMessageV2
          * @property {proto.Message.IPollResultSnapshotMessage|null} [pollResultSnapshotMessageV3] Message pollResultSnapshotMessageV3
          * @property {proto.Message.IFutureProofMessage|null} [newsletterAdminProfileMessage] Message newsletterAdminProfileMessage
-         * @property {proto.Message.IFutureProofMessage|null} [newsletterAdminProfileMessageV2] Message newsletterAdminProfileMessageV2
          * @property {proto.Message.IFutureProofMessage|null} [spoilerMessage] Message spoilerMessage
          * @property {proto.Message.IPollCreationMessage|null} [pollCreationMessageV6] Message pollCreationMessageV6
          * @property {proto.Message.IConditionalRevealMessage|null} [conditionalRevealMessage] Message conditionalRevealMessage
@@ -87562,14 +87561,6 @@ $root.proto = (function() {
         Message.prototype.newsletterAdminProfileMessage = null;
 
         /**
-         * Message newsletterAdminProfileMessageV2.
-         * @member {proto.Message.IFutureProofMessage|null|undefined} newsletterAdminProfileMessageV2
-         * @memberof proto.Message
-         * @instance
-         */
-        Message.prototype.newsletterAdminProfileMessageV2 = null;
-
-        /**
          * Message spoilerMessage.
          * @member {proto.Message.IFutureProofMessage|null|undefined} spoilerMessage
          * @memberof proto.Message
@@ -88261,12 +88252,6 @@ $root.proto = (function() {
         });
 
         // Virtual OneOf for proto3 optional field
-        Object.defineProperty(Message.prototype, "_newsletterAdminProfileMessageV2", {
-            get: $util.oneOfGetter($oneOfFields = ["newsletterAdminProfileMessageV2"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
-        // Virtual OneOf for proto3 optional field
         Object.defineProperty(Message.prototype, "_spoilerMessage", {
             get: $util.oneOfGetter($oneOfFields = ["spoilerMessage"]),
             set: $util.oneOfSetter($oneOfFields)
@@ -88570,8 +88555,6 @@ $root.proto = (function() {
                 $root.proto.Message.PollResultSnapshotMessage.encode(message.pollResultSnapshotMessageV3, writer.uint32(/* id 115, wireType 2 =*/922).fork(), q + 1).ldelim();
             if (message.newsletterAdminProfileMessage != null && Object.hasOwnProperty.call(message, "newsletterAdminProfileMessage"))
                 $root.proto.Message.FutureProofMessage.encode(message.newsletterAdminProfileMessage, writer.uint32(/* id 116, wireType 2 =*/930).fork(), q + 1).ldelim();
-            if (message.newsletterAdminProfileMessageV2 != null && Object.hasOwnProperty.call(message, "newsletterAdminProfileMessageV2"))
-                $root.proto.Message.FutureProofMessage.encode(message.newsletterAdminProfileMessageV2, writer.uint32(/* id 117, wireType 2 =*/938).fork(), q + 1).ldelim();
             if (message.spoilerMessage != null && Object.hasOwnProperty.call(message, "spoilerMessage"))
                 $root.proto.Message.FutureProofMessage.encode(message.spoilerMessage, writer.uint32(/* id 118, wireType 2 =*/946).fork(), q + 1).ldelim();
             if (message.pollCreationMessageV6 != null && Object.hasOwnProperty.call(message, "pollCreationMessageV6"))
@@ -89022,10 +89005,6 @@ $root.proto = (function() {
                     }
                 case 116: {
                         message.newsletterAdminProfileMessage = $root.proto.Message.FutureProofMessage.decode(reader, reader.uint32(), undefined, long + 1);
-                        break;
-                    }
-                case 117: {
-                        message.newsletterAdminProfileMessageV2 = $root.proto.Message.FutureProofMessage.decode(reader, reader.uint32(), undefined, long + 1);
                         break;
                     }
                 case 118: {
@@ -89889,14 +89868,6 @@ $root.proto = (function() {
                         return "newsletterAdminProfileMessage." + error;
                 }
             }
-            if (message.newsletterAdminProfileMessageV2 != null && Object.hasOwnProperty.call(message, "newsletterAdminProfileMessageV2")) {
-                properties._newsletterAdminProfileMessageV2 = 1;
-                {
-                    var error = $root.proto.Message.FutureProofMessage.verify(message.newsletterAdminProfileMessageV2, long + 1);
-                    if (error)
-                        return "newsletterAdminProfileMessageV2." + error;
-                }
-            }
             if (message.spoilerMessage != null && Object.hasOwnProperty.call(message, "spoilerMessage")) {
                 properties._spoilerMessage = 1;
                 {
@@ -90507,11 +90478,6 @@ $root.proto = (function() {
                     throw TypeError(".proto.Message.newsletterAdminProfileMessage: object expected");
                 message.newsletterAdminProfileMessage = $root.proto.Message.FutureProofMessage.fromObject(object.newsletterAdminProfileMessage, long + 1);
             }
-            if (object.newsletterAdminProfileMessageV2 != null) {
-                if (!$util.isObject(object.newsletterAdminProfileMessageV2))
-                    throw TypeError(".proto.Message.newsletterAdminProfileMessageV2: object expected");
-                message.newsletterAdminProfileMessageV2 = $root.proto.Message.FutureProofMessage.fromObject(object.newsletterAdminProfileMessageV2, long + 1);
-            }
             if (object.spoilerMessage != null) {
                 if (!$util.isObject(object.spoilerMessage))
                     throw TypeError(".proto.Message.spoilerMessage: object expected");
@@ -91081,11 +91047,6 @@ $root.proto = (function() {
                 object.newsletterAdminProfileMessage = $root.proto.Message.FutureProofMessage.toObject(message.newsletterAdminProfileMessage, options, q + 1);
                 if (options.oneofs)
                     object._newsletterAdminProfileMessage = "newsletterAdminProfileMessage";
-            }
-            if (message.newsletterAdminProfileMessageV2 != null && Object.hasOwnProperty.call(message, "newsletterAdminProfileMessageV2")) {
-                object.newsletterAdminProfileMessageV2 = $root.proto.Message.FutureProofMessage.toObject(message.newsletterAdminProfileMessageV2, options, q + 1);
-                if (options.oneofs)
-                    object._newsletterAdminProfileMessageV2 = "newsletterAdminProfileMessageV2";
             }
             if (message.spoilerMessage != null && Object.hasOwnProperty.call(message, "spoilerMessage")) {
                 object.spoilerMessage = $root.proto.Message.FutureProofMessage.toObject(message.spoilerMessage, options, q + 1);
@@ -168719,6 +168680,9 @@ $root.proto = (function() {
      * @property {number} LABEL_SUBLIST_ACTION=91 LABEL_SUBLIST_ACTION value
      * @property {number} DEVICE_CAPABILITIES_V2=92 DEVICE_CAPABILITIES_V2 value
      * @property {number} CTWA_MESSAGE_RECEIVED_ACTION=93 CTWA_MESSAGE_RECEIVED_ACTION value
+     * @property {number} SHARED_DEVICE_ALLOWLIST_ACTION=94 SHARED_DEVICE_ALLOWLIST_ACTION value
+     * @property {number} CONTACT_MANAGER_METADATA_ACTION=95 CONTACT_MANAGER_METADATA_ACTION value
+     * @property {number} BUSINESS_FOLDER_ACTIVATION_ACTION=96 BUSINESS_FOLDER_ACTIVATION_ACTION value
      * @property {number} SHARE_OWN_PN=10001 SHARE_OWN_PN value
      * @property {number} BUSINESS_BROADCAST_ACTION=10002 BUSINESS_BROADCAST_ACTION value
      * @property {number} AI_THREAD_DELETE_ACTION=10003 AI_THREAD_DELETE_ACTION value
@@ -168812,6 +168776,9 @@ $root.proto = (function() {
         values[valuesById[91] = "LABEL_SUBLIST_ACTION"] = 91;
         values[valuesById[92] = "DEVICE_CAPABILITIES_V2"] = 92;
         values[valuesById[93] = "CTWA_MESSAGE_RECEIVED_ACTION"] = 93;
+        values[valuesById[94] = "SHARED_DEVICE_ALLOWLIST_ACTION"] = 94;
+        values[valuesById[95] = "CONTACT_MANAGER_METADATA_ACTION"] = 95;
+        values[valuesById[96] = "BUSINESS_FOLDER_ACTIVATION_ACTION"] = 96;
         values[valuesById[10001] = "SHARE_OWN_PN"] = 10001;
         values[valuesById[10002] = "BUSINESS_BROADCAST_ACTION"] = 10002;
         values[valuesById[10003] = "AI_THREAD_DELETE_ACTION"] = 10003;
@@ -192019,6 +191986,9 @@ $root.proto = (function() {
          * @property {proto.SyncActionValue.ILabelSublistAction|null} [labelSublistAction] SyncActionValue labelSublistAction
          * @property {proto.IDeviceCapabilities|null} [deviceCapabilitiesV2] SyncActionValue deviceCapabilitiesV2
          * @property {proto.SyncActionValue.ICtwaMessageReceivedAction|null} [ctwaMessageReceivedAction] SyncActionValue ctwaMessageReceivedAction
+         * @property {proto.SyncActionValue.ISharedDeviceAllowlistAction|null} [sharedDeviceAllowlistAction] SyncActionValue sharedDeviceAllowlistAction
+         * @property {proto.SyncActionValue.IContactManagerMetadataAction|null} [contactManagerMetadataAction] SyncActionValue contactManagerMetadataAction
+         * @property {proto.SyncActionValue.IBusinessFolderActivationAction|null} [businessFolderActivationAction] SyncActionValue businessFolderActivationAction
          */
 
         /**
@@ -192708,6 +192678,30 @@ $root.proto = (function() {
          */
         SyncActionValue.prototype.ctwaMessageReceivedAction = null;
 
+        /**
+         * SyncActionValue sharedDeviceAllowlistAction.
+         * @member {proto.SyncActionValue.ISharedDeviceAllowlistAction|null|undefined} sharedDeviceAllowlistAction
+         * @memberof proto.SyncActionValue
+         * @instance
+         */
+        SyncActionValue.prototype.sharedDeviceAllowlistAction = null;
+
+        /**
+         * SyncActionValue contactManagerMetadataAction.
+         * @member {proto.SyncActionValue.IContactManagerMetadataAction|null|undefined} contactManagerMetadataAction
+         * @memberof proto.SyncActionValue
+         * @instance
+         */
+        SyncActionValue.prototype.contactManagerMetadataAction = null;
+
+        /**
+         * SyncActionValue businessFolderActivationAction.
+         * @member {proto.SyncActionValue.IBusinessFolderActivationAction|null|undefined} businessFolderActivationAction
+         * @memberof proto.SyncActionValue
+         * @instance
+         */
+        SyncActionValue.prototype.businessFolderActivationAction = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -193215,6 +193209,24 @@ $root.proto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(SyncActionValue.prototype, "_sharedDeviceAllowlistAction", {
+            get: $util.oneOfGetter($oneOfFields = ["sharedDeviceAllowlistAction"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(SyncActionValue.prototype, "_contactManagerMetadataAction", {
+            get: $util.oneOfGetter($oneOfFields = ["contactManagerMetadataAction"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(SyncActionValue.prototype, "_businessFolderActivationAction", {
+            get: $util.oneOfGetter($oneOfFields = ["businessFolderActivationAction"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new SyncActionValue instance using the specified properties.
          * @function create
@@ -193411,6 +193423,12 @@ $root.proto = (function() {
                 $root.proto.DeviceCapabilities.encode(message.deviceCapabilitiesV2, writer.uint32(/* id 92, wireType 2 =*/738).fork(), q + 1).ldelim();
             if (message.ctwaMessageReceivedAction != null && Object.hasOwnProperty.call(message, "ctwaMessageReceivedAction"))
                 $root.proto.SyncActionValue.CtwaMessageReceivedAction.encode(message.ctwaMessageReceivedAction, writer.uint32(/* id 93, wireType 2 =*/746).fork(), q + 1).ldelim();
+            if (message.sharedDeviceAllowlistAction != null && Object.hasOwnProperty.call(message, "sharedDeviceAllowlistAction"))
+                $root.proto.SyncActionValue.SharedDeviceAllowlistAction.encode(message.sharedDeviceAllowlistAction, writer.uint32(/* id 94, wireType 2 =*/754).fork(), q + 1).ldelim();
+            if (message.contactManagerMetadataAction != null && Object.hasOwnProperty.call(message, "contactManagerMetadataAction"))
+                $root.proto.SyncActionValue.ContactManagerMetadataAction.encode(message.contactManagerMetadataAction, writer.uint32(/* id 95, wireType 2 =*/762).fork(), q + 1).ldelim();
+            if (message.businessFolderActivationAction != null && Object.hasOwnProperty.call(message, "businessFolderActivationAction"))
+                $root.proto.SyncActionValue.BusinessFolderActivationAction.encode(message.businessFolderActivationAction, writer.uint32(/* id 96, wireType 2 =*/770).fork(), q + 1).ldelim();
             return writer;
         };
 
@@ -193785,6 +193803,18 @@ $root.proto = (function() {
                     }
                 case 93: {
                         message.ctwaMessageReceivedAction = $root.proto.SyncActionValue.CtwaMessageReceivedAction.decode(reader, reader.uint32(), undefined, long + 1);
+                        break;
+                    }
+                case 94: {
+                        message.sharedDeviceAllowlistAction = $root.proto.SyncActionValue.SharedDeviceAllowlistAction.decode(reader, reader.uint32(), undefined, long + 1);
+                        break;
+                    }
+                case 95: {
+                        message.contactManagerMetadataAction = $root.proto.SyncActionValue.ContactManagerMetadataAction.decode(reader, reader.uint32(), undefined, long + 1);
+                        break;
+                    }
+                case 96: {
+                        message.businessFolderActivationAction = $root.proto.SyncActionValue.BusinessFolderActivationAction.decode(reader, reader.uint32(), undefined, long + 1);
                         break;
                     }
                 default:
@@ -194496,6 +194526,30 @@ $root.proto = (function() {
                         return "ctwaMessageReceivedAction." + error;
                 }
             }
+            if (message.sharedDeviceAllowlistAction != null && Object.hasOwnProperty.call(message, "sharedDeviceAllowlistAction")) {
+                properties._sharedDeviceAllowlistAction = 1;
+                {
+                    var error = $root.proto.SyncActionValue.SharedDeviceAllowlistAction.verify(message.sharedDeviceAllowlistAction, long + 1);
+                    if (error)
+                        return "sharedDeviceAllowlistAction." + error;
+                }
+            }
+            if (message.contactManagerMetadataAction != null && Object.hasOwnProperty.call(message, "contactManagerMetadataAction")) {
+                properties._contactManagerMetadataAction = 1;
+                {
+                    var error = $root.proto.SyncActionValue.ContactManagerMetadataAction.verify(message.contactManagerMetadataAction, long + 1);
+                    if (error)
+                        return "contactManagerMetadataAction." + error;
+                }
+            }
+            if (message.businessFolderActivationAction != null && Object.hasOwnProperty.call(message, "businessFolderActivationAction")) {
+                properties._businessFolderActivationAction = 1;
+                {
+                    var error = $root.proto.SyncActionValue.BusinessFolderActivationAction.verify(message.businessFolderActivationAction, long + 1);
+                    if (error)
+                        return "businessFolderActivationAction." + error;
+                }
+            }
             return null;
         };
 
@@ -194941,6 +194995,21 @@ $root.proto = (function() {
                     throw TypeError(".proto.SyncActionValue.ctwaMessageReceivedAction: object expected");
                 message.ctwaMessageReceivedAction = $root.proto.SyncActionValue.CtwaMessageReceivedAction.fromObject(object.ctwaMessageReceivedAction, long + 1);
             }
+            if (object.sharedDeviceAllowlistAction != null) {
+                if (!$util.isObject(object.sharedDeviceAllowlistAction))
+                    throw TypeError(".proto.SyncActionValue.sharedDeviceAllowlistAction: object expected");
+                message.sharedDeviceAllowlistAction = $root.proto.SyncActionValue.SharedDeviceAllowlistAction.fromObject(object.sharedDeviceAllowlistAction, long + 1);
+            }
+            if (object.contactManagerMetadataAction != null) {
+                if (!$util.isObject(object.contactManagerMetadataAction))
+                    throw TypeError(".proto.SyncActionValue.contactManagerMetadataAction: object expected");
+                message.contactManagerMetadataAction = $root.proto.SyncActionValue.ContactManagerMetadataAction.fromObject(object.contactManagerMetadataAction, long + 1);
+            }
+            if (object.businessFolderActivationAction != null) {
+                if (!$util.isObject(object.businessFolderActivationAction))
+                    throw TypeError(".proto.SyncActionValue.businessFolderActivationAction: object expected");
+                message.businessFolderActivationAction = $root.proto.SyncActionValue.BusinessFolderActivationAction.fromObject(object.businessFolderActivationAction, long + 1);
+            }
             return message;
         };
 
@@ -195385,6 +195454,21 @@ $root.proto = (function() {
                 object.ctwaMessageReceivedAction = $root.proto.SyncActionValue.CtwaMessageReceivedAction.toObject(message.ctwaMessageReceivedAction, options, q + 1);
                 if (options.oneofs)
                     object._ctwaMessageReceivedAction = "ctwaMessageReceivedAction";
+            }
+            if (message.sharedDeviceAllowlistAction != null && Object.hasOwnProperty.call(message, "sharedDeviceAllowlistAction")) {
+                object.sharedDeviceAllowlistAction = $root.proto.SyncActionValue.SharedDeviceAllowlistAction.toObject(message.sharedDeviceAllowlistAction, options, q + 1);
+                if (options.oneofs)
+                    object._sharedDeviceAllowlistAction = "sharedDeviceAllowlistAction";
+            }
+            if (message.contactManagerMetadataAction != null && Object.hasOwnProperty.call(message, "contactManagerMetadataAction")) {
+                object.contactManagerMetadataAction = $root.proto.SyncActionValue.ContactManagerMetadataAction.toObject(message.contactManagerMetadataAction, options, q + 1);
+                if (options.oneofs)
+                    object._contactManagerMetadataAction = "contactManagerMetadataAction";
+            }
+            if (message.businessFolderActivationAction != null && Object.hasOwnProperty.call(message, "businessFolderActivationAction")) {
+                object.businessFolderActivationAction = $root.proto.SyncActionValue.BusinessFolderActivationAction.toObject(message.businessFolderActivationAction, options, q + 1);
+                if (options.oneofs)
+                    object._businessFolderActivationAction = "businessFolderActivationAction";
             }
             return object;
         };
@@ -199814,6 +199898,246 @@ $root.proto = (function() {
             return BusinessBroadcastListAction;
         })();
 
+        SyncActionValue.BusinessFolderActivationAction = (function() {
+
+            /**
+             * Properties of a BusinessFolderActivationAction.
+             * @memberof proto.SyncActionValue
+             * @interface IBusinessFolderActivationAction
+             * @property {boolean|null} [activated] BusinessFolderActivationAction activated
+             */
+
+            /**
+             * Constructs a new BusinessFolderActivationAction.
+             * @memberof proto.SyncActionValue
+             * @classdesc Represents a BusinessFolderActivationAction.
+             * @implements IBusinessFolderActivationAction
+             * @constructor
+             * @param {proto.SyncActionValue.IBusinessFolderActivationAction=} [properties] Properties to set
+             */
+            function BusinessFolderActivationAction(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * BusinessFolderActivationAction activated.
+             * @member {boolean|null|undefined} activated
+             * @memberof proto.SyncActionValue.BusinessFolderActivationAction
+             * @instance
+             */
+            BusinessFolderActivationAction.prototype.activated = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(BusinessFolderActivationAction.prototype, "_activated", {
+                get: $util.oneOfGetter($oneOfFields = ["activated"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new BusinessFolderActivationAction instance using the specified properties.
+             * @function create
+             * @memberof proto.SyncActionValue.BusinessFolderActivationAction
+             * @static
+             * @param {proto.SyncActionValue.IBusinessFolderActivationAction=} [properties] Properties to set
+             * @returns {proto.SyncActionValue.BusinessFolderActivationAction} BusinessFolderActivationAction instance
+             */
+            BusinessFolderActivationAction.create = function create(properties) {
+                return new BusinessFolderActivationAction(properties);
+            };
+
+            /**
+             * Encodes the specified BusinessFolderActivationAction message. Does not implicitly {@link proto.SyncActionValue.BusinessFolderActivationAction.verify|verify} messages.
+             * @function encode
+             * @memberof proto.SyncActionValue.BusinessFolderActivationAction
+             * @static
+             * @param {proto.SyncActionValue.IBusinessFolderActivationAction} message BusinessFolderActivationAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            BusinessFolderActivationAction.encode = function encode(message, writer, q) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                if (message.activated != null && Object.hasOwnProperty.call(message, "activated"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).bool(message.activated);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified BusinessFolderActivationAction message, length delimited. Does not implicitly {@link proto.SyncActionValue.BusinessFolderActivationAction.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof proto.SyncActionValue.BusinessFolderActivationAction
+             * @static
+             * @param {proto.SyncActionValue.IBusinessFolderActivationAction} message BusinessFolderActivationAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            BusinessFolderActivationAction.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer && writer.len ? writer.fork() : writer).ldelim();
+            };
+
+            /**
+             * Decodes a BusinessFolderActivationAction message from the specified reader or buffer.
+             * @function decode
+             * @memberof proto.SyncActionValue.BusinessFolderActivationAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {proto.SyncActionValue.BusinessFolderActivationAction} BusinessFolderActivationAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            BusinessFolderActivationAction.decode = function decode(reader, length, error, long) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (long === undefined)
+                    long = 0;
+                if (long > $Reader.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.proto.SyncActionValue.BusinessFolderActivationAction();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.activated = reader.bool();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7, long);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a BusinessFolderActivationAction message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof proto.SyncActionValue.BusinessFolderActivationAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {proto.SyncActionValue.BusinessFolderActivationAction} BusinessFolderActivationAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            BusinessFolderActivationAction.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a BusinessFolderActivationAction message.
+             * @function verify
+             * @memberof proto.SyncActionValue.BusinessFolderActivationAction
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            BusinessFolderActivationAction.verify = function verify(message, long) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    return "maximum nesting depth exceeded";
+                var properties = {};
+                if (message.activated != null && Object.hasOwnProperty.call(message, "activated")) {
+                    properties._activated = 1;
+                    if (typeof message.activated !== "boolean")
+                        return "activated: boolean expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a BusinessFolderActivationAction message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof proto.SyncActionValue.BusinessFolderActivationAction
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {proto.SyncActionValue.BusinessFolderActivationAction} BusinessFolderActivationAction
+             */
+            BusinessFolderActivationAction.fromObject = function fromObject(object, long) {
+                if (object instanceof $root.proto.SyncActionValue.BusinessFolderActivationAction)
+                    return object;
+                if (!$util.isObject(object))
+                    throw TypeError(".proto.SyncActionValue.BusinessFolderActivationAction: object expected");
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var message = new $root.proto.SyncActionValue.BusinessFolderActivationAction();
+                if (object.activated != null)
+                    message.activated = Boolean(object.activated);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a BusinessFolderActivationAction message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof proto.SyncActionValue.BusinessFolderActivationAction
+             * @static
+             * @param {proto.SyncActionValue.BusinessFolderActivationAction} message BusinessFolderActivationAction
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            BusinessFolderActivationAction.toObject = function toObject(message, options, q) {
+                if (!options)
+                    options = {};
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                var object = {};
+                if (message.activated != null && Object.hasOwnProperty.call(message, "activated")) {
+                    object.activated = message.activated;
+                    if (options.oneofs)
+                        object._activated = "activated";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this BusinessFolderActivationAction to JSON.
+             * @function toJSON
+             * @memberof proto.SyncActionValue.BusinessFolderActivationAction
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            BusinessFolderActivationAction.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for BusinessFolderActivationAction
+             * @function getTypeUrl
+             * @memberof proto.SyncActionValue.BusinessFolderActivationAction
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            BusinessFolderActivationAction.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/proto.SyncActionValue.BusinessFolderActivationAction";
+            };
+
+            return BusinessFolderActivationAction;
+        })();
+
         SyncActionValue.CallLogAction = (function() {
 
             /**
@@ -201441,6 +201765,246 @@ $root.proto = (function() {
             };
 
             return ContactAction;
+        })();
+
+        SyncActionValue.ContactManagerMetadataAction = (function() {
+
+            /**
+             * Properties of a ContactManagerMetadataAction.
+             * @memberof proto.SyncActionValue
+             * @interface IContactManagerMetadataAction
+             * @property {boolean|null} [isHidden] ContactManagerMetadataAction isHidden
+             */
+
+            /**
+             * Constructs a new ContactManagerMetadataAction.
+             * @memberof proto.SyncActionValue
+             * @classdesc Represents a ContactManagerMetadataAction.
+             * @implements IContactManagerMetadataAction
+             * @constructor
+             * @param {proto.SyncActionValue.IContactManagerMetadataAction=} [properties] Properties to set
+             */
+            function ContactManagerMetadataAction(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * ContactManagerMetadataAction isHidden.
+             * @member {boolean|null|undefined} isHidden
+             * @memberof proto.SyncActionValue.ContactManagerMetadataAction
+             * @instance
+             */
+            ContactManagerMetadataAction.prototype.isHidden = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(ContactManagerMetadataAction.prototype, "_isHidden", {
+                get: $util.oneOfGetter($oneOfFields = ["isHidden"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new ContactManagerMetadataAction instance using the specified properties.
+             * @function create
+             * @memberof proto.SyncActionValue.ContactManagerMetadataAction
+             * @static
+             * @param {proto.SyncActionValue.IContactManagerMetadataAction=} [properties] Properties to set
+             * @returns {proto.SyncActionValue.ContactManagerMetadataAction} ContactManagerMetadataAction instance
+             */
+            ContactManagerMetadataAction.create = function create(properties) {
+                return new ContactManagerMetadataAction(properties);
+            };
+
+            /**
+             * Encodes the specified ContactManagerMetadataAction message. Does not implicitly {@link proto.SyncActionValue.ContactManagerMetadataAction.verify|verify} messages.
+             * @function encode
+             * @memberof proto.SyncActionValue.ContactManagerMetadataAction
+             * @static
+             * @param {proto.SyncActionValue.IContactManagerMetadataAction} message ContactManagerMetadataAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            ContactManagerMetadataAction.encode = function encode(message, writer, q) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                if (message.isHidden != null && Object.hasOwnProperty.call(message, "isHidden"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).bool(message.isHidden);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified ContactManagerMetadataAction message, length delimited. Does not implicitly {@link proto.SyncActionValue.ContactManagerMetadataAction.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof proto.SyncActionValue.ContactManagerMetadataAction
+             * @static
+             * @param {proto.SyncActionValue.IContactManagerMetadataAction} message ContactManagerMetadataAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            ContactManagerMetadataAction.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer && writer.len ? writer.fork() : writer).ldelim();
+            };
+
+            /**
+             * Decodes a ContactManagerMetadataAction message from the specified reader or buffer.
+             * @function decode
+             * @memberof proto.SyncActionValue.ContactManagerMetadataAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {proto.SyncActionValue.ContactManagerMetadataAction} ContactManagerMetadataAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            ContactManagerMetadataAction.decode = function decode(reader, length, error, long) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (long === undefined)
+                    long = 0;
+                if (long > $Reader.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.proto.SyncActionValue.ContactManagerMetadataAction();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.isHidden = reader.bool();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7, long);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a ContactManagerMetadataAction message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof proto.SyncActionValue.ContactManagerMetadataAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {proto.SyncActionValue.ContactManagerMetadataAction} ContactManagerMetadataAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            ContactManagerMetadataAction.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a ContactManagerMetadataAction message.
+             * @function verify
+             * @memberof proto.SyncActionValue.ContactManagerMetadataAction
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            ContactManagerMetadataAction.verify = function verify(message, long) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    return "maximum nesting depth exceeded";
+                var properties = {};
+                if (message.isHidden != null && Object.hasOwnProperty.call(message, "isHidden")) {
+                    properties._isHidden = 1;
+                    if (typeof message.isHidden !== "boolean")
+                        return "isHidden: boolean expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a ContactManagerMetadataAction message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof proto.SyncActionValue.ContactManagerMetadataAction
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {proto.SyncActionValue.ContactManagerMetadataAction} ContactManagerMetadataAction
+             */
+            ContactManagerMetadataAction.fromObject = function fromObject(object, long) {
+                if (object instanceof $root.proto.SyncActionValue.ContactManagerMetadataAction)
+                    return object;
+                if (!$util.isObject(object))
+                    throw TypeError(".proto.SyncActionValue.ContactManagerMetadataAction: object expected");
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var message = new $root.proto.SyncActionValue.ContactManagerMetadataAction();
+                if (object.isHidden != null)
+                    message.isHidden = Boolean(object.isHidden);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a ContactManagerMetadataAction message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof proto.SyncActionValue.ContactManagerMetadataAction
+             * @static
+             * @param {proto.SyncActionValue.ContactManagerMetadataAction} message ContactManagerMetadataAction
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            ContactManagerMetadataAction.toObject = function toObject(message, options, q) {
+                if (!options)
+                    options = {};
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                var object = {};
+                if (message.isHidden != null && Object.hasOwnProperty.call(message, "isHidden")) {
+                    object.isHidden = message.isHidden;
+                    if (options.oneofs)
+                        object._isHidden = "isHidden";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this ContactManagerMetadataAction to JSON.
+             * @function toJSON
+             * @memberof proto.SyncActionValue.ContactManagerMetadataAction
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            ContactManagerMetadataAction.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for ContactManagerMetadataAction
+             * @function getTypeUrl
+             * @memberof proto.SyncActionValue.ContactManagerMetadataAction
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            ContactManagerMetadataAction.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/proto.SyncActionValue.ContactManagerMetadataAction";
+            };
+
+            return ContactManagerMetadataAction;
         })();
 
         SyncActionValue.CtwaMessageReceivedAction = (function() {
@@ -217241,6 +217805,246 @@ $root.proto = (function() {
             })();
 
             return SettingsSyncAction;
+        })();
+
+        SyncActionValue.SharedDeviceAllowlistAction = (function() {
+
+            /**
+             * Properties of a SharedDeviceAllowlistAction.
+             * @memberof proto.SyncActionValue
+             * @interface ISharedDeviceAllowlistAction
+             * @property {boolean|null} [allowed] SharedDeviceAllowlistAction allowed
+             */
+
+            /**
+             * Constructs a new SharedDeviceAllowlistAction.
+             * @memberof proto.SyncActionValue
+             * @classdesc Represents a SharedDeviceAllowlistAction.
+             * @implements ISharedDeviceAllowlistAction
+             * @constructor
+             * @param {proto.SyncActionValue.ISharedDeviceAllowlistAction=} [properties] Properties to set
+             */
+            function SharedDeviceAllowlistAction(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * SharedDeviceAllowlistAction allowed.
+             * @member {boolean|null|undefined} allowed
+             * @memberof proto.SyncActionValue.SharedDeviceAllowlistAction
+             * @instance
+             */
+            SharedDeviceAllowlistAction.prototype.allowed = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(SharedDeviceAllowlistAction.prototype, "_allowed", {
+                get: $util.oneOfGetter($oneOfFields = ["allowed"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new SharedDeviceAllowlistAction instance using the specified properties.
+             * @function create
+             * @memberof proto.SyncActionValue.SharedDeviceAllowlistAction
+             * @static
+             * @param {proto.SyncActionValue.ISharedDeviceAllowlistAction=} [properties] Properties to set
+             * @returns {proto.SyncActionValue.SharedDeviceAllowlistAction} SharedDeviceAllowlistAction instance
+             */
+            SharedDeviceAllowlistAction.create = function create(properties) {
+                return new SharedDeviceAllowlistAction(properties);
+            };
+
+            /**
+             * Encodes the specified SharedDeviceAllowlistAction message. Does not implicitly {@link proto.SyncActionValue.SharedDeviceAllowlistAction.verify|verify} messages.
+             * @function encode
+             * @memberof proto.SyncActionValue.SharedDeviceAllowlistAction
+             * @static
+             * @param {proto.SyncActionValue.ISharedDeviceAllowlistAction} message SharedDeviceAllowlistAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SharedDeviceAllowlistAction.encode = function encode(message, writer, q) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                if (message.allowed != null && Object.hasOwnProperty.call(message, "allowed"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).bool(message.allowed);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified SharedDeviceAllowlistAction message, length delimited. Does not implicitly {@link proto.SyncActionValue.SharedDeviceAllowlistAction.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof proto.SyncActionValue.SharedDeviceAllowlistAction
+             * @static
+             * @param {proto.SyncActionValue.ISharedDeviceAllowlistAction} message SharedDeviceAllowlistAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SharedDeviceAllowlistAction.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer && writer.len ? writer.fork() : writer).ldelim();
+            };
+
+            /**
+             * Decodes a SharedDeviceAllowlistAction message from the specified reader or buffer.
+             * @function decode
+             * @memberof proto.SyncActionValue.SharedDeviceAllowlistAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {proto.SyncActionValue.SharedDeviceAllowlistAction} SharedDeviceAllowlistAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SharedDeviceAllowlistAction.decode = function decode(reader, length, error, long) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (long === undefined)
+                    long = 0;
+                if (long > $Reader.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.proto.SyncActionValue.SharedDeviceAllowlistAction();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.allowed = reader.bool();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7, long);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a SharedDeviceAllowlistAction message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof proto.SyncActionValue.SharedDeviceAllowlistAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {proto.SyncActionValue.SharedDeviceAllowlistAction} SharedDeviceAllowlistAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SharedDeviceAllowlistAction.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a SharedDeviceAllowlistAction message.
+             * @function verify
+             * @memberof proto.SyncActionValue.SharedDeviceAllowlistAction
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            SharedDeviceAllowlistAction.verify = function verify(message, long) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    return "maximum nesting depth exceeded";
+                var properties = {};
+                if (message.allowed != null && Object.hasOwnProperty.call(message, "allowed")) {
+                    properties._allowed = 1;
+                    if (typeof message.allowed !== "boolean")
+                        return "allowed: boolean expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a SharedDeviceAllowlistAction message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof proto.SyncActionValue.SharedDeviceAllowlistAction
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {proto.SyncActionValue.SharedDeviceAllowlistAction} SharedDeviceAllowlistAction
+             */
+            SharedDeviceAllowlistAction.fromObject = function fromObject(object, long) {
+                if (object instanceof $root.proto.SyncActionValue.SharedDeviceAllowlistAction)
+                    return object;
+                if (!$util.isObject(object))
+                    throw TypeError(".proto.SyncActionValue.SharedDeviceAllowlistAction: object expected");
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var message = new $root.proto.SyncActionValue.SharedDeviceAllowlistAction();
+                if (object.allowed != null)
+                    message.allowed = Boolean(object.allowed);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a SharedDeviceAllowlistAction message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof proto.SyncActionValue.SharedDeviceAllowlistAction
+             * @static
+             * @param {proto.SyncActionValue.SharedDeviceAllowlistAction} message SharedDeviceAllowlistAction
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            SharedDeviceAllowlistAction.toObject = function toObject(message, options, q) {
+                if (!options)
+                    options = {};
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                var object = {};
+                if (message.allowed != null && Object.hasOwnProperty.call(message, "allowed")) {
+                    object.allowed = message.allowed;
+                    if (options.oneofs)
+                        object._allowed = "allowed";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this SharedDeviceAllowlistAction to JSON.
+             * @function toJSON
+             * @memberof proto.SyncActionValue.SharedDeviceAllowlistAction
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            SharedDeviceAllowlistAction.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for SharedDeviceAllowlistAction
+             * @function getTypeUrl
+             * @memberof proto.SyncActionValue.SharedDeviceAllowlistAction
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            SharedDeviceAllowlistAction.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/proto.SyncActionValue.SharedDeviceAllowlistAction";
+            };
+
+            return SharedDeviceAllowlistAction;
         })();
 
         SyncActionValue.StarAction = (function() {
