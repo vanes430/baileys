@@ -3,6 +3,121 @@ import Long = require("long");
 /** Namespace proto. */
 export namespace proto {
 
+    /** Properties of a ACP2Setting. */
+    interface IACP2Setting {
+
+        /** ACP2Setting enabled */
+        enabled?: (boolean|null);
+
+        /** ACP2Setting trigger */
+        trigger?: (proto.LimitSharing.TriggerType|null);
+
+        /** ACP2Setting settingTimestamp */
+        settingTimestamp?: (number|Long|null);
+
+        /** ACP2Setting initiatedByMe */
+        initiatedByMe?: (boolean|null);
+    }
+
+    /** Represents a ACP2Setting. */
+    class ACP2Setting implements IACP2Setting {
+
+        /**
+         * Constructs a new ACP2Setting.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: proto.IACP2Setting);
+
+        /** ACP2Setting enabled. */
+        public enabled?: (boolean|null);
+
+        /** ACP2Setting trigger. */
+        public trigger?: (proto.LimitSharing.TriggerType|null);
+
+        /** ACP2Setting settingTimestamp. */
+        public settingTimestamp?: (number|Long|null);
+
+        /** ACP2Setting initiatedByMe. */
+        public initiatedByMe?: (boolean|null);
+
+        /**
+         * Creates a new ACP2Setting instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns ACP2Setting instance
+         */
+        public static create(properties?: proto.IACP2Setting): proto.ACP2Setting;
+
+        /**
+         * Encodes the specified ACP2Setting message. Does not implicitly {@link proto.ACP2Setting.verify|verify} messages.
+         * @param message ACP2Setting message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: proto.IACP2Setting, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified ACP2Setting message, length delimited. Does not implicitly {@link proto.ACP2Setting.verify|verify} messages.
+         * @param message ACP2Setting message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: proto.IACP2Setting, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a ACP2Setting message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns ACP2Setting
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.ACP2Setting;
+
+        /**
+         * Decodes a ACP2Setting message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns ACP2Setting
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.ACP2Setting;
+
+        /**
+         * Verifies a ACP2Setting message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a ACP2Setting message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns ACP2Setting
+         */
+        public static fromObject(object: { [k: string]: any }): proto.ACP2Setting;
+
+        /**
+         * Creates a plain object from a ACP2Setting message. Also converts values to other types if specified.
+         * @param message ACP2Setting
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: proto.ACP2Setting, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this ACP2Setting to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for ACP2Setting
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
     /** Properties of a ADVDeviceIdentity. */
     interface IADVDeviceIdentity {
 
@@ -17601,6 +17716,9 @@ export namespace proto {
 
             /** ExternalAdReplyInfo agmHeaderInteractionStrategy */
             agmHeaderInteractionStrategy?: (number|null);
+
+            /** ExternalAdReplyInfo containsCtwaFlowsAutoLabel */
+            containsCtwaFlowsAutoLabel?: (boolean|null);
         }
 
         /** Represents an ExternalAdReplyInfo. */
@@ -17707,6 +17825,9 @@ export namespace proto {
 
             /** ExternalAdReplyInfo agmHeaderInteractionStrategy. */
             public agmHeaderInteractionStrategy?: (number|null);
+
+            /** ExternalAdReplyInfo containsCtwaFlowsAutoLabel. */
+            public containsCtwaFlowsAutoLabel?: (boolean|null);
 
             /**
              * Creates a new ExternalAdReplyInfo instance using the specified properties.
@@ -18824,6 +18945,9 @@ export namespace proto {
 
         /** Conversation identityVerification */
         identityVerification?: (proto.IIdentityVerificationState|null);
+
+        /** Conversation acp2Setting */
+        acp2Setting?: (proto.IACP2Setting|null);
     }
 
     /** Represents a Conversation. */
@@ -19023,6 +19147,9 @@ export namespace proto {
 
         /** Conversation identityVerification. */
         public identityVerification?: (proto.IIdentityVerificationState|null);
+
+        /** Conversation acp2Setting. */
+        public acp2Setting?: (proto.IACP2Setting|null);
 
         /**
          * Creates a new Conversation instance using the specified properties.
@@ -20762,7 +20889,9 @@ export namespace proto {
             VR = 22,
             CLOUD_API = 23,
             SMARTGLASSES = 24,
-            WAIL = 25
+            WAIL = 25,
+            WASS = 26,
+            BUSINESS_BACK_OFFICE = 27
         }
     }
 
@@ -27330,6 +27459,12 @@ export namespace proto {
 
         /** Message newsletterScheduledMessage */
         newsletterScheduledMessage?: (proto.Message.IFutureProofMessage|null);
+
+        /** Message acp2SettingMessage */
+        acp2SettingMessage?: (proto.Message.IFutureProofMessage|null);
+
+        /** Message audioStickerMessage */
+        audioStickerMessage?: (proto.Message.IFutureProofMessage|null);
     }
 
     /** Represents a Message. */
@@ -27673,6 +27808,12 @@ export namespace proto {
 
         /** Message newsletterScheduledMessage. */
         public newsletterScheduledMessage?: (proto.Message.IFutureProofMessage|null);
+
+        /** Message acp2SettingMessage. */
+        public acp2SettingMessage?: (proto.Message.IFutureProofMessage|null);
+
+        /** Message audioStickerMessage. */
+        public audioStickerMessage?: (proto.Message.IFutureProofMessage|null);
 
         /**
          * Creates a new Message instance using the specified properties.
@@ -30228,6 +30369,109 @@ export namespace proto {
             public static getTypeUrl(typeUrlPrefix?: string): string;
         }
 
+        /** Properties of a ChatAnimatedWallpaper. */
+        interface IChatAnimatedWallpaper {
+
+            /** ChatAnimatedWallpaper animatedWallpaperId */
+            animatedWallpaperId?: (string|null);
+
+            /** ChatAnimatedWallpaper dimLevel */
+            dimLevel?: (number|null);
+        }
+
+        /** Represents a ChatAnimatedWallpaper. */
+        class ChatAnimatedWallpaper implements IChatAnimatedWallpaper {
+
+            /**
+             * Constructs a new ChatAnimatedWallpaper.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: proto.Message.IChatAnimatedWallpaper);
+
+            /** ChatAnimatedWallpaper animatedWallpaperId. */
+            public animatedWallpaperId?: (string|null);
+
+            /** ChatAnimatedWallpaper dimLevel. */
+            public dimLevel?: (number|null);
+
+            /**
+             * Creates a new ChatAnimatedWallpaper instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns ChatAnimatedWallpaper instance
+             */
+            public static create(properties?: proto.Message.IChatAnimatedWallpaper): proto.Message.ChatAnimatedWallpaper;
+
+            /**
+             * Encodes the specified ChatAnimatedWallpaper message. Does not implicitly {@link proto.Message.ChatAnimatedWallpaper.verify|verify} messages.
+             * @param message ChatAnimatedWallpaper message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: proto.Message.IChatAnimatedWallpaper, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified ChatAnimatedWallpaper message, length delimited. Does not implicitly {@link proto.Message.ChatAnimatedWallpaper.verify|verify} messages.
+             * @param message ChatAnimatedWallpaper message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: proto.Message.IChatAnimatedWallpaper, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a ChatAnimatedWallpaper message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns ChatAnimatedWallpaper
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.Message.ChatAnimatedWallpaper;
+
+            /**
+             * Decodes a ChatAnimatedWallpaper message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns ChatAnimatedWallpaper
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.Message.ChatAnimatedWallpaper;
+
+            /**
+             * Verifies a ChatAnimatedWallpaper message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a ChatAnimatedWallpaper message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns ChatAnimatedWallpaper
+             */
+            public static fromObject(object: { [k: string]: any }): proto.Message.ChatAnimatedWallpaper;
+
+            /**
+             * Creates a plain object from a ChatAnimatedWallpaper message. Also converts values to other types if specified.
+             * @param message ChatAnimatedWallpaper
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: proto.Message.ChatAnimatedWallpaper, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this ChatAnimatedWallpaper to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for ChatAnimatedWallpaper
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
         /** Properties of a ChatCustomImageWallpaper. */
         interface IChatCustomImageWallpaper {
 
@@ -30681,6 +30925,9 @@ export namespace proto {
 
             /** ChatThemeSetting customImage */
             customImage?: (proto.Message.IChatCustomImageWallpaper|null);
+
+            /** ChatThemeSetting animatedWallpaper */
+            animatedWallpaper?: (proto.Message.IChatAnimatedWallpaper|null);
         }
 
         /** Represents a ChatThemeSetting. */
@@ -30713,8 +30960,11 @@ export namespace proto {
             /** ChatThemeSetting customImage. */
             public customImage?: (proto.Message.IChatCustomImageWallpaper|null);
 
+            /** ChatThemeSetting animatedWallpaper. */
+            public animatedWallpaper?: (proto.Message.IChatAnimatedWallpaper|null);
+
             /** ChatThemeSetting wallpaper. */
-            public wallpaper?: ("defaultWallpaper"|"solidColor"|"stockImage"|"customImage");
+            public wallpaper?: ("defaultWallpaper"|"solidColor"|"stockImage"|"customImage"|"animatedWallpaper");
 
             /**
              * Creates a new ChatThemeSetting instance using the specified properties.
@@ -45255,6 +45505,15 @@ export namespace proto {
 
             /** ProtocolMessage coexStateSync */
             coexStateSync?: (proto.ICoexStateSync|null);
+
+            /** ProtocolMessage acp2Setting */
+            acp2Setting?: (proto.IACP2Setting|null);
+
+            /** ProtocolMessage sharedDeviceContactHashKeyShare */
+            sharedDeviceContactHashKeyShare?: (proto.Message.ISharedDeviceContactHashKeyShare|null);
+
+            /** ProtocolMessage sharedDeviceContactHashKeyRequest */
+            sharedDeviceContactHashKeyRequest?: (proto.Message.ISharedDeviceContactHashKeyRequest|null);
         }
 
         /** Represents a ProtocolMessage. */
@@ -45355,6 +45614,15 @@ export namespace proto {
 
             /** ProtocolMessage coexStateSync. */
             public coexStateSync?: (proto.ICoexStateSync|null);
+
+            /** ProtocolMessage acp2Setting. */
+            public acp2Setting?: (proto.IACP2Setting|null);
+
+            /** ProtocolMessage sharedDeviceContactHashKeyShare. */
+            public sharedDeviceContactHashKeyShare?: (proto.Message.ISharedDeviceContactHashKeyShare|null);
+
+            /** ProtocolMessage sharedDeviceContactHashKeyRequest. */
+            public sharedDeviceContactHashKeyRequest?: (proto.Message.ISharedDeviceContactHashKeyRequest|null);
 
             /**
              * Creates a new ProtocolMessage instance using the specified properties.
@@ -45469,7 +45737,10 @@ export namespace proto {
                 CHAT_THEME_SETTING = 34,
                 AI_METADATA_OPERATION = 35,
                 MARK_AS_VERIFIED_ACTION = 36,
-                COEX_STATE_SYNC = 37
+                COEX_STATE_SYNC = 37,
+                ACP2_SETTING = 39,
+                SHARED_DEVICE_CONTACT_HASH_KEY_SHARE = 40,
+                SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST = 41
             }
         }
 
@@ -46725,6 +46996,319 @@ export namespace proto {
             public static getTypeUrl(typeUrlPrefix?: string): string;
         }
 
+        /** Properties of a SharedDeviceContactHashKey. */
+        interface ISharedDeviceContactHashKey {
+
+            /** SharedDeviceContactHashKey epoch */
+            epoch?: (number|null);
+
+            /** SharedDeviceContactHashKey kind */
+            kind?: (proto.Message.SharedDeviceContactHashKey.Kind|null);
+
+            /** SharedDeviceContactHashKey keyData */
+            keyData?: (Uint8Array|null);
+        }
+
+        /** Represents a SharedDeviceContactHashKey. */
+        class SharedDeviceContactHashKey implements ISharedDeviceContactHashKey {
+
+            /**
+             * Constructs a new SharedDeviceContactHashKey.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: proto.Message.ISharedDeviceContactHashKey);
+
+            /** SharedDeviceContactHashKey epoch. */
+            public epoch?: (number|null);
+
+            /** SharedDeviceContactHashKey kind. */
+            public kind?: (proto.Message.SharedDeviceContactHashKey.Kind|null);
+
+            /** SharedDeviceContactHashKey keyData. */
+            public keyData?: (Uint8Array|null);
+
+            /**
+             * Creates a new SharedDeviceContactHashKey instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns SharedDeviceContactHashKey instance
+             */
+            public static create(properties?: proto.Message.ISharedDeviceContactHashKey): proto.Message.SharedDeviceContactHashKey;
+
+            /**
+             * Encodes the specified SharedDeviceContactHashKey message. Does not implicitly {@link proto.Message.SharedDeviceContactHashKey.verify|verify} messages.
+             * @param message SharedDeviceContactHashKey message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: proto.Message.ISharedDeviceContactHashKey, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified SharedDeviceContactHashKey message, length delimited. Does not implicitly {@link proto.Message.SharedDeviceContactHashKey.verify|verify} messages.
+             * @param message SharedDeviceContactHashKey message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: proto.Message.ISharedDeviceContactHashKey, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a SharedDeviceContactHashKey message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns SharedDeviceContactHashKey
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.Message.SharedDeviceContactHashKey;
+
+            /**
+             * Decodes a SharedDeviceContactHashKey message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns SharedDeviceContactHashKey
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.Message.SharedDeviceContactHashKey;
+
+            /**
+             * Verifies a SharedDeviceContactHashKey message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a SharedDeviceContactHashKey message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns SharedDeviceContactHashKey
+             */
+            public static fromObject(object: { [k: string]: any }): proto.Message.SharedDeviceContactHashKey;
+
+            /**
+             * Creates a plain object from a SharedDeviceContactHashKey message. Also converts values to other types if specified.
+             * @param message SharedDeviceContactHashKey
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: proto.Message.SharedDeviceContactHashKey, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this SharedDeviceContactHashKey to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for SharedDeviceContactHashKey
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace SharedDeviceContactHashKey {
+
+            /** Kind enum. */
+            enum Kind {
+                UNKNOWN = 0,
+                LID = 1,
+                PHONE_NUMBER = 2
+            }
+        }
+
+        /** Properties of a SharedDeviceContactHashKeyRequest. */
+        interface ISharedDeviceContactHashKeyRequest {
+
+            /** SharedDeviceContactHashKeyRequest knownEpoch */
+            knownEpoch?: (number|null);
+        }
+
+        /** Represents a SharedDeviceContactHashKeyRequest. */
+        class SharedDeviceContactHashKeyRequest implements ISharedDeviceContactHashKeyRequest {
+
+            /**
+             * Constructs a new SharedDeviceContactHashKeyRequest.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: proto.Message.ISharedDeviceContactHashKeyRequest);
+
+            /** SharedDeviceContactHashKeyRequest knownEpoch. */
+            public knownEpoch?: (number|null);
+
+            /**
+             * Creates a new SharedDeviceContactHashKeyRequest instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns SharedDeviceContactHashKeyRequest instance
+             */
+            public static create(properties?: proto.Message.ISharedDeviceContactHashKeyRequest): proto.Message.SharedDeviceContactHashKeyRequest;
+
+            /**
+             * Encodes the specified SharedDeviceContactHashKeyRequest message. Does not implicitly {@link proto.Message.SharedDeviceContactHashKeyRequest.verify|verify} messages.
+             * @param message SharedDeviceContactHashKeyRequest message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: proto.Message.ISharedDeviceContactHashKeyRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified SharedDeviceContactHashKeyRequest message, length delimited. Does not implicitly {@link proto.Message.SharedDeviceContactHashKeyRequest.verify|verify} messages.
+             * @param message SharedDeviceContactHashKeyRequest message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: proto.Message.ISharedDeviceContactHashKeyRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a SharedDeviceContactHashKeyRequest message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns SharedDeviceContactHashKeyRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.Message.SharedDeviceContactHashKeyRequest;
+
+            /**
+             * Decodes a SharedDeviceContactHashKeyRequest message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns SharedDeviceContactHashKeyRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.Message.SharedDeviceContactHashKeyRequest;
+
+            /**
+             * Verifies a SharedDeviceContactHashKeyRequest message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a SharedDeviceContactHashKeyRequest message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns SharedDeviceContactHashKeyRequest
+             */
+            public static fromObject(object: { [k: string]: any }): proto.Message.SharedDeviceContactHashKeyRequest;
+
+            /**
+             * Creates a plain object from a SharedDeviceContactHashKeyRequest message. Also converts values to other types if specified.
+             * @param message SharedDeviceContactHashKeyRequest
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: proto.Message.SharedDeviceContactHashKeyRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this SharedDeviceContactHashKeyRequest to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for SharedDeviceContactHashKeyRequest
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** Properties of a SharedDeviceContactHashKeyShare. */
+        interface ISharedDeviceContactHashKeyShare {
+
+            /** SharedDeviceContactHashKeyShare keys */
+            keys?: (proto.Message.ISharedDeviceContactHashKey[]|null);
+        }
+
+        /** Represents a SharedDeviceContactHashKeyShare. */
+        class SharedDeviceContactHashKeyShare implements ISharedDeviceContactHashKeyShare {
+
+            /**
+             * Constructs a new SharedDeviceContactHashKeyShare.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: proto.Message.ISharedDeviceContactHashKeyShare);
+
+            /** SharedDeviceContactHashKeyShare keys. */
+            public keys: proto.Message.ISharedDeviceContactHashKey[];
+
+            /**
+             * Creates a new SharedDeviceContactHashKeyShare instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns SharedDeviceContactHashKeyShare instance
+             */
+            public static create(properties?: proto.Message.ISharedDeviceContactHashKeyShare): proto.Message.SharedDeviceContactHashKeyShare;
+
+            /**
+             * Encodes the specified SharedDeviceContactHashKeyShare message. Does not implicitly {@link proto.Message.SharedDeviceContactHashKeyShare.verify|verify} messages.
+             * @param message SharedDeviceContactHashKeyShare message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: proto.Message.ISharedDeviceContactHashKeyShare, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified SharedDeviceContactHashKeyShare message, length delimited. Does not implicitly {@link proto.Message.SharedDeviceContactHashKeyShare.verify|verify} messages.
+             * @param message SharedDeviceContactHashKeyShare message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: proto.Message.ISharedDeviceContactHashKeyShare, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a SharedDeviceContactHashKeyShare message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns SharedDeviceContactHashKeyShare
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.Message.SharedDeviceContactHashKeyShare;
+
+            /**
+             * Decodes a SharedDeviceContactHashKeyShare message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns SharedDeviceContactHashKeyShare
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.Message.SharedDeviceContactHashKeyShare;
+
+            /**
+             * Verifies a SharedDeviceContactHashKeyShare message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a SharedDeviceContactHashKeyShare message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns SharedDeviceContactHashKeyShare
+             */
+            public static fromObject(object: { [k: string]: any }): proto.Message.SharedDeviceContactHashKeyShare;
+
+            /**
+             * Creates a plain object from a SharedDeviceContactHashKeyShare message. Also converts values to other types if specified.
+             * @param message SharedDeviceContactHashKeyShare
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: proto.Message.SharedDeviceContactHashKeyShare, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this SharedDeviceContactHashKeyShare to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for SharedDeviceContactHashKeyShare
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
         /** Properties of a SplitPaymentMessage. */
         interface ISplitPaymentMessage {
 
@@ -47720,6 +48304,9 @@ export namespace proto {
 
             /** StickerMessage emojis */
             emojis?: (string|null);
+
+            /** StickerMessage audioMessage */
+            audioMessage?: (proto.Message.IAudioMessage|null);
         }
 
         /** Represents a StickerMessage. */
@@ -47796,6 +48383,12 @@ export namespace proto {
 
             /** StickerMessage emojis. */
             public emojis?: (string|null);
+
+            /** StickerMessage audioMessage. */
+            public audioMessage?: (proto.Message.IAudioMessage|null);
+
+            /** StickerMessage audio. */
+            public audio?: "audioMessage";
 
             /**
              * Creates a new StickerMessage instance using the specified properties.
@@ -49860,6 +50453,9 @@ export namespace proto {
 
         /** MessageContextInfo teeContextAnchorMessageId */
         teeContextAnchorMessageId?: (string|null);
+
+        /** MessageContextInfo acp2Setting */
+        acp2Setting?: (proto.IACP2Setting|null);
     }
 
     /** Represents a MessageContextInfo. */
@@ -49930,6 +50526,9 @@ export namespace proto {
 
         /** MessageContextInfo teeContextAnchorMessageId. */
         public teeContextAnchorMessageId?: (string|null);
+
+        /** MessageContextInfo acp2Setting. */
+        public acp2Setting?: (proto.IACP2Setting|null);
 
         /**
          * Creates a new MessageContextInfo instance using the specified properties.
@@ -50928,6 +51527,9 @@ export namespace proto {
 
             /** PollOption hash */
             hash?: (string|null);
+
+            /** PollOption addOptionMsgKey */
+            addOptionMsgKey?: (string|null);
         }
 
         /** Represents a PollOption. */
@@ -50944,6 +51546,9 @@ export namespace proto {
 
             /** PollOption hash. */
             public hash?: (string|null);
+
+            /** PollOption addOptionMsgKey. */
+            public addOptionMsgKey?: (string|null);
 
             /**
              * Creates a new PollOption instance using the specified properties.
@@ -60679,6 +61284,12 @@ export namespace proto {
 
             /** BusinessBroadcastCampaignAction status */
             status?: (proto.SyncActionValue.BusinessBroadcastCampaignStatus|null);
+
+            /** BusinessBroadcastCampaignAction bbProStatus */
+            bbProStatus?: (proto.SyncActionValue.BusinessBroadcastCampaignBBProStatus|null);
+
+            /** BusinessBroadcastCampaignAction customAudienceFbid */
+            customAudienceFbid?: (string|null);
         }
 
         /** Represents a BusinessBroadcastCampaignAction. */
@@ -60716,6 +61327,12 @@ export namespace proto {
 
             /** BusinessBroadcastCampaignAction status. */
             public status?: (proto.SyncActionValue.BusinessBroadcastCampaignStatus|null);
+
+            /** BusinessBroadcastCampaignAction bbProStatus. */
+            public bbProStatus?: (proto.SyncActionValue.BusinessBroadcastCampaignBBProStatus|null);
+
+            /** BusinessBroadcastCampaignAction customAudienceFbid. */
+            public customAudienceFbid?: (string|null);
 
             /**
              * Creates a new BusinessBroadcastCampaignAction instance using the specified properties.
@@ -60793,6 +61410,20 @@ export namespace proto {
              * @returns The default type url
              */
             public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** BusinessBroadcastCampaignBBProStatus enum. */
+        enum BusinessBroadcastCampaignBBProStatus {
+            BB_PRO_ACTIVE = 1,
+            BB_PRO_COMPLETED = 2,
+            BB_PRO_IN_DRAFT = 3,
+            BB_PRO_IN_REVIEW = 4,
+            BB_PRO_NOT_SENDING = 5,
+            BB_PRO_OFF = 6,
+            BB_PRO_REJECTED = 7,
+            BB_PRO_SCHEDULED = 8,
+            BB_PRO_SENDING_LIMITED = 9,
+            BB_PRO_PROCESSING = 10
         }
 
         /** BusinessBroadcastCampaignStatus enum. */
@@ -63695,7 +64326,8 @@ export namespace proto {
                 INVITES = 14,
                 THIRD_PARTY = 15,
                 LEAD = 16,
-                MENTIONS_AND_REPLIES = 17
+                MENTIONS_AND_REPLIES = 17,
+                REQUESTS = 18
             }
         }
 
@@ -73519,7 +74151,9 @@ export namespace proto {
             IDENTITY_TRUST_MARKED = 226,
             IDENTITY_TRUST_UNMARKED = 227,
             IDENTITY_TRUST_REVOKED = 228,
-            CTWA_CONSUMER_DISCLOSURE = 230
+            CTWA_CONSUMER_DISCLOSURE = 230,
+            CHANGE_ACP2_SETTING = 240,
+            EPHEMERAL_CHANGED_FOR_COEX = 248
         }
     }
 
