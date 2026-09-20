@@ -5870,7 +5870,8 @@ export namespace proto {
             AI_RICH_RESPONSE_EMAIL_CALENDAR_ENABLED = 68,
             AI_RICH_RESPONSE_REMINDERS_ENABLED = 69,
             AI_STOP_GENERATION_ENABLED = 70,
-            AI_RICH_RESPONSE_3P_LINKING_CARD_ENABLED = 71
+            AI_RICH_RESPONSE_3P_LINKING_CARD_ENABLED = 71,
+            HATCH_NOTIFICATION_METADATA_EVENT_ENABLED = 72
         }
     }
 
@@ -14135,6 +14136,9 @@ export namespace proto {
 
         /** ClientPayload testIsolationId */
         testIsolationId?: (Uint8Array|null);
+
+        /** ClientPayload messageSts */
+        messageSts?: (number|Long|null);
     }
 
     /** Represents a ClientPayload. */
@@ -14253,6 +14257,9 @@ export namespace proto {
 
         /** ClientPayload testIsolationId. */
         public testIsolationId?: (Uint8Array|null);
+
+        /** ClientPayload messageSts. */
+        public messageSts?: (number|Long|null);
 
         /**
          * Creates a new ClientPayload instance using the specified properties.
@@ -16380,6 +16387,9 @@ export namespace proto {
 
         /** ContextInfo experienceIds */
         experienceIds?: (number[]|null);
+
+        /** ContextInfo partnerDeepLinkToken */
+        partnerDeepLinkToken?: (string|null);
     }
 
     /** Represents a ContextInfo. */
@@ -16585,6 +16595,9 @@ export namespace proto {
 
         /** ContextInfo experienceIds. */
         public experienceIds: number[];
+
+        /** ContextInfo partnerDeepLinkToken. */
+        public partnerDeepLinkToken?: (string|null);
 
         /**
          * Creates a new ContextInfo instance using the specified properties.
@@ -17719,6 +17732,9 @@ export namespace proto {
 
             /** ExternalAdReplyInfo containsCtwaFlowsAutoLabel */
             containsCtwaFlowsAutoLabel?: (boolean|null);
+
+            /** ExternalAdReplyInfo productId */
+            productId?: (string|null);
         }
 
         /** Represents an ExternalAdReplyInfo. */
@@ -17828,6 +17844,9 @@ export namespace proto {
 
             /** ExternalAdReplyInfo containsCtwaFlowsAutoLabel. */
             public containsCtwaFlowsAutoLabel?: (boolean|null);
+
+            /** ExternalAdReplyInfo productId. */
+            public productId?: (string|null);
 
             /**
              * Creates a new ExternalAdReplyInfo instance using the specified properties.
@@ -38873,6 +38892,9 @@ export namespace proto {
 
             /** MessageHistoryMetadata oldestMessageTimestampInBundle */
             oldestMessageTimestampInBundle?: (number|Long|null);
+
+            /** MessageHistoryMetadata includesChatTheme */
+            includesChatTheme?: (boolean|null);
         }
 
         /** Represents a MessageHistoryMetadata. */
@@ -38898,6 +38920,9 @@ export namespace proto {
 
             /** MessageHistoryMetadata oldestMessageTimestampInBundle. */
             public oldestMessageTimestampInBundle?: (number|Long|null);
+
+            /** MessageHistoryMetadata includesChatTheme. */
+            public includesChatTheme?: (boolean|null);
 
             /**
              * Creates a new MessageHistoryMetadata instance using the specified properties.
@@ -49800,6 +49825,9 @@ export namespace proto {
 
             /** VideoMessage dashManifestUrl */
             dashManifestUrl?: (string|null);
+
+            /** VideoMessage smartThumbnailTs */
+            smartThumbnailTs?: (number|Long|null);
         }
 
         /** Represents a VideoMessage. */
@@ -49903,6 +49931,9 @@ export namespace proto {
 
             /** VideoMessage dashManifestUrl. */
             public dashManifestUrl?: (string|null);
+
+            /** VideoMessage smartThumbnailTs. */
+            public smartThumbnailTs?: (number|Long|null);
 
             /**
              * Creates a new VideoMessage instance using the specified properties.
@@ -52030,6 +52061,7 @@ export namespace proto {
         SHARED_DEVICE_ALLOWLIST_ACTION = 94,
         CONTACT_MANAGER_METADATA_ACTION = 95,
         BUSINESS_FOLDER_ACTIVATION_ACTION = 96,
+        GROUP_HISTORY_TOGGLE_ACTION = 97,
         SHARE_OWN_PN = 10001,
         BUSINESS_BROADCAST_ACTION = 10002,
         AI_THREAD_DELETE_ACTION = 10003
@@ -59770,6 +59802,9 @@ export namespace proto {
 
         /** SyncActionValue businessFolderActivationAction */
         businessFolderActivationAction?: (proto.SyncActionValue.IBusinessFolderActivationAction|null);
+
+        /** SyncActionValue groupHistoryToggleAction */
+        groupHistoryToggleAction?: (proto.SyncActionValue.IGroupHistoryToggleAction|null);
     }
 
     /** Represents a SyncActionValue. */
@@ -60041,6 +60076,9 @@ export namespace proto {
 
         /** SyncActionValue businessFolderActivationAction. */
         public businessFolderActivationAction?: (proto.SyncActionValue.IBusinessFolderActivationAction|null);
+
+        /** SyncActionValue groupHistoryToggleAction. */
+        public groupHistoryToggleAction?: (proto.SyncActionValue.IGroupHistoryToggleAction|null);
 
         /**
          * Creates a new SyncActionValue instance using the specified properties.
@@ -63849,6 +63887,113 @@ export namespace proto {
             }
         }
 
+        /** Properties of a GroupHistoryToggleAction. */
+        interface IGroupHistoryToggleAction {
+
+            /** GroupHistoryToggleAction groupHistoryToggleMode */
+            groupHistoryToggleMode?: (proto.SyncActionValue.GroupHistoryToggleAction.GroupHistoryToggleMode|null);
+        }
+
+        /** Represents a GroupHistoryToggleAction. */
+        class GroupHistoryToggleAction implements IGroupHistoryToggleAction {
+
+            /**
+             * Constructs a new GroupHistoryToggleAction.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: proto.SyncActionValue.IGroupHistoryToggleAction);
+
+            /** GroupHistoryToggleAction groupHistoryToggleMode. */
+            public groupHistoryToggleMode?: (proto.SyncActionValue.GroupHistoryToggleAction.GroupHistoryToggleMode|null);
+
+            /**
+             * Creates a new GroupHistoryToggleAction instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns GroupHistoryToggleAction instance
+             */
+            public static create(properties?: proto.SyncActionValue.IGroupHistoryToggleAction): proto.SyncActionValue.GroupHistoryToggleAction;
+
+            /**
+             * Encodes the specified GroupHistoryToggleAction message. Does not implicitly {@link proto.SyncActionValue.GroupHistoryToggleAction.verify|verify} messages.
+             * @param message GroupHistoryToggleAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: proto.SyncActionValue.IGroupHistoryToggleAction, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified GroupHistoryToggleAction message, length delimited. Does not implicitly {@link proto.SyncActionValue.GroupHistoryToggleAction.verify|verify} messages.
+             * @param message GroupHistoryToggleAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: proto.SyncActionValue.IGroupHistoryToggleAction, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a GroupHistoryToggleAction message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns GroupHistoryToggleAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.SyncActionValue.GroupHistoryToggleAction;
+
+            /**
+             * Decodes a GroupHistoryToggleAction message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns GroupHistoryToggleAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.SyncActionValue.GroupHistoryToggleAction;
+
+            /**
+             * Verifies a GroupHistoryToggleAction message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a GroupHistoryToggleAction message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns GroupHistoryToggleAction
+             */
+            public static fromObject(object: { [k: string]: any }): proto.SyncActionValue.GroupHistoryToggleAction;
+
+            /**
+             * Creates a plain object from a GroupHistoryToggleAction message. Also converts values to other types if specified.
+             * @param message GroupHistoryToggleAction
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: proto.SyncActionValue.GroupHistoryToggleAction, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this GroupHistoryToggleAction to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for GroupHistoryToggleAction
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace GroupHistoryToggleAction {
+
+            /** GroupHistoryToggleMode enum. */
+            enum GroupHistoryToggleMode {
+                GROUP_HISTORY_TOGGLE_MODE_UNKNOWN = 0,
+                GROUP_HISTORY_TOGGLE_MODE_ON = 1,
+                GROUP_HISTORY_TOGGLE_MODE_OFF = 2
+            }
+        }
+
         /** Properties of an InteractiveMessageAction. */
         interface IInteractiveMessageAction {
 
@@ -64327,7 +64472,8 @@ export namespace proto {
                 THIRD_PARTY = 15,
                 LEAD = 16,
                 MENTIONS_AND_REPLIES = 17,
-                REQUESTS = 18
+                REQUESTS = 18,
+                BUSINESS = 19
             }
         }
 
@@ -74153,7 +74299,14 @@ export namespace proto {
             IDENTITY_TRUST_REVOKED = 228,
             CTWA_CONSUMER_DISCLOSURE = 230,
             CHANGE_ACP2_SETTING = 240,
-            EPHEMERAL_CHANGED_FOR_COEX = 248
+            BIZ_CALLBACK_DISABLED = 244,
+            BIZ_CALLBACK_ENABLED = 247,
+            EPHEMERAL_CHANGED_FOR_COEX = 248,
+            UGC_BOT_PROFILE_UPDATED = 249,
+            ORDER_EPHEMERAL_EXEMPTION = 250,
+            CAMEO_CHAT_CREATED = 254,
+            CAMEO_TRANSITIONED = 256,
+            SENDER_SIDE_CONTACT_INFO = 255
         }
     }
 

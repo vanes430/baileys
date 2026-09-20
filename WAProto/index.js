@@ -17973,6 +17973,7 @@ $root.proto = (function() {
                     case 69:
                     case 70:
                     case 71:
+                    case 72:
                         break;
                     }
             }
@@ -18296,6 +18297,10 @@ $root.proto = (function() {
                     case 71:
                         message.capabilities[i] = 71;
                         break;
+                    case "HATCH_NOTIFICATION_METADATA_EVENT_ENABLED":
+                    case 72:
+                        message.capabilities[i] = 72;
+                        break;
                     }
             }
             return message;
@@ -18430,6 +18435,7 @@ $root.proto = (function() {
          * @property {number} AI_RICH_RESPONSE_REMINDERS_ENABLED=69 AI_RICH_RESPONSE_REMINDERS_ENABLED value
          * @property {number} AI_STOP_GENERATION_ENABLED=70 AI_STOP_GENERATION_ENABLED value
          * @property {number} AI_RICH_RESPONSE_3P_LINKING_CARD_ENABLED=71 AI_RICH_RESPONSE_3P_LINKING_CARD_ENABLED value
+         * @property {number} HATCH_NOTIFICATION_METADATA_EVENT_ENABLED=72 HATCH_NOTIFICATION_METADATA_EVENT_ENABLED value
          */
         BotCapabilityMetadata.BotCapabilityType = (function() {
             var valuesById = {}, values = Object.create(valuesById);
@@ -18505,6 +18511,7 @@ $root.proto = (function() {
             values[valuesById[69] = "AI_RICH_RESPONSE_REMINDERS_ENABLED"] = 69;
             values[valuesById[70] = "AI_STOP_GENERATION_ENABLED"] = 70;
             values[valuesById[71] = "AI_RICH_RESPONSE_3P_LINKING_CARD_ENABLED"] = 71;
+            values[valuesById[72] = "HATCH_NOTIFICATION_METADATA_EVENT_ENABLED"] = 72;
             return values;
         })();
 
@@ -45206,6 +45213,7 @@ $root.proto = (function() {
          * @property {number|null} [processingQueueSize] ClientPayload processingQueueSize
          * @property {Array.<string>|null} [pairedPeripherals] ClientPayload pairedPeripherals
          * @property {Uint8Array|null} [testIsolationId] ClientPayload testIsolationId
+         * @property {number|Long|null} [messageSts] ClientPayload messageSts
          */
 
         /**
@@ -45513,6 +45521,14 @@ $root.proto = (function() {
          */
         ClientPayload.prototype.testIsolationId = null;
 
+        /**
+         * ClientPayload messageSts.
+         * @member {number|Long|null|undefined} messageSts
+         * @memberof proto.ClientPayload
+         * @instance
+         */
+        ClientPayload.prototype.messageSts = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -45720,6 +45736,12 @@ $root.proto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(ClientPayload.prototype, "_messageSts", {
+            get: $util.oneOfGetter($oneOfFields = ["messageSts"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new ClientPayload instance using the specified properties.
          * @function create
@@ -45825,6 +45847,8 @@ $root.proto = (function() {
                     writer.uint32(/* id 47, wireType 2 =*/378).string(message.pairedPeripherals[i]);
             if (message.testIsolationId != null && Object.hasOwnProperty.call(message, "testIsolationId"))
                 writer.uint32(/* id 48, wireType 2 =*/386).bytes(message.testIsolationId);
+            if (message.messageSts != null && Object.hasOwnProperty.call(message, "messageSts"))
+                writer.uint32(/* id 49, wireType 0 =*/392).int64(message.messageSts);
             return writer;
         };
 
@@ -46032,6 +46056,10 @@ $root.proto = (function() {
                     }
                 case 48: {
                         message.testIsolationId = reader.bytes();
+                        break;
+                    }
+                case 49: {
+                        message.messageSts = reader.int64();
                         break;
                     }
                 default:
@@ -46329,6 +46357,11 @@ $root.proto = (function() {
                 properties._testIsolationId = 1;
                 if (!(message.testIsolationId && typeof message.testIsolationId.length === "number" || $util.isString(message.testIsolationId)))
                     return "testIsolationId: buffer expected";
+            }
+            if (message.messageSts != null && Object.hasOwnProperty.call(message, "messageSts")) {
+                properties._messageSts = 1;
+                if (!$util.isInteger(message.messageSts) && !(message.messageSts && $util.isInteger(message.messageSts.low) && $util.isInteger(message.messageSts.high)))
+                    return "messageSts: integer|Long expected";
             }
             return null;
         };
@@ -46649,6 +46682,15 @@ $root.proto = (function() {
                     $util.base64.decode(object.testIsolationId, message.testIsolationId = $util.newBuffer($util.base64.length(object.testIsolationId)), 0);
                 else if (object.testIsolationId.length >= 0)
                     message.testIsolationId = object.testIsolationId;
+            if (object.messageSts != null)
+                if ($util.Long)
+                    message.messageSts = $util.Long.fromValue(object.messageSts, false);
+                else if (typeof object.messageSts === "string")
+                    message.messageSts = parseInt(object.messageSts, 10);
+                else if (typeof object.messageSts === "number")
+                    message.messageSts = object.messageSts;
+                else if (typeof object.messageSts === "object")
+                    message.messageSts = new $util.LongBits(object.messageSts.low >>> 0, object.messageSts.high >>> 0).toNumber();
             return message;
         };
 
@@ -46862,6 +46904,16 @@ $root.proto = (function() {
                 object.testIsolationId = options.bytes === String ? $util.base64.encode(message.testIsolationId, 0, message.testIsolationId.length) : options.bytes === Array ? Array.prototype.slice.call(message.testIsolationId) : message.testIsolationId;
                 if (options.oneofs)
                     object._testIsolationId = "testIsolationId";
+            }
+            if (message.messageSts != null && Object.hasOwnProperty.call(message, "messageSts")) {
+                if (typeof BigInt !== "undefined" && options.longs === BigInt)
+                    object.messageSts = typeof message.messageSts === "number" ? BigInt(message.messageSts) : $util.Long.fromBits(message.messageSts.low >>> 0, message.messageSts.high >>> 0, false).toBigInt();
+                else if (typeof message.messageSts === "number")
+                    object.messageSts = options.longs === String ? String(message.messageSts) : message.messageSts;
+                else
+                    object.messageSts = options.longs === String ? $util.Long.prototype.toString.call(message.messageSts) : options.longs === Number ? new $util.LongBits(message.messageSts.low >>> 0, message.messageSts.high >>> 0).toNumber() : message.messageSts;
+                if (options.oneofs)
+                    object._messageSts = "messageSts";
             }
             return object;
         };
@@ -53351,6 +53403,7 @@ $root.proto = (function() {
          * @property {proto.ContextInfo.IInstagramThreadLink|null} [instagramThreadLink] ContextInfo instagramThreadLink
          * @property {proto.IAIProvenance|null} [aiProvenance] ContextInfo aiProvenance
          * @property {Array.<number>|null} [experienceIds] ContextInfo experienceIds
+         * @property {string|null} [partnerDeepLinkToken] ContextInfo partnerDeepLinkToken
          */
 
         /**
@@ -53892,6 +53945,14 @@ $root.proto = (function() {
          */
         ContextInfo.prototype.experienceIds = $util.emptyArray;
 
+        /**
+         * ContextInfo partnerDeepLinkToken.
+         * @member {string|null|undefined} partnerDeepLinkToken
+         * @memberof proto.ContextInfo
+         * @instance
+         */
+        ContextInfo.prototype.partnerDeepLinkToken = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -54261,6 +54322,12 @@ $root.proto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(ContextInfo.prototype, "_partnerDeepLinkToken", {
+            get: $util.oneOfGetter($oneOfFields = ["partnerDeepLinkToken"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new ContextInfo instance using the specified properties.
          * @function create
@@ -54426,6 +54493,8 @@ $root.proto = (function() {
                     writer.uint32(message.experienceIds[i]);
                 writer.ldelim();
             }
+            if (message.partnerDeepLinkToken != null && Object.hasOwnProperty.call(message, "partnerDeepLinkToken"))
+                writer.uint32(/* id 83, wireType 2 =*/666).string(message.partnerDeepLinkToken);
             return writer;
         };
 
@@ -54753,6 +54822,10 @@ $root.proto = (function() {
                             reader.len = end;
                         } else
                             message.experienceIds.push(reader.uint32());
+                        break;
+                    }
+                case 83: {
+                        message.partnerDeepLinkToken = reader.string();
                         break;
                     }
                 default:
@@ -55252,6 +55325,11 @@ $root.proto = (function() {
                     if (!$util.isInteger(message.experienceIds[i]))
                         return "experienceIds: integer[] expected";
             }
+            if (message.partnerDeepLinkToken != null && Object.hasOwnProperty.call(message, "partnerDeepLinkToken")) {
+                properties._partnerDeepLinkToken = 1;
+                if (!$util.isString(message.partnerDeepLinkToken))
+                    return "partnerDeepLinkToken: string expected";
+            }
             return null;
         };
 
@@ -55671,6 +55749,8 @@ $root.proto = (function() {
                 for (var i = 0; i < object.experienceIds.length; ++i)
                     message.experienceIds[i] = object.experienceIds[i] >>> 0;
             }
+            if (object.partnerDeepLinkToken != null)
+                message.partnerDeepLinkToken = String(object.partnerDeepLinkToken);
             return message;
         };
 
@@ -56026,6 +56106,11 @@ $root.proto = (function() {
                 object.experienceIds = [];
                 for (var j = 0; j < message.experienceIds.length; ++j)
                     object.experienceIds[j] = message.experienceIds[j];
+            }
+            if (message.partnerDeepLinkToken != null && Object.hasOwnProperty.call(message, "partnerDeepLinkToken")) {
+                object.partnerDeepLinkToken = message.partnerDeepLinkToken;
+                if (options.oneofs)
+                    object._partnerDeepLinkToken = "partnerDeepLinkToken";
             }
             return object;
         };
@@ -59120,6 +59205,7 @@ $root.proto = (function() {
              * @property {number|null} [agmSubtitleStrategy] ExternalAdReplyInfo agmSubtitleStrategy
              * @property {number|null} [agmHeaderInteractionStrategy] ExternalAdReplyInfo agmHeaderInteractionStrategy
              * @property {boolean|null} [containsCtwaFlowsAutoLabel] ExternalAdReplyInfo containsCtwaFlowsAutoLabel
+             * @property {string|null} [productId] ExternalAdReplyInfo productId
              */
 
             /**
@@ -59401,6 +59487,14 @@ $root.proto = (function() {
              */
             ExternalAdReplyInfo.prototype.containsCtwaFlowsAutoLabel = null;
 
+            /**
+             * ExternalAdReplyInfo productId.
+             * @member {string|null|undefined} productId
+             * @memberof proto.ContextInfo.ExternalAdReplyInfo
+             * @instance
+             */
+            ExternalAdReplyInfo.prototype.productId = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
@@ -59602,6 +59696,12 @@ $root.proto = (function() {
                 set: $util.oneOfSetter($oneOfFields)
             });
 
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(ExternalAdReplyInfo.prototype, "_productId", {
+                get: $util.oneOfGetter($oneOfFields = ["productId"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
             /**
              * Creates a new ExternalAdReplyInfo instance using the specified properties.
              * @function create
@@ -59696,6 +59796,8 @@ $root.proto = (function() {
                     writer.uint32(/* id 32, wireType 0 =*/256).int32(message.agmHeaderInteractionStrategy);
                 if (message.containsCtwaFlowsAutoLabel != null && Object.hasOwnProperty.call(message, "containsCtwaFlowsAutoLabel"))
                     writer.uint32(/* id 33, wireType 0 =*/264).bool(message.containsCtwaFlowsAutoLabel);
+                if (message.productId != null && Object.hasOwnProperty.call(message, "productId"))
+                    writer.uint32(/* id 34, wireType 2 =*/274).string(message.productId);
                 return writer;
             };
 
@@ -59876,6 +59978,10 @@ $root.proto = (function() {
                         }
                     case 33: {
                             message.containsCtwaFlowsAutoLabel = reader.bool();
+                            break;
+                        }
+                    case 34: {
+                            message.productId = reader.string();
                             break;
                         }
                     default:
@@ -60099,6 +60205,11 @@ $root.proto = (function() {
                     if (typeof message.containsCtwaFlowsAutoLabel !== "boolean")
                         return "containsCtwaFlowsAutoLabel: boolean expected";
                 }
+                if (message.productId != null && Object.hasOwnProperty.call(message, "productId")) {
+                    properties._productId = 1;
+                    if (!$util.isString(message.productId))
+                        return "productId: string expected";
+                }
                 return null;
             };
 
@@ -60221,6 +60332,8 @@ $root.proto = (function() {
                     message.agmHeaderInteractionStrategy = object.agmHeaderInteractionStrategy | 0;
                 if (object.containsCtwaFlowsAutoLabel != null)
                     message.containsCtwaFlowsAutoLabel = Boolean(object.containsCtwaFlowsAutoLabel);
+                if (object.productId != null)
+                    message.productId = String(object.productId);
                 return message;
             };
 
@@ -60405,6 +60518,11 @@ $root.proto = (function() {
                     object.containsCtwaFlowsAutoLabel = message.containsCtwaFlowsAutoLabel;
                     if (options.oneofs)
                         object._containsCtwaFlowsAutoLabel = "containsCtwaFlowsAutoLabel";
+                }
+                if (message.productId != null && Object.hasOwnProperty.call(message, "productId")) {
+                    object.productId = message.productId;
+                    if (options.oneofs)
+                        object._productId = "productId";
                 }
                 return object;
             };
@@ -132847,6 +132965,7 @@ $root.proto = (function() {
              * @property {number|Long|null} [messageCount] MessageHistoryMetadata messageCount
              * @property {Array.<string>|null} [nonHistoryReceivers] MessageHistoryMetadata nonHistoryReceivers
              * @property {number|Long|null} [oldestMessageTimestampInBundle] MessageHistoryMetadata oldestMessageTimestampInBundle
+             * @property {boolean|null} [includesChatTheme] MessageHistoryMetadata includesChatTheme
              */
 
             /**
@@ -132906,6 +133025,14 @@ $root.proto = (function() {
              */
             MessageHistoryMetadata.prototype.oldestMessageTimestampInBundle = null;
 
+            /**
+             * MessageHistoryMetadata includesChatTheme.
+             * @member {boolean|null|undefined} includesChatTheme
+             * @memberof proto.Message.MessageHistoryMetadata
+             * @instance
+             */
+            MessageHistoryMetadata.prototype.includesChatTheme = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
@@ -132924,6 +133051,12 @@ $root.proto = (function() {
             // Virtual OneOf for proto3 optional field
             Object.defineProperty(MessageHistoryMetadata.prototype, "_oldestMessageTimestampInBundle", {
                 get: $util.oneOfGetter($oneOfFields = ["oldestMessageTimestampInBundle"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(MessageHistoryMetadata.prototype, "_includesChatTheme", {
+                get: $util.oneOfGetter($oneOfFields = ["includesChatTheme"]),
                 set: $util.oneOfSetter($oneOfFields)
             });
 
@@ -132967,6 +133100,8 @@ $root.proto = (function() {
                         writer.uint32(/* id 4, wireType 2 =*/34).string(message.nonHistoryReceivers[i]);
                 if (message.oldestMessageTimestampInBundle != null && Object.hasOwnProperty.call(message, "oldestMessageTimestampInBundle"))
                     writer.uint32(/* id 5, wireType 0 =*/40).int64(message.oldestMessageTimestampInBundle);
+                if (message.includesChatTheme != null && Object.hasOwnProperty.call(message, "includesChatTheme"))
+                    writer.uint32(/* id 6, wireType 0 =*/48).bool(message.includesChatTheme);
                 return writer;
             };
 
@@ -133039,6 +133174,10 @@ $root.proto = (function() {
                         }
                     case 5: {
                             message.oldestMessageTimestampInBundle = reader.int64();
+                            break;
+                        }
+                    case 6: {
+                            message.includesChatTheme = reader.bool();
                             break;
                         }
                     default:
@@ -133115,6 +133254,11 @@ $root.proto = (function() {
                     if (!$util.isInteger(message.oldestMessageTimestampInBundle) && !(message.oldestMessageTimestampInBundle && $util.isInteger(message.oldestMessageTimestampInBundle.low) && $util.isInteger(message.oldestMessageTimestampInBundle.high)))
                         return "oldestMessageTimestampInBundle: integer|Long expected";
                 }
+                if (message.includesChatTheme != null && Object.hasOwnProperty.call(message, "includesChatTheme")) {
+                    properties._includesChatTheme = 1;
+                    if (typeof message.includesChatTheme !== "boolean")
+                        return "includesChatTheme: boolean expected";
+                }
                 return null;
             };
 
@@ -133177,6 +133321,8 @@ $root.proto = (function() {
                         message.oldestMessageTimestampInBundle = object.oldestMessageTimestampInBundle;
                     else if (typeof object.oldestMessageTimestampInBundle === "object")
                         message.oldestMessageTimestampInBundle = new $util.LongBits(object.oldestMessageTimestampInBundle.low >>> 0, object.oldestMessageTimestampInBundle.high >>> 0).toNumber();
+                if (object.includesChatTheme != null)
+                    message.includesChatTheme = Boolean(object.includesChatTheme);
                 return message;
             };
 
@@ -133240,6 +133386,11 @@ $root.proto = (function() {
                         object.oldestMessageTimestampInBundle = options.longs === String ? $util.Long.prototype.toString.call(message.oldestMessageTimestampInBundle) : options.longs === Number ? new $util.LongBits(message.oldestMessageTimestampInBundle.low >>> 0, message.oldestMessageTimestampInBundle.high >>> 0).toNumber() : message.oldestMessageTimestampInBundle;
                     if (options.oneofs)
                         object._oldestMessageTimestampInBundle = "oldestMessageTimestampInBundle";
+                }
+                if (message.includesChatTheme != null && Object.hasOwnProperty.call(message, "includesChatTheme")) {
+                    object.includesChatTheme = message.includesChatTheme;
+                    if (options.oneofs)
+                        object._includesChatTheme = "includesChatTheme";
                 }
                 return object;
             };
@@ -169246,6 +169397,7 @@ $root.proto = (function() {
              * @property {string|null} [metadataUrl] VideoMessage metadataUrl
              * @property {proto.Message.VideoMessage.VideoSourceType|null} [videoSourceType] VideoMessage videoSourceType
              * @property {string|null} [dashManifestUrl] VideoMessage dashManifestUrl
+             * @property {number|Long|null} [smartThumbnailTs] VideoMessage smartThumbnailTs
              */
 
             /**
@@ -169514,6 +169666,14 @@ $root.proto = (function() {
              */
             VideoMessage.prototype.dashManifestUrl = null;
 
+            /**
+             * VideoMessage smartThumbnailTs.
+             * @member {number|Long|null|undefined} smartThumbnailTs
+             * @memberof proto.Message.VideoMessage
+             * @instance
+             */
+            VideoMessage.prototype.smartThumbnailTs = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
@@ -169685,6 +169845,12 @@ $root.proto = (function() {
                 set: $util.oneOfSetter($oneOfFields)
             });
 
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(VideoMessage.prototype, "_smartThumbnailTs", {
+                get: $util.oneOfGetter($oneOfFields = ["smartThumbnailTs"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
             /**
              * Creates a new VideoMessage instance using the specified properties.
              * @function create
@@ -169778,6 +169944,8 @@ $root.proto = (function() {
                     writer.uint32(/* id 31, wireType 0 =*/248).int32(message.videoSourceType);
                 if (message.dashManifestUrl != null && Object.hasOwnProperty.call(message, "dashManifestUrl"))
                     writer.uint32(/* id 33, wireType 2 =*/266).string(message.dashManifestUrl);
+                if (message.smartThumbnailTs != null && Object.hasOwnProperty.call(message, "smartThumbnailTs"))
+                    writer.uint32(/* id 34, wireType 0 =*/272).int64(message.smartThumbnailTs);
                 return writer;
             };
 
@@ -169956,6 +170124,10 @@ $root.proto = (function() {
                         }
                     case 33: {
                             message.dashManifestUrl = reader.string();
+                            break;
+                        }
+                    case 34: {
+                            message.smartThumbnailTs = reader.int64();
                             break;
                         }
                     default:
@@ -170185,6 +170357,11 @@ $root.proto = (function() {
                     if (!$util.isString(message.dashManifestUrl))
                         return "dashManifestUrl: string expected";
                 }
+                if (message.smartThumbnailTs != null && Object.hasOwnProperty.call(message, "smartThumbnailTs")) {
+                    properties._smartThumbnailTs = 1;
+                    if (!$util.isInteger(message.smartThumbnailTs) && !(message.smartThumbnailTs && $util.isInteger(message.smartThumbnailTs.low) && $util.isInteger(message.smartThumbnailTs.high)))
+                        return "smartThumbnailTs: integer|Long expected";
+                }
                 return null;
             };
 
@@ -170373,6 +170550,15 @@ $root.proto = (function() {
                 }
                 if (object.dashManifestUrl != null)
                     message.dashManifestUrl = String(object.dashManifestUrl);
+                if (object.smartThumbnailTs != null)
+                    if ($util.Long)
+                        message.smartThumbnailTs = $util.Long.fromValue(object.smartThumbnailTs, false);
+                    else if (typeof object.smartThumbnailTs === "string")
+                        message.smartThumbnailTs = parseInt(object.smartThumbnailTs, 10);
+                    else if (typeof object.smartThumbnailTs === "number")
+                        message.smartThumbnailTs = object.smartThumbnailTs;
+                    else if (typeof object.smartThumbnailTs === "object")
+                        message.smartThumbnailTs = new $util.LongBits(object.smartThumbnailTs.low >>> 0, object.smartThumbnailTs.high >>> 0).toNumber();
                 return message;
             };
 
@@ -170567,6 +170753,16 @@ $root.proto = (function() {
                     object.dashManifestUrl = message.dashManifestUrl;
                     if (options.oneofs)
                         object._dashManifestUrl = "dashManifestUrl";
+                }
+                if (message.smartThumbnailTs != null && Object.hasOwnProperty.call(message, "smartThumbnailTs")) {
+                    if (typeof BigInt !== "undefined" && options.longs === BigInt)
+                        object.smartThumbnailTs = typeof message.smartThumbnailTs === "number" ? BigInt(message.smartThumbnailTs) : $util.Long.fromBits(message.smartThumbnailTs.low >>> 0, message.smartThumbnailTs.high >>> 0, false).toBigInt();
+                    else if (typeof message.smartThumbnailTs === "number")
+                        object.smartThumbnailTs = options.longs === String ? String(message.smartThumbnailTs) : message.smartThumbnailTs;
+                    else
+                        object.smartThumbnailTs = options.longs === String ? $util.Long.prototype.toString.call(message.smartThumbnailTs) : options.longs === Number ? new $util.LongBits(message.smartThumbnailTs.low >>> 0, message.smartThumbnailTs.high >>> 0).toNumber() : message.smartThumbnailTs;
+                    if (options.oneofs)
+                        object._smartThumbnailTs = "smartThumbnailTs";
                 }
                 return object;
             };
@@ -178112,6 +178308,7 @@ $root.proto = (function() {
      * @property {number} SHARED_DEVICE_ALLOWLIST_ACTION=94 SHARED_DEVICE_ALLOWLIST_ACTION value
      * @property {number} CONTACT_MANAGER_METADATA_ACTION=95 CONTACT_MANAGER_METADATA_ACTION value
      * @property {number} BUSINESS_FOLDER_ACTIVATION_ACTION=96 BUSINESS_FOLDER_ACTIVATION_ACTION value
+     * @property {number} GROUP_HISTORY_TOGGLE_ACTION=97 GROUP_HISTORY_TOGGLE_ACTION value
      * @property {number} SHARE_OWN_PN=10001 SHARE_OWN_PN value
      * @property {number} BUSINESS_BROADCAST_ACTION=10002 BUSINESS_BROADCAST_ACTION value
      * @property {number} AI_THREAD_DELETE_ACTION=10003 AI_THREAD_DELETE_ACTION value
@@ -178208,6 +178405,7 @@ $root.proto = (function() {
         values[valuesById[94] = "SHARED_DEVICE_ALLOWLIST_ACTION"] = 94;
         values[valuesById[95] = "CONTACT_MANAGER_METADATA_ACTION"] = 95;
         values[valuesById[96] = "BUSINESS_FOLDER_ACTIVATION_ACTION"] = 96;
+        values[valuesById[97] = "GROUP_HISTORY_TOGGLE_ACTION"] = 97;
         values[valuesById[10001] = "SHARE_OWN_PN"] = 10001;
         values[valuesById[10002] = "BUSINESS_BROADCAST_ACTION"] = 10002;
         values[valuesById[10003] = "AI_THREAD_DELETE_ACTION"] = 10003;
@@ -202363,6 +202561,7 @@ $root.proto = (function() {
          * @property {proto.SyncActionValue.ISharedDeviceAllowlistAction|null} [sharedDeviceAllowlistAction] SyncActionValue sharedDeviceAllowlistAction
          * @property {proto.SyncActionValue.IContactManagerMetadataAction|null} [contactManagerMetadataAction] SyncActionValue contactManagerMetadataAction
          * @property {proto.SyncActionValue.IBusinessFolderActivationAction|null} [businessFolderActivationAction] SyncActionValue businessFolderActivationAction
+         * @property {proto.SyncActionValue.IGroupHistoryToggleAction|null} [groupHistoryToggleAction] SyncActionValue groupHistoryToggleAction
          */
 
         /**
@@ -203076,6 +203275,14 @@ $root.proto = (function() {
          */
         SyncActionValue.prototype.businessFolderActivationAction = null;
 
+        /**
+         * SyncActionValue groupHistoryToggleAction.
+         * @member {proto.SyncActionValue.IGroupHistoryToggleAction|null|undefined} groupHistoryToggleAction
+         * @memberof proto.SyncActionValue
+         * @instance
+         */
+        SyncActionValue.prototype.groupHistoryToggleAction = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -203601,6 +203808,12 @@ $root.proto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(SyncActionValue.prototype, "_groupHistoryToggleAction", {
+            get: $util.oneOfGetter($oneOfFields = ["groupHistoryToggleAction"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new SyncActionValue instance using the specified properties.
          * @function create
@@ -203803,6 +204016,8 @@ $root.proto = (function() {
                 $root.proto.SyncActionValue.ContactManagerMetadataAction.encode(message.contactManagerMetadataAction, writer.uint32(/* id 95, wireType 2 =*/762).fork(), q + 1).ldelim();
             if (message.businessFolderActivationAction != null && Object.hasOwnProperty.call(message, "businessFolderActivationAction"))
                 $root.proto.SyncActionValue.BusinessFolderActivationAction.encode(message.businessFolderActivationAction, writer.uint32(/* id 96, wireType 2 =*/770).fork(), q + 1).ldelim();
+            if (message.groupHistoryToggleAction != null && Object.hasOwnProperty.call(message, "groupHistoryToggleAction"))
+                $root.proto.SyncActionValue.GroupHistoryToggleAction.encode(message.groupHistoryToggleAction, writer.uint32(/* id 97, wireType 2 =*/778).fork(), q + 1).ldelim();
             return writer;
         };
 
@@ -204199,6 +204414,10 @@ $root.proto = (function() {
                     }
                 case 96: {
                         message.businessFolderActivationAction = $root.proto.SyncActionValue.BusinessFolderActivationAction.decode(reader, reader.uint32(), undefined, long + 1);
+                        break;
+                    }
+                case 97: {
+                        message.groupHistoryToggleAction = $root.proto.SyncActionValue.GroupHistoryToggleAction.decode(reader, reader.uint32(), undefined, long + 1);
                         break;
                     }
                 default:
@@ -204939,6 +205158,14 @@ $root.proto = (function() {
                         return "businessFolderActivationAction." + error;
                 }
             }
+            if (message.groupHistoryToggleAction != null && Object.hasOwnProperty.call(message, "groupHistoryToggleAction")) {
+                properties._groupHistoryToggleAction = 1;
+                {
+                    var error = $root.proto.SyncActionValue.GroupHistoryToggleAction.verify(message.groupHistoryToggleAction, long + 1);
+                    if (error)
+                        return "groupHistoryToggleAction." + error;
+                }
+            }
             return null;
         };
 
@@ -205399,6 +205626,11 @@ $root.proto = (function() {
                     throw TypeError(".proto.SyncActionValue.businessFolderActivationAction: object expected");
                 message.businessFolderActivationAction = $root.proto.SyncActionValue.BusinessFolderActivationAction.fromObject(object.businessFolderActivationAction, long + 1);
             }
+            if (object.groupHistoryToggleAction != null) {
+                if (!$util.isObject(object.groupHistoryToggleAction))
+                    throw TypeError(".proto.SyncActionValue.groupHistoryToggleAction: object expected");
+                message.groupHistoryToggleAction = $root.proto.SyncActionValue.GroupHistoryToggleAction.fromObject(object.groupHistoryToggleAction, long + 1);
+            }
             return message;
         };
 
@@ -205858,6 +206090,11 @@ $root.proto = (function() {
                 object.businessFolderActivationAction = $root.proto.SyncActionValue.BusinessFolderActivationAction.toObject(message.businessFolderActivationAction, options, q + 1);
                 if (options.oneofs)
                     object._businessFolderActivationAction = "businessFolderActivationAction";
+            }
+            if (message.groupHistoryToggleAction != null && Object.hasOwnProperty.call(message, "groupHistoryToggleAction")) {
+                object.groupHistoryToggleAction = $root.proto.SyncActionValue.GroupHistoryToggleAction.toObject(message.groupHistoryToggleAction, options, q + 1);
+                if (options.oneofs)
+                    object._groupHistoryToggleAction = "groupHistoryToggleAction";
             }
             return object;
         };
@@ -216818,6 +217055,301 @@ $root.proto = (function() {
             return FavoritesAction;
         })();
 
+        SyncActionValue.GroupHistoryToggleAction = (function() {
+
+            /**
+             * Properties of a GroupHistoryToggleAction.
+             * @memberof proto.SyncActionValue
+             * @interface IGroupHistoryToggleAction
+             * @property {proto.SyncActionValue.GroupHistoryToggleAction.GroupHistoryToggleMode|null} [groupHistoryToggleMode] GroupHistoryToggleAction groupHistoryToggleMode
+             */
+
+            /**
+             * Constructs a new GroupHistoryToggleAction.
+             * @memberof proto.SyncActionValue
+             * @classdesc Represents a GroupHistoryToggleAction.
+             * @implements IGroupHistoryToggleAction
+             * @constructor
+             * @param {proto.SyncActionValue.IGroupHistoryToggleAction=} [properties] Properties to set
+             */
+            function GroupHistoryToggleAction(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * GroupHistoryToggleAction groupHistoryToggleMode.
+             * @member {proto.SyncActionValue.GroupHistoryToggleAction.GroupHistoryToggleMode|null|undefined} groupHistoryToggleMode
+             * @memberof proto.SyncActionValue.GroupHistoryToggleAction
+             * @instance
+             */
+            GroupHistoryToggleAction.prototype.groupHistoryToggleMode = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(GroupHistoryToggleAction.prototype, "_groupHistoryToggleMode", {
+                get: $util.oneOfGetter($oneOfFields = ["groupHistoryToggleMode"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new GroupHistoryToggleAction instance using the specified properties.
+             * @function create
+             * @memberof proto.SyncActionValue.GroupHistoryToggleAction
+             * @static
+             * @param {proto.SyncActionValue.IGroupHistoryToggleAction=} [properties] Properties to set
+             * @returns {proto.SyncActionValue.GroupHistoryToggleAction} GroupHistoryToggleAction instance
+             */
+            GroupHistoryToggleAction.create = function create(properties) {
+                return new GroupHistoryToggleAction(properties);
+            };
+
+            /**
+             * Encodes the specified GroupHistoryToggleAction message. Does not implicitly {@link proto.SyncActionValue.GroupHistoryToggleAction.verify|verify} messages.
+             * @function encode
+             * @memberof proto.SyncActionValue.GroupHistoryToggleAction
+             * @static
+             * @param {proto.SyncActionValue.IGroupHistoryToggleAction} message GroupHistoryToggleAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            GroupHistoryToggleAction.encode = function encode(message, writer, q) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                if (message.groupHistoryToggleMode != null && Object.hasOwnProperty.call(message, "groupHistoryToggleMode"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).int32(message.groupHistoryToggleMode);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified GroupHistoryToggleAction message, length delimited. Does not implicitly {@link proto.SyncActionValue.GroupHistoryToggleAction.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof proto.SyncActionValue.GroupHistoryToggleAction
+             * @static
+             * @param {proto.SyncActionValue.IGroupHistoryToggleAction} message GroupHistoryToggleAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            GroupHistoryToggleAction.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer && writer.len ? writer.fork() : writer).ldelim();
+            };
+
+            /**
+             * Decodes a GroupHistoryToggleAction message from the specified reader or buffer.
+             * @function decode
+             * @memberof proto.SyncActionValue.GroupHistoryToggleAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {proto.SyncActionValue.GroupHistoryToggleAction} GroupHistoryToggleAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            GroupHistoryToggleAction.decode = function decode(reader, length, error, long) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (long === undefined)
+                    long = 0;
+                if (long > $Reader.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var end, message;
+                if (length === undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = new $root.proto.SyncActionValue.GroupHistoryToggleAction();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.groupHistoryToggleMode = reader.int32();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7, long);
+                        break;
+                    }
+                }
+                if (length !== undefined) {
+                    if (reader.pos !== end)
+                        throw RangeError("index out of range");
+                    reader.len = length;
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a GroupHistoryToggleAction message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof proto.SyncActionValue.GroupHistoryToggleAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {proto.SyncActionValue.GroupHistoryToggleAction} GroupHistoryToggleAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            GroupHistoryToggleAction.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a GroupHistoryToggleAction message.
+             * @function verify
+             * @memberof proto.SyncActionValue.GroupHistoryToggleAction
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            GroupHistoryToggleAction.verify = function verify(message, long) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    return "maximum nesting depth exceeded";
+                var properties = {};
+                if (message.groupHistoryToggleMode != null && Object.hasOwnProperty.call(message, "groupHistoryToggleMode")) {
+                    properties._groupHistoryToggleMode = 1;
+                    switch (message.groupHistoryToggleMode) {
+                    default:
+                        return "groupHistoryToggleMode: enum value expected";
+                    case 0:
+                    case 1:
+                    case 2:
+                        break;
+                    }
+                }
+                return null;
+            };
+
+            /**
+             * Creates a GroupHistoryToggleAction message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof proto.SyncActionValue.GroupHistoryToggleAction
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {proto.SyncActionValue.GroupHistoryToggleAction} GroupHistoryToggleAction
+             */
+            GroupHistoryToggleAction.fromObject = function fromObject(object, long) {
+                if (object instanceof $root.proto.SyncActionValue.GroupHistoryToggleAction)
+                    return object;
+                if (!$util.isObject(object))
+                    throw TypeError(".proto.SyncActionValue.GroupHistoryToggleAction: object expected");
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var message = new $root.proto.SyncActionValue.GroupHistoryToggleAction();
+                switch (object.groupHistoryToggleMode) {
+                default:
+                    if (typeof object.groupHistoryToggleMode === "number") {
+                        message.groupHistoryToggleMode = object.groupHistoryToggleMode;
+                        break;
+                    }
+                    break;
+                case "GROUP_HISTORY_TOGGLE_MODE_UNKNOWN":
+                case 0:
+                    message.groupHistoryToggleMode = 0;
+                    break;
+                case "GROUP_HISTORY_TOGGLE_MODE_ON":
+                case 1:
+                    message.groupHistoryToggleMode = 1;
+                    break;
+                case "GROUP_HISTORY_TOGGLE_MODE_OFF":
+                case 2:
+                    message.groupHistoryToggleMode = 2;
+                    break;
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a GroupHistoryToggleAction message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof proto.SyncActionValue.GroupHistoryToggleAction
+             * @static
+             * @param {proto.SyncActionValue.GroupHistoryToggleAction} message GroupHistoryToggleAction
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            GroupHistoryToggleAction.toObject = function toObject(message, options, q) {
+                if (!options)
+                    options = {};
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                var object = {};
+                if (message.groupHistoryToggleMode != null && Object.hasOwnProperty.call(message, "groupHistoryToggleMode")) {
+                    object.groupHistoryToggleMode = options.enums === String ? $root.proto.SyncActionValue.GroupHistoryToggleAction.GroupHistoryToggleMode[message.groupHistoryToggleMode] === undefined ? message.groupHistoryToggleMode : $root.proto.SyncActionValue.GroupHistoryToggleAction.GroupHistoryToggleMode[message.groupHistoryToggleMode] : message.groupHistoryToggleMode;
+                    if (options.oneofs)
+                        object._groupHistoryToggleMode = "groupHistoryToggleMode";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this GroupHistoryToggleAction to JSON.
+             * @function toJSON
+             * @memberof proto.SyncActionValue.GroupHistoryToggleAction
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            GroupHistoryToggleAction.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for GroupHistoryToggleAction
+             * @function getTypeUrl
+             * @memberof proto.SyncActionValue.GroupHistoryToggleAction
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            GroupHistoryToggleAction.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/proto.SyncActionValue.GroupHistoryToggleAction";
+            };
+
+            /**
+             * GroupHistoryToggleMode enum.
+             * @name proto.SyncActionValue.GroupHistoryToggleAction.GroupHistoryToggleMode
+             * @enum {number}
+             * @property {number} GROUP_HISTORY_TOGGLE_MODE_UNKNOWN=0 GROUP_HISTORY_TOGGLE_MODE_UNKNOWN value
+             * @property {number} GROUP_HISTORY_TOGGLE_MODE_ON=1 GROUP_HISTORY_TOGGLE_MODE_ON value
+             * @property {number} GROUP_HISTORY_TOGGLE_MODE_OFF=2 GROUP_HISTORY_TOGGLE_MODE_OFF value
+             */
+            GroupHistoryToggleAction.GroupHistoryToggleMode = (function() {
+                var valuesById = {}, values = Object.create(valuesById);
+                values[valuesById[0] = "GROUP_HISTORY_TOGGLE_MODE_UNKNOWN"] = 0;
+                values[valuesById[1] = "GROUP_HISTORY_TOGGLE_MODE_ON"] = 1;
+                values[valuesById[2] = "GROUP_HISTORY_TOGGLE_MODE_OFF"] = 2;
+                return values;
+            })();
+
+            return GroupHistoryToggleAction;
+        })();
+
         SyncActionValue.InteractiveMessageAction = (function() {
 
             /**
@@ -218067,6 +218599,7 @@ $root.proto = (function() {
                     case 16:
                     case 17:
                     case 18:
+                    case 19:
                         break;
                     }
                 }
@@ -218195,6 +218728,10 @@ $root.proto = (function() {
                 case "REQUESTS":
                 case 18:
                     message.type = 18;
+                    break;
+                case "BUSINESS":
+                case 19:
+                    message.type = 19;
                     break;
                 }
                 if (object.isImmutable != null)
@@ -218330,6 +218867,7 @@ $root.proto = (function() {
              * @property {number} LEAD=16 LEAD value
              * @property {number} MENTIONS_AND_REPLIES=17 MENTIONS_AND_REPLIES value
              * @property {number} REQUESTS=18 REQUESTS value
+             * @property {number} BUSINESS=19 BUSINESS value
              */
             LabelEditAction.ListType = (function() {
                 var valuesById = {}, values = Object.create(valuesById);
@@ -218352,6 +218890,7 @@ $root.proto = (function() {
                 values[valuesById[16] = "LEAD"] = 16;
                 values[valuesById[17] = "MENTIONS_AND_REPLIES"] = 17;
                 values[valuesById[18] = "REQUESTS"] = 18;
+                values[valuesById[19] = "BUSINESS"] = 19;
                 return values;
             })();
 
@@ -249536,7 +250075,14 @@ $root.proto = (function() {
                 case 228:
                 case 230:
                 case 240:
+                case 244:
+                case 247:
                 case 248:
+                case 249:
+                case 250:
+                case 254:
+                case 256:
+                case 255:
                     break;
                 }
             }
@@ -250962,9 +251508,37 @@ $root.proto = (function() {
             case 240:
                 message.messageStubType = 240;
                 break;
+            case "BIZ_CALLBACK_DISABLED":
+            case 244:
+                message.messageStubType = 244;
+                break;
+            case "BIZ_CALLBACK_ENABLED":
+            case 247:
+                message.messageStubType = 247;
+                break;
             case "EPHEMERAL_CHANGED_FOR_COEX":
             case 248:
                 message.messageStubType = 248;
+                break;
+            case "UGC_BOT_PROFILE_UPDATED":
+            case 249:
+                message.messageStubType = 249;
+                break;
+            case "ORDER_EPHEMERAL_EXEMPTION":
+            case 250:
+                message.messageStubType = 250;
+                break;
+            case "CAMEO_CHAT_CREATED":
+            case 254:
+                message.messageStubType = 254;
+                break;
+            case "CAMEO_TRANSITIONED":
+            case 256:
+                message.messageStubType = 256;
+                break;
+            case "SENDER_SIDE_CONTACT_INFO":
+            case 255:
+                message.messageStubType = 255;
                 break;
             }
             if (object.clearMedia != null)
@@ -252000,7 +252574,14 @@ $root.proto = (function() {
          * @property {number} IDENTITY_TRUST_REVOKED=228 IDENTITY_TRUST_REVOKED value
          * @property {number} CTWA_CONSUMER_DISCLOSURE=230 CTWA_CONSUMER_DISCLOSURE value
          * @property {number} CHANGE_ACP2_SETTING=240 CHANGE_ACP2_SETTING value
+         * @property {number} BIZ_CALLBACK_DISABLED=244 BIZ_CALLBACK_DISABLED value
+         * @property {number} BIZ_CALLBACK_ENABLED=247 BIZ_CALLBACK_ENABLED value
          * @property {number} EPHEMERAL_CHANGED_FOR_COEX=248 EPHEMERAL_CHANGED_FOR_COEX value
+         * @property {number} UGC_BOT_PROFILE_UPDATED=249 UGC_BOT_PROFILE_UPDATED value
+         * @property {number} ORDER_EPHEMERAL_EXEMPTION=250 ORDER_EPHEMERAL_EXEMPTION value
+         * @property {number} CAMEO_CHAT_CREATED=254 CAMEO_CHAT_CREATED value
+         * @property {number} CAMEO_TRANSITIONED=256 CAMEO_TRANSITIONED value
+         * @property {number} SENDER_SIDE_CONTACT_INFO=255 SENDER_SIDE_CONTACT_INFO value
          */
         WebMessageInfo.StubType = (function() {
             var valuesById = {}, values = Object.create(valuesById);
@@ -252235,7 +252816,14 @@ $root.proto = (function() {
             values[valuesById[228] = "IDENTITY_TRUST_REVOKED"] = 228;
             values[valuesById[230] = "CTWA_CONSUMER_DISCLOSURE"] = 230;
             values[valuesById[240] = "CHANGE_ACP2_SETTING"] = 240;
+            values[valuesById[244] = "BIZ_CALLBACK_DISABLED"] = 244;
+            values[valuesById[247] = "BIZ_CALLBACK_ENABLED"] = 247;
             values[valuesById[248] = "EPHEMERAL_CHANGED_FOR_COEX"] = 248;
+            values[valuesById[249] = "UGC_BOT_PROFILE_UPDATED"] = 249;
+            values[valuesById[250] = "ORDER_EPHEMERAL_EXEMPTION"] = 250;
+            values[valuesById[254] = "CAMEO_CHAT_CREATED"] = 254;
+            values[valuesById[256] = "CAMEO_TRANSITIONED"] = 256;
+            values[valuesById[255] = "SENDER_SIDE_CONTACT_INFO"] = 255;
             return values;
         })();
 
