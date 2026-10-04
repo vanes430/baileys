@@ -41032,6 +41032,261 @@ $root.proto = (function() {
             return values;
         })();
 
+        CallLogRecord.GuestInfo = (function() {
+
+            /**
+             * Properties of a GuestInfo.
+             * @memberof proto.CallLogRecord
+             * @interface IGuestInfo
+             * @property {string|null} [pushName] GuestInfo pushName
+             */
+
+            /**
+             * Constructs a new GuestInfo.
+             * @memberof proto.CallLogRecord
+             * @classdesc Represents a GuestInfo.
+             * @implements IGuestInfo
+             * @constructor
+             * @param {proto.CallLogRecord.IGuestInfo=} [properties] Properties to set
+             */
+            function GuestInfo(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * GuestInfo pushName.
+             * @member {string|null|undefined} pushName
+             * @memberof proto.CallLogRecord.GuestInfo
+             * @instance
+             */
+            GuestInfo.prototype.pushName = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(GuestInfo.prototype, "_pushName", {
+                get: $util.oneOfGetter($oneOfFields = ["pushName"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new GuestInfo instance using the specified properties.
+             * @function create
+             * @memberof proto.CallLogRecord.GuestInfo
+             * @static
+             * @param {proto.CallLogRecord.IGuestInfo=} [properties] Properties to set
+             * @returns {proto.CallLogRecord.GuestInfo} GuestInfo instance
+             */
+            GuestInfo.create = function create(properties) {
+                return new GuestInfo(properties);
+            };
+
+            /**
+             * Encodes the specified GuestInfo message. Does not implicitly {@link proto.CallLogRecord.GuestInfo.verify|verify} messages.
+             * @function encode
+             * @memberof proto.CallLogRecord.GuestInfo
+             * @static
+             * @param {proto.CallLogRecord.IGuestInfo} message GuestInfo message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            GuestInfo.encode = function encode(message, writer, q) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                if (message.pushName != null && Object.hasOwnProperty.call(message, "pushName"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.pushName);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified GuestInfo message, length delimited. Does not implicitly {@link proto.CallLogRecord.GuestInfo.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof proto.CallLogRecord.GuestInfo
+             * @static
+             * @param {proto.CallLogRecord.IGuestInfo} message GuestInfo message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            GuestInfo.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer && writer.len ? writer.fork() : writer).ldelim();
+            };
+
+            /**
+             * Decodes a GuestInfo message from the specified reader or buffer.
+             * @function decode
+             * @memberof proto.CallLogRecord.GuestInfo
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {proto.CallLogRecord.GuestInfo} GuestInfo
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            GuestInfo.decode = function decode(reader, length, error, long) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (long === undefined)
+                    long = 0;
+                if (long > $Reader.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var end, message;
+                if (length === undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = new $root.proto.CallLogRecord.GuestInfo();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.pushName = reader.string();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7, long);
+                        break;
+                    }
+                }
+                if (length !== undefined) {
+                    if (reader.pos !== end)
+                        throw RangeError("index out of range");
+                    reader.len = length;
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a GuestInfo message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof proto.CallLogRecord.GuestInfo
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {proto.CallLogRecord.GuestInfo} GuestInfo
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            GuestInfo.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a GuestInfo message.
+             * @function verify
+             * @memberof proto.CallLogRecord.GuestInfo
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            GuestInfo.verify = function verify(message, long) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    return "maximum nesting depth exceeded";
+                var properties = {};
+                if (message.pushName != null && Object.hasOwnProperty.call(message, "pushName")) {
+                    properties._pushName = 1;
+                    if (!$util.isString(message.pushName))
+                        return "pushName: string expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a GuestInfo message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof proto.CallLogRecord.GuestInfo
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {proto.CallLogRecord.GuestInfo} GuestInfo
+             */
+            GuestInfo.fromObject = function fromObject(object, long) {
+                if (object instanceof $root.proto.CallLogRecord.GuestInfo)
+                    return object;
+                if (!$util.isObject(object))
+                    throw TypeError(".proto.CallLogRecord.GuestInfo: object expected");
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var message = new $root.proto.CallLogRecord.GuestInfo();
+                if (object.pushName != null)
+                    message.pushName = String(object.pushName);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a GuestInfo message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof proto.CallLogRecord.GuestInfo
+             * @static
+             * @param {proto.CallLogRecord.GuestInfo} message GuestInfo
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            GuestInfo.toObject = function toObject(message, options, q) {
+                if (!options)
+                    options = {};
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                var object = {};
+                if (message.pushName != null && Object.hasOwnProperty.call(message, "pushName")) {
+                    object.pushName = message.pushName;
+                    if (options.oneofs)
+                        object._pushName = "pushName";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this GuestInfo to JSON.
+             * @function toJSON
+             * @memberof proto.CallLogRecord.GuestInfo
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            GuestInfo.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for GuestInfo
+             * @function getTypeUrl
+             * @memberof proto.CallLogRecord.GuestInfo
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            GuestInfo.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/proto.CallLogRecord.GuestInfo";
+            };
+
+            return GuestInfo;
+        })();
+
         CallLogRecord.ParticipantInfo = (function() {
 
             /**
@@ -41040,6 +41295,7 @@ $root.proto = (function() {
              * @interface IParticipantInfo
              * @property {string|null} [userJid] ParticipantInfo userJid
              * @property {proto.CallLogRecord.CallResult|null} [callResult] ParticipantInfo callResult
+             * @property {proto.CallLogRecord.IGuestInfo|null} [guestInfo] ParticipantInfo guestInfo
              */
 
             /**
@@ -41073,6 +41329,14 @@ $root.proto = (function() {
              */
             ParticipantInfo.prototype.callResult = null;
 
+            /**
+             * ParticipantInfo guestInfo.
+             * @member {proto.CallLogRecord.IGuestInfo|null|undefined} guestInfo
+             * @memberof proto.CallLogRecord.ParticipantInfo
+             * @instance
+             */
+            ParticipantInfo.prototype.guestInfo = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
@@ -41085,6 +41349,12 @@ $root.proto = (function() {
             // Virtual OneOf for proto3 optional field
             Object.defineProperty(ParticipantInfo.prototype, "_callResult", {
                 get: $util.oneOfGetter($oneOfFields = ["callResult"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(ParticipantInfo.prototype, "_guestInfo", {
+                get: $util.oneOfGetter($oneOfFields = ["guestInfo"]),
                 set: $util.oneOfSetter($oneOfFields)
             });
 
@@ -41120,6 +41390,8 @@ $root.proto = (function() {
                     writer.uint32(/* id 1, wireType 2 =*/10).string(message.userJid);
                 if (message.callResult != null && Object.hasOwnProperty.call(message, "callResult"))
                     writer.uint32(/* id 2, wireType 0 =*/16).int32(message.callResult);
+                if (message.guestInfo != null && Object.hasOwnProperty.call(message, "guestInfo"))
+                    $root.proto.CallLogRecord.GuestInfo.encode(message.guestInfo, writer.uint32(/* id 3, wireType 2 =*/26).fork(), q + 1).ldelim();
                 return writer;
             };
 
@@ -41176,6 +41448,10 @@ $root.proto = (function() {
                         }
                     case 2: {
                             message.callResult = reader.int32();
+                            break;
+                        }
+                    case 3: {
+                            message.guestInfo = $root.proto.CallLogRecord.GuestInfo.decode(reader, reader.uint32(), undefined, long + 1);
                             break;
                         }
                     default:
@@ -41245,6 +41521,14 @@ $root.proto = (function() {
                     case 9:
                     case 10:
                         break;
+                    }
+                }
+                if (message.guestInfo != null && Object.hasOwnProperty.call(message, "guestInfo")) {
+                    properties._guestInfo = 1;
+                    {
+                        var error = $root.proto.CallLogRecord.GuestInfo.verify(message.guestInfo, long + 1);
+                        if (error)
+                            return "guestInfo." + error;
                     }
                 }
                 return null;
@@ -41322,6 +41606,11 @@ $root.proto = (function() {
                     message.callResult = 10;
                     break;
                 }
+                if (object.guestInfo != null) {
+                    if (!$util.isObject(object.guestInfo))
+                        throw TypeError(".proto.CallLogRecord.ParticipantInfo.guestInfo: object expected");
+                    message.guestInfo = $root.proto.CallLogRecord.GuestInfo.fromObject(object.guestInfo, long + 1);
+                }
                 return message;
             };
 
@@ -41351,6 +41640,11 @@ $root.proto = (function() {
                     object.callResult = options.enums === String ? $root.proto.CallLogRecord.CallResult[message.callResult] === undefined ? message.callResult : $root.proto.CallLogRecord.CallResult[message.callResult] : message.callResult;
                     if (options.oneofs)
                         object._callResult = "callResult";
+                }
+                if (message.guestInfo != null && Object.hasOwnProperty.call(message, "guestInfo")) {
+                    object.guestInfo = $root.proto.CallLogRecord.GuestInfo.toObject(message.guestInfo, options, q + 1);
+                    if (options.oneofs)
+                        object._guestInfo = "guestInfo";
                 }
                 return object;
             };
@@ -91800,6 +92094,7 @@ $root.proto = (function() {
          * @property {proto.Message.IFutureProofMessage|null} [newsletterScheduledMessage] Message newsletterScheduledMessage
          * @property {proto.Message.IFutureProofMessage|null} [acp2SettingMessage] Message acp2SettingMessage
          * @property {proto.Message.IFutureProofMessage|null} [audioStickerMessage] Message audioStickerMessage
+         * @property {proto.Message.IFutureProofMessage|null} [botGroupParticipantMessage] Message botGroupParticipantMessage
          */
 
         /**
@@ -92721,6 +93016,14 @@ $root.proto = (function() {
          */
         Message.prototype.audioStickerMessage = null;
 
+        /**
+         * Message botGroupParticipantMessage.
+         * @member {proto.Message.IFutureProofMessage|null|undefined} botGroupParticipantMessage
+         * @memberof proto.Message
+         * @instance
+         */
+        Message.prototype.botGroupParticipantMessage = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -93402,6 +93705,12 @@ $root.proto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(Message.prototype, "_botGroupParticipantMessage", {
+            get: $util.oneOfGetter($oneOfFields = ["botGroupParticipantMessage"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new Message instance using the specified properties.
          * @function create
@@ -93656,6 +93965,8 @@ $root.proto = (function() {
                 $root.proto.Message.FutureProofMessage.encode(message.acp2SettingMessage, writer.uint32(/* id 133, wireType 2 =*/1066).fork(), q + 1).ldelim();
             if (message.audioStickerMessage != null && Object.hasOwnProperty.call(message, "audioStickerMessage"))
                 $root.proto.Message.FutureProofMessage.encode(message.audioStickerMessage, writer.uint32(/* id 134, wireType 2 =*/1074).fork(), q + 1).ldelim();
+            if (message.botGroupParticipantMessage != null && Object.hasOwnProperty.call(message, "botGroupParticipantMessage"))
+                $root.proto.Message.FutureProofMessage.encode(message.botGroupParticipantMessage, writer.uint32(/* id 137, wireType 2 =*/1098).fork(), q + 1).ldelim();
             return writer;
         };
 
@@ -94156,6 +94467,10 @@ $root.proto = (function() {
                     }
                 case 134: {
                         message.audioStickerMessage = $root.proto.Message.FutureProofMessage.decode(reader, reader.uint32(), undefined, long + 1);
+                        break;
+                    }
+                case 137: {
+                        message.botGroupParticipantMessage = $root.proto.Message.FutureProofMessage.decode(reader, reader.uint32(), undefined, long + 1);
                         break;
                     }
                 default:
@@ -95104,6 +95419,14 @@ $root.proto = (function() {
                         return "audioStickerMessage." + error;
                 }
             }
+            if (message.botGroupParticipantMessage != null && Object.hasOwnProperty.call(message, "botGroupParticipantMessage")) {
+                properties._botGroupParticipantMessage = 1;
+                {
+                    var error = $root.proto.Message.FutureProofMessage.verify(message.botGroupParticipantMessage, long + 1);
+                    if (error)
+                        return "botGroupParticipantMessage." + error;
+                }
+            }
             return null;
         };
 
@@ -95686,6 +96009,11 @@ $root.proto = (function() {
                 if (!$util.isObject(object.audioStickerMessage))
                     throw TypeError(".proto.Message.audioStickerMessage: object expected");
                 message.audioStickerMessage = $root.proto.Message.FutureProofMessage.fromObject(object.audioStickerMessage, long + 1);
+            }
+            if (object.botGroupParticipantMessage != null) {
+                if (!$util.isObject(object.botGroupParticipantMessage))
+                    throw TypeError(".proto.Message.botGroupParticipantMessage: object expected");
+                message.botGroupParticipantMessage = $root.proto.Message.FutureProofMessage.fromObject(object.botGroupParticipantMessage, long + 1);
             }
             return message;
         };
@@ -96271,6 +96599,11 @@ $root.proto = (function() {
                 object.audioStickerMessage = $root.proto.Message.FutureProofMessage.toObject(message.audioStickerMessage, options, q + 1);
                 if (options.oneofs)
                     object._audioStickerMessage = "audioStickerMessage";
+            }
+            if (message.botGroupParticipantMessage != null && Object.hasOwnProperty.call(message, "botGroupParticipantMessage")) {
+                object.botGroupParticipantMessage = $root.proto.Message.FutureProofMessage.toObject(message.botGroupParticipantMessage, options, q + 1);
+                if (options.oneofs)
+                    object._botGroupParticipantMessage = "botGroupParticipantMessage";
             }
             return object;
         };
@@ -178309,6 +178642,7 @@ $root.proto = (function() {
      * @property {number} CONTACT_MANAGER_METADATA_ACTION=95 CONTACT_MANAGER_METADATA_ACTION value
      * @property {number} BUSINESS_FOLDER_ACTIVATION_ACTION=96 BUSINESS_FOLDER_ACTIVATION_ACTION value
      * @property {number} GROUP_HISTORY_TOGGLE_ACTION=97 GROUP_HISTORY_TOGGLE_ACTION value
+     * @property {number} BB_PRO_PENDING_CUSTOMER_BASE_ACTION=98 BB_PRO_PENDING_CUSTOMER_BASE_ACTION value
      * @property {number} SHARE_OWN_PN=10001 SHARE_OWN_PN value
      * @property {number} BUSINESS_BROADCAST_ACTION=10002 BUSINESS_BROADCAST_ACTION value
      * @property {number} AI_THREAD_DELETE_ACTION=10003 AI_THREAD_DELETE_ACTION value
@@ -178406,6 +178740,7 @@ $root.proto = (function() {
         values[valuesById[95] = "CONTACT_MANAGER_METADATA_ACTION"] = 95;
         values[valuesById[96] = "BUSINESS_FOLDER_ACTIVATION_ACTION"] = 96;
         values[valuesById[97] = "GROUP_HISTORY_TOGGLE_ACTION"] = 97;
+        values[valuesById[98] = "BB_PRO_PENDING_CUSTOMER_BASE_ACTION"] = 98;
         values[valuesById[10001] = "SHARE_OWN_PN"] = 10001;
         values[valuesById[10002] = "BUSINESS_BROADCAST_ACTION"] = 10002;
         values[valuesById[10003] = "AI_THREAD_DELETE_ACTION"] = 10003;
@@ -202562,6 +202897,7 @@ $root.proto = (function() {
          * @property {proto.SyncActionValue.IContactManagerMetadataAction|null} [contactManagerMetadataAction] SyncActionValue contactManagerMetadataAction
          * @property {proto.SyncActionValue.IBusinessFolderActivationAction|null} [businessFolderActivationAction] SyncActionValue businessFolderActivationAction
          * @property {proto.SyncActionValue.IGroupHistoryToggleAction|null} [groupHistoryToggleAction] SyncActionValue groupHistoryToggleAction
+         * @property {proto.SyncActionValue.IBBProPendingCustomerBaseAction|null} [bbProPendingCustomerBaseAction] SyncActionValue bbProPendingCustomerBaseAction
          */
 
         /**
@@ -203283,6 +203619,14 @@ $root.proto = (function() {
          */
         SyncActionValue.prototype.groupHistoryToggleAction = null;
 
+        /**
+         * SyncActionValue bbProPendingCustomerBaseAction.
+         * @member {proto.SyncActionValue.IBBProPendingCustomerBaseAction|null|undefined} bbProPendingCustomerBaseAction
+         * @memberof proto.SyncActionValue
+         * @instance
+         */
+        SyncActionValue.prototype.bbProPendingCustomerBaseAction = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -203814,6 +204158,12 @@ $root.proto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(SyncActionValue.prototype, "_bbProPendingCustomerBaseAction", {
+            get: $util.oneOfGetter($oneOfFields = ["bbProPendingCustomerBaseAction"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new SyncActionValue instance using the specified properties.
          * @function create
@@ -204018,6 +204368,8 @@ $root.proto = (function() {
                 $root.proto.SyncActionValue.BusinessFolderActivationAction.encode(message.businessFolderActivationAction, writer.uint32(/* id 96, wireType 2 =*/770).fork(), q + 1).ldelim();
             if (message.groupHistoryToggleAction != null && Object.hasOwnProperty.call(message, "groupHistoryToggleAction"))
                 $root.proto.SyncActionValue.GroupHistoryToggleAction.encode(message.groupHistoryToggleAction, writer.uint32(/* id 97, wireType 2 =*/778).fork(), q + 1).ldelim();
+            if (message.bbProPendingCustomerBaseAction != null && Object.hasOwnProperty.call(message, "bbProPendingCustomerBaseAction"))
+                $root.proto.SyncActionValue.BBProPendingCustomerBaseAction.encode(message.bbProPendingCustomerBaseAction, writer.uint32(/* id 98, wireType 2 =*/786).fork(), q + 1).ldelim();
             return writer;
         };
 
@@ -204418,6 +204770,10 @@ $root.proto = (function() {
                     }
                 case 97: {
                         message.groupHistoryToggleAction = $root.proto.SyncActionValue.GroupHistoryToggleAction.decode(reader, reader.uint32(), undefined, long + 1);
+                        break;
+                    }
+                case 98: {
+                        message.bbProPendingCustomerBaseAction = $root.proto.SyncActionValue.BBProPendingCustomerBaseAction.decode(reader, reader.uint32(), undefined, long + 1);
                         break;
                     }
                 default:
@@ -205166,6 +205522,14 @@ $root.proto = (function() {
                         return "groupHistoryToggleAction." + error;
                 }
             }
+            if (message.bbProPendingCustomerBaseAction != null && Object.hasOwnProperty.call(message, "bbProPendingCustomerBaseAction")) {
+                properties._bbProPendingCustomerBaseAction = 1;
+                {
+                    var error = $root.proto.SyncActionValue.BBProPendingCustomerBaseAction.verify(message.bbProPendingCustomerBaseAction, long + 1);
+                    if (error)
+                        return "bbProPendingCustomerBaseAction." + error;
+                }
+            }
             return null;
         };
 
@@ -205631,6 +205995,11 @@ $root.proto = (function() {
                     throw TypeError(".proto.SyncActionValue.groupHistoryToggleAction: object expected");
                 message.groupHistoryToggleAction = $root.proto.SyncActionValue.GroupHistoryToggleAction.fromObject(object.groupHistoryToggleAction, long + 1);
             }
+            if (object.bbProPendingCustomerBaseAction != null) {
+                if (!$util.isObject(object.bbProPendingCustomerBaseAction))
+                    throw TypeError(".proto.SyncActionValue.bbProPendingCustomerBaseAction: object expected");
+                message.bbProPendingCustomerBaseAction = $root.proto.SyncActionValue.BBProPendingCustomerBaseAction.fromObject(object.bbProPendingCustomerBaseAction, long + 1);
+            }
             return message;
         };
 
@@ -206095,6 +206464,11 @@ $root.proto = (function() {
                 object.groupHistoryToggleAction = $root.proto.SyncActionValue.GroupHistoryToggleAction.toObject(message.groupHistoryToggleAction, options, q + 1);
                 if (options.oneofs)
                     object._groupHistoryToggleAction = "groupHistoryToggleAction";
+            }
+            if (message.bbProPendingCustomerBaseAction != null && Object.hasOwnProperty.call(message, "bbProPendingCustomerBaseAction")) {
+                object.bbProPendingCustomerBaseAction = $root.proto.SyncActionValue.BBProPendingCustomerBaseAction.toObject(message.bbProPendingCustomerBaseAction, options, q + 1);
+                if (options.oneofs)
+                    object._bbProPendingCustomerBaseAction = "bbProPendingCustomerBaseAction";
             }
             return object;
         };
@@ -207843,6 +208217,261 @@ $root.proto = (function() {
             })();
 
             return AvatarUpdatedAction;
+        })();
+
+        SyncActionValue.BBProPendingCustomerBaseAction = (function() {
+
+            /**
+             * Properties of a BBProPendingCustomerBaseAction.
+             * @memberof proto.SyncActionValue
+             * @interface IBBProPendingCustomerBaseAction
+             * @property {boolean|null} [pending] BBProPendingCustomerBaseAction pending
+             */
+
+            /**
+             * Constructs a new BBProPendingCustomerBaseAction.
+             * @memberof proto.SyncActionValue
+             * @classdesc Represents a BBProPendingCustomerBaseAction.
+             * @implements IBBProPendingCustomerBaseAction
+             * @constructor
+             * @param {proto.SyncActionValue.IBBProPendingCustomerBaseAction=} [properties] Properties to set
+             */
+            function BBProPendingCustomerBaseAction(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * BBProPendingCustomerBaseAction pending.
+             * @member {boolean|null|undefined} pending
+             * @memberof proto.SyncActionValue.BBProPendingCustomerBaseAction
+             * @instance
+             */
+            BBProPendingCustomerBaseAction.prototype.pending = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(BBProPendingCustomerBaseAction.prototype, "_pending", {
+                get: $util.oneOfGetter($oneOfFields = ["pending"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new BBProPendingCustomerBaseAction instance using the specified properties.
+             * @function create
+             * @memberof proto.SyncActionValue.BBProPendingCustomerBaseAction
+             * @static
+             * @param {proto.SyncActionValue.IBBProPendingCustomerBaseAction=} [properties] Properties to set
+             * @returns {proto.SyncActionValue.BBProPendingCustomerBaseAction} BBProPendingCustomerBaseAction instance
+             */
+            BBProPendingCustomerBaseAction.create = function create(properties) {
+                return new BBProPendingCustomerBaseAction(properties);
+            };
+
+            /**
+             * Encodes the specified BBProPendingCustomerBaseAction message. Does not implicitly {@link proto.SyncActionValue.BBProPendingCustomerBaseAction.verify|verify} messages.
+             * @function encode
+             * @memberof proto.SyncActionValue.BBProPendingCustomerBaseAction
+             * @static
+             * @param {proto.SyncActionValue.IBBProPendingCustomerBaseAction} message BBProPendingCustomerBaseAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            BBProPendingCustomerBaseAction.encode = function encode(message, writer, q) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                if (message.pending != null && Object.hasOwnProperty.call(message, "pending"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).bool(message.pending);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified BBProPendingCustomerBaseAction message, length delimited. Does not implicitly {@link proto.SyncActionValue.BBProPendingCustomerBaseAction.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof proto.SyncActionValue.BBProPendingCustomerBaseAction
+             * @static
+             * @param {proto.SyncActionValue.IBBProPendingCustomerBaseAction} message BBProPendingCustomerBaseAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            BBProPendingCustomerBaseAction.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer && writer.len ? writer.fork() : writer).ldelim();
+            };
+
+            /**
+             * Decodes a BBProPendingCustomerBaseAction message from the specified reader or buffer.
+             * @function decode
+             * @memberof proto.SyncActionValue.BBProPendingCustomerBaseAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {proto.SyncActionValue.BBProPendingCustomerBaseAction} BBProPendingCustomerBaseAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            BBProPendingCustomerBaseAction.decode = function decode(reader, length, error, long) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (long === undefined)
+                    long = 0;
+                if (long > $Reader.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var end, message;
+                if (length === undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = new $root.proto.SyncActionValue.BBProPendingCustomerBaseAction();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.pending = reader.bool();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7, long);
+                        break;
+                    }
+                }
+                if (length !== undefined) {
+                    if (reader.pos !== end)
+                        throw RangeError("index out of range");
+                    reader.len = length;
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a BBProPendingCustomerBaseAction message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof proto.SyncActionValue.BBProPendingCustomerBaseAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {proto.SyncActionValue.BBProPendingCustomerBaseAction} BBProPendingCustomerBaseAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            BBProPendingCustomerBaseAction.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a BBProPendingCustomerBaseAction message.
+             * @function verify
+             * @memberof proto.SyncActionValue.BBProPendingCustomerBaseAction
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            BBProPendingCustomerBaseAction.verify = function verify(message, long) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    return "maximum nesting depth exceeded";
+                var properties = {};
+                if (message.pending != null && Object.hasOwnProperty.call(message, "pending")) {
+                    properties._pending = 1;
+                    if (typeof message.pending !== "boolean")
+                        return "pending: boolean expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a BBProPendingCustomerBaseAction message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof proto.SyncActionValue.BBProPendingCustomerBaseAction
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {proto.SyncActionValue.BBProPendingCustomerBaseAction} BBProPendingCustomerBaseAction
+             */
+            BBProPendingCustomerBaseAction.fromObject = function fromObject(object, long) {
+                if (object instanceof $root.proto.SyncActionValue.BBProPendingCustomerBaseAction)
+                    return object;
+                if (!$util.isObject(object))
+                    throw TypeError(".proto.SyncActionValue.BBProPendingCustomerBaseAction: object expected");
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var message = new $root.proto.SyncActionValue.BBProPendingCustomerBaseAction();
+                if (object.pending != null)
+                    message.pending = Boolean(object.pending);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a BBProPendingCustomerBaseAction message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof proto.SyncActionValue.BBProPendingCustomerBaseAction
+             * @static
+             * @param {proto.SyncActionValue.BBProPendingCustomerBaseAction} message BBProPendingCustomerBaseAction
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            BBProPendingCustomerBaseAction.toObject = function toObject(message, options, q) {
+                if (!options)
+                    options = {};
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                var object = {};
+                if (message.pending != null && Object.hasOwnProperty.call(message, "pending")) {
+                    object.pending = message.pending;
+                    if (options.oneofs)
+                        object._pending = "pending";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this BBProPendingCustomerBaseAction to JSON.
+             * @function toJSON
+             * @memberof proto.SyncActionValue.BBProPendingCustomerBaseAction
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            BBProPendingCustomerBaseAction.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for BBProPendingCustomerBaseAction
+             * @function getTypeUrl
+             * @memberof proto.SyncActionValue.BBProPendingCustomerBaseAction
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            BBProPendingCustomerBaseAction.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/proto.SyncActionValue.BBProPendingCustomerBaseAction";
+            };
+
+            return BBProPendingCustomerBaseAction;
         })();
 
         SyncActionValue.BizAISettingsNudgeAction = (function() {
