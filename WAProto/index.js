@@ -17990,6 +17990,7 @@ $root.proto = (function() {
                     case 79:
                     case 80:
                     case 81:
+                    case 82:
                         break;
                     }
             }
@@ -18353,6 +18354,10 @@ $root.proto = (function() {
                     case 81:
                         message.capabilities[i] = 81;
                         break;
+                    case "AI_STUDY_QUIZ_ENABLED":
+                    case 82:
+                        message.capabilities[i] = 82;
+                        break;
                     }
             }
             return message;
@@ -18497,6 +18502,7 @@ $root.proto = (function() {
          * @property {number} HATCH_ARTIFACT_CARD_ENABLED=79 HATCH_ARTIFACT_CARD_ENABLED value
          * @property {number} AI_STUDY_CENTER_ENABLED=80 AI_STUDY_CENTER_ENABLED value
          * @property {number} AI_MUSE_JARVIS_SCHEMA_ENABLED=81 AI_MUSE_JARVIS_SCHEMA_ENABLED value
+         * @property {number} AI_STUDY_QUIZ_ENABLED=82 AI_STUDY_QUIZ_ENABLED value
          */
         BotCapabilityMetadata.BotCapabilityType = (function() {
             var valuesById = {}, values = Object.create(valuesById);
@@ -18582,6 +18588,7 @@ $root.proto = (function() {
             values[valuesById[79] = "HATCH_ARTIFACT_CARD_ENABLED"] = 79;
             values[valuesById[80] = "AI_STUDY_CENTER_ENABLED"] = 80;
             values[valuesById[81] = "AI_MUSE_JARVIS_SCHEMA_ENABLED"] = 81;
+            values[valuesById[82] = "AI_STUDY_QUIZ_ENABLED"] = 82;
             return values;
         })();
 
@@ -26252,6 +26259,7 @@ $root.proto = (function() {
                 default:
                     return "type: enum value expected";
                 case 0:
+                case 1:
                     break;
                 }
             }
@@ -26286,6 +26294,10 @@ $root.proto = (function() {
             case "BOT_MESSAGE_ORIGIN_TYPE_AI_INITIATED":
             case 0:
                 message.type = 0;
+                break;
+            case "BOT_MESSAGE_ORIGIN_TYPE_META_AI_THREAD_WELCOME":
+            case 1:
+                message.type = 1;
                 break;
             }
             return message;
@@ -26347,10 +26359,12 @@ $root.proto = (function() {
          * @name proto.BotMessageOrigin.BotMessageOriginType
          * @enum {number}
          * @property {number} BOT_MESSAGE_ORIGIN_TYPE_AI_INITIATED=0 BOT_MESSAGE_ORIGIN_TYPE_AI_INITIATED value
+         * @property {number} BOT_MESSAGE_ORIGIN_TYPE_META_AI_THREAD_WELCOME=1 BOT_MESSAGE_ORIGIN_TYPE_META_AI_THREAD_WELCOME value
          */
         BotMessageOrigin.BotMessageOriginType = (function() {
             var valuesById = {}, values = Object.create(valuesById);
             values[valuesById[0] = "BOT_MESSAGE_ORIGIN_TYPE_AI_INITIATED"] = 0;
+            values[valuesById[1] = "BOT_MESSAGE_ORIGIN_TYPE_META_AI_THREAD_WELCOME"] = 1;
             return values;
         })();
 
@@ -26866,6 +26880,7 @@ $root.proto = (function() {
                 case 56:
                 case 57:
                 case 58:
+                case 59:
                     break;
                 }
             }
@@ -27101,6 +27116,10 @@ $root.proto = (function() {
             case "NEW_3P_AGENT_CREATION":
             case 58:
                 message.botEntryPointOrigin = 58;
+                break;
+            case "SHARE":
+            case 59:
+                message.botEntryPointOrigin = 59;
                 break;
             }
             if (object.forwardScore != null)
@@ -29111,6 +29130,7 @@ $root.proto = (function() {
      * @property {number} NEW_CHAT_LIST=56 NEW_CHAT_LIST value
      * @property {number} CONTACTS_TAB=57 CONTACTS_TAB value
      * @property {number} NEW_3P_AGENT_CREATION=58 NEW_3P_AGENT_CREATION value
+     * @property {number} SHARE=59 SHARE value
      */
     proto.BotMetricsEntryPoint = (function() {
         var valuesById = {}, values = Object.create(valuesById);
@@ -29164,6 +29184,7 @@ $root.proto = (function() {
         values[valuesById[56] = "NEW_CHAT_LIST"] = 56;
         values[valuesById[57] = "CONTACTS_TAB"] = 57;
         values[valuesById[58] = "NEW_3P_AGENT_CREATION"] = 58;
+        values[valuesById[59] = "SHARE"] = 59;
         return values;
     })();
 
@@ -29439,6 +29460,7 @@ $root.proto = (function() {
                 case 56:
                 case 57:
                 case 58:
+                case 59:
                     break;
                 }
             }
@@ -29684,6 +29706,10 @@ $root.proto = (function() {
             case "NEW_3P_AGENT_CREATION":
             case 58:
                 message.destinationEntryPoint = 58;
+                break;
+            case "SHARE":
+            case 59:
+                message.destinationEntryPoint = 59;
                 break;
             }
             switch (object.threadOrigin) {
@@ -49197,6 +49223,7 @@ $root.proto = (function() {
                     case 38:
                     case 39:
                     case 40:
+                    case 41:
                         break;
                     }
                 }
@@ -49496,6 +49523,10 @@ $root.proto = (function() {
                 case "WORK_IOS":
                 case 40:
                     message.platform = 40;
+                    break;
+                case "AUTOMOTIVE":
+                case 41:
+                    message.platform = 41;
                     break;
                 }
                 if (object.appVersion != null) {
@@ -50207,6 +50238,7 @@ $root.proto = (function() {
              * @property {number} WAIL=38 WAIL value
              * @property {number} WORK_ANDROID=39 WORK_ANDROID value
              * @property {number} WORK_IOS=40 WORK_IOS value
+             * @property {number} AUTOMOTIVE=41 AUTOMOTIVE value
              */
             UserAgent.Platform = (function() {
                 var valuesById = {}, values = Object.create(valuesById);
@@ -50251,6 +50283,7 @@ $root.proto = (function() {
                 values[valuesById[38] = "WAIL"] = 38;
                 values[valuesById[39] = "WORK_ANDROID"] = 39;
                 values[valuesById[40] = "WORK_IOS"] = 40;
+                values[valuesById[41] = "AUTOMOTIVE"] = 41;
                 return values;
             })();
 
@@ -53139,6 +53172,7 @@ $root.proto = (function() {
                 case 27:
                 case 28:
                 case 29:
+                case 30:
                     break;
                 }
             }
@@ -53299,6 +53333,10 @@ $root.proto = (function() {
             case "WAIL_ALEXA":
             case 29:
                 message.deviceType = 29;
+                break;
+            case "AUTOMOTIVE":
+            case 30:
+                message.deviceType = 30;
                 break;
             }
             if (object.ref != null)
@@ -66389,6 +66427,7 @@ $root.proto = (function() {
          * @property {proto.DeviceCapabilities.IContactRefresh|null} [contactRefresh] DeviceCapabilities contactRefresh
          * @property {proto.DeviceCapabilities.IReverseHistorySync|null} [reverseHistorySync] DeviceCapabilities reverseHistorySync
          * @property {proto.DeviceCapabilities.INewsletterChatsMigration|null} [newsletterChatsMigration] DeviceCapabilities newsletterChatsMigration
+         * @property {proto.DeviceCapabilities.IHostWriteMutationSupport|null} [hostWriteMutationSupport] DeviceCapabilities hostWriteMutationSupport
          */
 
         /**
@@ -66494,6 +66533,14 @@ $root.proto = (function() {
          */
         DeviceCapabilities.prototype.newsletterChatsMigration = null;
 
+        /**
+         * DeviceCapabilities hostWriteMutationSupport.
+         * @member {proto.DeviceCapabilities.IHostWriteMutationSupport|null|undefined} hostWriteMutationSupport
+         * @memberof proto.DeviceCapabilities
+         * @instance
+         */
+        DeviceCapabilities.prototype.hostWriteMutationSupport = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -66563,6 +66610,12 @@ $root.proto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(DeviceCapabilities.prototype, "_hostWriteMutationSupport", {
+            get: $util.oneOfGetter($oneOfFields = ["hostWriteMutationSupport"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new DeviceCapabilities instance using the specified properties.
          * @function create
@@ -66613,6 +66666,8 @@ $root.proto = (function() {
                 $root.proto.DeviceCapabilities.ReverseHistorySync.encode(message.reverseHistorySync, writer.uint32(/* id 10, wireType 2 =*/82).fork(), q + 1).ldelim();
             if (message.newsletterChatsMigration != null && Object.hasOwnProperty.call(message, "newsletterChatsMigration"))
                 $root.proto.DeviceCapabilities.NewsletterChatsMigration.encode(message.newsletterChatsMigration, writer.uint32(/* id 11, wireType 2 =*/90).fork(), q + 1).ldelim();
+            if (message.hostWriteMutationSupport != null && Object.hasOwnProperty.call(message, "hostWriteMutationSupport"))
+                $root.proto.DeviceCapabilities.HostWriteMutationSupport.encode(message.hostWriteMutationSupport, writer.uint32(/* id 12, wireType 2 =*/98).fork(), q + 1).ldelim();
             return writer;
         };
 
@@ -66705,6 +66760,10 @@ $root.proto = (function() {
                     }
                 case 11: {
                         message.newsletterChatsMigration = $root.proto.DeviceCapabilities.NewsletterChatsMigration.decode(reader, reader.uint32(), undefined, long + 1);
+                        break;
+                    }
+                case 12: {
+                        message.hostWriteMutationSupport = $root.proto.DeviceCapabilities.HostWriteMutationSupport.decode(reader, reader.uint32(), undefined, long + 1);
                         break;
                     }
                 default:
@@ -66846,6 +66905,14 @@ $root.proto = (function() {
                         return "newsletterChatsMigration." + error;
                 }
             }
+            if (message.hostWriteMutationSupport != null && Object.hasOwnProperty.call(message, "hostWriteMutationSupport")) {
+                properties._hostWriteMutationSupport = 1;
+                {
+                    var error = $root.proto.DeviceCapabilities.HostWriteMutationSupport.verify(message.hostWriteMutationSupport, long + 1);
+                    if (error)
+                        return "hostWriteMutationSupport." + error;
+                }
+            }
             return null;
         };
 
@@ -66952,6 +67019,11 @@ $root.proto = (function() {
                     throw TypeError(".proto.DeviceCapabilities.newsletterChatsMigration: object expected");
                 message.newsletterChatsMigration = $root.proto.DeviceCapabilities.NewsletterChatsMigration.fromObject(object.newsletterChatsMigration, long + 1);
             }
+            if (object.hostWriteMutationSupport != null) {
+                if (!$util.isObject(object.hostWriteMutationSupport))
+                    throw TypeError(".proto.DeviceCapabilities.hostWriteMutationSupport: object expected");
+                message.hostWriteMutationSupport = $root.proto.DeviceCapabilities.HostWriteMutationSupport.fromObject(object.hostWriteMutationSupport, long + 1);
+            }
             return message;
         };
 
@@ -67026,6 +67098,11 @@ $root.proto = (function() {
                 object.newsletterChatsMigration = $root.proto.DeviceCapabilities.NewsletterChatsMigration.toObject(message.newsletterChatsMigration, options, q + 1);
                 if (options.oneofs)
                     object._newsletterChatsMigration = "newsletterChatsMigration";
+            }
+            if (message.hostWriteMutationSupport != null && Object.hasOwnProperty.call(message, "hostWriteMutationSupport")) {
+                object.hostWriteMutationSupport = $root.proto.DeviceCapabilities.HostWriteMutationSupport.toObject(message.hostWriteMutationSupport, options, q + 1);
+                if (options.oneofs)
+                    object._hostWriteMutationSupport = "hostWriteMutationSupport";
             }
             return object;
         };
@@ -68595,6 +68672,264 @@ $root.proto = (function() {
             };
 
             return ContactRefresh;
+        })();
+
+        DeviceCapabilities.HostWriteMutationSupport = (function() {
+
+            /**
+             * Properties of a HostWriteMutationSupport.
+             * @memberof proto.DeviceCapabilities
+             * @interface IHostWriteMutationSupport
+             * @property {Array.<string>|null} [mutationNames] HostWriteMutationSupport mutationNames
+             */
+
+            /**
+             * Constructs a new HostWriteMutationSupport.
+             * @memberof proto.DeviceCapabilities
+             * @classdesc Represents a HostWriteMutationSupport.
+             * @implements IHostWriteMutationSupport
+             * @constructor
+             * @param {proto.DeviceCapabilities.IHostWriteMutationSupport=} [properties] Properties to set
+             */
+            function HostWriteMutationSupport(properties) {
+                this.mutationNames = [];
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * HostWriteMutationSupport mutationNames.
+             * @member {Array.<string>} mutationNames
+             * @memberof proto.DeviceCapabilities.HostWriteMutationSupport
+             * @instance
+             */
+            HostWriteMutationSupport.prototype.mutationNames = $util.emptyArray;
+
+            /**
+             * Creates a new HostWriteMutationSupport instance using the specified properties.
+             * @function create
+             * @memberof proto.DeviceCapabilities.HostWriteMutationSupport
+             * @static
+             * @param {proto.DeviceCapabilities.IHostWriteMutationSupport=} [properties] Properties to set
+             * @returns {proto.DeviceCapabilities.HostWriteMutationSupport} HostWriteMutationSupport instance
+             */
+            HostWriteMutationSupport.create = function create(properties) {
+                return new HostWriteMutationSupport(properties);
+            };
+
+            /**
+             * Encodes the specified HostWriteMutationSupport message. Does not implicitly {@link proto.DeviceCapabilities.HostWriteMutationSupport.verify|verify} messages.
+             * @function encode
+             * @memberof proto.DeviceCapabilities.HostWriteMutationSupport
+             * @static
+             * @param {proto.DeviceCapabilities.IHostWriteMutationSupport} message HostWriteMutationSupport message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            HostWriteMutationSupport.encode = function encode(message, writer, q) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                if (message.mutationNames != null && message.mutationNames.length)
+                    for (var i = 0; i < message.mutationNames.length; ++i)
+                        writer.uint32(/* id 1, wireType 2 =*/10).string(message.mutationNames[i]);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified HostWriteMutationSupport message, length delimited. Does not implicitly {@link proto.DeviceCapabilities.HostWriteMutationSupport.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof proto.DeviceCapabilities.HostWriteMutationSupport
+             * @static
+             * @param {proto.DeviceCapabilities.IHostWriteMutationSupport} message HostWriteMutationSupport message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            HostWriteMutationSupport.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer && writer.len ? writer.fork() : writer).ldelim();
+            };
+
+            /**
+             * Decodes a HostWriteMutationSupport message from the specified reader or buffer.
+             * @function decode
+             * @memberof proto.DeviceCapabilities.HostWriteMutationSupport
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {proto.DeviceCapabilities.HostWriteMutationSupport} HostWriteMutationSupport
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            HostWriteMutationSupport.decode = function decode(reader, length, error, long) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (long === undefined)
+                    long = 0;
+                if (long > $Reader.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var end, message;
+                if (length === undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = new $root.proto.DeviceCapabilities.HostWriteMutationSupport();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            if (!(message.mutationNames && message.mutationNames.length))
+                                message.mutationNames = [];
+                            message.mutationNames.push(reader.string());
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7, long);
+                        break;
+                    }
+                }
+                if (length !== undefined) {
+                    if (reader.pos !== end)
+                        throw RangeError("index out of range");
+                    reader.len = length;
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a HostWriteMutationSupport message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof proto.DeviceCapabilities.HostWriteMutationSupport
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {proto.DeviceCapabilities.HostWriteMutationSupport} HostWriteMutationSupport
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            HostWriteMutationSupport.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a HostWriteMutationSupport message.
+             * @function verify
+             * @memberof proto.DeviceCapabilities.HostWriteMutationSupport
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            HostWriteMutationSupport.verify = function verify(message, long) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    return "maximum nesting depth exceeded";
+                if (message.mutationNames != null && Object.hasOwnProperty.call(message, "mutationNames")) {
+                    if (!Array.isArray(message.mutationNames))
+                        return "mutationNames: array expected";
+                    for (var i = 0; i < message.mutationNames.length; ++i)
+                        if (!$util.isString(message.mutationNames[i]))
+                            return "mutationNames: string[] expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a HostWriteMutationSupport message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof proto.DeviceCapabilities.HostWriteMutationSupport
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {proto.DeviceCapabilities.HostWriteMutationSupport} HostWriteMutationSupport
+             */
+            HostWriteMutationSupport.fromObject = function fromObject(object, long) {
+                if (object instanceof $root.proto.DeviceCapabilities.HostWriteMutationSupport)
+                    return object;
+                if (!$util.isObject(object))
+                    throw TypeError(".proto.DeviceCapabilities.HostWriteMutationSupport: object expected");
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var message = new $root.proto.DeviceCapabilities.HostWriteMutationSupport();
+                if (object.mutationNames) {
+                    if (!Array.isArray(object.mutationNames))
+                        throw TypeError(".proto.DeviceCapabilities.HostWriteMutationSupport.mutationNames: array expected");
+                    message.mutationNames = [];
+                    for (var i = 0; i < object.mutationNames.length; ++i)
+                        message.mutationNames[i] = String(object.mutationNames[i]);
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a HostWriteMutationSupport message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof proto.DeviceCapabilities.HostWriteMutationSupport
+             * @static
+             * @param {proto.DeviceCapabilities.HostWriteMutationSupport} message HostWriteMutationSupport
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            HostWriteMutationSupport.toObject = function toObject(message, options, q) {
+                if (!options)
+                    options = {};
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                var object = {};
+                if (options.arrays || options.defaults)
+                    object.mutationNames = [];
+                if (message.mutationNames && message.mutationNames.length) {
+                    object.mutationNames = [];
+                    for (var j = 0; j < message.mutationNames.length; ++j)
+                        object.mutationNames[j] = message.mutationNames[j];
+                }
+                return object;
+            };
+
+            /**
+             * Converts this HostWriteMutationSupport to JSON.
+             * @function toJSON
+             * @memberof proto.DeviceCapabilities.HostWriteMutationSupport
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            HostWriteMutationSupport.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for HostWriteMutationSupport
+             * @function getTypeUrl
+             * @memberof proto.DeviceCapabilities.HostWriteMutationSupport
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            HostWriteMutationSupport.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/proto.DeviceCapabilities.HostWriteMutationSupport";
+            };
+
+            return HostWriteMutationSupport;
         })();
 
         DeviceCapabilities.LIDMigration = (function() {
@@ -70975,6 +71310,7 @@ $root.proto = (function() {
                 case 27:
                 case 28:
                 case 29:
+                case 30:
                     break;
                 }
             }
@@ -71145,6 +71481,10 @@ $root.proto = (function() {
             case "WAIL_ALEXA":
             case 29:
                 message.platformType = 29;
+                break;
+            case "AUTOMOTIVE":
+            case 30:
+                message.platformType = 30;
                 break;
             }
             if (object.requireFullSync != null)
@@ -72769,6 +73109,7 @@ $root.proto = (function() {
          * @property {number} BUSINESS_BACK_OFFICE=27 BUSINESS_BACK_OFFICE value
          * @property {number} WAIL_WAI=28 WAIL_WAI value
          * @property {number} WAIL_ALEXA=29 WAIL_ALEXA value
+         * @property {number} AUTOMOTIVE=30 AUTOMOTIVE value
          */
         DeviceProps.PlatformType = (function() {
             var valuesById = {}, values = Object.create(valuesById);
@@ -72802,6 +73143,7 @@ $root.proto = (function() {
             values[valuesById[27] = "BUSINESS_BACK_OFFICE"] = 27;
             values[valuesById[28] = "WAIL_WAI"] = 28;
             values[valuesById[29] = "WAIL_ALEXA"] = 29;
+            values[valuesById[30] = "AUTOMOTIVE"] = 30;
             return values;
         })();
 
@@ -136788,11 +137130,15 @@ $root.proto = (function() {
              * @enum {number}
              * @property {number} UNKNOWN=0 UNKNOWN value
              * @property {number} VINYL=1 VINYL value
+             * @property {number} MESSAGE_BUBBLE=2 MESSAGE_BUBBLE value
+             * @property {number} LYRICS=3 LYRICS value
              */
             MusicMessage.MusicMessageStyle = (function() {
                 var valuesById = {}, values = Object.create(valuesById);
                 values[valuesById[0] = "UNKNOWN"] = 0;
                 values[valuesById[1] = "VINYL"] = 1;
+                values[valuesById[2] = "MESSAGE_BUBBLE"] = 2;
+                values[valuesById[3] = "LYRICS"] = 3;
                 return values;
             })();
 
@@ -177688,6 +178034,7 @@ $root.proto = (function() {
          * @property {string|null} [sharableEventInviteCallLink] MsgOpaqueData sharableEventInviteCallLink
          * @property {string|null} [mediaPngThumbnail] MsgOpaqueData mediaPngThumbnail
          * @property {string|null} [qrUrl] MsgOpaqueData qrUrl
+         * @property {proto.MsgOpaqueData.IMusicData|null} [musicData] MsgOpaqueData musicData
          */
 
         /**
@@ -178162,6 +178509,14 @@ $root.proto = (function() {
          */
         MsgOpaqueData.prototype.qrUrl = null;
 
+        /**
+         * MsgOpaqueData musicData.
+         * @member {proto.MsgOpaqueData.IMusicData|null|undefined} musicData
+         * @memberof proto.MsgOpaqueData
+         * @instance
+         */
+        MsgOpaqueData.prototype.musicData = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -178501,6 +178856,12 @@ $root.proto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(MsgOpaqueData.prototype, "_musicData", {
+            get: $util.oneOfGetter($oneOfFields = ["musicData"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new MsgOpaqueData instance using the specified properties.
          * @function create
@@ -178644,6 +179005,8 @@ $root.proto = (function() {
                 writer.uint32(/* id 61, wireType 2 =*/490).string(message.mediaPngThumbnail);
             if (message.qrUrl != null && Object.hasOwnProperty.call(message, "qrUrl"))
                 writer.uint32(/* id 62, wireType 2 =*/498).string(message.qrUrl);
+            if (message.musicData != null && Object.hasOwnProperty.call(message, "musicData"))
+                $root.proto.MsgOpaqueData.MusicData.encode(message.musicData, writer.uint32(/* id 63, wireType 2 =*/506).fork(), q + 1).ldelim();
             return writer;
         };
 
@@ -178922,6 +179285,10 @@ $root.proto = (function() {
                     }
                 case 62: {
                         message.qrUrl = reader.string();
+                        break;
+                    }
+                case 63: {
+                        message.musicData = $root.proto.MsgOpaqueData.MusicData.decode(reader, reader.uint32(), undefined, long + 1);
                         break;
                     }
                 default:
@@ -179278,6 +179645,14 @@ $root.proto = (function() {
                 if (!$util.isString(message.qrUrl))
                     return "qrUrl: string expected";
             }
+            if (message.musicData != null && Object.hasOwnProperty.call(message, "musicData")) {
+                properties._musicData = 1;
+                {
+                    var error = $root.proto.MsgOpaqueData.MusicData.verify(message.musicData, long + 1);
+                    if (error)
+                        return "musicData." + error;
+                }
+            }
             return null;
         };
 
@@ -179531,6 +179906,11 @@ $root.proto = (function() {
                 message.mediaPngThumbnail = String(object.mediaPngThumbnail);
             if (object.qrUrl != null)
                 message.qrUrl = String(object.qrUrl);
+            if (object.musicData != null) {
+                if (!$util.isObject(object.musicData))
+                    throw TypeError(".proto.MsgOpaqueData.musicData: object expected");
+                message.musicData = $root.proto.MsgOpaqueData.MusicData.fromObject(object.musicData, long + 1);
+            }
             return message;
         };
 
@@ -179867,6 +180247,11 @@ $root.proto = (function() {
                 object.qrUrl = message.qrUrl;
                 if (options.oneofs)
                     object._qrUrl = "qrUrl";
+            }
+            if (message.musicData != null && Object.hasOwnProperty.call(message, "musicData")) {
+                object.musicData = $root.proto.MsgOpaqueData.MusicData.toObject(message.musicData, options, q + 1);
+                if (options.oneofs)
+                    object._musicData = "musicData";
             }
             return object;
         };
@@ -180318,6 +180703,846 @@ $root.proto = (function() {
             };
 
             return EventLocation;
+        })();
+
+        MsgOpaqueData.MusicData = (function() {
+
+            /**
+             * Properties of a MusicData.
+             * @memberof proto.MsgOpaqueData
+             * @interface IMusicData
+             * @property {string|null} [musicContentMediaId] MusicData musicContentMediaId
+             * @property {string|null} [songId] MusicData songId
+             * @property {string|null} [author] MusicData author
+             * @property {string|null} [title] MusicData title
+             * @property {string|null} [songUri] MusicData songUri
+             * @property {string|null} [artworkUri] MusicData artworkUri
+             * @property {number|null} [style] MusicData style
+             * @property {number|null} [songStartTimeMs] MusicData songStartTimeMs
+             * @property {number|null} [clipDurationMs] MusicData clipDurationMs
+             * @property {boolean|null} [isExplicit] MusicData isExplicit
+             * @property {Uint8Array|null} [countryBlocklist] MusicData countryBlocklist
+             * @property {string|null} [artistAttribution] MusicData artistAttribution
+             * @property {string|null} [artworkDirectPath] MusicData artworkDirectPath
+             * @property {Uint8Array|null} [artworkSha256] MusicData artworkSha256
+             * @property {Uint8Array|null} [artworkEncSha256] MusicData artworkEncSha256
+             * @property {Uint8Array|null} [artworkMediaKey] MusicData artworkMediaKey
+             * @property {number|Long|null} [consumptionCheckedAtS] MusicData consumptionCheckedAtS
+             * @property {boolean|null} [isAvailableForConsumption] MusicData isAvailableForConsumption
+             */
+
+            /**
+             * Constructs a new MusicData.
+             * @memberof proto.MsgOpaqueData
+             * @classdesc Represents a MusicData.
+             * @implements IMusicData
+             * @constructor
+             * @param {proto.MsgOpaqueData.IMusicData=} [properties] Properties to set
+             */
+            function MusicData(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * MusicData musicContentMediaId.
+             * @member {string|null|undefined} musicContentMediaId
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.musicContentMediaId = null;
+
+            /**
+             * MusicData songId.
+             * @member {string|null|undefined} songId
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.songId = null;
+
+            /**
+             * MusicData author.
+             * @member {string|null|undefined} author
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.author = null;
+
+            /**
+             * MusicData title.
+             * @member {string|null|undefined} title
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.title = null;
+
+            /**
+             * MusicData songUri.
+             * @member {string|null|undefined} songUri
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.songUri = null;
+
+            /**
+             * MusicData artworkUri.
+             * @member {string|null|undefined} artworkUri
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.artworkUri = null;
+
+            /**
+             * MusicData style.
+             * @member {number|null|undefined} style
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.style = null;
+
+            /**
+             * MusicData songStartTimeMs.
+             * @member {number|null|undefined} songStartTimeMs
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.songStartTimeMs = null;
+
+            /**
+             * MusicData clipDurationMs.
+             * @member {number|null|undefined} clipDurationMs
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.clipDurationMs = null;
+
+            /**
+             * MusicData isExplicit.
+             * @member {boolean|null|undefined} isExplicit
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.isExplicit = null;
+
+            /**
+             * MusicData countryBlocklist.
+             * @member {Uint8Array|null|undefined} countryBlocklist
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.countryBlocklist = null;
+
+            /**
+             * MusicData artistAttribution.
+             * @member {string|null|undefined} artistAttribution
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.artistAttribution = null;
+
+            /**
+             * MusicData artworkDirectPath.
+             * @member {string|null|undefined} artworkDirectPath
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.artworkDirectPath = null;
+
+            /**
+             * MusicData artworkSha256.
+             * @member {Uint8Array|null|undefined} artworkSha256
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.artworkSha256 = null;
+
+            /**
+             * MusicData artworkEncSha256.
+             * @member {Uint8Array|null|undefined} artworkEncSha256
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.artworkEncSha256 = null;
+
+            /**
+             * MusicData artworkMediaKey.
+             * @member {Uint8Array|null|undefined} artworkMediaKey
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.artworkMediaKey = null;
+
+            /**
+             * MusicData consumptionCheckedAtS.
+             * @member {number|Long|null|undefined} consumptionCheckedAtS
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.consumptionCheckedAtS = null;
+
+            /**
+             * MusicData isAvailableForConsumption.
+             * @member {boolean|null|undefined} isAvailableForConsumption
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.isAvailableForConsumption = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(MusicData.prototype, "_musicContentMediaId", {
+                get: $util.oneOfGetter($oneOfFields = ["musicContentMediaId"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(MusicData.prototype, "_songId", {
+                get: $util.oneOfGetter($oneOfFields = ["songId"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(MusicData.prototype, "_author", {
+                get: $util.oneOfGetter($oneOfFields = ["author"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(MusicData.prototype, "_title", {
+                get: $util.oneOfGetter($oneOfFields = ["title"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(MusicData.prototype, "_songUri", {
+                get: $util.oneOfGetter($oneOfFields = ["songUri"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(MusicData.prototype, "_artworkUri", {
+                get: $util.oneOfGetter($oneOfFields = ["artworkUri"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(MusicData.prototype, "_style", {
+                get: $util.oneOfGetter($oneOfFields = ["style"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(MusicData.prototype, "_songStartTimeMs", {
+                get: $util.oneOfGetter($oneOfFields = ["songStartTimeMs"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(MusicData.prototype, "_clipDurationMs", {
+                get: $util.oneOfGetter($oneOfFields = ["clipDurationMs"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(MusicData.prototype, "_isExplicit", {
+                get: $util.oneOfGetter($oneOfFields = ["isExplicit"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(MusicData.prototype, "_countryBlocklist", {
+                get: $util.oneOfGetter($oneOfFields = ["countryBlocklist"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(MusicData.prototype, "_artistAttribution", {
+                get: $util.oneOfGetter($oneOfFields = ["artistAttribution"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(MusicData.prototype, "_artworkDirectPath", {
+                get: $util.oneOfGetter($oneOfFields = ["artworkDirectPath"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(MusicData.prototype, "_artworkSha256", {
+                get: $util.oneOfGetter($oneOfFields = ["artworkSha256"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(MusicData.prototype, "_artworkEncSha256", {
+                get: $util.oneOfGetter($oneOfFields = ["artworkEncSha256"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(MusicData.prototype, "_artworkMediaKey", {
+                get: $util.oneOfGetter($oneOfFields = ["artworkMediaKey"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(MusicData.prototype, "_consumptionCheckedAtS", {
+                get: $util.oneOfGetter($oneOfFields = ["consumptionCheckedAtS"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(MusicData.prototype, "_isAvailableForConsumption", {
+                get: $util.oneOfGetter($oneOfFields = ["isAvailableForConsumption"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new MusicData instance using the specified properties.
+             * @function create
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @static
+             * @param {proto.MsgOpaqueData.IMusicData=} [properties] Properties to set
+             * @returns {proto.MsgOpaqueData.MusicData} MusicData instance
+             */
+            MusicData.create = function create(properties) {
+                return new MusicData(properties);
+            };
+
+            /**
+             * Encodes the specified MusicData message. Does not implicitly {@link proto.MsgOpaqueData.MusicData.verify|verify} messages.
+             * @function encode
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @static
+             * @param {proto.MsgOpaqueData.IMusicData} message MusicData message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MusicData.encode = function encode(message, writer, q) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                if (message.musicContentMediaId != null && Object.hasOwnProperty.call(message, "musicContentMediaId"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.musicContentMediaId);
+                if (message.songId != null && Object.hasOwnProperty.call(message, "songId"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.songId);
+                if (message.author != null && Object.hasOwnProperty.call(message, "author"))
+                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.author);
+                if (message.title != null && Object.hasOwnProperty.call(message, "title"))
+                    writer.uint32(/* id 4, wireType 2 =*/34).string(message.title);
+                if (message.songUri != null && Object.hasOwnProperty.call(message, "songUri"))
+                    writer.uint32(/* id 5, wireType 2 =*/42).string(message.songUri);
+                if (message.artworkUri != null && Object.hasOwnProperty.call(message, "artworkUri"))
+                    writer.uint32(/* id 6, wireType 2 =*/50).string(message.artworkUri);
+                if (message.style != null && Object.hasOwnProperty.call(message, "style"))
+                    writer.uint32(/* id 7, wireType 0 =*/56).int32(message.style);
+                if (message.songStartTimeMs != null && Object.hasOwnProperty.call(message, "songStartTimeMs"))
+                    writer.uint32(/* id 8, wireType 0 =*/64).int32(message.songStartTimeMs);
+                if (message.clipDurationMs != null && Object.hasOwnProperty.call(message, "clipDurationMs"))
+                    writer.uint32(/* id 9, wireType 0 =*/72).int32(message.clipDurationMs);
+                if (message.isExplicit != null && Object.hasOwnProperty.call(message, "isExplicit"))
+                    writer.uint32(/* id 10, wireType 0 =*/80).bool(message.isExplicit);
+                if (message.countryBlocklist != null && Object.hasOwnProperty.call(message, "countryBlocklist"))
+                    writer.uint32(/* id 11, wireType 2 =*/90).bytes(message.countryBlocklist);
+                if (message.artistAttribution != null && Object.hasOwnProperty.call(message, "artistAttribution"))
+                    writer.uint32(/* id 12, wireType 2 =*/98).string(message.artistAttribution);
+                if (message.artworkDirectPath != null && Object.hasOwnProperty.call(message, "artworkDirectPath"))
+                    writer.uint32(/* id 13, wireType 2 =*/106).string(message.artworkDirectPath);
+                if (message.artworkSha256 != null && Object.hasOwnProperty.call(message, "artworkSha256"))
+                    writer.uint32(/* id 14, wireType 2 =*/114).bytes(message.artworkSha256);
+                if (message.artworkEncSha256 != null && Object.hasOwnProperty.call(message, "artworkEncSha256"))
+                    writer.uint32(/* id 15, wireType 2 =*/122).bytes(message.artworkEncSha256);
+                if (message.artworkMediaKey != null && Object.hasOwnProperty.call(message, "artworkMediaKey"))
+                    writer.uint32(/* id 16, wireType 2 =*/130).bytes(message.artworkMediaKey);
+                if (message.consumptionCheckedAtS != null && Object.hasOwnProperty.call(message, "consumptionCheckedAtS"))
+                    writer.uint32(/* id 17, wireType 0 =*/136).int64(message.consumptionCheckedAtS);
+                if (message.isAvailableForConsumption != null && Object.hasOwnProperty.call(message, "isAvailableForConsumption"))
+                    writer.uint32(/* id 18, wireType 0 =*/144).bool(message.isAvailableForConsumption);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified MusicData message, length delimited. Does not implicitly {@link proto.MsgOpaqueData.MusicData.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @static
+             * @param {proto.MsgOpaqueData.IMusicData} message MusicData message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MusicData.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer && writer.len ? writer.fork() : writer).ldelim();
+            };
+
+            /**
+             * Decodes a MusicData message from the specified reader or buffer.
+             * @function decode
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {proto.MsgOpaqueData.MusicData} MusicData
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MusicData.decode = function decode(reader, length, error, long) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (long === undefined)
+                    long = 0;
+                if (long > $Reader.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var end, message;
+                if (length === undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = new $root.proto.MsgOpaqueData.MusicData();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.musicContentMediaId = reader.string();
+                            break;
+                        }
+                    case 2: {
+                            message.songId = reader.string();
+                            break;
+                        }
+                    case 3: {
+                            message.author = reader.string();
+                            break;
+                        }
+                    case 4: {
+                            message.title = reader.string();
+                            break;
+                        }
+                    case 5: {
+                            message.songUri = reader.string();
+                            break;
+                        }
+                    case 6: {
+                            message.artworkUri = reader.string();
+                            break;
+                        }
+                    case 7: {
+                            message.style = reader.int32();
+                            break;
+                        }
+                    case 8: {
+                            message.songStartTimeMs = reader.int32();
+                            break;
+                        }
+                    case 9: {
+                            message.clipDurationMs = reader.int32();
+                            break;
+                        }
+                    case 10: {
+                            message.isExplicit = reader.bool();
+                            break;
+                        }
+                    case 11: {
+                            message.countryBlocklist = reader.bytes();
+                            break;
+                        }
+                    case 12: {
+                            message.artistAttribution = reader.string();
+                            break;
+                        }
+                    case 13: {
+                            message.artworkDirectPath = reader.string();
+                            break;
+                        }
+                    case 14: {
+                            message.artworkSha256 = reader.bytes();
+                            break;
+                        }
+                    case 15: {
+                            message.artworkEncSha256 = reader.bytes();
+                            break;
+                        }
+                    case 16: {
+                            message.artworkMediaKey = reader.bytes();
+                            break;
+                        }
+                    case 17: {
+                            message.consumptionCheckedAtS = reader.int64();
+                            break;
+                        }
+                    case 18: {
+                            message.isAvailableForConsumption = reader.bool();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7, long);
+                        break;
+                    }
+                }
+                if (length !== undefined) {
+                    if (reader.pos !== end)
+                        throw RangeError("index out of range");
+                    reader.len = length;
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a MusicData message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {proto.MsgOpaqueData.MusicData} MusicData
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MusicData.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a MusicData message.
+             * @function verify
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            MusicData.verify = function verify(message, long) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    return "maximum nesting depth exceeded";
+                var properties = {};
+                if (message.musicContentMediaId != null && Object.hasOwnProperty.call(message, "musicContentMediaId")) {
+                    properties._musicContentMediaId = 1;
+                    if (!$util.isString(message.musicContentMediaId))
+                        return "musicContentMediaId: string expected";
+                }
+                if (message.songId != null && Object.hasOwnProperty.call(message, "songId")) {
+                    properties._songId = 1;
+                    if (!$util.isString(message.songId))
+                        return "songId: string expected";
+                }
+                if (message.author != null && Object.hasOwnProperty.call(message, "author")) {
+                    properties._author = 1;
+                    if (!$util.isString(message.author))
+                        return "author: string expected";
+                }
+                if (message.title != null && Object.hasOwnProperty.call(message, "title")) {
+                    properties._title = 1;
+                    if (!$util.isString(message.title))
+                        return "title: string expected";
+                }
+                if (message.songUri != null && Object.hasOwnProperty.call(message, "songUri")) {
+                    properties._songUri = 1;
+                    if (!$util.isString(message.songUri))
+                        return "songUri: string expected";
+                }
+                if (message.artworkUri != null && Object.hasOwnProperty.call(message, "artworkUri")) {
+                    properties._artworkUri = 1;
+                    if (!$util.isString(message.artworkUri))
+                        return "artworkUri: string expected";
+                }
+                if (message.style != null && Object.hasOwnProperty.call(message, "style")) {
+                    properties._style = 1;
+                    if (!$util.isInteger(message.style))
+                        return "style: integer expected";
+                }
+                if (message.songStartTimeMs != null && Object.hasOwnProperty.call(message, "songStartTimeMs")) {
+                    properties._songStartTimeMs = 1;
+                    if (!$util.isInteger(message.songStartTimeMs))
+                        return "songStartTimeMs: integer expected";
+                }
+                if (message.clipDurationMs != null && Object.hasOwnProperty.call(message, "clipDurationMs")) {
+                    properties._clipDurationMs = 1;
+                    if (!$util.isInteger(message.clipDurationMs))
+                        return "clipDurationMs: integer expected";
+                }
+                if (message.isExplicit != null && Object.hasOwnProperty.call(message, "isExplicit")) {
+                    properties._isExplicit = 1;
+                    if (typeof message.isExplicit !== "boolean")
+                        return "isExplicit: boolean expected";
+                }
+                if (message.countryBlocklist != null && Object.hasOwnProperty.call(message, "countryBlocklist")) {
+                    properties._countryBlocklist = 1;
+                    if (!(message.countryBlocklist && typeof message.countryBlocklist.length === "number" || $util.isString(message.countryBlocklist)))
+                        return "countryBlocklist: buffer expected";
+                }
+                if (message.artistAttribution != null && Object.hasOwnProperty.call(message, "artistAttribution")) {
+                    properties._artistAttribution = 1;
+                    if (!$util.isString(message.artistAttribution))
+                        return "artistAttribution: string expected";
+                }
+                if (message.artworkDirectPath != null && Object.hasOwnProperty.call(message, "artworkDirectPath")) {
+                    properties._artworkDirectPath = 1;
+                    if (!$util.isString(message.artworkDirectPath))
+                        return "artworkDirectPath: string expected";
+                }
+                if (message.artworkSha256 != null && Object.hasOwnProperty.call(message, "artworkSha256")) {
+                    properties._artworkSha256 = 1;
+                    if (!(message.artworkSha256 && typeof message.artworkSha256.length === "number" || $util.isString(message.artworkSha256)))
+                        return "artworkSha256: buffer expected";
+                }
+                if (message.artworkEncSha256 != null && Object.hasOwnProperty.call(message, "artworkEncSha256")) {
+                    properties._artworkEncSha256 = 1;
+                    if (!(message.artworkEncSha256 && typeof message.artworkEncSha256.length === "number" || $util.isString(message.artworkEncSha256)))
+                        return "artworkEncSha256: buffer expected";
+                }
+                if (message.artworkMediaKey != null && Object.hasOwnProperty.call(message, "artworkMediaKey")) {
+                    properties._artworkMediaKey = 1;
+                    if (!(message.artworkMediaKey && typeof message.artworkMediaKey.length === "number" || $util.isString(message.artworkMediaKey)))
+                        return "artworkMediaKey: buffer expected";
+                }
+                if (message.consumptionCheckedAtS != null && Object.hasOwnProperty.call(message, "consumptionCheckedAtS")) {
+                    properties._consumptionCheckedAtS = 1;
+                    if (!$util.isInteger(message.consumptionCheckedAtS) && !(message.consumptionCheckedAtS && $util.isInteger(message.consumptionCheckedAtS.low) && $util.isInteger(message.consumptionCheckedAtS.high)))
+                        return "consumptionCheckedAtS: integer|Long expected";
+                }
+                if (message.isAvailableForConsumption != null && Object.hasOwnProperty.call(message, "isAvailableForConsumption")) {
+                    properties._isAvailableForConsumption = 1;
+                    if (typeof message.isAvailableForConsumption !== "boolean")
+                        return "isAvailableForConsumption: boolean expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a MusicData message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {proto.MsgOpaqueData.MusicData} MusicData
+             */
+            MusicData.fromObject = function fromObject(object, long) {
+                if (object instanceof $root.proto.MsgOpaqueData.MusicData)
+                    return object;
+                if (!$util.isObject(object))
+                    throw TypeError(".proto.MsgOpaqueData.MusicData: object expected");
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var message = new $root.proto.MsgOpaqueData.MusicData();
+                if (object.musicContentMediaId != null)
+                    message.musicContentMediaId = String(object.musicContentMediaId);
+                if (object.songId != null)
+                    message.songId = String(object.songId);
+                if (object.author != null)
+                    message.author = String(object.author);
+                if (object.title != null)
+                    message.title = String(object.title);
+                if (object.songUri != null)
+                    message.songUri = String(object.songUri);
+                if (object.artworkUri != null)
+                    message.artworkUri = String(object.artworkUri);
+                if (object.style != null)
+                    message.style = object.style | 0;
+                if (object.songStartTimeMs != null)
+                    message.songStartTimeMs = object.songStartTimeMs | 0;
+                if (object.clipDurationMs != null)
+                    message.clipDurationMs = object.clipDurationMs | 0;
+                if (object.isExplicit != null)
+                    message.isExplicit = Boolean(object.isExplicit);
+                if (object.countryBlocklist != null)
+                    if (typeof object.countryBlocklist === "string")
+                        $util.base64.decode(object.countryBlocklist, message.countryBlocklist = $util.newBuffer($util.base64.length(object.countryBlocklist)), 0);
+                    else if (object.countryBlocklist.length >= 0)
+                        message.countryBlocklist = object.countryBlocklist;
+                if (object.artistAttribution != null)
+                    message.artistAttribution = String(object.artistAttribution);
+                if (object.artworkDirectPath != null)
+                    message.artworkDirectPath = String(object.artworkDirectPath);
+                if (object.artworkSha256 != null)
+                    if (typeof object.artworkSha256 === "string")
+                        $util.base64.decode(object.artworkSha256, message.artworkSha256 = $util.newBuffer($util.base64.length(object.artworkSha256)), 0);
+                    else if (object.artworkSha256.length >= 0)
+                        message.artworkSha256 = object.artworkSha256;
+                if (object.artworkEncSha256 != null)
+                    if (typeof object.artworkEncSha256 === "string")
+                        $util.base64.decode(object.artworkEncSha256, message.artworkEncSha256 = $util.newBuffer($util.base64.length(object.artworkEncSha256)), 0);
+                    else if (object.artworkEncSha256.length >= 0)
+                        message.artworkEncSha256 = object.artworkEncSha256;
+                if (object.artworkMediaKey != null)
+                    if (typeof object.artworkMediaKey === "string")
+                        $util.base64.decode(object.artworkMediaKey, message.artworkMediaKey = $util.newBuffer($util.base64.length(object.artworkMediaKey)), 0);
+                    else if (object.artworkMediaKey.length >= 0)
+                        message.artworkMediaKey = object.artworkMediaKey;
+                if (object.consumptionCheckedAtS != null)
+                    if ($util.Long)
+                        message.consumptionCheckedAtS = $util.Long.fromValue(object.consumptionCheckedAtS, false);
+                    else if (typeof object.consumptionCheckedAtS === "string")
+                        message.consumptionCheckedAtS = parseInt(object.consumptionCheckedAtS, 10);
+                    else if (typeof object.consumptionCheckedAtS === "number")
+                        message.consumptionCheckedAtS = object.consumptionCheckedAtS;
+                    else if (typeof object.consumptionCheckedAtS === "object")
+                        message.consumptionCheckedAtS = new $util.LongBits(object.consumptionCheckedAtS.low >>> 0, object.consumptionCheckedAtS.high >>> 0).toNumber();
+                if (object.isAvailableForConsumption != null)
+                    message.isAvailableForConsumption = Boolean(object.isAvailableForConsumption);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a MusicData message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @static
+             * @param {proto.MsgOpaqueData.MusicData} message MusicData
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            MusicData.toObject = function toObject(message, options, q) {
+                if (!options)
+                    options = {};
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                var object = {};
+                if (message.musicContentMediaId != null && Object.hasOwnProperty.call(message, "musicContentMediaId")) {
+                    object.musicContentMediaId = message.musicContentMediaId;
+                    if (options.oneofs)
+                        object._musicContentMediaId = "musicContentMediaId";
+                }
+                if (message.songId != null && Object.hasOwnProperty.call(message, "songId")) {
+                    object.songId = message.songId;
+                    if (options.oneofs)
+                        object._songId = "songId";
+                }
+                if (message.author != null && Object.hasOwnProperty.call(message, "author")) {
+                    object.author = message.author;
+                    if (options.oneofs)
+                        object._author = "author";
+                }
+                if (message.title != null && Object.hasOwnProperty.call(message, "title")) {
+                    object.title = message.title;
+                    if (options.oneofs)
+                        object._title = "title";
+                }
+                if (message.songUri != null && Object.hasOwnProperty.call(message, "songUri")) {
+                    object.songUri = message.songUri;
+                    if (options.oneofs)
+                        object._songUri = "songUri";
+                }
+                if (message.artworkUri != null && Object.hasOwnProperty.call(message, "artworkUri")) {
+                    object.artworkUri = message.artworkUri;
+                    if (options.oneofs)
+                        object._artworkUri = "artworkUri";
+                }
+                if (message.style != null && Object.hasOwnProperty.call(message, "style")) {
+                    object.style = message.style;
+                    if (options.oneofs)
+                        object._style = "style";
+                }
+                if (message.songStartTimeMs != null && Object.hasOwnProperty.call(message, "songStartTimeMs")) {
+                    object.songStartTimeMs = message.songStartTimeMs;
+                    if (options.oneofs)
+                        object._songStartTimeMs = "songStartTimeMs";
+                }
+                if (message.clipDurationMs != null && Object.hasOwnProperty.call(message, "clipDurationMs")) {
+                    object.clipDurationMs = message.clipDurationMs;
+                    if (options.oneofs)
+                        object._clipDurationMs = "clipDurationMs";
+                }
+                if (message.isExplicit != null && Object.hasOwnProperty.call(message, "isExplicit")) {
+                    object.isExplicit = message.isExplicit;
+                    if (options.oneofs)
+                        object._isExplicit = "isExplicit";
+                }
+                if (message.countryBlocklist != null && Object.hasOwnProperty.call(message, "countryBlocklist")) {
+                    object.countryBlocklist = options.bytes === String ? $util.base64.encode(message.countryBlocklist, 0, message.countryBlocklist.length) : options.bytes === Array ? Array.prototype.slice.call(message.countryBlocklist) : message.countryBlocklist;
+                    if (options.oneofs)
+                        object._countryBlocklist = "countryBlocklist";
+                }
+                if (message.artistAttribution != null && Object.hasOwnProperty.call(message, "artistAttribution")) {
+                    object.artistAttribution = message.artistAttribution;
+                    if (options.oneofs)
+                        object._artistAttribution = "artistAttribution";
+                }
+                if (message.artworkDirectPath != null && Object.hasOwnProperty.call(message, "artworkDirectPath")) {
+                    object.artworkDirectPath = message.artworkDirectPath;
+                    if (options.oneofs)
+                        object._artworkDirectPath = "artworkDirectPath";
+                }
+                if (message.artworkSha256 != null && Object.hasOwnProperty.call(message, "artworkSha256")) {
+                    object.artworkSha256 = options.bytes === String ? $util.base64.encode(message.artworkSha256, 0, message.artworkSha256.length) : options.bytes === Array ? Array.prototype.slice.call(message.artworkSha256) : message.artworkSha256;
+                    if (options.oneofs)
+                        object._artworkSha256 = "artworkSha256";
+                }
+                if (message.artworkEncSha256 != null && Object.hasOwnProperty.call(message, "artworkEncSha256")) {
+                    object.artworkEncSha256 = options.bytes === String ? $util.base64.encode(message.artworkEncSha256, 0, message.artworkEncSha256.length) : options.bytes === Array ? Array.prototype.slice.call(message.artworkEncSha256) : message.artworkEncSha256;
+                    if (options.oneofs)
+                        object._artworkEncSha256 = "artworkEncSha256";
+                }
+                if (message.artworkMediaKey != null && Object.hasOwnProperty.call(message, "artworkMediaKey")) {
+                    object.artworkMediaKey = options.bytes === String ? $util.base64.encode(message.artworkMediaKey, 0, message.artworkMediaKey.length) : options.bytes === Array ? Array.prototype.slice.call(message.artworkMediaKey) : message.artworkMediaKey;
+                    if (options.oneofs)
+                        object._artworkMediaKey = "artworkMediaKey";
+                }
+                if (message.consumptionCheckedAtS != null && Object.hasOwnProperty.call(message, "consumptionCheckedAtS")) {
+                    if (typeof BigInt !== "undefined" && options.longs === BigInt)
+                        object.consumptionCheckedAtS = typeof message.consumptionCheckedAtS === "number" ? BigInt(message.consumptionCheckedAtS) : $util.Long.fromBits(message.consumptionCheckedAtS.low >>> 0, message.consumptionCheckedAtS.high >>> 0, false).toBigInt();
+                    else if (typeof message.consumptionCheckedAtS === "number")
+                        object.consumptionCheckedAtS = options.longs === String ? String(message.consumptionCheckedAtS) : message.consumptionCheckedAtS;
+                    else
+                        object.consumptionCheckedAtS = options.longs === String ? $util.Long.prototype.toString.call(message.consumptionCheckedAtS) : options.longs === Number ? new $util.LongBits(message.consumptionCheckedAtS.low >>> 0, message.consumptionCheckedAtS.high >>> 0).toNumber() : message.consumptionCheckedAtS;
+                    if (options.oneofs)
+                        object._consumptionCheckedAtS = "consumptionCheckedAtS";
+                }
+                if (message.isAvailableForConsumption != null && Object.hasOwnProperty.call(message, "isAvailableForConsumption")) {
+                    object.isAvailableForConsumption = message.isAvailableForConsumption;
+                    if (options.oneofs)
+                        object._isAvailableForConsumption = "isAvailableForConsumption";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this MusicData to JSON.
+             * @function toJSON
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            MusicData.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for MusicData
+             * @function getTypeUrl
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            MusicData.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/proto.MsgOpaqueData.MusicData";
+            };
+
+            return MusicData;
         })();
 
         /**
@@ -181628,6 +182853,7 @@ $root.proto = (function() {
      * @property {number} GROUP_HISTORY_TOGGLE_ACTION=97 GROUP_HISTORY_TOGGLE_ACTION value
      * @property {number} BB_PRO_PENDING_CUSTOMER_BASE_ACTION=98 BB_PRO_PENDING_CUSTOMER_BASE_ACTION value
      * @property {number} COMMUNITY_NESTING_STATE_ACTION=99 COMMUNITY_NESTING_STATE_ACTION value
+     * @property {number} SHARED_DEVICE_SECRET_ACTION=100 SHARED_DEVICE_SECRET_ACTION value
      * @property {number} SHARE_OWN_PN=10001 SHARE_OWN_PN value
      * @property {number} BUSINESS_BROADCAST_ACTION=10002 BUSINESS_BROADCAST_ACTION value
      * @property {number} AI_THREAD_DELETE_ACTION=10003 AI_THREAD_DELETE_ACTION value
@@ -181727,6 +182953,7 @@ $root.proto = (function() {
         values[valuesById[97] = "GROUP_HISTORY_TOGGLE_ACTION"] = 97;
         values[valuesById[98] = "BB_PRO_PENDING_CUSTOMER_BASE_ACTION"] = 98;
         values[valuesById[99] = "COMMUNITY_NESTING_STATE_ACTION"] = 99;
+        values[valuesById[100] = "SHARED_DEVICE_SECRET_ACTION"] = 100;
         values[valuesById[10001] = "SHARE_OWN_PN"] = 10001;
         values[valuesById[10002] = "BUSINESS_BROADCAST_ACTION"] = 10002;
         values[valuesById[10003] = "AI_THREAD_DELETE_ACTION"] = 10003;
@@ -206218,6 +207445,7 @@ $root.proto = (function() {
          * @property {proto.SyncActionValue.IGroupHistoryToggleAction|null} [groupHistoryToggleAction] SyncActionValue groupHistoryToggleAction
          * @property {proto.SyncActionValue.IBBProPendingCustomerBaseAction|null} [bbProPendingCustomerBaseAction] SyncActionValue bbProPendingCustomerBaseAction
          * @property {proto.SyncActionValue.ICommunityNestingStateAction|null} [communityNestingStateAction] SyncActionValue communityNestingStateAction
+         * @property {proto.SyncActionValue.ISharedDeviceSecretAction|null} [sharedDeviceSecretAction] SyncActionValue sharedDeviceSecretAction
          */
 
         /**
@@ -206955,6 +208183,14 @@ $root.proto = (function() {
          */
         SyncActionValue.prototype.communityNestingStateAction = null;
 
+        /**
+         * SyncActionValue sharedDeviceSecretAction.
+         * @member {proto.SyncActionValue.ISharedDeviceSecretAction|null|undefined} sharedDeviceSecretAction
+         * @memberof proto.SyncActionValue
+         * @instance
+         */
+        SyncActionValue.prototype.sharedDeviceSecretAction = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -207498,6 +208734,12 @@ $root.proto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(SyncActionValue.prototype, "_sharedDeviceSecretAction", {
+            get: $util.oneOfGetter($oneOfFields = ["sharedDeviceSecretAction"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new SyncActionValue instance using the specified properties.
          * @function create
@@ -207706,6 +208948,8 @@ $root.proto = (function() {
                 $root.proto.SyncActionValue.BBProPendingCustomerBaseAction.encode(message.bbProPendingCustomerBaseAction, writer.uint32(/* id 98, wireType 2 =*/786).fork(), q + 1).ldelim();
             if (message.communityNestingStateAction != null && Object.hasOwnProperty.call(message, "communityNestingStateAction"))
                 $root.proto.SyncActionValue.CommunityNestingStateAction.encode(message.communityNestingStateAction, writer.uint32(/* id 99, wireType 2 =*/794).fork(), q + 1).ldelim();
+            if (message.sharedDeviceSecretAction != null && Object.hasOwnProperty.call(message, "sharedDeviceSecretAction"))
+                $root.proto.SyncActionValue.SharedDeviceSecretAction.encode(message.sharedDeviceSecretAction, writer.uint32(/* id 100, wireType 2 =*/802).fork(), q + 1).ldelim();
             return writer;
         };
 
@@ -208114,6 +209358,10 @@ $root.proto = (function() {
                     }
                 case 99: {
                         message.communityNestingStateAction = $root.proto.SyncActionValue.CommunityNestingStateAction.decode(reader, reader.uint32(), undefined, long + 1);
+                        break;
+                    }
+                case 100: {
+                        message.sharedDeviceSecretAction = $root.proto.SyncActionValue.SharedDeviceSecretAction.decode(reader, reader.uint32(), undefined, long + 1);
                         break;
                     }
                 default:
@@ -208878,6 +210126,14 @@ $root.proto = (function() {
                         return "communityNestingStateAction." + error;
                 }
             }
+            if (message.sharedDeviceSecretAction != null && Object.hasOwnProperty.call(message, "sharedDeviceSecretAction")) {
+                properties._sharedDeviceSecretAction = 1;
+                {
+                    var error = $root.proto.SyncActionValue.SharedDeviceSecretAction.verify(message.sharedDeviceSecretAction, long + 1);
+                    if (error)
+                        return "sharedDeviceSecretAction." + error;
+                }
+            }
             return null;
         };
 
@@ -209353,6 +210609,11 @@ $root.proto = (function() {
                     throw TypeError(".proto.SyncActionValue.communityNestingStateAction: object expected");
                 message.communityNestingStateAction = $root.proto.SyncActionValue.CommunityNestingStateAction.fromObject(object.communityNestingStateAction, long + 1);
             }
+            if (object.sharedDeviceSecretAction != null) {
+                if (!$util.isObject(object.sharedDeviceSecretAction))
+                    throw TypeError(".proto.SyncActionValue.sharedDeviceSecretAction: object expected");
+                message.sharedDeviceSecretAction = $root.proto.SyncActionValue.SharedDeviceSecretAction.fromObject(object.sharedDeviceSecretAction, long + 1);
+            }
             return message;
         };
 
@@ -209827,6 +211088,11 @@ $root.proto = (function() {
                 object.communityNestingStateAction = $root.proto.SyncActionValue.CommunityNestingStateAction.toObject(message.communityNestingStateAction, options, q + 1);
                 if (options.oneofs)
                     object._communityNestingStateAction = "communityNestingStateAction";
+            }
+            if (message.sharedDeviceSecretAction != null && Object.hasOwnProperty.call(message, "sharedDeviceSecretAction")) {
+                object.sharedDeviceSecretAction = $root.proto.SyncActionValue.SharedDeviceSecretAction.toObject(message.sharedDeviceSecretAction, options, q + 1);
+                if (options.oneofs)
+                    object._sharedDeviceSecretAction = "sharedDeviceSecretAction";
             }
             return object;
         };
@@ -234599,6 +235865,309 @@ $root.proto = (function() {
             return SharedDeviceAllowlistAction;
         })();
 
+        SyncActionValue.SharedDeviceSecretAction = (function() {
+
+            /**
+             * Properties of a SharedDeviceSecretAction.
+             * @memberof proto.SyncActionValue
+             * @interface ISharedDeviceSecretAction
+             * @property {Uint8Array|null} [secret] SharedDeviceSecretAction secret
+             * @property {number|Long|null} [ttlMs] SharedDeviceSecretAction ttlMs
+             */
+
+            /**
+             * Constructs a new SharedDeviceSecretAction.
+             * @memberof proto.SyncActionValue
+             * @classdesc Represents a SharedDeviceSecretAction.
+             * @implements ISharedDeviceSecretAction
+             * @constructor
+             * @param {proto.SyncActionValue.ISharedDeviceSecretAction=} [properties] Properties to set
+             */
+            function SharedDeviceSecretAction(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * SharedDeviceSecretAction secret.
+             * @member {Uint8Array|null|undefined} secret
+             * @memberof proto.SyncActionValue.SharedDeviceSecretAction
+             * @instance
+             */
+            SharedDeviceSecretAction.prototype.secret = null;
+
+            /**
+             * SharedDeviceSecretAction ttlMs.
+             * @member {number|Long|null|undefined} ttlMs
+             * @memberof proto.SyncActionValue.SharedDeviceSecretAction
+             * @instance
+             */
+            SharedDeviceSecretAction.prototype.ttlMs = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(SharedDeviceSecretAction.prototype, "_secret", {
+                get: $util.oneOfGetter($oneOfFields = ["secret"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(SharedDeviceSecretAction.prototype, "_ttlMs", {
+                get: $util.oneOfGetter($oneOfFields = ["ttlMs"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new SharedDeviceSecretAction instance using the specified properties.
+             * @function create
+             * @memberof proto.SyncActionValue.SharedDeviceSecretAction
+             * @static
+             * @param {proto.SyncActionValue.ISharedDeviceSecretAction=} [properties] Properties to set
+             * @returns {proto.SyncActionValue.SharedDeviceSecretAction} SharedDeviceSecretAction instance
+             */
+            SharedDeviceSecretAction.create = function create(properties) {
+                return new SharedDeviceSecretAction(properties);
+            };
+
+            /**
+             * Encodes the specified SharedDeviceSecretAction message. Does not implicitly {@link proto.SyncActionValue.SharedDeviceSecretAction.verify|verify} messages.
+             * @function encode
+             * @memberof proto.SyncActionValue.SharedDeviceSecretAction
+             * @static
+             * @param {proto.SyncActionValue.ISharedDeviceSecretAction} message SharedDeviceSecretAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SharedDeviceSecretAction.encode = function encode(message, writer, q) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                if (message.secret != null && Object.hasOwnProperty.call(message, "secret"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.secret);
+                if (message.ttlMs != null && Object.hasOwnProperty.call(message, "ttlMs"))
+                    writer.uint32(/* id 2, wireType 0 =*/16).int64(message.ttlMs);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified SharedDeviceSecretAction message, length delimited. Does not implicitly {@link proto.SyncActionValue.SharedDeviceSecretAction.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof proto.SyncActionValue.SharedDeviceSecretAction
+             * @static
+             * @param {proto.SyncActionValue.ISharedDeviceSecretAction} message SharedDeviceSecretAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SharedDeviceSecretAction.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer && writer.len ? writer.fork() : writer).ldelim();
+            };
+
+            /**
+             * Decodes a SharedDeviceSecretAction message from the specified reader or buffer.
+             * @function decode
+             * @memberof proto.SyncActionValue.SharedDeviceSecretAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {proto.SyncActionValue.SharedDeviceSecretAction} SharedDeviceSecretAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SharedDeviceSecretAction.decode = function decode(reader, length, error, long) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (long === undefined)
+                    long = 0;
+                if (long > $Reader.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var end, message;
+                if (length === undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = new $root.proto.SyncActionValue.SharedDeviceSecretAction();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.secret = reader.bytes();
+                            break;
+                        }
+                    case 2: {
+                            message.ttlMs = reader.int64();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7, long);
+                        break;
+                    }
+                }
+                if (length !== undefined) {
+                    if (reader.pos !== end)
+                        throw RangeError("index out of range");
+                    reader.len = length;
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a SharedDeviceSecretAction message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof proto.SyncActionValue.SharedDeviceSecretAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {proto.SyncActionValue.SharedDeviceSecretAction} SharedDeviceSecretAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SharedDeviceSecretAction.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a SharedDeviceSecretAction message.
+             * @function verify
+             * @memberof proto.SyncActionValue.SharedDeviceSecretAction
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            SharedDeviceSecretAction.verify = function verify(message, long) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    return "maximum nesting depth exceeded";
+                var properties = {};
+                if (message.secret != null && Object.hasOwnProperty.call(message, "secret")) {
+                    properties._secret = 1;
+                    if (!(message.secret && typeof message.secret.length === "number" || $util.isString(message.secret)))
+                        return "secret: buffer expected";
+                }
+                if (message.ttlMs != null && Object.hasOwnProperty.call(message, "ttlMs")) {
+                    properties._ttlMs = 1;
+                    if (!$util.isInteger(message.ttlMs) && !(message.ttlMs && $util.isInteger(message.ttlMs.low) && $util.isInteger(message.ttlMs.high)))
+                        return "ttlMs: integer|Long expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a SharedDeviceSecretAction message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof proto.SyncActionValue.SharedDeviceSecretAction
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {proto.SyncActionValue.SharedDeviceSecretAction} SharedDeviceSecretAction
+             */
+            SharedDeviceSecretAction.fromObject = function fromObject(object, long) {
+                if (object instanceof $root.proto.SyncActionValue.SharedDeviceSecretAction)
+                    return object;
+                if (!$util.isObject(object))
+                    throw TypeError(".proto.SyncActionValue.SharedDeviceSecretAction: object expected");
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var message = new $root.proto.SyncActionValue.SharedDeviceSecretAction();
+                if (object.secret != null)
+                    if (typeof object.secret === "string")
+                        $util.base64.decode(object.secret, message.secret = $util.newBuffer($util.base64.length(object.secret)), 0);
+                    else if (object.secret.length >= 0)
+                        message.secret = object.secret;
+                if (object.ttlMs != null)
+                    if ($util.Long)
+                        message.ttlMs = $util.Long.fromValue(object.ttlMs, false);
+                    else if (typeof object.ttlMs === "string")
+                        message.ttlMs = parseInt(object.ttlMs, 10);
+                    else if (typeof object.ttlMs === "number")
+                        message.ttlMs = object.ttlMs;
+                    else if (typeof object.ttlMs === "object")
+                        message.ttlMs = new $util.LongBits(object.ttlMs.low >>> 0, object.ttlMs.high >>> 0).toNumber();
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a SharedDeviceSecretAction message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof proto.SyncActionValue.SharedDeviceSecretAction
+             * @static
+             * @param {proto.SyncActionValue.SharedDeviceSecretAction} message SharedDeviceSecretAction
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            SharedDeviceSecretAction.toObject = function toObject(message, options, q) {
+                if (!options)
+                    options = {};
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                var object = {};
+                if (message.secret != null && Object.hasOwnProperty.call(message, "secret")) {
+                    object.secret = options.bytes === String ? $util.base64.encode(message.secret, 0, message.secret.length) : options.bytes === Array ? Array.prototype.slice.call(message.secret) : message.secret;
+                    if (options.oneofs)
+                        object._secret = "secret";
+                }
+                if (message.ttlMs != null && Object.hasOwnProperty.call(message, "ttlMs")) {
+                    if (typeof BigInt !== "undefined" && options.longs === BigInt)
+                        object.ttlMs = typeof message.ttlMs === "number" ? BigInt(message.ttlMs) : $util.Long.fromBits(message.ttlMs.low >>> 0, message.ttlMs.high >>> 0, false).toBigInt();
+                    else if (typeof message.ttlMs === "number")
+                        object.ttlMs = options.longs === String ? String(message.ttlMs) : message.ttlMs;
+                    else
+                        object.ttlMs = options.longs === String ? $util.Long.prototype.toString.call(message.ttlMs) : options.longs === Number ? new $util.LongBits(message.ttlMs.low >>> 0, message.ttlMs.high >>> 0).toNumber() : message.ttlMs;
+                    if (options.oneofs)
+                        object._ttlMs = "ttlMs";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this SharedDeviceSecretAction to JSON.
+             * @function toJSON
+             * @memberof proto.SyncActionValue.SharedDeviceSecretAction
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            SharedDeviceSecretAction.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for SharedDeviceSecretAction
+             * @function getTypeUrl
+             * @memberof proto.SyncActionValue.SharedDeviceSecretAction
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            SharedDeviceSecretAction.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/proto.SyncActionValue.SharedDeviceSecretAction";
+            };
+
+            return SharedDeviceSecretAction;
+        })();
+
         SyncActionValue.StarAction = (function() {
 
             /**
@@ -254475,6 +256044,16 @@ $root.proto = (function() {
                 case 267:
                 case 270:
                 case 271:
+                case 272:
+                case 273:
+                case 274:
+                case 275:
+                case 276:
+                case 277:
+                case 283:
+                case 284:
+                case 285:
+                case 289:
                     break;
                 }
             }
@@ -256004,6 +257583,46 @@ $root.proto = (function() {
             case 271:
                 message.messageStubType = 271;
                 break;
+            case "BB_PRO_BROADCAST_CHAT_CARD":
+            case 272:
+                message.messageStubType = 272;
+                break;
+            case "BOT_PROACTIVE_MESSAGE_ENABLED":
+            case 273:
+                message.messageStubType = 273;
+                break;
+            case "BOT_PROACTIVE_MESSAGE_DISABLED":
+            case 274:
+                message.messageStubType = 274;
+                break;
+            case "BOT_PROACTIVE_MESSAGE_FIRST_TIME":
+            case 275:
+                message.messageStubType = 275;
+                break;
+            case "DYNAMIC_AUDIENCE_LIST_CREATE":
+            case 276:
+                message.messageStubType = 276;
+                break;
+            case "DYNAMIC_AUDIENCE_LIST_UPDATE_LINK":
+            case 277:
+                message.messageStubType = 277;
+                break;
+            case "CHAT_WITH_BUSINESS_IN_DIRECTORY":
+            case 283:
+                message.messageStubType = 283;
+                break;
+            case "META_AI_THREAD_CREATED":
+            case 284:
+                message.messageStubType = 284;
+                break;
+            case "META_AI_CONNECTOR_LINKED":
+            case 285:
+                message.messageStubType = 285;
+                break;
+            case "SPLIT_PAYMENT_MARKED_AS_PAID":
+            case 289:
+                message.messageStubType = 289;
+                break;
             }
             if (object.clearMedia != null)
                 message.clearMedia = Boolean(object.clearMedia);
@@ -257072,6 +258691,16 @@ $root.proto = (function() {
          * @property {number} CAMEO_CHAT_EXPIRED=267 CAMEO_CHAT_EXPIRED value
          * @property {number} GROUP_PUSHNAME_SHARED=270 GROUP_PUSHNAME_SHARED value
          * @property {number} BIZ_POST_SEND_OPT_OUT=271 BIZ_POST_SEND_OPT_OUT value
+         * @property {number} BB_PRO_BROADCAST_CHAT_CARD=272 BB_PRO_BROADCAST_CHAT_CARD value
+         * @property {number} BOT_PROACTIVE_MESSAGE_ENABLED=273 BOT_PROACTIVE_MESSAGE_ENABLED value
+         * @property {number} BOT_PROACTIVE_MESSAGE_DISABLED=274 BOT_PROACTIVE_MESSAGE_DISABLED value
+         * @property {number} BOT_PROACTIVE_MESSAGE_FIRST_TIME=275 BOT_PROACTIVE_MESSAGE_FIRST_TIME value
+         * @property {number} DYNAMIC_AUDIENCE_LIST_CREATE=276 DYNAMIC_AUDIENCE_LIST_CREATE value
+         * @property {number} DYNAMIC_AUDIENCE_LIST_UPDATE_LINK=277 DYNAMIC_AUDIENCE_LIST_UPDATE_LINK value
+         * @property {number} CHAT_WITH_BUSINESS_IN_DIRECTORY=283 CHAT_WITH_BUSINESS_IN_DIRECTORY value
+         * @property {number} META_AI_THREAD_CREATED=284 META_AI_THREAD_CREATED value
+         * @property {number} META_AI_CONNECTOR_LINKED=285 META_AI_CONNECTOR_LINKED value
+         * @property {number} SPLIT_PAYMENT_MARKED_AS_PAID=289 SPLIT_PAYMENT_MARKED_AS_PAID value
          */
         WebMessageInfo.StubType = (function() {
             var valuesById = {}, values = Object.create(valuesById);
@@ -257330,6 +258959,16 @@ $root.proto = (function() {
             values[valuesById[267] = "CAMEO_CHAT_EXPIRED"] = 267;
             values[valuesById[270] = "GROUP_PUSHNAME_SHARED"] = 270;
             values[valuesById[271] = "BIZ_POST_SEND_OPT_OUT"] = 271;
+            values[valuesById[272] = "BB_PRO_BROADCAST_CHAT_CARD"] = 272;
+            values[valuesById[273] = "BOT_PROACTIVE_MESSAGE_ENABLED"] = 273;
+            values[valuesById[274] = "BOT_PROACTIVE_MESSAGE_DISABLED"] = 274;
+            values[valuesById[275] = "BOT_PROACTIVE_MESSAGE_FIRST_TIME"] = 275;
+            values[valuesById[276] = "DYNAMIC_AUDIENCE_LIST_CREATE"] = 276;
+            values[valuesById[277] = "DYNAMIC_AUDIENCE_LIST_UPDATE_LINK"] = 277;
+            values[valuesById[283] = "CHAT_WITH_BUSINESS_IN_DIRECTORY"] = 283;
+            values[valuesById[284] = "META_AI_THREAD_CREATED"] = 284;
+            values[valuesById[285] = "META_AI_CONNECTOR_LINKED"] = 285;
+            values[valuesById[289] = "SPLIT_PAYMENT_MARKED_AS_PAID"] = 289;
             return values;
         })();
 
