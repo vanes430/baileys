@@ -4999,6 +4999,9 @@ export namespace proto {
 
         /** BizAccountLinkInfo accountType */
         accountType?: (proto.BizAccountLinkInfo.AccountType|null);
+
+        /** BizAccountLinkInfo whatsappAcctEmail */
+        whatsappAcctEmail?: (string|null);
     }
 
     /** Represents a BizAccountLinkInfo. */
@@ -5024,6 +5027,9 @@ export namespace proto {
 
         /** BizAccountLinkInfo accountType. */
         public accountType?: (proto.BizAccountLinkInfo.AccountType|null);
+
+        /** BizAccountLinkInfo whatsappAcctEmail. */
+        public whatsappAcctEmail?: (string|null);
 
         /**
          * Creates a new BizAccountLinkInfo instance using the specified properties.
@@ -8371,6 +8377,9 @@ export namespace proto {
 
         /** BotMessageOrigin type */
         type?: (proto.BotMessageOrigin.BotMessageOriginType|null);
+
+        /** BotMessageOrigin proactiveMessageCampaignId */
+        proactiveMessageCampaignId?: (string|null);
     }
 
     /** Represents a BotMessageOrigin. */
@@ -8384,6 +8393,9 @@ export namespace proto {
 
         /** BotMessageOrigin type. */
         public type?: (proto.BotMessageOrigin.BotMessageOriginType|null);
+
+        /** BotMessageOrigin proactiveMessageCampaignId. */
+        public proactiveMessageCampaignId?: (string|null);
 
         /**
          * Creates a new BotMessageOrigin instance using the specified properties.
@@ -14035,6 +14047,9 @@ export namespace proto {
 
         /** ClientPairingProps isBotJidDbMigrated */
         isBotJidDbMigrated?: (boolean|null);
+
+        /** ClientPairingProps companionAddPeerPayload */
+        companionAddPeerPayload?: (Uint8Array|null);
     }
 
     /** Represents a ClientPairingProps. */
@@ -14063,6 +14078,9 @@ export namespace proto {
 
         /** ClientPairingProps isBotJidDbMigrated. */
         public isBotJidDbMigrated?: (boolean|null);
+
+        /** ClientPairingProps companionAddPeerPayload. */
+        public companionAddPeerPayload?: (Uint8Array|null);
 
         /**
          * Creates a new ClientPairingProps instance using the specified properties.
@@ -16507,6 +16525,9 @@ export namespace proto {
 
         /** ContextInfo partnerDeepLinkToken */
         partnerDeepLinkToken?: (string|null);
+
+        /** ContextInfo sourceExperienceId */
+        sourceExperienceId?: (number|null);
     }
 
     /** Represents a ContextInfo. */
@@ -16715,6 +16736,9 @@ export namespace proto {
 
         /** ContextInfo partnerDeepLinkToken. */
         public partnerDeepLinkToken?: (string|null);
+
+        /** ContextInfo sourceExperienceId. */
+        public sourceExperienceId?: (number|null);
 
         /**
          * Creates a new ContextInfo instance using the specified properties.
@@ -18715,6 +18739,9 @@ export namespace proto {
 
             /** StatusAudienceMetadata listEmoji */
             listEmoji?: (string|null);
+
+            /** StatusAudienceMetadata orgId */
+            orgId?: (string|null);
         }
 
         /** Represents a StatusAudienceMetadata. */
@@ -18734,6 +18761,9 @@ export namespace proto {
 
             /** StatusAudienceMetadata listEmoji. */
             public listEmoji?: (string|null);
+
+            /** StatusAudienceMetadata orgId. */
+            public orgId?: (string|null);
 
             /**
              * Creates a new StatusAudienceMetadata instance using the specified properties.
@@ -18818,7 +18848,9 @@ export namespace proto {
             /** AudienceType enum. */
             enum AudienceType {
                 UNKNOWN = 0,
-                CLOSE_FRIENDS = 1
+                CLOSE_FRIENDS = 1,
+                CUSTOM_LIST = 2,
+                ORG = 3
             }
         }
 
@@ -19474,6 +19506,9 @@ export namespace proto {
 
         /** DeviceCapabilities hostWriteMutationSupport */
         hostWriteMutationSupport?: (proto.DeviceCapabilities.IHostWriteMutationSupport|null);
+
+        /** DeviceCapabilities bizAiWebOnboarding */
+        bizAiWebOnboarding?: (proto.DeviceCapabilities.IBizAiWebOnboarding|null);
     }
 
     /** Represents a DeviceCapabilities. */
@@ -19520,6 +19555,9 @@ export namespace proto {
 
         /** DeviceCapabilities hostWriteMutationSupport. */
         public hostWriteMutationSupport?: (proto.DeviceCapabilities.IHostWriteMutationSupport|null);
+
+        /** DeviceCapabilities bizAiWebOnboarding. */
+        public bizAiWebOnboarding?: (proto.DeviceCapabilities.IBizAiWebOnboarding|null);
 
         /**
          * Creates a new DeviceCapabilities instance using the specified properties.
@@ -19902,6 +19940,103 @@ export namespace proto {
 
             /**
              * Gets the default type url for BizAiSettingsSync
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** Properties of a BizAiWebOnboarding. */
+        interface IBizAiWebOnboarding {
+
+            /** BizAiWebOnboarding version */
+            version?: (number|null);
+        }
+
+        /** Represents a BizAiWebOnboarding. */
+        class BizAiWebOnboarding implements IBizAiWebOnboarding {
+
+            /**
+             * Constructs a new BizAiWebOnboarding.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: proto.DeviceCapabilities.IBizAiWebOnboarding);
+
+            /** BizAiWebOnboarding version. */
+            public version?: (number|null);
+
+            /**
+             * Creates a new BizAiWebOnboarding instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns BizAiWebOnboarding instance
+             */
+            public static create(properties?: proto.DeviceCapabilities.IBizAiWebOnboarding): proto.DeviceCapabilities.BizAiWebOnboarding;
+
+            /**
+             * Encodes the specified BizAiWebOnboarding message. Does not implicitly {@link proto.DeviceCapabilities.BizAiWebOnboarding.verify|verify} messages.
+             * @param message BizAiWebOnboarding message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: proto.DeviceCapabilities.IBizAiWebOnboarding, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified BizAiWebOnboarding message, length delimited. Does not implicitly {@link proto.DeviceCapabilities.BizAiWebOnboarding.verify|verify} messages.
+             * @param message BizAiWebOnboarding message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: proto.DeviceCapabilities.IBizAiWebOnboarding, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a BizAiWebOnboarding message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns BizAiWebOnboarding
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.DeviceCapabilities.BizAiWebOnboarding;
+
+            /**
+             * Decodes a BizAiWebOnboarding message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns BizAiWebOnboarding
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.DeviceCapabilities.BizAiWebOnboarding;
+
+            /**
+             * Verifies a BizAiWebOnboarding message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a BizAiWebOnboarding message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns BizAiWebOnboarding
+             */
+            public static fromObject(object: { [k: string]: any }): proto.DeviceCapabilities.BizAiWebOnboarding;
+
+            /**
+             * Creates a plain object from a BizAiWebOnboarding message. Also converts values to other types if specified.
+             * @param message BizAiWebOnboarding
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: proto.DeviceCapabilities.BizAiWebOnboarding, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this BizAiWebOnboarding to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for BizAiWebOnboarding
              * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns The default type url
              */
@@ -21220,8 +21355,8 @@ export namespace proto {
             /** HistorySyncConfig supportUniversalReachChat */
             supportUniversalReachChat?: (boolean|null);
 
-            /** HistorySyncConfig supportOmittedConversationIndex */
-            supportOmittedConversationIndex?: (boolean|null);
+            /** HistorySyncConfig supportOmittedConversationMetadata */
+            supportOmittedConversationMetadata?: (boolean|null);
         }
 
         /** Represents a HistorySyncConfig. */
@@ -21311,8 +21446,8 @@ export namespace proto {
             /** HistorySyncConfig supportUniversalReachChat. */
             public supportUniversalReachChat?: (boolean|null);
 
-            /** HistorySyncConfig supportOmittedConversationIndex. */
-            public supportOmittedConversationIndex?: (boolean|null);
+            /** HistorySyncConfig supportOmittedConversationMetadata. */
+            public supportOmittedConversationMetadata?: (boolean|null);
 
             /**
              * Creates a new HistorySyncConfig instance using the specified properties.
@@ -24487,11 +24622,11 @@ export namespace proto {
         /** HistorySync favoriteStickers */
         favoriteStickers?: (proto.IStickerMetadata[]|null);
 
-        /** HistorySync omittedConversations */
-        omittedConversations?: (proto.IRecoverableHistoryConversation[]|null);
+        /** HistorySync omittedConversationMetadata */
+        omittedConversationMetadata?: (proto.IOmittedConversationMetadata|null);
 
-        /** HistorySync omittedConversationsProvided */
-        omittedConversationsProvided?: (boolean|null);
+        /** HistorySync omittedConversationMetadataSnapshotId */
+        omittedConversationMetadataSnapshotId?: (string|null);
     }
 
     /** Represents a HistorySync. */
@@ -24566,11 +24701,11 @@ export namespace proto {
         /** HistorySync favoriteStickers. */
         public favoriteStickers: proto.IStickerMetadata[];
 
-        /** HistorySync omittedConversations. */
-        public omittedConversations: proto.IRecoverableHistoryConversation[];
+        /** HistorySync omittedConversationMetadata. */
+        public omittedConversationMetadata?: (proto.IOmittedConversationMetadata|null);
 
-        /** HistorySync omittedConversationsProvided. */
-        public omittedConversationsProvided?: (boolean|null);
+        /** HistorySync omittedConversationMetadataSnapshotId. */
+        public omittedConversationMetadataSnapshotId?: (string|null);
 
         /**
          * Creates a new HistorySync instance using the specified properties.
@@ -24666,7 +24801,8 @@ export namespace proto {
             RECENT = 3,
             PUSH_NAME = 4,
             NON_BLOCKING_DATA = 5,
-            ON_DEMAND = 6
+            ON_DEMAND = 6,
+            RECENT_CONVERSATIONS_ON_DEMAND = 9
         }
     }
 
@@ -35634,7 +35770,8 @@ export namespace proto {
             NON_BLOCKING_DATA = 5,
             ON_DEMAND = 6,
             NO_HISTORY = 7,
-            MESSAGE_ACCESS_STATUS = 8
+            MESSAGE_ACCESS_STATUS = 8,
+            RECENT_CONVERSATIONS_ON_DEMAND = 9
         }
 
         /** Properties of an ImageMessage. */
@@ -39940,6 +40077,9 @@ export namespace proto {
 
             /** MusicMessage contextInfo */
             contextInfo?: (proto.IContextInfo|null);
+
+            /** MusicMessage lyrics */
+            lyrics?: (proto.Message.MusicMessage.ILyrics|null);
         }
 
         /** Represents a MusicMessage. */
@@ -39965,6 +40105,9 @@ export namespace proto {
 
             /** MusicMessage contextInfo. */
             public contextInfo?: (proto.IContextInfo|null);
+
+            /** MusicMessage lyrics. */
+            public lyrics?: (proto.Message.MusicMessage.ILyrics|null);
 
             /**
              * Creates a new MusicMessage instance using the specified properties.
@@ -40045,6 +40188,215 @@ export namespace proto {
         }
 
         namespace MusicMessage {
+
+            /** Properties of a Lyrics. */
+            interface ILyrics {
+
+                /** Lyrics lines */
+                lines?: (proto.Message.MusicMessage.Lyrics.ILine[]|null);
+            }
+
+            /** Represents a Lyrics. */
+            class Lyrics implements ILyrics {
+
+                /**
+                 * Constructs a new Lyrics.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: proto.Message.MusicMessage.ILyrics);
+
+                /** Lyrics lines. */
+                public lines: proto.Message.MusicMessage.Lyrics.ILine[];
+
+                /**
+                 * Creates a new Lyrics instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns Lyrics instance
+                 */
+                public static create(properties?: proto.Message.MusicMessage.ILyrics): proto.Message.MusicMessage.Lyrics;
+
+                /**
+                 * Encodes the specified Lyrics message. Does not implicitly {@link proto.Message.MusicMessage.Lyrics.verify|verify} messages.
+                 * @param message Lyrics message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: proto.Message.MusicMessage.ILyrics, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified Lyrics message, length delimited. Does not implicitly {@link proto.Message.MusicMessage.Lyrics.verify|verify} messages.
+                 * @param message Lyrics message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: proto.Message.MusicMessage.ILyrics, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a Lyrics message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns Lyrics
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.Message.MusicMessage.Lyrics;
+
+                /**
+                 * Decodes a Lyrics message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns Lyrics
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.Message.MusicMessage.Lyrics;
+
+                /**
+                 * Verifies a Lyrics message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a Lyrics message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns Lyrics
+                 */
+                public static fromObject(object: { [k: string]: any }): proto.Message.MusicMessage.Lyrics;
+
+                /**
+                 * Creates a plain object from a Lyrics message. Also converts values to other types if specified.
+                 * @param message Lyrics
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: proto.Message.MusicMessage.Lyrics, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this Lyrics to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+
+                /**
+                 * Gets the default type url for Lyrics
+                 * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns The default type url
+                 */
+                public static getTypeUrl(typeUrlPrefix?: string): string;
+            }
+
+            namespace Lyrics {
+
+                /** Properties of a Line. */
+                interface ILine {
+
+                    /** Line startTimeInMs */
+                    startTimeInMs?: (number|Long|null);
+
+                    /** Line endTimeInMs */
+                    endTimeInMs?: (number|Long|null);
+
+                    /** Line text */
+                    text?: (string|null);
+                }
+
+                /** Represents a Line. */
+                class Line implements ILine {
+
+                    /**
+                     * Constructs a new Line.
+                     * @param [properties] Properties to set
+                     */
+                    constructor(properties?: proto.Message.MusicMessage.Lyrics.ILine);
+
+                    /** Line startTimeInMs. */
+                    public startTimeInMs?: (number|Long|null);
+
+                    /** Line endTimeInMs. */
+                    public endTimeInMs?: (number|Long|null);
+
+                    /** Line text. */
+                    public text?: (string|null);
+
+                    /**
+                     * Creates a new Line instance using the specified properties.
+                     * @param [properties] Properties to set
+                     * @returns Line instance
+                     */
+                    public static create(properties?: proto.Message.MusicMessage.Lyrics.ILine): proto.Message.MusicMessage.Lyrics.Line;
+
+                    /**
+                     * Encodes the specified Line message. Does not implicitly {@link proto.Message.MusicMessage.Lyrics.Line.verify|verify} messages.
+                     * @param message Line message or plain object to encode
+                     * @param [writer] Writer to encode to
+                     * @returns Writer
+                     */
+                    public static encode(message: proto.Message.MusicMessage.Lyrics.ILine, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                    /**
+                     * Encodes the specified Line message, length delimited. Does not implicitly {@link proto.Message.MusicMessage.Lyrics.Line.verify|verify} messages.
+                     * @param message Line message or plain object to encode
+                     * @param [writer] Writer to encode to
+                     * @returns Writer
+                     */
+                    public static encodeDelimited(message: proto.Message.MusicMessage.Lyrics.ILine, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                    /**
+                     * Decodes a Line message from the specified reader or buffer.
+                     * @param reader Reader or buffer to decode from
+                     * @param [length] Message length if known beforehand
+                     * @returns Line
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.Message.MusicMessage.Lyrics.Line;
+
+                    /**
+                     * Decodes a Line message from the specified reader or buffer, length delimited.
+                     * @param reader Reader or buffer to decode from
+                     * @returns Line
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.Message.MusicMessage.Lyrics.Line;
+
+                    /**
+                     * Verifies a Line message.
+                     * @param message Plain object to verify
+                     * @returns `null` if valid, otherwise the reason why it is not
+                     */
+                    public static verify(message: { [k: string]: any }): (string|null);
+
+                    /**
+                     * Creates a Line message from a plain object. Also converts values to their respective internal types.
+                     * @param object Plain object
+                     * @returns Line
+                     */
+                    public static fromObject(object: { [k: string]: any }): proto.Message.MusicMessage.Lyrics.Line;
+
+                    /**
+                     * Creates a plain object from a Line message. Also converts values to other types if specified.
+                     * @param message Line
+                     * @param [options] Conversion options
+                     * @returns Plain object
+                     */
+                    public static toObject(message: proto.Message.MusicMessage.Lyrics.Line, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                    /**
+                     * Converts this Line to JSON.
+                     * @returns JSON object
+                     */
+                    public toJSON(): { [k: string]: any };
+
+                    /**
+                     * Gets the default type url for Line
+                     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                     * @returns The default type url
+                     */
+                    public static getTypeUrl(typeUrlPrefix?: string): string;
+                }
+            }
 
             /** MusicMessageStyle enum. */
             enum MusicMessageStyle {
@@ -41364,6 +41716,9 @@ export namespace proto {
 
             /** PeerDataOperationRequestMessage bizBroadcastInsightsRefreshRequest */
             bizBroadcastInsightsRefreshRequest?: (proto.Message.PeerDataOperationRequestMessage.IBizBroadcastInsightsRefreshRequest|null);
+
+            /** PeerDataOperationRequestMessage recentConversationsOnDemandRequest */
+            recentConversationsOnDemandRequest?: (proto.Message.PeerDataOperationRequestMessage.IRecentConversationsOnDemandRequest|null);
         }
 
         /** Represents a PeerDataOperationRequestMessage. */
@@ -41410,6 +41765,9 @@ export namespace proto {
 
             /** PeerDataOperationRequestMessage bizBroadcastInsightsRefreshRequest. */
             public bizBroadcastInsightsRefreshRequest?: (proto.Message.PeerDataOperationRequestMessage.IBizBroadcastInsightsRefreshRequest|null);
+
+            /** PeerDataOperationRequestMessage recentConversationsOnDemandRequest. */
+            public recentConversationsOnDemandRequest?: (proto.Message.PeerDataOperationRequestMessage.IRecentConversationsOnDemandRequest|null);
 
             /**
              * Creates a new PeerDataOperationRequestMessage instance using the specified properties.
@@ -42360,6 +42718,109 @@ export namespace proto {
 
                 /**
                  * Gets the default type url for PlaceholderMessageResendRequest
+                 * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns The default type url
+                 */
+                public static getTypeUrl(typeUrlPrefix?: string): string;
+            }
+
+            /** Properties of a RecentConversationsOnDemandRequest. */
+            interface IRecentConversationsOnDemandRequest {
+
+                /** RecentConversationsOnDemandRequest conversationCount */
+                conversationCount?: (number|null);
+
+                /** RecentConversationsOnDemandRequest messagesPerConversation */
+                messagesPerConversation?: (number|null);
+            }
+
+            /** Represents a RecentConversationsOnDemandRequest. */
+            class RecentConversationsOnDemandRequest implements IRecentConversationsOnDemandRequest {
+
+                /**
+                 * Constructs a new RecentConversationsOnDemandRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: proto.Message.PeerDataOperationRequestMessage.IRecentConversationsOnDemandRequest);
+
+                /** RecentConversationsOnDemandRequest conversationCount. */
+                public conversationCount?: (number|null);
+
+                /** RecentConversationsOnDemandRequest messagesPerConversation. */
+                public messagesPerConversation?: (number|null);
+
+                /**
+                 * Creates a new RecentConversationsOnDemandRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns RecentConversationsOnDemandRequest instance
+                 */
+                public static create(properties?: proto.Message.PeerDataOperationRequestMessage.IRecentConversationsOnDemandRequest): proto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest;
+
+                /**
+                 * Encodes the specified RecentConversationsOnDemandRequest message. Does not implicitly {@link proto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest.verify|verify} messages.
+                 * @param message RecentConversationsOnDemandRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: proto.Message.PeerDataOperationRequestMessage.IRecentConversationsOnDemandRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified RecentConversationsOnDemandRequest message, length delimited. Does not implicitly {@link proto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest.verify|verify} messages.
+                 * @param message RecentConversationsOnDemandRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: proto.Message.PeerDataOperationRequestMessage.IRecentConversationsOnDemandRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a RecentConversationsOnDemandRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns RecentConversationsOnDemandRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest;
+
+                /**
+                 * Decodes a RecentConversationsOnDemandRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns RecentConversationsOnDemandRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest;
+
+                /**
+                 * Verifies a RecentConversationsOnDemandRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a RecentConversationsOnDemandRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns RecentConversationsOnDemandRequest
+                 */
+                public static fromObject(object: { [k: string]: any }): proto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest;
+
+                /**
+                 * Creates a plain object from a RecentConversationsOnDemandRequest message. Also converts values to other types if specified.
+                 * @param message RecentConversationsOnDemandRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: proto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this RecentConversationsOnDemandRequest to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+
+                /**
+                 * Gets the default type url for RecentConversationsOnDemandRequest
                  * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
                  * @returns The default type url
                  */
@@ -44599,7 +45060,8 @@ export namespace proto {
             GALAXY_FLOW_ACTION = 11,
             BUSINESS_BROADCAST_INSIGHTS_DELIVERED_TO = 12,
             BUSINESS_BROADCAST_INSIGHTS_REFRESH = 13,
-            CONTACT_REFRESH_REQUEST = 14
+            CONTACT_REFRESH_REQUEST = 14,
+            RECENT_CONVERSATIONS_ON_DEMAND_REQUEST = 15
         }
 
         /** Properties of a PinInChatMessage. */
@@ -51525,6 +51987,9 @@ export namespace proto {
 
         /** MessageContextInfo acp2Setting */
         acp2Setting?: (proto.IACP2Setting|null);
+
+        /** MessageContextInfo lightE2Ee */
+        lightE2Ee?: (boolean|null);
     }
 
     /** Represents a MessageContextInfo. */
@@ -51598,6 +52063,9 @@ export namespace proto {
 
         /** MessageContextInfo acp2Setting. */
         public acp2Setting?: (proto.IACP2Setting|null);
+
+        /** MessageContextInfo lightE2Ee. */
+        public lightE2Ee?: (boolean|null);
 
         /**
          * Creates a new MessageContextInfo instance using the specified properties.
@@ -52195,6 +52663,9 @@ export namespace proto {
 
         /** MsgOpaqueData musicData */
         musicData?: (proto.MsgOpaqueData.IMusicData|null);
+
+        /** MsgOpaqueData pollAddedOptionName */
+        pollAddedOptionName?: (string|null);
     }
 
     /** Represents a MsgOpaqueData. */
@@ -52379,6 +52850,9 @@ export namespace proto {
 
         /** MsgOpaqueData musicData. */
         public musicData?: (proto.MsgOpaqueData.IMusicData|null);
+
+        /** MsgOpaqueData pollAddedOptionName. */
+        public pollAddedOptionName?: (string|null);
 
         /**
          * Creates a new MsgOpaqueData instance using the specified properties.
@@ -52804,6 +53278,12 @@ export namespace proto {
 
             /** PollOption addOptionMsgKey */
             addOptionMsgKey?: (string|null);
+
+            /** PollOption localId */
+            localId?: (number|null);
+
+            /** PollOption addOptionMsgT */
+            addOptionMsgT?: (number|null);
         }
 
         /** Represents a PollOption. */
@@ -52823,6 +53303,12 @@ export namespace proto {
 
             /** PollOption addOptionMsgKey. */
             public addOptionMsgKey?: (string|null);
+
+            /** PollOption localId. */
+            public localId?: (number|null);
+
+            /** PollOption addOptionMsgT. */
+            public addOptionMsgT?: (number|null);
 
             /**
              * Creates a new PollOption instance using the specified properties.
@@ -53883,6 +54369,133 @@ export namespace proto {
 
         /**
          * Gets the default type url for NotificationSettings
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of an OmittedConversationMetadata. */
+    interface IOmittedConversationMetadata {
+
+        /** OmittedConversationMetadata snapshotId */
+        snapshotId?: (string|null);
+
+        /** OmittedConversationMetadata snapshotTimestampMs */
+        snapshotTimestampMs?: (number|Long|null);
+
+        /** OmittedConversationMetadata batchIndex */
+        batchIndex?: (number|null);
+
+        /** OmittedConversationMetadata batchCount */
+        batchCount?: (number|null);
+
+        /** OmittedConversationMetadata complete */
+        complete?: (boolean|null);
+
+        /** OmittedConversationMetadata conversations */
+        conversations?: (proto.IConversation[]|null);
+    }
+
+    /** Represents an OmittedConversationMetadata. */
+    class OmittedConversationMetadata implements IOmittedConversationMetadata {
+
+        /**
+         * Constructs a new OmittedConversationMetadata.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: proto.IOmittedConversationMetadata);
+
+        /** OmittedConversationMetadata snapshotId. */
+        public snapshotId?: (string|null);
+
+        /** OmittedConversationMetadata snapshotTimestampMs. */
+        public snapshotTimestampMs?: (number|Long|null);
+
+        /** OmittedConversationMetadata batchIndex. */
+        public batchIndex?: (number|null);
+
+        /** OmittedConversationMetadata batchCount. */
+        public batchCount?: (number|null);
+
+        /** OmittedConversationMetadata complete. */
+        public complete?: (boolean|null);
+
+        /** OmittedConversationMetadata conversations. */
+        public conversations: proto.IConversation[];
+
+        /**
+         * Creates a new OmittedConversationMetadata instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns OmittedConversationMetadata instance
+         */
+        public static create(properties?: proto.IOmittedConversationMetadata): proto.OmittedConversationMetadata;
+
+        /**
+         * Encodes the specified OmittedConversationMetadata message. Does not implicitly {@link proto.OmittedConversationMetadata.verify|verify} messages.
+         * @param message OmittedConversationMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: proto.IOmittedConversationMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified OmittedConversationMetadata message, length delimited. Does not implicitly {@link proto.OmittedConversationMetadata.verify|verify} messages.
+         * @param message OmittedConversationMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: proto.IOmittedConversationMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes an OmittedConversationMetadata message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns OmittedConversationMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.OmittedConversationMetadata;
+
+        /**
+         * Decodes an OmittedConversationMetadata message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns OmittedConversationMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.OmittedConversationMetadata;
+
+        /**
+         * Verifies an OmittedConversationMetadata message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates an OmittedConversationMetadata message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns OmittedConversationMetadata
+         */
+        public static fromObject(object: { [k: string]: any }): proto.OmittedConversationMetadata;
+
+        /**
+         * Creates a plain object from an OmittedConversationMetadata message. Also converts values to other types if specified.
+         * @param message OmittedConversationMetadata
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: proto.OmittedConversationMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this OmittedConversationMetadata to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for OmittedConversationMetadata
          * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns The default type url
          */
@@ -57044,109 +57657,6 @@ export namespace proto {
 
         /**
          * Gets the default type url for RecordStructure
-         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns The default type url
-         */
-        public static getTypeUrl(typeUrlPrefix?: string): string;
-    }
-
-    /** Properties of a RecoverableHistoryConversation. */
-    interface IRecoverableHistoryConversation {
-
-        /** RecoverableHistoryConversation historyChatId */
-        historyChatId?: (string|null);
-
-        /** RecoverableHistoryConversation accountLid */
-        accountLid?: (string|null);
-    }
-
-    /** Represents a RecoverableHistoryConversation. */
-    class RecoverableHistoryConversation implements IRecoverableHistoryConversation {
-
-        /**
-         * Constructs a new RecoverableHistoryConversation.
-         * @param [properties] Properties to set
-         */
-        constructor(properties?: proto.IRecoverableHistoryConversation);
-
-        /** RecoverableHistoryConversation historyChatId. */
-        public historyChatId?: (string|null);
-
-        /** RecoverableHistoryConversation accountLid. */
-        public accountLid?: (string|null);
-
-        /**
-         * Creates a new RecoverableHistoryConversation instance using the specified properties.
-         * @param [properties] Properties to set
-         * @returns RecoverableHistoryConversation instance
-         */
-        public static create(properties?: proto.IRecoverableHistoryConversation): proto.RecoverableHistoryConversation;
-
-        /**
-         * Encodes the specified RecoverableHistoryConversation message. Does not implicitly {@link proto.RecoverableHistoryConversation.verify|verify} messages.
-         * @param message RecoverableHistoryConversation message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        public static encode(message: proto.IRecoverableHistoryConversation, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Encodes the specified RecoverableHistoryConversation message, length delimited. Does not implicitly {@link proto.RecoverableHistoryConversation.verify|verify} messages.
-         * @param message RecoverableHistoryConversation message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        public static encodeDelimited(message: proto.IRecoverableHistoryConversation, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Decodes a RecoverableHistoryConversation message from the specified reader or buffer.
-         * @param reader Reader or buffer to decode from
-         * @param [length] Message length if known beforehand
-         * @returns RecoverableHistoryConversation
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.RecoverableHistoryConversation;
-
-        /**
-         * Decodes a RecoverableHistoryConversation message from the specified reader or buffer, length delimited.
-         * @param reader Reader or buffer to decode from
-         * @returns RecoverableHistoryConversation
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.RecoverableHistoryConversation;
-
-        /**
-         * Verifies a RecoverableHistoryConversation message.
-         * @param message Plain object to verify
-         * @returns `null` if valid, otherwise the reason why it is not
-         */
-        public static verify(message: { [k: string]: any }): (string|null);
-
-        /**
-         * Creates a RecoverableHistoryConversation message from a plain object. Also converts values to their respective internal types.
-         * @param object Plain object
-         * @returns RecoverableHistoryConversation
-         */
-        public static fromObject(object: { [k: string]: any }): proto.RecoverableHistoryConversation;
-
-        /**
-         * Creates a plain object from a RecoverableHistoryConversation message. Also converts values to other types if specified.
-         * @param message RecoverableHistoryConversation
-         * @param [options] Conversion options
-         * @returns Plain object
-         */
-        public static toObject(message: proto.RecoverableHistoryConversation, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-        /**
-         * Converts this RecoverableHistoryConversation to JSON.
-         * @returns JSON object
-         */
-        public toJSON(): { [k: string]: any };
-
-        /**
-         * Gets the default type url for RecoverableHistoryConversation
          * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns The default type url
          */
@@ -76031,7 +76541,9 @@ export namespace proto {
             CHAT_WITH_BUSINESS_IN_DIRECTORY = 283,
             META_AI_THREAD_CREATED = 284,
             META_AI_CONNECTOR_LINKED = 285,
-            SPLIT_PAYMENT_MARKED_AS_PAID = 289
+            SPLIT_PAYMENT_MARKED_AS_PAID = 289,
+            POLL_OPTIONS_REMOVED = 290,
+            POLL_ADDED_OPTION_REMOVED = 291
         }
     }
 
