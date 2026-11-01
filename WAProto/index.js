@@ -18024,6 +18024,8 @@ $root.proto = (function() {
                     case 80:
                     case 81:
                     case 82:
+                    case 83:
+                    case 84:
                         break;
                     }
             }
@@ -18391,6 +18393,14 @@ $root.proto = (function() {
                     case 82:
                         message.capabilities[i] = 82;
                         break;
+                    case "HATCH_CVM_ENABLED":
+                    case 83:
+                        message.capabilities[i] = 83;
+                        break;
+                    case "RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED":
+                    case 84:
+                        message.capabilities[i] = 84;
+                        break;
                     }
             }
             return message;
@@ -18536,6 +18546,8 @@ $root.proto = (function() {
          * @property {number} AI_STUDY_CENTER_ENABLED=80 AI_STUDY_CENTER_ENABLED value
          * @property {number} AI_MUSE_JARVIS_SCHEMA_ENABLED=81 AI_MUSE_JARVIS_SCHEMA_ENABLED value
          * @property {number} AI_STUDY_QUIZ_ENABLED=82 AI_STUDY_QUIZ_ENABLED value
+         * @property {number} HATCH_CVM_ENABLED=83 HATCH_CVM_ENABLED value
+         * @property {number} RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED=84 RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED value
          */
         BotCapabilityMetadata.BotCapabilityType = (function() {
             var valuesById = {}, values = Object.create(valuesById);
@@ -18622,6 +18634,8 @@ $root.proto = (function() {
             values[valuesById[80] = "AI_STUDY_CENTER_ENABLED"] = 80;
             values[valuesById[81] = "AI_MUSE_JARVIS_SCHEMA_ENABLED"] = 81;
             values[valuesById[82] = "AI_STUDY_QUIZ_ENABLED"] = 82;
+            values[valuesById[83] = "HATCH_CVM_ENABLED"] = 83;
+            values[valuesById[84] = "RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED"] = 84;
             return values;
         })();
 
@@ -24098,6 +24112,301 @@ $root.proto = (function() {
         return BotInfrastructureDiagnostics;
     })();
 
+    proto.BotInterjectionMetadata = (function() {
+
+        /**
+         * Properties of a BotInterjectionMetadata.
+         * @memberof proto
+         * @interface IBotInterjectionMetadata
+         * @property {string|null} [targetPromptMessageId] BotInterjectionMetadata targetPromptMessageId
+         * @property {Array.<string>|null} [foldedPromptMessageIds] BotInterjectionMetadata foldedPromptMessageIds
+         */
+
+        /**
+         * Constructs a new BotInterjectionMetadata.
+         * @memberof proto
+         * @classdesc Represents a BotInterjectionMetadata.
+         * @implements IBotInterjectionMetadata
+         * @constructor
+         * @param {proto.IBotInterjectionMetadata=} [properties] Properties to set
+         */
+        function BotInterjectionMetadata(properties) {
+            this.foldedPromptMessageIds = [];
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * BotInterjectionMetadata targetPromptMessageId.
+         * @member {string|null|undefined} targetPromptMessageId
+         * @memberof proto.BotInterjectionMetadata
+         * @instance
+         */
+        BotInterjectionMetadata.prototype.targetPromptMessageId = null;
+
+        /**
+         * BotInterjectionMetadata foldedPromptMessageIds.
+         * @member {Array.<string>} foldedPromptMessageIds
+         * @memberof proto.BotInterjectionMetadata
+         * @instance
+         */
+        BotInterjectionMetadata.prototype.foldedPromptMessageIds = $util.emptyArray;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(BotInterjectionMetadata.prototype, "_targetPromptMessageId", {
+            get: $util.oneOfGetter($oneOfFields = ["targetPromptMessageId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new BotInterjectionMetadata instance using the specified properties.
+         * @function create
+         * @memberof proto.BotInterjectionMetadata
+         * @static
+         * @param {proto.IBotInterjectionMetadata=} [properties] Properties to set
+         * @returns {proto.BotInterjectionMetadata} BotInterjectionMetadata instance
+         */
+        BotInterjectionMetadata.create = function create(properties) {
+            return new BotInterjectionMetadata(properties);
+        };
+
+        /**
+         * Encodes the specified BotInterjectionMetadata message. Does not implicitly {@link proto.BotInterjectionMetadata.verify|verify} messages.
+         * @function encode
+         * @memberof proto.BotInterjectionMetadata
+         * @static
+         * @param {proto.IBotInterjectionMetadata} message BotInterjectionMetadata message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        BotInterjectionMetadata.encode = function encode(message, writer, q) {
+            if (!writer)
+                writer = $Writer.create();
+            if (q === undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw Error("max depth exceeded");
+            if (message.targetPromptMessageId != null && Object.hasOwnProperty.call(message, "targetPromptMessageId"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.targetPromptMessageId);
+            if (message.foldedPromptMessageIds != null && message.foldedPromptMessageIds.length)
+                for (var i = 0; i < message.foldedPromptMessageIds.length; ++i)
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.foldedPromptMessageIds[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified BotInterjectionMetadata message, length delimited. Does not implicitly {@link proto.BotInterjectionMetadata.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof proto.BotInterjectionMetadata
+         * @static
+         * @param {proto.IBotInterjectionMetadata} message BotInterjectionMetadata message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        BotInterjectionMetadata.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer && writer.len ? writer.fork() : writer).ldelim();
+        };
+
+        /**
+         * Decodes a BotInterjectionMetadata message from the specified reader or buffer.
+         * @function decode
+         * @memberof proto.BotInterjectionMetadata
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {proto.BotInterjectionMetadata} BotInterjectionMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        BotInterjectionMetadata.decode = function decode(reader, length, error, long) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (long === undefined)
+                long = 0;
+            if (long > $Reader.recursionLimit)
+                throw Error("maximum nesting depth exceeded");
+            var end, message;
+            if (length === undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = new $root.proto.BotInterjectionMetadata();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.targetPromptMessageId = reader.string();
+                        break;
+                    }
+                case 2: {
+                        if (!(message.foldedPromptMessageIds && message.foldedPromptMessageIds.length))
+                            message.foldedPromptMessageIds = [];
+                        message.foldedPromptMessageIds.push(reader.string());
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7, long);
+                    break;
+                }
+            }
+            if (length !== undefined) {
+                if (reader.pos !== end)
+                    throw RangeError("index out of range");
+                reader.len = length;
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a BotInterjectionMetadata message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof proto.BotInterjectionMetadata
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {proto.BotInterjectionMetadata} BotInterjectionMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        BotInterjectionMetadata.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a BotInterjectionMetadata message.
+         * @function verify
+         * @memberof proto.BotInterjectionMetadata
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        BotInterjectionMetadata.verify = function verify(message, long) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (long === undefined)
+                long = 0;
+            if (long > $util.recursionLimit)
+                return "maximum nesting depth exceeded";
+            var properties = {};
+            if (message.targetPromptMessageId != null && Object.hasOwnProperty.call(message, "targetPromptMessageId")) {
+                properties._targetPromptMessageId = 1;
+                if (!$util.isString(message.targetPromptMessageId))
+                    return "targetPromptMessageId: string expected";
+            }
+            if (message.foldedPromptMessageIds != null && Object.hasOwnProperty.call(message, "foldedPromptMessageIds")) {
+                if (!Array.isArray(message.foldedPromptMessageIds))
+                    return "foldedPromptMessageIds: array expected";
+                for (var i = 0; i < message.foldedPromptMessageIds.length; ++i)
+                    if (!$util.isString(message.foldedPromptMessageIds[i]))
+                        return "foldedPromptMessageIds: string[] expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a BotInterjectionMetadata message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof proto.BotInterjectionMetadata
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {proto.BotInterjectionMetadata} BotInterjectionMetadata
+         */
+        BotInterjectionMetadata.fromObject = function fromObject(object, long) {
+            if (object instanceof $root.proto.BotInterjectionMetadata)
+                return object;
+            if (!$util.isObject(object))
+                throw TypeError(".proto.BotInterjectionMetadata: object expected");
+            if (long === undefined)
+                long = 0;
+            if (long > $util.recursionLimit)
+                throw Error("maximum nesting depth exceeded");
+            var message = new $root.proto.BotInterjectionMetadata();
+            if (object.targetPromptMessageId != null)
+                message.targetPromptMessageId = String(object.targetPromptMessageId);
+            if (object.foldedPromptMessageIds) {
+                if (!Array.isArray(object.foldedPromptMessageIds))
+                    throw TypeError(".proto.BotInterjectionMetadata.foldedPromptMessageIds: array expected");
+                message.foldedPromptMessageIds = [];
+                for (var i = 0; i < object.foldedPromptMessageIds.length; ++i)
+                    message.foldedPromptMessageIds[i] = String(object.foldedPromptMessageIds[i]);
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a BotInterjectionMetadata message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof proto.BotInterjectionMetadata
+         * @static
+         * @param {proto.BotInterjectionMetadata} message BotInterjectionMetadata
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        BotInterjectionMetadata.toObject = function toObject(message, options, q) {
+            if (!options)
+                options = {};
+            if (q === undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw Error("max depth exceeded");
+            var object = {};
+            if (options.arrays || options.defaults)
+                object.foldedPromptMessageIds = [];
+            if (message.targetPromptMessageId != null && Object.hasOwnProperty.call(message, "targetPromptMessageId")) {
+                object.targetPromptMessageId = message.targetPromptMessageId;
+                if (options.oneofs)
+                    object._targetPromptMessageId = "targetPromptMessageId";
+            }
+            if (message.foldedPromptMessageIds && message.foldedPromptMessageIds.length) {
+                object.foldedPromptMessageIds = [];
+                for (var j = 0; j < message.foldedPromptMessageIds.length; ++j)
+                    object.foldedPromptMessageIds[j] = message.foldedPromptMessageIds[j];
+            }
+            return object;
+        };
+
+        /**
+         * Converts this BotInterjectionMetadata to JSON.
+         * @function toJSON
+         * @memberof proto.BotInterjectionMetadata
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        BotInterjectionMetadata.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for BotInterjectionMetadata
+         * @function getTypeUrl
+         * @memberof proto.BotInterjectionMetadata
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        BotInterjectionMetadata.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/proto.BotInterjectionMetadata";
+        };
+
+        return BotInterjectionMetadata;
+    })();
+
     proto.BotLinkedAccount = (function() {
 
         /**
@@ -27301,6 +27610,7 @@ $root.proto = (function() {
          * @property {proto.IBotPttPromptMetadata|null} [pttPromptMetadata] BotMetadata pttPromptMetadata
          * @property {proto.IBotHistoryShareMetadata|null} [botHistoryShareMetadata] BotMetadata botHistoryShareMetadata
          * @property {boolean|null} [responseStoppedByUser] BotMetadata responseStoppedByUser
+         * @property {proto.IBotInterjectionMetadata|null} [interjectionMetadata] BotMetadata interjectionMetadata
          * @property {Uint8Array|null} [internalMetadata] BotMetadata internalMetadata
          */
 
@@ -27664,6 +27974,14 @@ $root.proto = (function() {
         BotMetadata.prototype.responseStoppedByUser = null;
 
         /**
+         * BotMetadata interjectionMetadata.
+         * @member {proto.IBotInterjectionMetadata|null|undefined} interjectionMetadata
+         * @memberof proto.BotMetadata
+         * @instance
+         */
+        BotMetadata.prototype.interjectionMetadata = null;
+
+        /**
          * BotMetadata internalMetadata.
          * @member {Uint8Array|null|undefined} internalMetadata
          * @memberof proto.BotMetadata
@@ -27933,6 +28251,12 @@ $root.proto = (function() {
         });
 
         // Virtual OneOf for proto3 optional field
+        Object.defineProperty(BotMetadata.prototype, "_interjectionMetadata", {
+            get: $util.oneOfGetter($oneOfFields = ["interjectionMetadata"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
         Object.defineProperty(BotMetadata.prototype, "_internalMetadata", {
             get: $util.oneOfGetter($oneOfFields = ["internalMetadata"]),
             set: $util.oneOfSetter($oneOfFields)
@@ -28052,6 +28376,8 @@ $root.proto = (function() {
                 $root.proto.BotHistoryShareMetadata.encode(message.botHistoryShareMetadata, writer.uint32(/* id 43, wireType 2 =*/346).fork(), q + 1).ldelim();
             if (message.responseStoppedByUser != null && Object.hasOwnProperty.call(message, "responseStoppedByUser"))
                 writer.uint32(/* id 44, wireType 0 =*/352).bool(message.responseStoppedByUser);
+            if (message.interjectionMetadata != null && Object.hasOwnProperty.call(message, "interjectionMetadata"))
+                $root.proto.BotInterjectionMetadata.encode(message.interjectionMetadata, writer.uint32(/* id 45, wireType 2 =*/362).fork(), q + 1).ldelim();
             if (message.internalMetadata != null && Object.hasOwnProperty.call(message, "internalMetadata"))
                 writer.uint32(/* id 999, wireType 2 =*/7994).bytes(message.internalMetadata);
             return writer;
@@ -28274,6 +28600,10 @@ $root.proto = (function() {
                     }
                 case 44: {
                         message.responseStoppedByUser = reader.bool();
+                        break;
+                    }
+                case 45: {
+                        message.interjectionMetadata = $root.proto.BotInterjectionMetadata.decode(reader, reader.uint32(), undefined, long + 1);
                         break;
                     }
                 case 999: {
@@ -28645,6 +28975,14 @@ $root.proto = (function() {
                 if (typeof message.responseStoppedByUser !== "boolean")
                     return "responseStoppedByUser: boolean expected";
             }
+            if (message.interjectionMetadata != null && Object.hasOwnProperty.call(message, "interjectionMetadata")) {
+                properties._interjectionMetadata = 1;
+                {
+                    var error = $root.proto.BotInterjectionMetadata.verify(message.interjectionMetadata, long + 1);
+                    if (error)
+                        return "interjectionMetadata." + error;
+                }
+            }
             if (message.internalMetadata != null && Object.hasOwnProperty.call(message, "internalMetadata")) {
                 properties._internalMetadata = 1;
                 if (!(message.internalMetadata && typeof message.internalMetadata.length === "number" || $util.isString(message.internalMetadata)))
@@ -28865,6 +29203,11 @@ $root.proto = (function() {
             }
             if (object.responseStoppedByUser != null)
                 message.responseStoppedByUser = Boolean(object.responseStoppedByUser);
+            if (object.interjectionMetadata != null) {
+                if (!$util.isObject(object.interjectionMetadata))
+                    throw TypeError(".proto.BotMetadata.interjectionMetadata: object expected");
+                message.interjectionMetadata = $root.proto.BotInterjectionMetadata.fromObject(object.interjectionMetadata, long + 1);
+            }
             if (object.internalMetadata != null)
                 if (typeof object.internalMetadata === "string")
                     $util.base64.decode(object.internalMetadata, message.internalMetadata = $util.newBuffer($util.base64.length(object.internalMetadata)), 0);
@@ -29104,6 +29447,11 @@ $root.proto = (function() {
                 object.responseStoppedByUser = message.responseStoppedByUser;
                 if (options.oneofs)
                     object._responseStoppedByUser = "responseStoppedByUser";
+            }
+            if (message.interjectionMetadata != null && Object.hasOwnProperty.call(message, "interjectionMetadata")) {
+                object.interjectionMetadata = $root.proto.BotInterjectionMetadata.toObject(message.interjectionMetadata, options, q + 1);
+                if (options.oneofs)
+                    object._interjectionMetadata = "interjectionMetadata";
             }
             if (message.internalMetadata != null && Object.hasOwnProperty.call(message, "internalMetadata")) {
                 object.internalMetadata = options.bytes === String ? $util.base64.encode(message.internalMetadata, 0, message.internalMetadata.length) : options.bytes === Array ? Array.prototype.slice.call(message.internalMetadata) : message.internalMetadata;
@@ -49414,6 +49762,8 @@ $root.proto = (function() {
                     case 2:
                     case 3:
                     case 4:
+                    case 5:
+                    case 6:
                         break;
                     }
                 }
@@ -49708,6 +50058,14 @@ $root.proto = (function() {
                 case "VR":
                 case 4:
                     message.deviceType = 4;
+                    break;
+                case "SMART_DISPLAY":
+                case 5:
+                    message.deviceType = 5;
+                    break;
+                case "SMART_SPEAKER":
+                case 6:
+                    message.deviceType = 6;
                     break;
                 }
                 if (object.deviceModelType != null)
@@ -50266,6 +50624,8 @@ $root.proto = (function() {
              * @property {number} DESKTOP=2 DESKTOP value
              * @property {number} WEARABLE=3 WEARABLE value
              * @property {number} VR=4 VR value
+             * @property {number} SMART_DISPLAY=5 SMART_DISPLAY value
+             * @property {number} SMART_SPEAKER=6 SMART_SPEAKER value
              */
             UserAgent.DeviceType = (function() {
                 var valuesById = {}, values = Object.create(valuesById);
@@ -50274,6 +50634,8 @@ $root.proto = (function() {
                 values[valuesById[2] = "DESKTOP"] = 2;
                 values[valuesById[3] = "WEARABLE"] = 3;
                 values[valuesById[4] = "VR"] = 4;
+                values[valuesById[5] = "SMART_DISPLAY"] = 5;
+                values[valuesById[6] = "SMART_SPEAKER"] = 6;
                 return values;
             })();
 
@@ -53919,6 +54281,7 @@ $root.proto = (function() {
          * @property {Array.<number>|null} [experienceIds] ContextInfo experienceIds
          * @property {string|null} [partnerDeepLinkToken] ContextInfo partnerDeepLinkToken
          * @property {number|null} [sourceExperienceId] ContextInfo sourceExperienceId
+         * @property {Array.<number>|null} [sourceExperienceIds] ContextInfo sourceExperienceIds
          */
 
         /**
@@ -53934,6 +54297,7 @@ $root.proto = (function() {
             this.groupMentions = [];
             this.statusAttributions = [];
             this.experienceIds = [];
+            this.sourceExperienceIds = [];
             if (properties)
                 for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null && keys[i] !== "__proto__")
@@ -54475,6 +54839,14 @@ $root.proto = (function() {
          * @instance
          */
         ContextInfo.prototype.sourceExperienceId = null;
+
+        /**
+         * ContextInfo sourceExperienceIds.
+         * @member {Array.<number>} sourceExperienceIds
+         * @memberof proto.ContextInfo
+         * @instance
+         */
+        ContextInfo.prototype.sourceExperienceIds = $util.emptyArray;
 
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
@@ -55026,6 +55398,12 @@ $root.proto = (function() {
                 writer.uint32(/* id 83, wireType 2 =*/666).string(message.partnerDeepLinkToken);
             if (message.sourceExperienceId != null && Object.hasOwnProperty.call(message, "sourceExperienceId"))
                 writer.uint32(/* id 84, wireType 0 =*/672).uint32(message.sourceExperienceId);
+            if (message.sourceExperienceIds != null && message.sourceExperienceIds.length) {
+                writer.uint32(/* id 85, wireType 2 =*/682).fork();
+                for (var i = 0; i < message.sourceExperienceIds.length; ++i)
+                    writer.uint32(message.sourceExperienceIds[i]);
+                writer.ldelim();
+            }
             return writer;
         };
 
@@ -55361,6 +55739,23 @@ $root.proto = (function() {
                     }
                 case 84: {
                         message.sourceExperienceId = reader.uint32();
+                        break;
+                    }
+                case 85: {
+                        if (!(message.sourceExperienceIds && message.sourceExperienceIds.length))
+                            message.sourceExperienceIds = [];
+                        if ((tag & 7) === 2) {
+                            var end2 = reader.uint32() + reader.pos;
+                            if (end2 > reader.len)
+                                throw RangeError("index out of range");
+                            reader.len = end2;
+                            while (reader.pos < end2)
+                                message.sourceExperienceIds.push(reader.uint32());
+                            if (reader.pos !== end2)
+                                throw RangeError("index out of range");
+                            reader.len = end;
+                        } else
+                            message.sourceExperienceIds.push(reader.uint32());
                         break;
                     }
                 default:
@@ -55874,6 +56269,13 @@ $root.proto = (function() {
                 if (!$util.isInteger(message.sourceExperienceId))
                     return "sourceExperienceId: integer expected";
             }
+            if (message.sourceExperienceIds != null && Object.hasOwnProperty.call(message, "sourceExperienceIds")) {
+                if (!Array.isArray(message.sourceExperienceIds))
+                    return "sourceExperienceIds: array expected";
+                for (var i = 0; i < message.sourceExperienceIds.length; ++i)
+                    if (!$util.isInteger(message.sourceExperienceIds[i]))
+                        return "sourceExperienceIds: integer[] expected";
+            }
             return null;
         };
 
@@ -56313,6 +56715,13 @@ $root.proto = (function() {
                 message.partnerDeepLinkToken = String(object.partnerDeepLinkToken);
             if (object.sourceExperienceId != null)
                 message.sourceExperienceId = object.sourceExperienceId >>> 0;
+            if (object.sourceExperienceIds) {
+                if (!Array.isArray(object.sourceExperienceIds))
+                    throw TypeError(".proto.ContextInfo.sourceExperienceIds: array expected");
+                message.sourceExperienceIds = [];
+                for (var i = 0; i < object.sourceExperienceIds.length; ++i)
+                    message.sourceExperienceIds[i] = object.sourceExperienceIds[i] >>> 0;
+            }
             return message;
         };
 
@@ -56338,6 +56747,7 @@ $root.proto = (function() {
                 object.groupMentions = [];
                 object.statusAttributions = [];
                 object.experienceIds = [];
+                object.sourceExperienceIds = [];
             }
             if (message.stanzaId != null && Object.hasOwnProperty.call(message, "stanzaId")) {
                 object.stanzaId = message.stanzaId;
@@ -56678,6 +57088,11 @@ $root.proto = (function() {
                 object.sourceExperienceId = message.sourceExperienceId;
                 if (options.oneofs)
                     object._sourceExperienceId = "sourceExperienceId";
+            }
+            if (message.sourceExperienceIds && message.sourceExperienceIds.length) {
+                object.sourceExperienceIds = [];
+                for (var j = 0; j < message.sourceExperienceIds.length; ++j)
+                    object.sourceExperienceIds[j] = message.sourceExperienceIds[j];
             }
             return object;
         };
@@ -137917,6 +138332,7 @@ $root.proto = (function() {
                      * @property {number|Long|null} [startTimeInMs] Line startTimeInMs
                      * @property {number|Long|null} [endTimeInMs] Line endTimeInMs
                      * @property {string|null} [text] Line text
+                     * @property {Array.<proto.Message.MusicMessage.Lyrics.Line.IWordOffset>|null} [wordOffsets] Line wordOffsets
                      */
 
                     /**
@@ -137928,6 +138344,7 @@ $root.proto = (function() {
                      * @param {proto.Message.MusicMessage.Lyrics.ILine=} [properties] Properties to set
                      */
                     function Line(properties) {
+                        this.wordOffsets = [];
                         if (properties)
                             for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                 if (properties[keys[i]] != null && keys[i] !== "__proto__")
@@ -137957,6 +138374,14 @@ $root.proto = (function() {
                      * @instance
                      */
                     Line.prototype.text = null;
+
+                    /**
+                     * Line wordOffsets.
+                     * @member {Array.<proto.Message.MusicMessage.Lyrics.Line.IWordOffset>} wordOffsets
+                     * @memberof proto.Message.MusicMessage.Lyrics.Line
+                     * @instance
+                     */
+                    Line.prototype.wordOffsets = $util.emptyArray;
 
                     // OneOf field names bound to virtual getters and setters
                     var $oneOfFields;
@@ -138013,6 +138438,9 @@ $root.proto = (function() {
                             writer.uint32(/* id 2, wireType 0 =*/16).int64(message.endTimeInMs);
                         if (message.text != null && Object.hasOwnProperty.call(message, "text"))
                             writer.uint32(/* id 3, wireType 2 =*/26).string(message.text);
+                        if (message.wordOffsets != null && message.wordOffsets.length)
+                            for (var i = 0; i < message.wordOffsets.length; ++i)
+                                $root.proto.Message.MusicMessage.Lyrics.Line.WordOffset.encode(message.wordOffsets[i], writer.uint32(/* id 4, wireType 2 =*/34).fork(), q + 1).ldelim();
                         return writer;
                     };
 
@@ -138075,6 +138503,12 @@ $root.proto = (function() {
                                     message.text = reader.string();
                                     break;
                                 }
+                            case 4: {
+                                    if (!(message.wordOffsets && message.wordOffsets.length))
+                                        message.wordOffsets = [];
+                                    message.wordOffsets.push($root.proto.Message.MusicMessage.Lyrics.Line.WordOffset.decode(reader, reader.uint32(), undefined, long + 1));
+                                    break;
+                                }
                             default:
                                 reader.skipType(tag & 7, long);
                                 break;
@@ -138135,6 +138569,15 @@ $root.proto = (function() {
                             if (!$util.isString(message.text))
                                 return "text: string expected";
                         }
+                        if (message.wordOffsets != null && Object.hasOwnProperty.call(message, "wordOffsets")) {
+                            if (!Array.isArray(message.wordOffsets))
+                                return "wordOffsets: array expected";
+                            for (var i = 0; i < message.wordOffsets.length; ++i) {
+                                var error = $root.proto.Message.MusicMessage.Lyrics.Line.WordOffset.verify(message.wordOffsets[i], long + 1);
+                                if (error)
+                                    return "wordOffsets." + error;
+                            }
+                        }
                         return null;
                     };
 
@@ -138176,6 +138619,16 @@ $root.proto = (function() {
                                 message.endTimeInMs = new $util.LongBits(object.endTimeInMs.low >>> 0, object.endTimeInMs.high >>> 0).toNumber();
                         if (object.text != null)
                             message.text = String(object.text);
+                        if (object.wordOffsets) {
+                            if (!Array.isArray(object.wordOffsets))
+                                throw TypeError(".proto.Message.MusicMessage.Lyrics.Line.wordOffsets: array expected");
+                            message.wordOffsets = [];
+                            for (var i = 0; i < object.wordOffsets.length; ++i) {
+                                if (!$util.isObject(object.wordOffsets[i]))
+                                    throw TypeError(".proto.Message.MusicMessage.Lyrics.Line.wordOffsets: object expected");
+                                message.wordOffsets[i] = $root.proto.Message.MusicMessage.Lyrics.Line.WordOffset.fromObject(object.wordOffsets[i], long + 1);
+                            }
+                        }
                         return message;
                     };
 
@@ -138196,6 +138649,8 @@ $root.proto = (function() {
                         if (q > $util.recursionLimit)
                             throw Error("max depth exceeded");
                         var object = {};
+                        if (options.arrays || options.defaults)
+                            object.wordOffsets = [];
                         if (message.startTimeInMs != null && Object.hasOwnProperty.call(message, "startTimeInMs")) {
                             if (typeof BigInt !== "undefined" && options.longs === BigInt)
                                 object.startTimeInMs = typeof message.startTimeInMs === "number" ? BigInt(message.startTimeInMs) : $util.Long.fromBits(message.startTimeInMs.low >>> 0, message.startTimeInMs.high >>> 0, false).toBigInt();
@@ -138220,6 +138675,11 @@ $root.proto = (function() {
                             object.text = message.text;
                             if (options.oneofs)
                                 object._text = "text";
+                        }
+                        if (message.wordOffsets && message.wordOffsets.length) {
+                            object.wordOffsets = [];
+                            for (var j = 0; j < message.wordOffsets.length; ++j)
+                                object.wordOffsets[j] = $root.proto.Message.MusicMessage.Lyrics.Line.WordOffset.toObject(message.wordOffsets[j], options, q + 1);
                         }
                         return object;
                     };
@@ -138249,6 +138709,384 @@ $root.proto = (function() {
                         }
                         return typeUrlPrefix + "/proto.Message.MusicMessage.Lyrics.Line";
                     };
+
+                    Line.WordOffset = (function() {
+
+                        /**
+                         * Properties of a WordOffset.
+                         * @memberof proto.Message.MusicMessage.Lyrics.Line
+                         * @interface IWordOffset
+                         * @property {number|null} [startIndex] WordOffset startIndex
+                         * @property {number|null} [endIndex] WordOffset endIndex
+                         * @property {number|Long|null} [startOffsetMs] WordOffset startOffsetMs
+                         * @property {number|Long|null} [endOffsetMs] WordOffset endOffsetMs
+                         */
+
+                        /**
+                         * Constructs a new WordOffset.
+                         * @memberof proto.Message.MusicMessage.Lyrics.Line
+                         * @classdesc Represents a WordOffset.
+                         * @implements IWordOffset
+                         * @constructor
+                         * @param {proto.Message.MusicMessage.Lyrics.Line.IWordOffset=} [properties] Properties to set
+                         */
+                        function WordOffset(properties) {
+                            if (properties)
+                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                                        this[keys[i]] = properties[keys[i]];
+                        }
+
+                        /**
+                         * WordOffset startIndex.
+                         * @member {number|null|undefined} startIndex
+                         * @memberof proto.Message.MusicMessage.Lyrics.Line.WordOffset
+                         * @instance
+                         */
+                        WordOffset.prototype.startIndex = null;
+
+                        /**
+                         * WordOffset endIndex.
+                         * @member {number|null|undefined} endIndex
+                         * @memberof proto.Message.MusicMessage.Lyrics.Line.WordOffset
+                         * @instance
+                         */
+                        WordOffset.prototype.endIndex = null;
+
+                        /**
+                         * WordOffset startOffsetMs.
+                         * @member {number|Long|null|undefined} startOffsetMs
+                         * @memberof proto.Message.MusicMessage.Lyrics.Line.WordOffset
+                         * @instance
+                         */
+                        WordOffset.prototype.startOffsetMs = null;
+
+                        /**
+                         * WordOffset endOffsetMs.
+                         * @member {number|Long|null|undefined} endOffsetMs
+                         * @memberof proto.Message.MusicMessage.Lyrics.Line.WordOffset
+                         * @instance
+                         */
+                        WordOffset.prototype.endOffsetMs = null;
+
+                        // OneOf field names bound to virtual getters and setters
+                        var $oneOfFields;
+
+                        // Virtual OneOf for proto3 optional field
+                        Object.defineProperty(WordOffset.prototype, "_startIndex", {
+                            get: $util.oneOfGetter($oneOfFields = ["startIndex"]),
+                            set: $util.oneOfSetter($oneOfFields)
+                        });
+
+                        // Virtual OneOf for proto3 optional field
+                        Object.defineProperty(WordOffset.prototype, "_endIndex", {
+                            get: $util.oneOfGetter($oneOfFields = ["endIndex"]),
+                            set: $util.oneOfSetter($oneOfFields)
+                        });
+
+                        // Virtual OneOf for proto3 optional field
+                        Object.defineProperty(WordOffset.prototype, "_startOffsetMs", {
+                            get: $util.oneOfGetter($oneOfFields = ["startOffsetMs"]),
+                            set: $util.oneOfSetter($oneOfFields)
+                        });
+
+                        // Virtual OneOf for proto3 optional field
+                        Object.defineProperty(WordOffset.prototype, "_endOffsetMs", {
+                            get: $util.oneOfGetter($oneOfFields = ["endOffsetMs"]),
+                            set: $util.oneOfSetter($oneOfFields)
+                        });
+
+                        /**
+                         * Creates a new WordOffset instance using the specified properties.
+                         * @function create
+                         * @memberof proto.Message.MusicMessage.Lyrics.Line.WordOffset
+                         * @static
+                         * @param {proto.Message.MusicMessage.Lyrics.Line.IWordOffset=} [properties] Properties to set
+                         * @returns {proto.Message.MusicMessage.Lyrics.Line.WordOffset} WordOffset instance
+                         */
+                        WordOffset.create = function create(properties) {
+                            return new WordOffset(properties);
+                        };
+
+                        /**
+                         * Encodes the specified WordOffset message. Does not implicitly {@link proto.Message.MusicMessage.Lyrics.Line.WordOffset.verify|verify} messages.
+                         * @function encode
+                         * @memberof proto.Message.MusicMessage.Lyrics.Line.WordOffset
+                         * @static
+                         * @param {proto.Message.MusicMessage.Lyrics.Line.IWordOffset} message WordOffset message or plain object to encode
+                         * @param {$protobuf.Writer} [writer] Writer to encode to
+                         * @returns {$protobuf.Writer} Writer
+                         */
+                        WordOffset.encode = function encode(message, writer, q) {
+                            if (!writer)
+                                writer = $Writer.create();
+                            if (q === undefined)
+                                q = 0;
+                            if (q > $util.recursionLimit)
+                                throw Error("max depth exceeded");
+                            if (message.startIndex != null && Object.hasOwnProperty.call(message, "startIndex"))
+                                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.startIndex);
+                            if (message.endIndex != null && Object.hasOwnProperty.call(message, "endIndex"))
+                                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.endIndex);
+                            if (message.startOffsetMs != null && Object.hasOwnProperty.call(message, "startOffsetMs"))
+                                writer.uint32(/* id 3, wireType 0 =*/24).int64(message.startOffsetMs);
+                            if (message.endOffsetMs != null && Object.hasOwnProperty.call(message, "endOffsetMs"))
+                                writer.uint32(/* id 4, wireType 0 =*/32).int64(message.endOffsetMs);
+                            return writer;
+                        };
+
+                        /**
+                         * Encodes the specified WordOffset message, length delimited. Does not implicitly {@link proto.Message.MusicMessage.Lyrics.Line.WordOffset.verify|verify} messages.
+                         * @function encodeDelimited
+                         * @memberof proto.Message.MusicMessage.Lyrics.Line.WordOffset
+                         * @static
+                         * @param {proto.Message.MusicMessage.Lyrics.Line.IWordOffset} message WordOffset message or plain object to encode
+                         * @param {$protobuf.Writer} [writer] Writer to encode to
+                         * @returns {$protobuf.Writer} Writer
+                         */
+                        WordOffset.encodeDelimited = function encodeDelimited(message, writer) {
+                            return this.encode(message, writer && writer.len ? writer.fork() : writer).ldelim();
+                        };
+
+                        /**
+                         * Decodes a WordOffset message from the specified reader or buffer.
+                         * @function decode
+                         * @memberof proto.Message.MusicMessage.Lyrics.Line.WordOffset
+                         * @static
+                         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                         * @param {number} [length] Message length if known beforehand
+                         * @returns {proto.Message.MusicMessage.Lyrics.Line.WordOffset} WordOffset
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        WordOffset.decode = function decode(reader, length, error, long) {
+                            if (!(reader instanceof $Reader))
+                                reader = $Reader.create(reader);
+                            if (long === undefined)
+                                long = 0;
+                            if (long > $Reader.recursionLimit)
+                                throw Error("maximum nesting depth exceeded");
+                            var end, message;
+                            if (length === undefined)
+                                end = reader.len;
+                            else {
+                                end = reader.pos + length;
+                                if (end > reader.len)
+                                    throw RangeError("index out of range");
+                                length = reader.len;
+                                reader.len = end;
+                            }
+                            message = new $root.proto.Message.MusicMessage.Lyrics.Line.WordOffset();
+                            while (reader.pos < end) {
+                                var tag = reader.uint32();
+                                if (tag === error)
+                                    break;
+                                switch (tag >>> 3) {
+                                case 1: {
+                                        message.startIndex = reader.int32();
+                                        break;
+                                    }
+                                case 2: {
+                                        message.endIndex = reader.int32();
+                                        break;
+                                    }
+                                case 3: {
+                                        message.startOffsetMs = reader.int64();
+                                        break;
+                                    }
+                                case 4: {
+                                        message.endOffsetMs = reader.int64();
+                                        break;
+                                    }
+                                default:
+                                    reader.skipType(tag & 7, long);
+                                    break;
+                                }
+                            }
+                            if (length !== undefined) {
+                                if (reader.pos !== end)
+                                    throw RangeError("index out of range");
+                                reader.len = length;
+                            }
+                            return message;
+                        };
+
+                        /**
+                         * Decodes a WordOffset message from the specified reader or buffer, length delimited.
+                         * @function decodeDelimited
+                         * @memberof proto.Message.MusicMessage.Lyrics.Line.WordOffset
+                         * @static
+                         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                         * @returns {proto.Message.MusicMessage.Lyrics.Line.WordOffset} WordOffset
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        WordOffset.decodeDelimited = function decodeDelimited(reader) {
+                            if (!(reader instanceof $Reader))
+                                reader = new $Reader(reader);
+                            return this.decode(reader, reader.uint32());
+                        };
+
+                        /**
+                         * Verifies a WordOffset message.
+                         * @function verify
+                         * @memberof proto.Message.MusicMessage.Lyrics.Line.WordOffset
+                         * @static
+                         * @param {Object.<string,*>} message Plain object to verify
+                         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                         */
+                        WordOffset.verify = function verify(message, long) {
+                            if (typeof message !== "object" || message === null)
+                                return "object expected";
+                            if (long === undefined)
+                                long = 0;
+                            if (long > $util.recursionLimit)
+                                return "maximum nesting depth exceeded";
+                            var properties = {};
+                            if (message.startIndex != null && Object.hasOwnProperty.call(message, "startIndex")) {
+                                properties._startIndex = 1;
+                                if (!$util.isInteger(message.startIndex))
+                                    return "startIndex: integer expected";
+                            }
+                            if (message.endIndex != null && Object.hasOwnProperty.call(message, "endIndex")) {
+                                properties._endIndex = 1;
+                                if (!$util.isInteger(message.endIndex))
+                                    return "endIndex: integer expected";
+                            }
+                            if (message.startOffsetMs != null && Object.hasOwnProperty.call(message, "startOffsetMs")) {
+                                properties._startOffsetMs = 1;
+                                if (!$util.isInteger(message.startOffsetMs) && !(message.startOffsetMs && $util.isInteger(message.startOffsetMs.low) && $util.isInteger(message.startOffsetMs.high)))
+                                    return "startOffsetMs: integer|Long expected";
+                            }
+                            if (message.endOffsetMs != null && Object.hasOwnProperty.call(message, "endOffsetMs")) {
+                                properties._endOffsetMs = 1;
+                                if (!$util.isInteger(message.endOffsetMs) && !(message.endOffsetMs && $util.isInteger(message.endOffsetMs.low) && $util.isInteger(message.endOffsetMs.high)))
+                                    return "endOffsetMs: integer|Long expected";
+                            }
+                            return null;
+                        };
+
+                        /**
+                         * Creates a WordOffset message from a plain object. Also converts values to their respective internal types.
+                         * @function fromObject
+                         * @memberof proto.Message.MusicMessage.Lyrics.Line.WordOffset
+                         * @static
+                         * @param {Object.<string,*>} object Plain object
+                         * @returns {proto.Message.MusicMessage.Lyrics.Line.WordOffset} WordOffset
+                         */
+                        WordOffset.fromObject = function fromObject(object, long) {
+                            if (object instanceof $root.proto.Message.MusicMessage.Lyrics.Line.WordOffset)
+                                return object;
+                            if (!$util.isObject(object))
+                                throw TypeError(".proto.Message.MusicMessage.Lyrics.Line.WordOffset: object expected");
+                            if (long === undefined)
+                                long = 0;
+                            if (long > $util.recursionLimit)
+                                throw Error("maximum nesting depth exceeded");
+                            var message = new $root.proto.Message.MusicMessage.Lyrics.Line.WordOffset();
+                            if (object.startIndex != null)
+                                message.startIndex = object.startIndex | 0;
+                            if (object.endIndex != null)
+                                message.endIndex = object.endIndex | 0;
+                            if (object.startOffsetMs != null)
+                                if ($util.Long)
+                                    message.startOffsetMs = $util.Long.fromValue(object.startOffsetMs, false);
+                                else if (typeof object.startOffsetMs === "string")
+                                    message.startOffsetMs = parseInt(object.startOffsetMs, 10);
+                                else if (typeof object.startOffsetMs === "number")
+                                    message.startOffsetMs = object.startOffsetMs;
+                                else if (typeof object.startOffsetMs === "object")
+                                    message.startOffsetMs = new $util.LongBits(object.startOffsetMs.low >>> 0, object.startOffsetMs.high >>> 0).toNumber();
+                            if (object.endOffsetMs != null)
+                                if ($util.Long)
+                                    message.endOffsetMs = $util.Long.fromValue(object.endOffsetMs, false);
+                                else if (typeof object.endOffsetMs === "string")
+                                    message.endOffsetMs = parseInt(object.endOffsetMs, 10);
+                                else if (typeof object.endOffsetMs === "number")
+                                    message.endOffsetMs = object.endOffsetMs;
+                                else if (typeof object.endOffsetMs === "object")
+                                    message.endOffsetMs = new $util.LongBits(object.endOffsetMs.low >>> 0, object.endOffsetMs.high >>> 0).toNumber();
+                            return message;
+                        };
+
+                        /**
+                         * Creates a plain object from a WordOffset message. Also converts values to other types if specified.
+                         * @function toObject
+                         * @memberof proto.Message.MusicMessage.Lyrics.Line.WordOffset
+                         * @static
+                         * @param {proto.Message.MusicMessage.Lyrics.Line.WordOffset} message WordOffset
+                         * @param {$protobuf.IConversionOptions} [options] Conversion options
+                         * @returns {Object.<string,*>} Plain object
+                         */
+                        WordOffset.toObject = function toObject(message, options, q) {
+                            if (!options)
+                                options = {};
+                            if (q === undefined)
+                                q = 0;
+                            if (q > $util.recursionLimit)
+                                throw Error("max depth exceeded");
+                            var object = {};
+                            if (message.startIndex != null && Object.hasOwnProperty.call(message, "startIndex")) {
+                                object.startIndex = message.startIndex;
+                                if (options.oneofs)
+                                    object._startIndex = "startIndex";
+                            }
+                            if (message.endIndex != null && Object.hasOwnProperty.call(message, "endIndex")) {
+                                object.endIndex = message.endIndex;
+                                if (options.oneofs)
+                                    object._endIndex = "endIndex";
+                            }
+                            if (message.startOffsetMs != null && Object.hasOwnProperty.call(message, "startOffsetMs")) {
+                                if (typeof BigInt !== "undefined" && options.longs === BigInt)
+                                    object.startOffsetMs = typeof message.startOffsetMs === "number" ? BigInt(message.startOffsetMs) : $util.Long.fromBits(message.startOffsetMs.low >>> 0, message.startOffsetMs.high >>> 0, false).toBigInt();
+                                else if (typeof message.startOffsetMs === "number")
+                                    object.startOffsetMs = options.longs === String ? String(message.startOffsetMs) : message.startOffsetMs;
+                                else
+                                    object.startOffsetMs = options.longs === String ? $util.Long.prototype.toString.call(message.startOffsetMs) : options.longs === Number ? new $util.LongBits(message.startOffsetMs.low >>> 0, message.startOffsetMs.high >>> 0).toNumber() : message.startOffsetMs;
+                                if (options.oneofs)
+                                    object._startOffsetMs = "startOffsetMs";
+                            }
+                            if (message.endOffsetMs != null && Object.hasOwnProperty.call(message, "endOffsetMs")) {
+                                if (typeof BigInt !== "undefined" && options.longs === BigInt)
+                                    object.endOffsetMs = typeof message.endOffsetMs === "number" ? BigInt(message.endOffsetMs) : $util.Long.fromBits(message.endOffsetMs.low >>> 0, message.endOffsetMs.high >>> 0, false).toBigInt();
+                                else if (typeof message.endOffsetMs === "number")
+                                    object.endOffsetMs = options.longs === String ? String(message.endOffsetMs) : message.endOffsetMs;
+                                else
+                                    object.endOffsetMs = options.longs === String ? $util.Long.prototype.toString.call(message.endOffsetMs) : options.longs === Number ? new $util.LongBits(message.endOffsetMs.low >>> 0, message.endOffsetMs.high >>> 0).toNumber() : message.endOffsetMs;
+                                if (options.oneofs)
+                                    object._endOffsetMs = "endOffsetMs";
+                            }
+                            return object;
+                        };
+
+                        /**
+                         * Converts this WordOffset to JSON.
+                         * @function toJSON
+                         * @memberof proto.Message.MusicMessage.Lyrics.Line.WordOffset
+                         * @instance
+                         * @returns {Object.<string,*>} JSON object
+                         */
+                        WordOffset.prototype.toJSON = function toJSON() {
+                            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                        };
+
+                        /**
+                         * Gets the default type url for WordOffset
+                         * @function getTypeUrl
+                         * @memberof proto.Message.MusicMessage.Lyrics.Line.WordOffset
+                         * @static
+                         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                         * @returns {string} The default type url
+                         */
+                        WordOffset.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                            if (typeUrlPrefix === undefined) {
+                                typeUrlPrefix = "type.googleapis.com";
+                            }
+                            return typeUrlPrefix + "/proto.Message.MusicMessage.Lyrics.Line.WordOffset";
+                        };
+
+                        return WordOffset;
+                    })();
 
                     return Line;
                 })();
@@ -145284,6 +146122,7 @@ $root.proto = (function() {
                  * @property {number|Long|null} [oldestMsgTimestampMs] HistorySyncOnDemandRequest oldestMsgTimestampMs
                  * @property {string|null} [accountLid] HistorySyncOnDemandRequest accountLid
                  * @property {boolean|null} [supportInlineResponse] HistorySyncOnDemandRequest supportInlineResponse
+                 * @property {proto.Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest.Mode|null} [mode] HistorySyncOnDemandRequest mode
                  */
 
                 /**
@@ -145357,6 +146196,14 @@ $root.proto = (function() {
                  */
                 HistorySyncOnDemandRequest.prototype.supportInlineResponse = null;
 
+                /**
+                 * HistorySyncOnDemandRequest mode.
+                 * @member {proto.Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest.Mode|null|undefined} mode
+                 * @memberof proto.Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest
+                 * @instance
+                 */
+                HistorySyncOnDemandRequest.prototype.mode = null;
+
                 // OneOf field names bound to virtual getters and setters
                 var $oneOfFields;
 
@@ -145402,6 +146249,12 @@ $root.proto = (function() {
                     set: $util.oneOfSetter($oneOfFields)
                 });
 
+                // Virtual OneOf for proto3 optional field
+                Object.defineProperty(HistorySyncOnDemandRequest.prototype, "_mode", {
+                    get: $util.oneOfGetter($oneOfFields = ["mode"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
                 /**
                  * Creates a new HistorySyncOnDemandRequest instance using the specified properties.
                  * @function create
@@ -145444,6 +146297,8 @@ $root.proto = (function() {
                         writer.uint32(/* id 6, wireType 2 =*/50).string(message.accountLid);
                     if (message.supportInlineResponse != null && Object.hasOwnProperty.call(message, "supportInlineResponse"))
                         writer.uint32(/* id 7, wireType 0 =*/56).bool(message.supportInlineResponse);
+                    if (message.mode != null && Object.hasOwnProperty.call(message, "mode"))
+                        writer.uint32(/* id 8, wireType 0 =*/64).int32(message.mode);
                     return writer;
                 };
 
@@ -145520,6 +146375,10 @@ $root.proto = (function() {
                             }
                         case 7: {
                                 message.supportInlineResponse = reader.bool();
+                                break;
+                            }
+                        case 8: {
+                                message.mode = reader.int32();
                                 break;
                             }
                         default:
@@ -145602,6 +146461,16 @@ $root.proto = (function() {
                         if (typeof message.supportInlineResponse !== "boolean")
                             return "supportInlineResponse: boolean expected";
                     }
+                    if (message.mode != null && Object.hasOwnProperty.call(message, "mode")) {
+                        properties._mode = 1;
+                        switch (message.mode) {
+                        default:
+                            return "mode: enum value expected";
+                        case 0:
+                        case 1:
+                            break;
+                        }
+                    }
                     return null;
                 };
 
@@ -145644,6 +146513,22 @@ $root.proto = (function() {
                         message.accountLid = String(object.accountLid);
                     if (object.supportInlineResponse != null)
                         message.supportInlineResponse = Boolean(object.supportInlineResponse);
+                    switch (object.mode) {
+                    default:
+                        if (typeof object.mode === "number") {
+                            message.mode = object.mode;
+                            break;
+                        }
+                        break;
+                    case "MODE_UNSPECIFIED":
+                    case 0:
+                        message.mode = 0;
+                        break;
+                    case "INITIAL_REVERSE_HISTORY":
+                    case 1:
+                        message.mode = 1;
+                        break;
+                    }
                     return message;
                 };
 
@@ -145704,6 +146589,11 @@ $root.proto = (function() {
                         if (options.oneofs)
                             object._supportInlineResponse = "supportInlineResponse";
                     }
+                    if (message.mode != null && Object.hasOwnProperty.call(message, "mode")) {
+                        object.mode = options.enums === String ? $root.proto.Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest.Mode[message.mode] === undefined ? message.mode : $root.proto.Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest.Mode[message.mode] : message.mode;
+                        if (options.oneofs)
+                            object._mode = "mode";
+                    }
                     return object;
                 };
 
@@ -145732,6 +146622,20 @@ $root.proto = (function() {
                     }
                     return typeUrlPrefix + "/proto.Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest";
                 };
+
+                /**
+                 * Mode enum.
+                 * @name proto.Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest.Mode
+                 * @enum {number}
+                 * @property {number} MODE_UNSPECIFIED=0 MODE_UNSPECIFIED value
+                 * @property {number} INITIAL_REVERSE_HISTORY=1 INITIAL_REVERSE_HISTORY value
+                 */
+                HistorySyncOnDemandRequest.Mode = (function() {
+                    var valuesById = {}, values = Object.create(valuesById);
+                    values[valuesById[0] = "MODE_UNSPECIFIED"] = 0;
+                    values[valuesById[1] = "INITIAL_REVERSE_HISTORY"] = 1;
+                    return values;
+                })();
 
                 return HistorySyncOnDemandRequest;
             })();
@@ -182276,6 +183180,8 @@ $root.proto = (function() {
              * @property {Uint8Array|null} [artworkMediaKey] MusicData artworkMediaKey
              * @property {number|Long|null} [consumptionCheckedAtS] MusicData consumptionCheckedAtS
              * @property {boolean|null} [isAvailableForConsumption] MusicData isAvailableForConsumption
+             * @property {Array.<proto.MsgOpaqueData.MusicData.ILyricsLine>|null} [lyrics] MusicData lyrics
+             * @property {number|Long|null} [lyricsConfirmedAtS] MusicData lyricsConfirmedAtS
              */
 
             /**
@@ -182287,6 +183193,7 @@ $root.proto = (function() {
              * @param {proto.MsgOpaqueData.IMusicData=} [properties] Properties to set
              */
             function MusicData(properties) {
+                this.lyrics = [];
                 if (properties)
                     for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                         if (properties[keys[i]] != null && keys[i] !== "__proto__")
@@ -182437,6 +183344,22 @@ $root.proto = (function() {
              */
             MusicData.prototype.isAvailableForConsumption = null;
 
+            /**
+             * MusicData lyrics.
+             * @member {Array.<proto.MsgOpaqueData.MusicData.ILyricsLine>} lyrics
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.lyrics = $util.emptyArray;
+
+            /**
+             * MusicData lyricsConfirmedAtS.
+             * @member {number|Long|null|undefined} lyricsConfirmedAtS
+             * @memberof proto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.lyricsConfirmedAtS = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
@@ -182548,6 +183471,12 @@ $root.proto = (function() {
                 set: $util.oneOfSetter($oneOfFields)
             });
 
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(MusicData.prototype, "_lyricsConfirmedAtS", {
+                get: $util.oneOfGetter($oneOfFields = ["lyricsConfirmedAtS"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
             /**
              * Creates a new MusicData instance using the specified properties.
              * @function create
@@ -182612,6 +183541,11 @@ $root.proto = (function() {
                     writer.uint32(/* id 17, wireType 0 =*/136).int64(message.consumptionCheckedAtS);
                 if (message.isAvailableForConsumption != null && Object.hasOwnProperty.call(message, "isAvailableForConsumption"))
                     writer.uint32(/* id 18, wireType 0 =*/144).bool(message.isAvailableForConsumption);
+                if (message.lyrics != null && message.lyrics.length)
+                    for (var i = 0; i < message.lyrics.length; ++i)
+                        $root.proto.MsgOpaqueData.MusicData.LyricsLine.encode(message.lyrics[i], writer.uint32(/* id 19, wireType 2 =*/154).fork(), q + 1).ldelim();
+                if (message.lyricsConfirmedAtS != null && Object.hasOwnProperty.call(message, "lyricsConfirmedAtS"))
+                    writer.uint32(/* id 20, wireType 0 =*/160).int64(message.lyricsConfirmedAtS);
                 return writer;
             };
 
@@ -182732,6 +183666,16 @@ $root.proto = (function() {
                         }
                     case 18: {
                             message.isAvailableForConsumption = reader.bool();
+                            break;
+                        }
+                    case 19: {
+                            if (!(message.lyrics && message.lyrics.length))
+                                message.lyrics = [];
+                            message.lyrics.push($root.proto.MsgOpaqueData.MusicData.LyricsLine.decode(reader, reader.uint32(), undefined, long + 1));
+                            break;
+                        }
+                    case 20: {
+                            message.lyricsConfirmedAtS = reader.int64();
                             break;
                         }
                     default:
@@ -182869,6 +183813,20 @@ $root.proto = (function() {
                     if (typeof message.isAvailableForConsumption !== "boolean")
                         return "isAvailableForConsumption: boolean expected";
                 }
+                if (message.lyrics != null && Object.hasOwnProperty.call(message, "lyrics")) {
+                    if (!Array.isArray(message.lyrics))
+                        return "lyrics: array expected";
+                    for (var i = 0; i < message.lyrics.length; ++i) {
+                        var error = $root.proto.MsgOpaqueData.MusicData.LyricsLine.verify(message.lyrics[i], long + 1);
+                        if (error)
+                            return "lyrics." + error;
+                    }
+                }
+                if (message.lyricsConfirmedAtS != null && Object.hasOwnProperty.call(message, "lyricsConfirmedAtS")) {
+                    properties._lyricsConfirmedAtS = 1;
+                    if (!$util.isInteger(message.lyricsConfirmedAtS) && !(message.lyricsConfirmedAtS && $util.isInteger(message.lyricsConfirmedAtS.low) && $util.isInteger(message.lyricsConfirmedAtS.high)))
+                        return "lyricsConfirmedAtS: integer|Long expected";
+                }
                 return null;
             };
 
@@ -182945,6 +183903,25 @@ $root.proto = (function() {
                         message.consumptionCheckedAtS = new $util.LongBits(object.consumptionCheckedAtS.low >>> 0, object.consumptionCheckedAtS.high >>> 0).toNumber();
                 if (object.isAvailableForConsumption != null)
                     message.isAvailableForConsumption = Boolean(object.isAvailableForConsumption);
+                if (object.lyrics) {
+                    if (!Array.isArray(object.lyrics))
+                        throw TypeError(".proto.MsgOpaqueData.MusicData.lyrics: array expected");
+                    message.lyrics = [];
+                    for (var i = 0; i < object.lyrics.length; ++i) {
+                        if (!$util.isObject(object.lyrics[i]))
+                            throw TypeError(".proto.MsgOpaqueData.MusicData.lyrics: object expected");
+                        message.lyrics[i] = $root.proto.MsgOpaqueData.MusicData.LyricsLine.fromObject(object.lyrics[i], long + 1);
+                    }
+                }
+                if (object.lyricsConfirmedAtS != null)
+                    if ($util.Long)
+                        message.lyricsConfirmedAtS = $util.Long.fromValue(object.lyricsConfirmedAtS, false);
+                    else if (typeof object.lyricsConfirmedAtS === "string")
+                        message.lyricsConfirmedAtS = parseInt(object.lyricsConfirmedAtS, 10);
+                    else if (typeof object.lyricsConfirmedAtS === "number")
+                        message.lyricsConfirmedAtS = object.lyricsConfirmedAtS;
+                    else if (typeof object.lyricsConfirmedAtS === "object")
+                        message.lyricsConfirmedAtS = new $util.LongBits(object.lyricsConfirmedAtS.low >>> 0, object.lyricsConfirmedAtS.high >>> 0).toNumber();
                 return message;
             };
 
@@ -182965,6 +183942,8 @@ $root.proto = (function() {
                 if (q > $util.recursionLimit)
                     throw Error("max depth exceeded");
                 var object = {};
+                if (options.arrays || options.defaults)
+                    object.lyrics = [];
                 if (message.musicContentMediaId != null && Object.hasOwnProperty.call(message, "musicContentMediaId")) {
                     object.musicContentMediaId = message.musicContentMediaId;
                     if (options.oneofs)
@@ -183060,6 +184039,21 @@ $root.proto = (function() {
                     if (options.oneofs)
                         object._isAvailableForConsumption = "isAvailableForConsumption";
                 }
+                if (message.lyrics && message.lyrics.length) {
+                    object.lyrics = [];
+                    for (var j = 0; j < message.lyrics.length; ++j)
+                        object.lyrics[j] = $root.proto.MsgOpaqueData.MusicData.LyricsLine.toObject(message.lyrics[j], options, q + 1);
+                }
+                if (message.lyricsConfirmedAtS != null && Object.hasOwnProperty.call(message, "lyricsConfirmedAtS")) {
+                    if (typeof BigInt !== "undefined" && options.longs === BigInt)
+                        object.lyricsConfirmedAtS = typeof message.lyricsConfirmedAtS === "number" ? BigInt(message.lyricsConfirmedAtS) : $util.Long.fromBits(message.lyricsConfirmedAtS.low >>> 0, message.lyricsConfirmedAtS.high >>> 0, false).toBigInt();
+                    else if (typeof message.lyricsConfirmedAtS === "number")
+                        object.lyricsConfirmedAtS = options.longs === String ? String(message.lyricsConfirmedAtS) : message.lyricsConfirmedAtS;
+                    else
+                        object.lyricsConfirmedAtS = options.longs === String ? $util.Long.prototype.toString.call(message.lyricsConfirmedAtS) : options.longs === Number ? new $util.LongBits(message.lyricsConfirmedAtS.low >>> 0, message.lyricsConfirmedAtS.high >>> 0).toNumber() : message.lyricsConfirmedAtS;
+                    if (options.oneofs)
+                        object._lyricsConfirmedAtS = "lyricsConfirmedAtS";
+                }
                 return object;
             };
 
@@ -183088,6 +184082,726 @@ $root.proto = (function() {
                 }
                 return typeUrlPrefix + "/proto.MsgOpaqueData.MusicData";
             };
+
+            MusicData.LyricsLine = (function() {
+
+                /**
+                 * Properties of a LyricsLine.
+                 * @memberof proto.MsgOpaqueData.MusicData
+                 * @interface ILyricsLine
+                 * @property {number|null} [startTimeMs] LyricsLine startTimeMs
+                 * @property {number|null} [endTimeMs] LyricsLine endTimeMs
+                 * @property {string|null} [text] LyricsLine text
+                 * @property {Array.<proto.MsgOpaqueData.MusicData.LyricsLine.IWordOffset>|null} [wordOffsets] LyricsLine wordOffsets
+                 */
+
+                /**
+                 * Constructs a new LyricsLine.
+                 * @memberof proto.MsgOpaqueData.MusicData
+                 * @classdesc Represents a LyricsLine.
+                 * @implements ILyricsLine
+                 * @constructor
+                 * @param {proto.MsgOpaqueData.MusicData.ILyricsLine=} [properties] Properties to set
+                 */
+                function LyricsLine(properties) {
+                    this.wordOffsets = [];
+                    if (properties)
+                        for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                            if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                                this[keys[i]] = properties[keys[i]];
+                }
+
+                /**
+                 * LyricsLine startTimeMs.
+                 * @member {number|null|undefined} startTimeMs
+                 * @memberof proto.MsgOpaqueData.MusicData.LyricsLine
+                 * @instance
+                 */
+                LyricsLine.prototype.startTimeMs = null;
+
+                /**
+                 * LyricsLine endTimeMs.
+                 * @member {number|null|undefined} endTimeMs
+                 * @memberof proto.MsgOpaqueData.MusicData.LyricsLine
+                 * @instance
+                 */
+                LyricsLine.prototype.endTimeMs = null;
+
+                /**
+                 * LyricsLine text.
+                 * @member {string|null|undefined} text
+                 * @memberof proto.MsgOpaqueData.MusicData.LyricsLine
+                 * @instance
+                 */
+                LyricsLine.prototype.text = null;
+
+                /**
+                 * LyricsLine wordOffsets.
+                 * @member {Array.<proto.MsgOpaqueData.MusicData.LyricsLine.IWordOffset>} wordOffsets
+                 * @memberof proto.MsgOpaqueData.MusicData.LyricsLine
+                 * @instance
+                 */
+                LyricsLine.prototype.wordOffsets = $util.emptyArray;
+
+                // OneOf field names bound to virtual getters and setters
+                var $oneOfFields;
+
+                // Virtual OneOf for proto3 optional field
+                Object.defineProperty(LyricsLine.prototype, "_startTimeMs", {
+                    get: $util.oneOfGetter($oneOfFields = ["startTimeMs"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
+                // Virtual OneOf for proto3 optional field
+                Object.defineProperty(LyricsLine.prototype, "_endTimeMs", {
+                    get: $util.oneOfGetter($oneOfFields = ["endTimeMs"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
+                // Virtual OneOf for proto3 optional field
+                Object.defineProperty(LyricsLine.prototype, "_text", {
+                    get: $util.oneOfGetter($oneOfFields = ["text"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
+                /**
+                 * Creates a new LyricsLine instance using the specified properties.
+                 * @function create
+                 * @memberof proto.MsgOpaqueData.MusicData.LyricsLine
+                 * @static
+                 * @param {proto.MsgOpaqueData.MusicData.ILyricsLine=} [properties] Properties to set
+                 * @returns {proto.MsgOpaqueData.MusicData.LyricsLine} LyricsLine instance
+                 */
+                LyricsLine.create = function create(properties) {
+                    return new LyricsLine(properties);
+                };
+
+                /**
+                 * Encodes the specified LyricsLine message. Does not implicitly {@link proto.MsgOpaqueData.MusicData.LyricsLine.verify|verify} messages.
+                 * @function encode
+                 * @memberof proto.MsgOpaqueData.MusicData.LyricsLine
+                 * @static
+                 * @param {proto.MsgOpaqueData.MusicData.ILyricsLine} message LyricsLine message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                LyricsLine.encode = function encode(message, writer, q) {
+                    if (!writer)
+                        writer = $Writer.create();
+                    if (q === undefined)
+                        q = 0;
+                    if (q > $util.recursionLimit)
+                        throw Error("max depth exceeded");
+                    if (message.startTimeMs != null && Object.hasOwnProperty.call(message, "startTimeMs"))
+                        writer.uint32(/* id 1, wireType 0 =*/8).int32(message.startTimeMs);
+                    if (message.endTimeMs != null && Object.hasOwnProperty.call(message, "endTimeMs"))
+                        writer.uint32(/* id 2, wireType 0 =*/16).int32(message.endTimeMs);
+                    if (message.text != null && Object.hasOwnProperty.call(message, "text"))
+                        writer.uint32(/* id 3, wireType 2 =*/26).string(message.text);
+                    if (message.wordOffsets != null && message.wordOffsets.length)
+                        for (var i = 0; i < message.wordOffsets.length; ++i)
+                            $root.proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.encode(message.wordOffsets[i], writer.uint32(/* id 4, wireType 2 =*/34).fork(), q + 1).ldelim();
+                    return writer;
+                };
+
+                /**
+                 * Encodes the specified LyricsLine message, length delimited. Does not implicitly {@link proto.MsgOpaqueData.MusicData.LyricsLine.verify|verify} messages.
+                 * @function encodeDelimited
+                 * @memberof proto.MsgOpaqueData.MusicData.LyricsLine
+                 * @static
+                 * @param {proto.MsgOpaqueData.MusicData.ILyricsLine} message LyricsLine message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                LyricsLine.encodeDelimited = function encodeDelimited(message, writer) {
+                    return this.encode(message, writer && writer.len ? writer.fork() : writer).ldelim();
+                };
+
+                /**
+                 * Decodes a LyricsLine message from the specified reader or buffer.
+                 * @function decode
+                 * @memberof proto.MsgOpaqueData.MusicData.LyricsLine
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @param {number} [length] Message length if known beforehand
+                 * @returns {proto.MsgOpaqueData.MusicData.LyricsLine} LyricsLine
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                LyricsLine.decode = function decode(reader, length, error, long) {
+                    if (!(reader instanceof $Reader))
+                        reader = $Reader.create(reader);
+                    if (long === undefined)
+                        long = 0;
+                    if (long > $Reader.recursionLimit)
+                        throw Error("maximum nesting depth exceeded");
+                    var end, message;
+                    if (length === undefined)
+                        end = reader.len;
+                    else {
+                        end = reader.pos + length;
+                        if (end > reader.len)
+                            throw RangeError("index out of range");
+                        length = reader.len;
+                        reader.len = end;
+                    }
+                    message = new $root.proto.MsgOpaqueData.MusicData.LyricsLine();
+                    while (reader.pos < end) {
+                        var tag = reader.uint32();
+                        if (tag === error)
+                            break;
+                        switch (tag >>> 3) {
+                        case 1: {
+                                message.startTimeMs = reader.int32();
+                                break;
+                            }
+                        case 2: {
+                                message.endTimeMs = reader.int32();
+                                break;
+                            }
+                        case 3: {
+                                message.text = reader.string();
+                                break;
+                            }
+                        case 4: {
+                                if (!(message.wordOffsets && message.wordOffsets.length))
+                                    message.wordOffsets = [];
+                                message.wordOffsets.push($root.proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.decode(reader, reader.uint32(), undefined, long + 1));
+                                break;
+                            }
+                        default:
+                            reader.skipType(tag & 7, long);
+                            break;
+                        }
+                    }
+                    if (length !== undefined) {
+                        if (reader.pos !== end)
+                            throw RangeError("index out of range");
+                        reader.len = length;
+                    }
+                    return message;
+                };
+
+                /**
+                 * Decodes a LyricsLine message from the specified reader or buffer, length delimited.
+                 * @function decodeDelimited
+                 * @memberof proto.MsgOpaqueData.MusicData.LyricsLine
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @returns {proto.MsgOpaqueData.MusicData.LyricsLine} LyricsLine
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                LyricsLine.decodeDelimited = function decodeDelimited(reader) {
+                    if (!(reader instanceof $Reader))
+                        reader = new $Reader(reader);
+                    return this.decode(reader, reader.uint32());
+                };
+
+                /**
+                 * Verifies a LyricsLine message.
+                 * @function verify
+                 * @memberof proto.MsgOpaqueData.MusicData.LyricsLine
+                 * @static
+                 * @param {Object.<string,*>} message Plain object to verify
+                 * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                 */
+                LyricsLine.verify = function verify(message, long) {
+                    if (typeof message !== "object" || message === null)
+                        return "object expected";
+                    if (long === undefined)
+                        long = 0;
+                    if (long > $util.recursionLimit)
+                        return "maximum nesting depth exceeded";
+                    var properties = {};
+                    if (message.startTimeMs != null && Object.hasOwnProperty.call(message, "startTimeMs")) {
+                        properties._startTimeMs = 1;
+                        if (!$util.isInteger(message.startTimeMs))
+                            return "startTimeMs: integer expected";
+                    }
+                    if (message.endTimeMs != null && Object.hasOwnProperty.call(message, "endTimeMs")) {
+                        properties._endTimeMs = 1;
+                        if (!$util.isInteger(message.endTimeMs))
+                            return "endTimeMs: integer expected";
+                    }
+                    if (message.text != null && Object.hasOwnProperty.call(message, "text")) {
+                        properties._text = 1;
+                        if (!$util.isString(message.text))
+                            return "text: string expected";
+                    }
+                    if (message.wordOffsets != null && Object.hasOwnProperty.call(message, "wordOffsets")) {
+                        if (!Array.isArray(message.wordOffsets))
+                            return "wordOffsets: array expected";
+                        for (var i = 0; i < message.wordOffsets.length; ++i) {
+                            var error = $root.proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.verify(message.wordOffsets[i], long + 1);
+                            if (error)
+                                return "wordOffsets." + error;
+                        }
+                    }
+                    return null;
+                };
+
+                /**
+                 * Creates a LyricsLine message from a plain object. Also converts values to their respective internal types.
+                 * @function fromObject
+                 * @memberof proto.MsgOpaqueData.MusicData.LyricsLine
+                 * @static
+                 * @param {Object.<string,*>} object Plain object
+                 * @returns {proto.MsgOpaqueData.MusicData.LyricsLine} LyricsLine
+                 */
+                LyricsLine.fromObject = function fromObject(object, long) {
+                    if (object instanceof $root.proto.MsgOpaqueData.MusicData.LyricsLine)
+                        return object;
+                    if (!$util.isObject(object))
+                        throw TypeError(".proto.MsgOpaqueData.MusicData.LyricsLine: object expected");
+                    if (long === undefined)
+                        long = 0;
+                    if (long > $util.recursionLimit)
+                        throw Error("maximum nesting depth exceeded");
+                    var message = new $root.proto.MsgOpaqueData.MusicData.LyricsLine();
+                    if (object.startTimeMs != null)
+                        message.startTimeMs = object.startTimeMs | 0;
+                    if (object.endTimeMs != null)
+                        message.endTimeMs = object.endTimeMs | 0;
+                    if (object.text != null)
+                        message.text = String(object.text);
+                    if (object.wordOffsets) {
+                        if (!Array.isArray(object.wordOffsets))
+                            throw TypeError(".proto.MsgOpaqueData.MusicData.LyricsLine.wordOffsets: array expected");
+                        message.wordOffsets = [];
+                        for (var i = 0; i < object.wordOffsets.length; ++i) {
+                            if (!$util.isObject(object.wordOffsets[i]))
+                                throw TypeError(".proto.MsgOpaqueData.MusicData.LyricsLine.wordOffsets: object expected");
+                            message.wordOffsets[i] = $root.proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.fromObject(object.wordOffsets[i], long + 1);
+                        }
+                    }
+                    return message;
+                };
+
+                /**
+                 * Creates a plain object from a LyricsLine message. Also converts values to other types if specified.
+                 * @function toObject
+                 * @memberof proto.MsgOpaqueData.MusicData.LyricsLine
+                 * @static
+                 * @param {proto.MsgOpaqueData.MusicData.LyricsLine} message LyricsLine
+                 * @param {$protobuf.IConversionOptions} [options] Conversion options
+                 * @returns {Object.<string,*>} Plain object
+                 */
+                LyricsLine.toObject = function toObject(message, options, q) {
+                    if (!options)
+                        options = {};
+                    if (q === undefined)
+                        q = 0;
+                    if (q > $util.recursionLimit)
+                        throw Error("max depth exceeded");
+                    var object = {};
+                    if (options.arrays || options.defaults)
+                        object.wordOffsets = [];
+                    if (message.startTimeMs != null && Object.hasOwnProperty.call(message, "startTimeMs")) {
+                        object.startTimeMs = message.startTimeMs;
+                        if (options.oneofs)
+                            object._startTimeMs = "startTimeMs";
+                    }
+                    if (message.endTimeMs != null && Object.hasOwnProperty.call(message, "endTimeMs")) {
+                        object.endTimeMs = message.endTimeMs;
+                        if (options.oneofs)
+                            object._endTimeMs = "endTimeMs";
+                    }
+                    if (message.text != null && Object.hasOwnProperty.call(message, "text")) {
+                        object.text = message.text;
+                        if (options.oneofs)
+                            object._text = "text";
+                    }
+                    if (message.wordOffsets && message.wordOffsets.length) {
+                        object.wordOffsets = [];
+                        for (var j = 0; j < message.wordOffsets.length; ++j)
+                            object.wordOffsets[j] = $root.proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.toObject(message.wordOffsets[j], options, q + 1);
+                    }
+                    return object;
+                };
+
+                /**
+                 * Converts this LyricsLine to JSON.
+                 * @function toJSON
+                 * @memberof proto.MsgOpaqueData.MusicData.LyricsLine
+                 * @instance
+                 * @returns {Object.<string,*>} JSON object
+                 */
+                LyricsLine.prototype.toJSON = function toJSON() {
+                    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                };
+
+                /**
+                 * Gets the default type url for LyricsLine
+                 * @function getTypeUrl
+                 * @memberof proto.MsgOpaqueData.MusicData.LyricsLine
+                 * @static
+                 * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns {string} The default type url
+                 */
+                LyricsLine.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                    if (typeUrlPrefix === undefined) {
+                        typeUrlPrefix = "type.googleapis.com";
+                    }
+                    return typeUrlPrefix + "/proto.MsgOpaqueData.MusicData.LyricsLine";
+                };
+
+                LyricsLine.WordOffset = (function() {
+
+                    /**
+                     * Properties of a WordOffset.
+                     * @memberof proto.MsgOpaqueData.MusicData.LyricsLine
+                     * @interface IWordOffset
+                     * @property {number|null} [startIndex] WordOffset startIndex
+                     * @property {number|null} [endIndex] WordOffset endIndex
+                     * @property {number|null} [startOffsetMs] WordOffset startOffsetMs
+                     * @property {number|null} [endOffsetMs] WordOffset endOffsetMs
+                     */
+
+                    /**
+                     * Constructs a new WordOffset.
+                     * @memberof proto.MsgOpaqueData.MusicData.LyricsLine
+                     * @classdesc Represents a WordOffset.
+                     * @implements IWordOffset
+                     * @constructor
+                     * @param {proto.MsgOpaqueData.MusicData.LyricsLine.IWordOffset=} [properties] Properties to set
+                     */
+                    function WordOffset(properties) {
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+
+                    /**
+                     * WordOffset startIndex.
+                     * @member {number|null|undefined} startIndex
+                     * @memberof proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset
+                     * @instance
+                     */
+                    WordOffset.prototype.startIndex = null;
+
+                    /**
+                     * WordOffset endIndex.
+                     * @member {number|null|undefined} endIndex
+                     * @memberof proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset
+                     * @instance
+                     */
+                    WordOffset.prototype.endIndex = null;
+
+                    /**
+                     * WordOffset startOffsetMs.
+                     * @member {number|null|undefined} startOffsetMs
+                     * @memberof proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset
+                     * @instance
+                     */
+                    WordOffset.prototype.startOffsetMs = null;
+
+                    /**
+                     * WordOffset endOffsetMs.
+                     * @member {number|null|undefined} endOffsetMs
+                     * @memberof proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset
+                     * @instance
+                     */
+                    WordOffset.prototype.endOffsetMs = null;
+
+                    // OneOf field names bound to virtual getters and setters
+                    var $oneOfFields;
+
+                    // Virtual OneOf for proto3 optional field
+                    Object.defineProperty(WordOffset.prototype, "_startIndex", {
+                        get: $util.oneOfGetter($oneOfFields = ["startIndex"]),
+                        set: $util.oneOfSetter($oneOfFields)
+                    });
+
+                    // Virtual OneOf for proto3 optional field
+                    Object.defineProperty(WordOffset.prototype, "_endIndex", {
+                        get: $util.oneOfGetter($oneOfFields = ["endIndex"]),
+                        set: $util.oneOfSetter($oneOfFields)
+                    });
+
+                    // Virtual OneOf for proto3 optional field
+                    Object.defineProperty(WordOffset.prototype, "_startOffsetMs", {
+                        get: $util.oneOfGetter($oneOfFields = ["startOffsetMs"]),
+                        set: $util.oneOfSetter($oneOfFields)
+                    });
+
+                    // Virtual OneOf for proto3 optional field
+                    Object.defineProperty(WordOffset.prototype, "_endOffsetMs", {
+                        get: $util.oneOfGetter($oneOfFields = ["endOffsetMs"]),
+                        set: $util.oneOfSetter($oneOfFields)
+                    });
+
+                    /**
+                     * Creates a new WordOffset instance using the specified properties.
+                     * @function create
+                     * @memberof proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset
+                     * @static
+                     * @param {proto.MsgOpaqueData.MusicData.LyricsLine.IWordOffset=} [properties] Properties to set
+                     * @returns {proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset} WordOffset instance
+                     */
+                    WordOffset.create = function create(properties) {
+                        return new WordOffset(properties);
+                    };
+
+                    /**
+                     * Encodes the specified WordOffset message. Does not implicitly {@link proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.verify|verify} messages.
+                     * @function encode
+                     * @memberof proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset
+                     * @static
+                     * @param {proto.MsgOpaqueData.MusicData.LyricsLine.IWordOffset} message WordOffset message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    WordOffset.encode = function encode(message, writer, q) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (q === undefined)
+                            q = 0;
+                        if (q > $util.recursionLimit)
+                            throw Error("max depth exceeded");
+                        if (message.startIndex != null && Object.hasOwnProperty.call(message, "startIndex"))
+                            writer.uint32(/* id 1, wireType 0 =*/8).int32(message.startIndex);
+                        if (message.endIndex != null && Object.hasOwnProperty.call(message, "endIndex"))
+                            writer.uint32(/* id 2, wireType 0 =*/16).int32(message.endIndex);
+                        if (message.startOffsetMs != null && Object.hasOwnProperty.call(message, "startOffsetMs"))
+                            writer.uint32(/* id 3, wireType 0 =*/24).int32(message.startOffsetMs);
+                        if (message.endOffsetMs != null && Object.hasOwnProperty.call(message, "endOffsetMs"))
+                            writer.uint32(/* id 4, wireType 0 =*/32).int32(message.endOffsetMs);
+                        return writer;
+                    };
+
+                    /**
+                     * Encodes the specified WordOffset message, length delimited. Does not implicitly {@link proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset
+                     * @static
+                     * @param {proto.MsgOpaqueData.MusicData.LyricsLine.IWordOffset} message WordOffset message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    WordOffset.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer && writer.len ? writer.fork() : writer).ldelim();
+                    };
+
+                    /**
+                     * Decodes a WordOffset message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset} WordOffset
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    WordOffset.decode = function decode(reader, length, error, long) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        if (long === undefined)
+                            long = 0;
+                        if (long > $Reader.recursionLimit)
+                            throw Error("maximum nesting depth exceeded");
+                        var end, message;
+                        if (length === undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = new $root.proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            if (tag === error)
+                                break;
+                            switch (tag >>> 3) {
+                            case 1: {
+                                    message.startIndex = reader.int32();
+                                    break;
+                                }
+                            case 2: {
+                                    message.endIndex = reader.int32();
+                                    break;
+                                }
+                            case 3: {
+                                    message.startOffsetMs = reader.int32();
+                                    break;
+                                }
+                            case 4: {
+                                    message.endOffsetMs = reader.int32();
+                                    break;
+                                }
+                            default:
+                                reader.skipType(tag & 7, long);
+                                break;
+                            }
+                        }
+                        if (length !== undefined) {
+                            if (reader.pos !== end)
+                                throw RangeError("index out of range");
+                            reader.len = length;
+                        }
+                        return message;
+                    };
+
+                    /**
+                     * Decodes a WordOffset message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset} WordOffset
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    WordOffset.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+
+                    /**
+                     * Verifies a WordOffset message.
+                     * @function verify
+                     * @memberof proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    WordOffset.verify = function verify(message, long) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (long === undefined)
+                            long = 0;
+                        if (long > $util.recursionLimit)
+                            return "maximum nesting depth exceeded";
+                        var properties = {};
+                        if (message.startIndex != null && Object.hasOwnProperty.call(message, "startIndex")) {
+                            properties._startIndex = 1;
+                            if (!$util.isInteger(message.startIndex))
+                                return "startIndex: integer expected";
+                        }
+                        if (message.endIndex != null && Object.hasOwnProperty.call(message, "endIndex")) {
+                            properties._endIndex = 1;
+                            if (!$util.isInteger(message.endIndex))
+                                return "endIndex: integer expected";
+                        }
+                        if (message.startOffsetMs != null && Object.hasOwnProperty.call(message, "startOffsetMs")) {
+                            properties._startOffsetMs = 1;
+                            if (!$util.isInteger(message.startOffsetMs))
+                                return "startOffsetMs: integer expected";
+                        }
+                        if (message.endOffsetMs != null && Object.hasOwnProperty.call(message, "endOffsetMs")) {
+                            properties._endOffsetMs = 1;
+                            if (!$util.isInteger(message.endOffsetMs))
+                                return "endOffsetMs: integer expected";
+                        }
+                        return null;
+                    };
+
+                    /**
+                     * Creates a WordOffset message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset} WordOffset
+                     */
+                    WordOffset.fromObject = function fromObject(object, long) {
+                        if (object instanceof $root.proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset)
+                            return object;
+                        if (!$util.isObject(object))
+                            throw TypeError(".proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset: object expected");
+                        if (long === undefined)
+                            long = 0;
+                        if (long > $util.recursionLimit)
+                            throw Error("maximum nesting depth exceeded");
+                        var message = new $root.proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset();
+                        if (object.startIndex != null)
+                            message.startIndex = object.startIndex | 0;
+                        if (object.endIndex != null)
+                            message.endIndex = object.endIndex | 0;
+                        if (object.startOffsetMs != null)
+                            message.startOffsetMs = object.startOffsetMs | 0;
+                        if (object.endOffsetMs != null)
+                            message.endOffsetMs = object.endOffsetMs | 0;
+                        return message;
+                    };
+
+                    /**
+                     * Creates a plain object from a WordOffset message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset
+                     * @static
+                     * @param {proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset} message WordOffset
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    WordOffset.toObject = function toObject(message, options, q) {
+                        if (!options)
+                            options = {};
+                        if (q === undefined)
+                            q = 0;
+                        if (q > $util.recursionLimit)
+                            throw Error("max depth exceeded");
+                        var object = {};
+                        if (message.startIndex != null && Object.hasOwnProperty.call(message, "startIndex")) {
+                            object.startIndex = message.startIndex;
+                            if (options.oneofs)
+                                object._startIndex = "startIndex";
+                        }
+                        if (message.endIndex != null && Object.hasOwnProperty.call(message, "endIndex")) {
+                            object.endIndex = message.endIndex;
+                            if (options.oneofs)
+                                object._endIndex = "endIndex";
+                        }
+                        if (message.startOffsetMs != null && Object.hasOwnProperty.call(message, "startOffsetMs")) {
+                            object.startOffsetMs = message.startOffsetMs;
+                            if (options.oneofs)
+                                object._startOffsetMs = "startOffsetMs";
+                        }
+                        if (message.endOffsetMs != null && Object.hasOwnProperty.call(message, "endOffsetMs")) {
+                            object.endOffsetMs = message.endOffsetMs;
+                            if (options.oneofs)
+                                object._endOffsetMs = "endOffsetMs";
+                        }
+                        return object;
+                    };
+
+                    /**
+                     * Converts this WordOffset to JSON.
+                     * @function toJSON
+                     * @memberof proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    WordOffset.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+
+                    /**
+                     * Gets the default type url for WordOffset
+                     * @function getTypeUrl
+                     * @memberof proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset
+                     * @static
+                     * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                     * @returns {string} The default type url
+                     */
+                    WordOffset.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                        if (typeUrlPrefix === undefined) {
+                            typeUrlPrefix = "type.googleapis.com";
+                        }
+                        return typeUrlPrefix + "/proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset";
+                    };
+
+                    return WordOffset;
+                })();
+
+                return LyricsLine;
+            })();
 
             return MusicData;
         })();
@@ -184467,6 +186181,7 @@ $root.proto = (function() {
      * @property {number} BB_PRO_PENDING_CUSTOMER_BASE_ACTION=98 BB_PRO_PENDING_CUSTOMER_BASE_ACTION value
      * @property {number} COMMUNITY_NESTING_STATE_ACTION=99 COMMUNITY_NESTING_STATE_ACTION value
      * @property {number} SHARED_DEVICE_SECRET_ACTION=100 SHARED_DEVICE_SECRET_ACTION value
+     * @property {number} HATCH_CVM_SECRET_ACTION=101 HATCH_CVM_SECRET_ACTION value
      * @property {number} SHARE_OWN_PN=10001 SHARE_OWN_PN value
      * @property {number} BUSINESS_BROADCAST_ACTION=10002 BUSINESS_BROADCAST_ACTION value
      * @property {number} AI_THREAD_DELETE_ACTION=10003 AI_THREAD_DELETE_ACTION value
@@ -184567,6 +186282,7 @@ $root.proto = (function() {
         values[valuesById[98] = "BB_PRO_PENDING_CUSTOMER_BASE_ACTION"] = 98;
         values[valuesById[99] = "COMMUNITY_NESTING_STATE_ACTION"] = 99;
         values[valuesById[100] = "SHARED_DEVICE_SECRET_ACTION"] = 100;
+        values[valuesById[101] = "HATCH_CVM_SECRET_ACTION"] = 101;
         values[valuesById[10001] = "SHARE_OWN_PN"] = 10001;
         values[valuesById[10002] = "BUSINESS_BROADCAST_ACTION"] = 10002;
         values[valuesById[10003] = "AI_THREAD_DELETE_ACTION"] = 10003;
@@ -209215,6 +210931,7 @@ $root.proto = (function() {
          * @property {proto.SyncActionValue.IBBProPendingCustomerBaseAction|null} [bbProPendingCustomerBaseAction] SyncActionValue bbProPendingCustomerBaseAction
          * @property {proto.SyncActionValue.ICommunityNestingStateAction|null} [communityNestingStateAction] SyncActionValue communityNestingStateAction
          * @property {proto.SyncActionValue.ISharedDeviceSecretAction|null} [sharedDeviceSecretAction] SyncActionValue sharedDeviceSecretAction
+         * @property {proto.SyncActionValue.IHatchCVMSecretAction|null} [hatchCvmSecretAction] SyncActionValue hatchCvmSecretAction
          */
 
         /**
@@ -209960,6 +211677,14 @@ $root.proto = (function() {
          */
         SyncActionValue.prototype.sharedDeviceSecretAction = null;
 
+        /**
+         * SyncActionValue hatchCvmSecretAction.
+         * @member {proto.SyncActionValue.IHatchCVMSecretAction|null|undefined} hatchCvmSecretAction
+         * @memberof proto.SyncActionValue
+         * @instance
+         */
+        SyncActionValue.prototype.hatchCvmSecretAction = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -210509,6 +212234,12 @@ $root.proto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(SyncActionValue.prototype, "_hatchCvmSecretAction", {
+            get: $util.oneOfGetter($oneOfFields = ["hatchCvmSecretAction"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new SyncActionValue instance using the specified properties.
          * @function create
@@ -210719,6 +212450,8 @@ $root.proto = (function() {
                 $root.proto.SyncActionValue.CommunityNestingStateAction.encode(message.communityNestingStateAction, writer.uint32(/* id 99, wireType 2 =*/794).fork(), q + 1).ldelim();
             if (message.sharedDeviceSecretAction != null && Object.hasOwnProperty.call(message, "sharedDeviceSecretAction"))
                 $root.proto.SyncActionValue.SharedDeviceSecretAction.encode(message.sharedDeviceSecretAction, writer.uint32(/* id 100, wireType 2 =*/802).fork(), q + 1).ldelim();
+            if (message.hatchCvmSecretAction != null && Object.hasOwnProperty.call(message, "hatchCvmSecretAction"))
+                $root.proto.SyncActionValue.HatchCVMSecretAction.encode(message.hatchCvmSecretAction, writer.uint32(/* id 101, wireType 2 =*/810).fork(), q + 1).ldelim();
             return writer;
         };
 
@@ -211131,6 +212864,10 @@ $root.proto = (function() {
                     }
                 case 100: {
                         message.sharedDeviceSecretAction = $root.proto.SyncActionValue.SharedDeviceSecretAction.decode(reader, reader.uint32(), undefined, long + 1);
+                        break;
+                    }
+                case 101: {
+                        message.hatchCvmSecretAction = $root.proto.SyncActionValue.HatchCVMSecretAction.decode(reader, reader.uint32(), undefined, long + 1);
                         break;
                     }
                 default:
@@ -211903,6 +213640,14 @@ $root.proto = (function() {
                         return "sharedDeviceSecretAction." + error;
                 }
             }
+            if (message.hatchCvmSecretAction != null && Object.hasOwnProperty.call(message, "hatchCvmSecretAction")) {
+                properties._hatchCvmSecretAction = 1;
+                {
+                    var error = $root.proto.SyncActionValue.HatchCVMSecretAction.verify(message.hatchCvmSecretAction, long + 1);
+                    if (error)
+                        return "hatchCvmSecretAction." + error;
+                }
+            }
             return null;
         };
 
@@ -212383,6 +214128,11 @@ $root.proto = (function() {
                     throw TypeError(".proto.SyncActionValue.sharedDeviceSecretAction: object expected");
                 message.sharedDeviceSecretAction = $root.proto.SyncActionValue.SharedDeviceSecretAction.fromObject(object.sharedDeviceSecretAction, long + 1);
             }
+            if (object.hatchCvmSecretAction != null) {
+                if (!$util.isObject(object.hatchCvmSecretAction))
+                    throw TypeError(".proto.SyncActionValue.hatchCvmSecretAction: object expected");
+                message.hatchCvmSecretAction = $root.proto.SyncActionValue.HatchCVMSecretAction.fromObject(object.hatchCvmSecretAction, long + 1);
+            }
             return message;
         };
 
@@ -212862,6 +214612,11 @@ $root.proto = (function() {
                 object.sharedDeviceSecretAction = $root.proto.SyncActionValue.SharedDeviceSecretAction.toObject(message.sharedDeviceSecretAction, options, q + 1);
                 if (options.oneofs)
                     object._sharedDeviceSecretAction = "sharedDeviceSecretAction";
+            }
+            if (message.hatchCvmSecretAction != null && Object.hasOwnProperty.call(message, "hatchCvmSecretAction")) {
+                object.hatchCvmSecretAction = $root.proto.SyncActionValue.HatchCVMSecretAction.toObject(message.hatchCvmSecretAction, options, q + 1);
+                if (options.oneofs)
+                    object._hatchCvmSecretAction = "hatchCvmSecretAction";
             }
             return object;
         };
@@ -219674,15 +221429,15 @@ $root.proto = (function() {
                         break;
                     }
                     break;
-                case "NESTING_STATE_UNKNOWN":
+                case "PLATFORM_DEFAULT":
                 case 0:
                     message.nestingState = 0;
                     break;
-                case "NESTING_STATE_NESTED":
+                case "NESTED":
                 case 1:
                     message.nestingState = 1;
                     break;
-                case "NESTING_STATE_UNNESTED":
+                case "UNNESTED":
                 case 2:
                     message.nestingState = 2;
                     break;
@@ -219745,15 +221500,15 @@ $root.proto = (function() {
              * NestingState enum.
              * @name proto.SyncActionValue.CommunityNestingStateAction.NestingState
              * @enum {number}
-             * @property {number} NESTING_STATE_UNKNOWN=0 NESTING_STATE_UNKNOWN value
-             * @property {number} NESTING_STATE_NESTED=1 NESTING_STATE_NESTED value
-             * @property {number} NESTING_STATE_UNNESTED=2 NESTING_STATE_UNNESTED value
+             * @property {number} PLATFORM_DEFAULT=0 PLATFORM_DEFAULT value
+             * @property {number} NESTED=1 NESTED value
+             * @property {number} UNNESTED=2 UNNESTED value
              */
             CommunityNestingStateAction.NestingState = (function() {
                 var valuesById = {}, values = Object.create(valuesById);
-                values[valuesById[0] = "NESTING_STATE_UNKNOWN"] = 0;
-                values[valuesById[1] = "NESTING_STATE_NESTED"] = 1;
-                values[valuesById[2] = "NESTING_STATE_UNNESTED"] = 2;
+                values[valuesById[0] = "PLATFORM_DEFAULT"] = 0;
+                values[valuesById[1] = "NESTED"] = 1;
+                values[valuesById[2] = "UNNESTED"] = 2;
                 return values;
             })();
 
@@ -224698,6 +226453,309 @@ $root.proto = (function() {
             })();
 
             return GroupHistoryToggleAction;
+        })();
+
+        SyncActionValue.HatchCVMSecretAction = (function() {
+
+            /**
+             * Properties of a HatchCVMSecretAction.
+             * @memberof proto.SyncActionValue
+             * @interface IHatchCVMSecretAction
+             * @property {Uint8Array|null} [secret] HatchCVMSecretAction secret
+             * @property {number|Long|null} [generation] HatchCVMSecretAction generation
+             */
+
+            /**
+             * Constructs a new HatchCVMSecretAction.
+             * @memberof proto.SyncActionValue
+             * @classdesc Represents a HatchCVMSecretAction.
+             * @implements IHatchCVMSecretAction
+             * @constructor
+             * @param {proto.SyncActionValue.IHatchCVMSecretAction=} [properties] Properties to set
+             */
+            function HatchCVMSecretAction(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * HatchCVMSecretAction secret.
+             * @member {Uint8Array|null|undefined} secret
+             * @memberof proto.SyncActionValue.HatchCVMSecretAction
+             * @instance
+             */
+            HatchCVMSecretAction.prototype.secret = null;
+
+            /**
+             * HatchCVMSecretAction generation.
+             * @member {number|Long|null|undefined} generation
+             * @memberof proto.SyncActionValue.HatchCVMSecretAction
+             * @instance
+             */
+            HatchCVMSecretAction.prototype.generation = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(HatchCVMSecretAction.prototype, "_secret", {
+                get: $util.oneOfGetter($oneOfFields = ["secret"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(HatchCVMSecretAction.prototype, "_generation", {
+                get: $util.oneOfGetter($oneOfFields = ["generation"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new HatchCVMSecretAction instance using the specified properties.
+             * @function create
+             * @memberof proto.SyncActionValue.HatchCVMSecretAction
+             * @static
+             * @param {proto.SyncActionValue.IHatchCVMSecretAction=} [properties] Properties to set
+             * @returns {proto.SyncActionValue.HatchCVMSecretAction} HatchCVMSecretAction instance
+             */
+            HatchCVMSecretAction.create = function create(properties) {
+                return new HatchCVMSecretAction(properties);
+            };
+
+            /**
+             * Encodes the specified HatchCVMSecretAction message. Does not implicitly {@link proto.SyncActionValue.HatchCVMSecretAction.verify|verify} messages.
+             * @function encode
+             * @memberof proto.SyncActionValue.HatchCVMSecretAction
+             * @static
+             * @param {proto.SyncActionValue.IHatchCVMSecretAction} message HatchCVMSecretAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            HatchCVMSecretAction.encode = function encode(message, writer, q) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                if (message.secret != null && Object.hasOwnProperty.call(message, "secret"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.secret);
+                if (message.generation != null && Object.hasOwnProperty.call(message, "generation"))
+                    writer.uint32(/* id 2, wireType 0 =*/16).int64(message.generation);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified HatchCVMSecretAction message, length delimited. Does not implicitly {@link proto.SyncActionValue.HatchCVMSecretAction.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof proto.SyncActionValue.HatchCVMSecretAction
+             * @static
+             * @param {proto.SyncActionValue.IHatchCVMSecretAction} message HatchCVMSecretAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            HatchCVMSecretAction.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer && writer.len ? writer.fork() : writer).ldelim();
+            };
+
+            /**
+             * Decodes a HatchCVMSecretAction message from the specified reader or buffer.
+             * @function decode
+             * @memberof proto.SyncActionValue.HatchCVMSecretAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {proto.SyncActionValue.HatchCVMSecretAction} HatchCVMSecretAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            HatchCVMSecretAction.decode = function decode(reader, length, error, long) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (long === undefined)
+                    long = 0;
+                if (long > $Reader.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var end, message;
+                if (length === undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = new $root.proto.SyncActionValue.HatchCVMSecretAction();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.secret = reader.bytes();
+                            break;
+                        }
+                    case 2: {
+                            message.generation = reader.int64();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7, long);
+                        break;
+                    }
+                }
+                if (length !== undefined) {
+                    if (reader.pos !== end)
+                        throw RangeError("index out of range");
+                    reader.len = length;
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a HatchCVMSecretAction message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof proto.SyncActionValue.HatchCVMSecretAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {proto.SyncActionValue.HatchCVMSecretAction} HatchCVMSecretAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            HatchCVMSecretAction.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a HatchCVMSecretAction message.
+             * @function verify
+             * @memberof proto.SyncActionValue.HatchCVMSecretAction
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            HatchCVMSecretAction.verify = function verify(message, long) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    return "maximum nesting depth exceeded";
+                var properties = {};
+                if (message.secret != null && Object.hasOwnProperty.call(message, "secret")) {
+                    properties._secret = 1;
+                    if (!(message.secret && typeof message.secret.length === "number" || $util.isString(message.secret)))
+                        return "secret: buffer expected";
+                }
+                if (message.generation != null && Object.hasOwnProperty.call(message, "generation")) {
+                    properties._generation = 1;
+                    if (!$util.isInteger(message.generation) && !(message.generation && $util.isInteger(message.generation.low) && $util.isInteger(message.generation.high)))
+                        return "generation: integer|Long expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a HatchCVMSecretAction message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof proto.SyncActionValue.HatchCVMSecretAction
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {proto.SyncActionValue.HatchCVMSecretAction} HatchCVMSecretAction
+             */
+            HatchCVMSecretAction.fromObject = function fromObject(object, long) {
+                if (object instanceof $root.proto.SyncActionValue.HatchCVMSecretAction)
+                    return object;
+                if (!$util.isObject(object))
+                    throw TypeError(".proto.SyncActionValue.HatchCVMSecretAction: object expected");
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var message = new $root.proto.SyncActionValue.HatchCVMSecretAction();
+                if (object.secret != null)
+                    if (typeof object.secret === "string")
+                        $util.base64.decode(object.secret, message.secret = $util.newBuffer($util.base64.length(object.secret)), 0);
+                    else if (object.secret.length >= 0)
+                        message.secret = object.secret;
+                if (object.generation != null)
+                    if ($util.Long)
+                        message.generation = $util.Long.fromValue(object.generation, false);
+                    else if (typeof object.generation === "string")
+                        message.generation = parseInt(object.generation, 10);
+                    else if (typeof object.generation === "number")
+                        message.generation = object.generation;
+                    else if (typeof object.generation === "object")
+                        message.generation = new $util.LongBits(object.generation.low >>> 0, object.generation.high >>> 0).toNumber();
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a HatchCVMSecretAction message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof proto.SyncActionValue.HatchCVMSecretAction
+             * @static
+             * @param {proto.SyncActionValue.HatchCVMSecretAction} message HatchCVMSecretAction
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            HatchCVMSecretAction.toObject = function toObject(message, options, q) {
+                if (!options)
+                    options = {};
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                var object = {};
+                if (message.secret != null && Object.hasOwnProperty.call(message, "secret")) {
+                    object.secret = options.bytes === String ? $util.base64.encode(message.secret, 0, message.secret.length) : options.bytes === Array ? Array.prototype.slice.call(message.secret) : message.secret;
+                    if (options.oneofs)
+                        object._secret = "secret";
+                }
+                if (message.generation != null && Object.hasOwnProperty.call(message, "generation")) {
+                    if (typeof BigInt !== "undefined" && options.longs === BigInt)
+                        object.generation = typeof message.generation === "number" ? BigInt(message.generation) : $util.Long.fromBits(message.generation.low >>> 0, message.generation.high >>> 0, false).toBigInt();
+                    else if (typeof message.generation === "number")
+                        object.generation = options.longs === String ? String(message.generation) : message.generation;
+                    else
+                        object.generation = options.longs === String ? $util.Long.prototype.toString.call(message.generation) : options.longs === Number ? new $util.LongBits(message.generation.low >>> 0, message.generation.high >>> 0).toNumber() : message.generation;
+                    if (options.oneofs)
+                        object._generation = "generation";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this HatchCVMSecretAction to JSON.
+             * @function toJSON
+             * @memberof proto.SyncActionValue.HatchCVMSecretAction
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            HatchCVMSecretAction.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for HatchCVMSecretAction
+             * @function getTypeUrl
+             * @memberof proto.SyncActionValue.HatchCVMSecretAction
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            HatchCVMSecretAction.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/proto.SyncActionValue.HatchCVMSecretAction";
+            };
+
+            return HatchCVMSecretAction;
         })();
 
         SyncActionValue.InteractiveMessageAction = (function() {
@@ -235859,6 +237917,7 @@ $root.proto = (function() {
              * @property {string|null} [chatThemeId] SettingsSyncAction chatThemeId
              * @property {string|null} [colorSchemeId] SettingsSyncAction colorSchemeId
              * @property {string|null} [stockWallpaperImageId] SettingsSyncAction stockWallpaperImageId
+             * @property {proto.SyncActionValue.SettingsSyncAction.MediaAutoDownloadQualitySetting|null} [mediaAutoDownloadQuality] SettingsSyncAction mediaAutoDownloadQuality
              */
 
             /**
@@ -236148,6 +238207,14 @@ $root.proto = (function() {
              */
             SettingsSyncAction.prototype.stockWallpaperImageId = null;
 
+            /**
+             * SettingsSyncAction mediaAutoDownloadQuality.
+             * @member {proto.SyncActionValue.SettingsSyncAction.MediaAutoDownloadQualitySetting|null|undefined} mediaAutoDownloadQuality
+             * @memberof proto.SyncActionValue.SettingsSyncAction
+             * @instance
+             */
+            SettingsSyncAction.prototype.mediaAutoDownloadQuality = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
@@ -236355,6 +238422,12 @@ $root.proto = (function() {
                 set: $util.oneOfSetter($oneOfFields)
             });
 
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(SettingsSyncAction.prototype, "_mediaAutoDownloadQuality", {
+                get: $util.oneOfGetter($oneOfFields = ["mediaAutoDownloadQuality"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
             /**
              * Creates a new SettingsSyncAction instance using the specified properties.
              * @function create
@@ -236451,6 +238524,8 @@ $root.proto = (function() {
                     writer.uint32(/* id 33, wireType 2 =*/266).string(message.colorSchemeId);
                 if (message.stockWallpaperImageId != null && Object.hasOwnProperty.call(message, "stockWallpaperImageId"))
                     writer.uint32(/* id 34, wireType 2 =*/274).string(message.stockWallpaperImageId);
+                if (message.mediaAutoDownloadQuality != null && Object.hasOwnProperty.call(message, "mediaAutoDownloadQuality"))
+                    writer.uint32(/* id 35, wireType 0 =*/280).int32(message.mediaAutoDownloadQuality);
                 return writer;
             };
 
@@ -236635,6 +238710,10 @@ $root.proto = (function() {
                         }
                     case 34: {
                             message.stockWallpaperImageId = reader.string();
+                            break;
+                        }
+                    case 35: {
+                            message.mediaAutoDownloadQuality = reader.int32();
                             break;
                         }
                     default:
@@ -236872,6 +238951,18 @@ $root.proto = (function() {
                     if (!$util.isString(message.stockWallpaperImageId))
                         return "stockWallpaperImageId: string expected";
                 }
+                if (message.mediaAutoDownloadQuality != null && Object.hasOwnProperty.call(message, "mediaAutoDownloadQuality")) {
+                    properties._mediaAutoDownloadQuality = 1;
+                    switch (message.mediaAutoDownloadQuality) {
+                    default:
+                        return "mediaAutoDownloadQuality: enum value expected";
+                    case 0:
+                    case 1:
+                    case 2:
+                    case 3:
+                        break;
+                    }
+                }
                 return null;
             };
 
@@ -237023,6 +239114,30 @@ $root.proto = (function() {
                     message.colorSchemeId = String(object.colorSchemeId);
                 if (object.stockWallpaperImageId != null)
                     message.stockWallpaperImageId = String(object.stockWallpaperImageId);
+                switch (object.mediaAutoDownloadQuality) {
+                default:
+                    if (typeof object.mediaAutoDownloadQuality === "number") {
+                        message.mediaAutoDownloadQuality = object.mediaAutoDownloadQuality;
+                        break;
+                    }
+                    break;
+                case "MEDIA_AUTO_DOWNLOAD_QUALITY_UNKNOWN":
+                case 0:
+                    message.mediaAutoDownloadQuality = 0;
+                    break;
+                case "MEDIA_AUTO_DOWNLOAD_QUALITY_STANDARD":
+                case 1:
+                    message.mediaAutoDownloadQuality = 1;
+                    break;
+                case "MEDIA_AUTO_DOWNLOAD_QUALITY_HD":
+                case 2:
+                    message.mediaAutoDownloadQuality = 2;
+                    break;
+                case "MEDIA_AUTO_DOWNLOAD_QUALITY_AUTO":
+                case 3:
+                    message.mediaAutoDownloadQuality = 3;
+                    break;
+                }
                 return message;
             };
 
@@ -237213,6 +239328,11 @@ $root.proto = (function() {
                     if (options.oneofs)
                         object._stockWallpaperImageId = "stockWallpaperImageId";
                 }
+                if (message.mediaAutoDownloadQuality != null && Object.hasOwnProperty.call(message, "mediaAutoDownloadQuality")) {
+                    object.mediaAutoDownloadQuality = options.enums === String ? $root.proto.SyncActionValue.SettingsSyncAction.MediaAutoDownloadQualitySetting[message.mediaAutoDownloadQuality] === undefined ? message.mediaAutoDownloadQuality : $root.proto.SyncActionValue.SettingsSyncAction.MediaAutoDownloadQualitySetting[message.mediaAutoDownloadQuality] : message.mediaAutoDownloadQuality;
+                    if (options.oneofs)
+                        object._mediaAutoDownloadQuality = "mediaAutoDownloadQuality";
+                }
                 return object;
             };
 
@@ -237257,6 +239377,24 @@ $root.proto = (function() {
                 values[valuesById[1] = "ALWAYS"] = 1;
                 values[valuesById[2] = "NEVER"] = 2;
                 values[valuesById[3] = "ONLY_WHEN_APP_IS_OPEN"] = 3;
+                return values;
+            })();
+
+            /**
+             * MediaAutoDownloadQualitySetting enum.
+             * @name proto.SyncActionValue.SettingsSyncAction.MediaAutoDownloadQualitySetting
+             * @enum {number}
+             * @property {number} MEDIA_AUTO_DOWNLOAD_QUALITY_UNKNOWN=0 MEDIA_AUTO_DOWNLOAD_QUALITY_UNKNOWN value
+             * @property {number} MEDIA_AUTO_DOWNLOAD_QUALITY_STANDARD=1 MEDIA_AUTO_DOWNLOAD_QUALITY_STANDARD value
+             * @property {number} MEDIA_AUTO_DOWNLOAD_QUALITY_HD=2 MEDIA_AUTO_DOWNLOAD_QUALITY_HD value
+             * @property {number} MEDIA_AUTO_DOWNLOAD_QUALITY_AUTO=3 MEDIA_AUTO_DOWNLOAD_QUALITY_AUTO value
+             */
+            SettingsSyncAction.MediaAutoDownloadQualitySetting = (function() {
+                var valuesById = {}, values = Object.create(valuesById);
+                values[valuesById[0] = "MEDIA_AUTO_DOWNLOAD_QUALITY_UNKNOWN"] = 0;
+                values[valuesById[1] = "MEDIA_AUTO_DOWNLOAD_QUALITY_STANDARD"] = 1;
+                values[valuesById[2] = "MEDIA_AUTO_DOWNLOAD_QUALITY_HD"] = 2;
+                values[valuesById[3] = "MEDIA_AUTO_DOWNLOAD_QUALITY_AUTO"] = 3;
                 return values;
             })();
 
@@ -237315,6 +239453,7 @@ $root.proto = (function() {
              * @property {number} CHAT_THEME_ID=32 CHAT_THEME_ID value
              * @property {number} COLOR_SCHEME_ID=33 COLOR_SCHEME_ID value
              * @property {number} STOCK_WALLPAPER_IMAGE_ID=34 STOCK_WALLPAPER_IMAGE_ID value
+             * @property {number} MEDIA_AUTO_DOWNLOAD_QUALITY=35 MEDIA_AUTO_DOWNLOAD_QUALITY value
              */
             SettingsSyncAction.SettingKey = (function() {
                 var valuesById = {}, values = Object.create(valuesById);
@@ -237353,6 +239492,7 @@ $root.proto = (function() {
                 values[valuesById[32] = "CHAT_THEME_ID"] = 32;
                 values[valuesById[33] = "COLOR_SCHEME_ID"] = 33;
                 values[valuesById[34] = "STOCK_WALLPAPER_IMAGE_ID"] = 34;
+                values[valuesById[35] = "MEDIA_AUTO_DOWNLOAD_QUALITY"] = 35;
                 return values;
             })();
 
