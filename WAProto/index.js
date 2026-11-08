@@ -13293,6 +13293,7 @@ $root.proto = (function() {
          * @property {string|null} [username] Account username
          * @property {string|null} [countryCode] Account countryCode
          * @property {boolean|null} [isUsernameDeleted] Account isUsernameDeleted
+         * @property {proto.Account.PnLearnState|null} [pnLearnState] Account pnLearnState
          */
 
         /**
@@ -13342,6 +13343,14 @@ $root.proto = (function() {
          */
         Account.prototype.isUsernameDeleted = null;
 
+        /**
+         * Account pnLearnState.
+         * @member {proto.Account.PnLearnState|null|undefined} pnLearnState
+         * @memberof proto.Account
+         * @instance
+         */
+        Account.prototype.pnLearnState = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -13366,6 +13375,12 @@ $root.proto = (function() {
         // Virtual OneOf for proto3 optional field
         Object.defineProperty(Account.prototype, "_isUsernameDeleted", {
             get: $util.oneOfGetter($oneOfFields = ["isUsernameDeleted"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(Account.prototype, "_pnLearnState", {
+            get: $util.oneOfGetter($oneOfFields = ["pnLearnState"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -13405,6 +13420,8 @@ $root.proto = (function() {
                 writer.uint32(/* id 3, wireType 2 =*/26).string(message.countryCode);
             if (message.isUsernameDeleted != null && Object.hasOwnProperty.call(message, "isUsernameDeleted"))
                 writer.uint32(/* id 4, wireType 0 =*/32).bool(message.isUsernameDeleted);
+            if (message.pnLearnState != null && Object.hasOwnProperty.call(message, "pnLearnState"))
+                writer.uint32(/* id 6, wireType 0 =*/48).int32(message.pnLearnState);
             return writer;
         };
 
@@ -13469,6 +13486,10 @@ $root.proto = (function() {
                     }
                 case 4: {
                         message.isUsernameDeleted = reader.bool();
+                        break;
+                    }
+                case 6: {
+                        message.pnLearnState = reader.int32();
                         break;
                     }
                 default:
@@ -13536,6 +13557,17 @@ $root.proto = (function() {
                 if (typeof message.isUsernameDeleted !== "boolean")
                     return "isUsernameDeleted: boolean expected";
             }
+            if (message.pnLearnState != null && Object.hasOwnProperty.call(message, "pnLearnState")) {
+                properties._pnLearnState = 1;
+                switch (message.pnLearnState) {
+                default:
+                    return "pnLearnState: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                    break;
+                }
+            }
             return null;
         };
 
@@ -13565,6 +13597,26 @@ $root.proto = (function() {
                 message.countryCode = String(object.countryCode);
             if (object.isUsernameDeleted != null)
                 message.isUsernameDeleted = Boolean(object.isUsernameDeleted);
+            switch (object.pnLearnState) {
+            default:
+                if (typeof object.pnLearnState === "number") {
+                    message.pnLearnState = object.pnLearnState;
+                    break;
+                }
+                break;
+            case "UNSET":
+            case 0:
+                message.pnLearnState = 0;
+                break;
+            case "SHARED":
+            case 1:
+                message.pnLearnState = 1;
+                break;
+            case "HIDDEN":
+            case 2:
+                message.pnLearnState = 2;
+                break;
+            }
             return message;
         };
 
@@ -13605,6 +13657,11 @@ $root.proto = (function() {
                 if (options.oneofs)
                     object._isUsernameDeleted = "isUsernameDeleted";
             }
+            if (message.pnLearnState != null && Object.hasOwnProperty.call(message, "pnLearnState")) {
+                object.pnLearnState = options.enums === String ? $root.proto.Account.PnLearnState[message.pnLearnState] === undefined ? message.pnLearnState : $root.proto.Account.PnLearnState[message.pnLearnState] : message.pnLearnState;
+                if (options.oneofs)
+                    object._pnLearnState = "pnLearnState";
+            }
             return object;
         };
 
@@ -13633,6 +13690,22 @@ $root.proto = (function() {
             }
             return typeUrlPrefix + "/proto.Account";
         };
+
+        /**
+         * PnLearnState enum.
+         * @name proto.Account.PnLearnState
+         * @enum {number}
+         * @property {number} UNSET=0 UNSET value
+         * @property {number} SHARED=1 SHARED value
+         * @property {number} HIDDEN=2 HIDDEN value
+         */
+        Account.PnLearnState = (function() {
+            var valuesById = {}, values = Object.create(valuesById);
+            values[valuesById[0] = "UNSET"] = 0;
+            values[valuesById[1] = "SHARED"] = 1;
+            values[valuesById[2] = "HIDDEN"] = 2;
+            return values;
+        })();
 
         return Account;
     })();
@@ -18026,6 +18099,9 @@ $root.proto = (function() {
                     case 82:
                     case 83:
                     case 84:
+                    case 85:
+                    case 86:
+                    case 87:
                         break;
                     }
             }
@@ -18401,6 +18477,18 @@ $root.proto = (function() {
                     case 84:
                         message.capabilities[i] = 84;
                         break;
+                    case "AI_MUSE_JARVIS_EXTENDED_CARDS_ENABLED":
+                    case 85:
+                        message.capabilities[i] = 85;
+                        break;
+                    case "AI_INTERJECTIONS_ENABLED":
+                    case 86:
+                        message.capabilities[i] = 86;
+                        break;
+                    case "AI_RICH_RESPONSE_READ_ALOUD_ENABLED":
+                    case 87:
+                        message.capabilities[i] = 87;
+                        break;
                     }
             }
             return message;
@@ -18548,6 +18636,9 @@ $root.proto = (function() {
          * @property {number} AI_STUDY_QUIZ_ENABLED=82 AI_STUDY_QUIZ_ENABLED value
          * @property {number} HATCH_CVM_ENABLED=83 HATCH_CVM_ENABLED value
          * @property {number} RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED=84 RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED value
+         * @property {number} AI_MUSE_JARVIS_EXTENDED_CARDS_ENABLED=85 AI_MUSE_JARVIS_EXTENDED_CARDS_ENABLED value
+         * @property {number} AI_INTERJECTIONS_ENABLED=86 AI_INTERJECTIONS_ENABLED value
+         * @property {number} AI_RICH_RESPONSE_READ_ALOUD_ENABLED=87 AI_RICH_RESPONSE_READ_ALOUD_ENABLED value
          */
         BotCapabilityMetadata.BotCapabilityType = (function() {
             var valuesById = {}, values = Object.create(valuesById);
@@ -18636,6 +18727,9 @@ $root.proto = (function() {
             values[valuesById[82] = "AI_STUDY_QUIZ_ENABLED"] = 82;
             values[valuesById[83] = "HATCH_CVM_ENABLED"] = 83;
             values[valuesById[84] = "RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED"] = 84;
+            values[valuesById[85] = "AI_MUSE_JARVIS_EXTENDED_CARDS_ENABLED"] = 85;
+            values[valuesById[86] = "AI_INTERJECTIONS_ENABLED"] = 86;
+            values[valuesById[87] = "AI_RICH_RESPONSE_READ_ALOUD_ENABLED"] = 87;
             return values;
         })();
 
@@ -45565,6 +45659,7 @@ $root.proto = (function() {
          * @property {Uint8Array|null} [subscriptionSyncPayload] ClientPairingProps subscriptionSyncPayload
          * @property {boolean|null} [isBotJidDbMigrated] ClientPairingProps isBotJidDbMigrated
          * @property {Uint8Array|null} [companionAddPeerPayload] ClientPairingProps companionAddPeerPayload
+         * @property {boolean|null} [isCompanionRegistrationFgsEnabled] ClientPairingProps isCompanionRegistrationFgsEnabled
          */
 
         /**
@@ -45638,6 +45733,14 @@ $root.proto = (function() {
          */
         ClientPairingProps.prototype.companionAddPeerPayload = null;
 
+        /**
+         * ClientPairingProps isCompanionRegistrationFgsEnabled.
+         * @member {boolean|null|undefined} isCompanionRegistrationFgsEnabled
+         * @memberof proto.ClientPairingProps
+         * @instance
+         */
+        ClientPairingProps.prototype.isCompanionRegistrationFgsEnabled = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -45683,6 +45786,12 @@ $root.proto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(ClientPairingProps.prototype, "_isCompanionRegistrationFgsEnabled", {
+            get: $util.oneOfGetter($oneOfFields = ["isCompanionRegistrationFgsEnabled"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new ClientPairingProps instance using the specified properties.
          * @function create
@@ -45725,6 +45834,8 @@ $root.proto = (function() {
                 writer.uint32(/* id 6, wireType 0 =*/48).bool(message.isBotJidDbMigrated);
             if (message.companionAddPeerPayload != null && Object.hasOwnProperty.call(message, "companionAddPeerPayload"))
                 writer.uint32(/* id 7, wireType 2 =*/58).bytes(message.companionAddPeerPayload);
+            if (message.isCompanionRegistrationFgsEnabled != null && Object.hasOwnProperty.call(message, "isCompanionRegistrationFgsEnabled"))
+                writer.uint32(/* id 8, wireType 0 =*/64).bool(message.isCompanionRegistrationFgsEnabled);
             return writer;
         };
 
@@ -45801,6 +45912,10 @@ $root.proto = (function() {
                     }
                 case 7: {
                         message.companionAddPeerPayload = reader.bytes();
+                        break;
+                    }
+                case 8: {
+                        message.isCompanionRegistrationFgsEnabled = reader.bool();
                         break;
                     }
                 default:
@@ -45883,6 +45998,11 @@ $root.proto = (function() {
                 if (!(message.companionAddPeerPayload && typeof message.companionAddPeerPayload.length === "number" || $util.isString(message.companionAddPeerPayload)))
                     return "companionAddPeerPayload: buffer expected";
             }
+            if (message.isCompanionRegistrationFgsEnabled != null && Object.hasOwnProperty.call(message, "isCompanionRegistrationFgsEnabled")) {
+                properties._isCompanionRegistrationFgsEnabled = 1;
+                if (typeof message.isCompanionRegistrationFgsEnabled !== "boolean")
+                    return "isCompanionRegistrationFgsEnabled: boolean expected";
+            }
             return null;
         };
 
@@ -45924,6 +46044,8 @@ $root.proto = (function() {
                     $util.base64.decode(object.companionAddPeerPayload, message.companionAddPeerPayload = $util.newBuffer($util.base64.length(object.companionAddPeerPayload)), 0);
                 else if (object.companionAddPeerPayload.length >= 0)
                     message.companionAddPeerPayload = object.companionAddPeerPayload;
+            if (object.isCompanionRegistrationFgsEnabled != null)
+                message.isCompanionRegistrationFgsEnabled = Boolean(object.isCompanionRegistrationFgsEnabled);
             return message;
         };
 
@@ -45978,6 +46100,11 @@ $root.proto = (function() {
                 object.companionAddPeerPayload = options.bytes === String ? $util.base64.encode(message.companionAddPeerPayload, 0, message.companionAddPeerPayload.length) : options.bytes === Array ? Array.prototype.slice.call(message.companionAddPeerPayload) : message.companionAddPeerPayload;
                 if (options.oneofs)
                     object._companionAddPeerPayload = "companionAddPeerPayload";
+            }
+            if (message.isCompanionRegistrationFgsEnabled != null && Object.hasOwnProperty.call(message, "isCompanionRegistrationFgsEnabled")) {
+                object.isCompanionRegistrationFgsEnabled = message.isCompanionRegistrationFgsEnabled;
+                if (options.oneofs)
+                    object._isCompanionRegistrationFgsEnabled = "isCompanionRegistrationFgsEnabled";
             }
             return object;
         };
@@ -46054,6 +46181,7 @@ $root.proto = (function() {
          * @property {Array.<string>|null} [pairedPeripherals] ClientPayload pairedPeripherals
          * @property {Uint8Array|null} [testIsolationId] ClientPayload testIsolationId
          * @property {number|Long|null} [messageSts] ClientPayload messageSts
+         * @property {proto.ClientPayload.IIntegrationAttestation|null} [integrationAttestation] ClientPayload integrationAttestation
          */
 
         /**
@@ -46369,6 +46497,14 @@ $root.proto = (function() {
          */
         ClientPayload.prototype.messageSts = null;
 
+        /**
+         * ClientPayload integrationAttestation.
+         * @member {proto.ClientPayload.IIntegrationAttestation|null|undefined} integrationAttestation
+         * @memberof proto.ClientPayload
+         * @instance
+         */
+        ClientPayload.prototype.integrationAttestation = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -46582,6 +46718,12 @@ $root.proto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(ClientPayload.prototype, "_integrationAttestation", {
+            get: $util.oneOfGetter($oneOfFields = ["integrationAttestation"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new ClientPayload instance using the specified properties.
          * @function create
@@ -46689,6 +46831,8 @@ $root.proto = (function() {
                 writer.uint32(/* id 48, wireType 2 =*/386).bytes(message.testIsolationId);
             if (message.messageSts != null && Object.hasOwnProperty.call(message, "messageSts"))
                 writer.uint32(/* id 49, wireType 0 =*/392).int64(message.messageSts);
+            if (message.integrationAttestation != null && Object.hasOwnProperty.call(message, "integrationAttestation"))
+                $root.proto.ClientPayload.IntegrationAttestation.encode(message.integrationAttestation, writer.uint32(/* id 50, wireType 2 =*/402).fork(), q + 1).ldelim();
             return writer;
         };
 
@@ -46900,6 +47044,10 @@ $root.proto = (function() {
                     }
                 case 49: {
                         message.messageSts = reader.int64();
+                        break;
+                    }
+                case 50: {
+                        message.integrationAttestation = $root.proto.ClientPayload.IntegrationAttestation.decode(reader, reader.uint32(), undefined, long + 1);
                         break;
                     }
                 default:
@@ -47202,6 +47350,14 @@ $root.proto = (function() {
                 properties._messageSts = 1;
                 if (!$util.isInteger(message.messageSts) && !(message.messageSts && $util.isInteger(message.messageSts.low) && $util.isInteger(message.messageSts.high)))
                     return "messageSts: integer|Long expected";
+            }
+            if (message.integrationAttestation != null && Object.hasOwnProperty.call(message, "integrationAttestation")) {
+                properties._integrationAttestation = 1;
+                {
+                    var error = $root.proto.ClientPayload.IntegrationAttestation.verify(message.integrationAttestation, long + 1);
+                    if (error)
+                        return "integrationAttestation." + error;
+                }
             }
             return null;
         };
@@ -47531,6 +47687,11 @@ $root.proto = (function() {
                     message.messageSts = object.messageSts;
                 else if (typeof object.messageSts === "object")
                     message.messageSts = new $util.LongBits(object.messageSts.low >>> 0, object.messageSts.high >>> 0).toNumber();
+            if (object.integrationAttestation != null) {
+                if (!$util.isObject(object.integrationAttestation))
+                    throw TypeError(".proto.ClientPayload.integrationAttestation: object expected");
+                message.integrationAttestation = $root.proto.ClientPayload.IntegrationAttestation.fromObject(object.integrationAttestation, long + 1);
+            }
             return message;
         };
 
@@ -47754,6 +47915,11 @@ $root.proto = (function() {
                     object.messageSts = options.longs === String ? $util.Long.prototype.toString.call(message.messageSts) : options.longs === Number ? new $util.LongBits(message.messageSts.low >>> 0, message.messageSts.high >>> 0).toNumber() : message.messageSts;
                 if (options.oneofs)
                     object._messageSts = "messageSts";
+            }
+            if (message.integrationAttestation != null && Object.hasOwnProperty.call(message, "integrationAttestation")) {
+                object.integrationAttestation = $root.proto.ClientPayload.IntegrationAttestation.toObject(message.integrationAttestation, options, q + 1);
+                if (options.oneofs)
+                    object._integrationAttestation = "integrationAttestation";
             }
             return object;
         };
@@ -48749,6 +48915,294 @@ $root.proto = (function() {
             values[valuesById[1] = "SERVICE_EXTENSION"] = 1;
             values[valuesById[2] = "INTENTS_EXTENSION"] = 2;
             return values;
+        })();
+
+        ClientPayload.IntegrationAttestation = (function() {
+
+            /**
+             * Properties of an IntegrationAttestation.
+             * @memberof proto.ClientPayload
+             * @interface IIntegrationAttestation
+             * @property {string|null} [staticUnbound] IntegrationAttestation staticUnbound
+             * @property {string|null} [onlineSigned] IntegrationAttestation onlineSigned
+             */
+
+            /**
+             * Constructs a new IntegrationAttestation.
+             * @memberof proto.ClientPayload
+             * @classdesc Represents an IntegrationAttestation.
+             * @implements IIntegrationAttestation
+             * @constructor
+             * @param {proto.ClientPayload.IIntegrationAttestation=} [properties] Properties to set
+             */
+            function IntegrationAttestation(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * IntegrationAttestation staticUnbound.
+             * @member {string|null|undefined} staticUnbound
+             * @memberof proto.ClientPayload.IntegrationAttestation
+             * @instance
+             */
+            IntegrationAttestation.prototype.staticUnbound = null;
+
+            /**
+             * IntegrationAttestation onlineSigned.
+             * @member {string|null|undefined} onlineSigned
+             * @memberof proto.ClientPayload.IntegrationAttestation
+             * @instance
+             */
+            IntegrationAttestation.prototype.onlineSigned = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(IntegrationAttestation.prototype, "_staticUnbound", {
+                get: $util.oneOfGetter($oneOfFields = ["staticUnbound"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(IntegrationAttestation.prototype, "_onlineSigned", {
+                get: $util.oneOfGetter($oneOfFields = ["onlineSigned"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new IntegrationAttestation instance using the specified properties.
+             * @function create
+             * @memberof proto.ClientPayload.IntegrationAttestation
+             * @static
+             * @param {proto.ClientPayload.IIntegrationAttestation=} [properties] Properties to set
+             * @returns {proto.ClientPayload.IntegrationAttestation} IntegrationAttestation instance
+             */
+            IntegrationAttestation.create = function create(properties) {
+                return new IntegrationAttestation(properties);
+            };
+
+            /**
+             * Encodes the specified IntegrationAttestation message. Does not implicitly {@link proto.ClientPayload.IntegrationAttestation.verify|verify} messages.
+             * @function encode
+             * @memberof proto.ClientPayload.IntegrationAttestation
+             * @static
+             * @param {proto.ClientPayload.IIntegrationAttestation} message IntegrationAttestation message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            IntegrationAttestation.encode = function encode(message, writer, q) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                if (message.staticUnbound != null && Object.hasOwnProperty.call(message, "staticUnbound"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.staticUnbound);
+                if (message.onlineSigned != null && Object.hasOwnProperty.call(message, "onlineSigned"))
+                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.onlineSigned);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified IntegrationAttestation message, length delimited. Does not implicitly {@link proto.ClientPayload.IntegrationAttestation.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof proto.ClientPayload.IntegrationAttestation
+             * @static
+             * @param {proto.ClientPayload.IIntegrationAttestation} message IntegrationAttestation message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            IntegrationAttestation.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer && writer.len ? writer.fork() : writer).ldelim();
+            };
+
+            /**
+             * Decodes an IntegrationAttestation message from the specified reader or buffer.
+             * @function decode
+             * @memberof proto.ClientPayload.IntegrationAttestation
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {proto.ClientPayload.IntegrationAttestation} IntegrationAttestation
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            IntegrationAttestation.decode = function decode(reader, length, error, long) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (long === undefined)
+                    long = 0;
+                if (long > $Reader.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var end, message;
+                if (length === undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = new $root.proto.ClientPayload.IntegrationAttestation();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.staticUnbound = reader.string();
+                            break;
+                        }
+                    case 3: {
+                            message.onlineSigned = reader.string();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7, long);
+                        break;
+                    }
+                }
+                if (length !== undefined) {
+                    if (reader.pos !== end)
+                        throw RangeError("index out of range");
+                    reader.len = length;
+                }
+                return message;
+            };
+
+            /**
+             * Decodes an IntegrationAttestation message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof proto.ClientPayload.IntegrationAttestation
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {proto.ClientPayload.IntegrationAttestation} IntegrationAttestation
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            IntegrationAttestation.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies an IntegrationAttestation message.
+             * @function verify
+             * @memberof proto.ClientPayload.IntegrationAttestation
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            IntegrationAttestation.verify = function verify(message, long) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    return "maximum nesting depth exceeded";
+                var properties = {};
+                if (message.staticUnbound != null && Object.hasOwnProperty.call(message, "staticUnbound")) {
+                    properties._staticUnbound = 1;
+                    if (!$util.isString(message.staticUnbound))
+                        return "staticUnbound: string expected";
+                }
+                if (message.onlineSigned != null && Object.hasOwnProperty.call(message, "onlineSigned")) {
+                    properties._onlineSigned = 1;
+                    if (!$util.isString(message.onlineSigned))
+                        return "onlineSigned: string expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates an IntegrationAttestation message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof proto.ClientPayload.IntegrationAttestation
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {proto.ClientPayload.IntegrationAttestation} IntegrationAttestation
+             */
+            IntegrationAttestation.fromObject = function fromObject(object, long) {
+                if (object instanceof $root.proto.ClientPayload.IntegrationAttestation)
+                    return object;
+                if (!$util.isObject(object))
+                    throw TypeError(".proto.ClientPayload.IntegrationAttestation: object expected");
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var message = new $root.proto.ClientPayload.IntegrationAttestation();
+                if (object.staticUnbound != null)
+                    message.staticUnbound = String(object.staticUnbound);
+                if (object.onlineSigned != null)
+                    message.onlineSigned = String(object.onlineSigned);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from an IntegrationAttestation message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof proto.ClientPayload.IntegrationAttestation
+             * @static
+             * @param {proto.ClientPayload.IntegrationAttestation} message IntegrationAttestation
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            IntegrationAttestation.toObject = function toObject(message, options, q) {
+                if (!options)
+                    options = {};
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                var object = {};
+                if (message.staticUnbound != null && Object.hasOwnProperty.call(message, "staticUnbound")) {
+                    object.staticUnbound = message.staticUnbound;
+                    if (options.oneofs)
+                        object._staticUnbound = "staticUnbound";
+                }
+                if (message.onlineSigned != null && Object.hasOwnProperty.call(message, "onlineSigned")) {
+                    object.onlineSigned = message.onlineSigned;
+                    if (options.oneofs)
+                        object._onlineSigned = "onlineSigned";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this IntegrationAttestation to JSON.
+             * @function toJSON
+             * @memberof proto.ClientPayload.IntegrationAttestation
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            IntegrationAttestation.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for IntegrationAttestation
+             * @function getTypeUrl
+             * @memberof proto.ClientPayload.IntegrationAttestation
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            IntegrationAttestation.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/proto.ClientPayload.IntegrationAttestation";
+            };
+
+            return IntegrationAttestation;
         })();
 
         ClientPayload.InteropData = (function() {
@@ -49764,6 +50218,7 @@ $root.proto = (function() {
                     case 4:
                     case 5:
                     case 6:
+                    case 7:
                         break;
                     }
                 }
@@ -50066,6 +50521,10 @@ $root.proto = (function() {
                 case "SMART_SPEAKER":
                 case 6:
                     message.deviceType = 6;
+                    break;
+                case "AGENT":
+                case 7:
+                    message.deviceType = 7;
                     break;
                 }
                 if (object.deviceModelType != null)
@@ -50626,6 +51085,7 @@ $root.proto = (function() {
              * @property {number} VR=4 VR value
              * @property {number} SMART_DISPLAY=5 SMART_DISPLAY value
              * @property {number} SMART_SPEAKER=6 SMART_SPEAKER value
+             * @property {number} AGENT=7 AGENT value
              */
             UserAgent.DeviceType = (function() {
                 var valuesById = {}, values = Object.create(valuesById);
@@ -50636,6 +51096,7 @@ $root.proto = (function() {
                 values[valuesById[4] = "VR"] = 4;
                 values[valuesById[5] = "SMART_DISPLAY"] = 5;
                 values[valuesById[6] = "SMART_SPEAKER"] = 6;
+                values[valuesById[7] = "AGENT"] = 7;
                 return values;
             })();
 
@@ -53879,7 +54340,6 @@ $root.proto = (function() {
          * @memberof proto
          * @interface IConfig
          * @property {Object.<string,proto.IField>|null} [field] Config field
-         * @property {number|null} [version] Config version
          */
 
         /**
@@ -53905,23 +54365,6 @@ $root.proto = (function() {
          * @instance
          */
         Config.prototype.field = $util.emptyObject;
-
-        /**
-         * Config version.
-         * @member {number|null|undefined} version
-         * @memberof proto.Config
-         * @instance
-         */
-        Config.prototype.version = null;
-
-        // OneOf field names bound to virtual getters and setters
-        var $oneOfFields;
-
-        // Virtual OneOf for proto3 optional field
-        Object.defineProperty(Config.prototype, "_version", {
-            get: $util.oneOfGetter($oneOfFields = ["version"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
 
         /**
          * Creates a new Config instance using the specified properties.
@@ -53956,8 +54399,6 @@ $root.proto = (function() {
                     writer.uint32(/* id 1, wireType 2 =*/10).fork().uint32(/* id 1, wireType 0 =*/8).uint32(keys[i]);
                     $root.proto.Field.encode(message.field[keys[i]], writer.uint32(/* id 2, wireType 2 =*/18).fork(), q + 1).ldelim().ldelim();
                 }
-            if (message.version != null && Object.hasOwnProperty.call(message, "version"))
-                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.version);
             return writer;
         };
 
@@ -54037,10 +54478,6 @@ $root.proto = (function() {
                         message.field[key] = value;
                         break;
                     }
-                case 2: {
-                        message.version = reader.uint32();
-                        break;
-                    }
                 default:
                     reader.skipType(tag & 7, long);
                     break;
@@ -54085,7 +54522,6 @@ $root.proto = (function() {
                 long = 0;
             if (long > $util.recursionLimit)
                 return "maximum nesting depth exceeded";
-            var properties = {};
             if (message.field != null && Object.hasOwnProperty.call(message, "field")) {
                 if (!$util.isObject(message.field))
                     return "field: object expected";
@@ -54099,11 +54535,6 @@ $root.proto = (function() {
                             return "field." + error;
                     }
                 }
-            }
-            if (message.version != null && Object.hasOwnProperty.call(message, "version")) {
-                properties._version = 1;
-                if (!$util.isInteger(message.version))
-                    return "version: integer expected";
             }
             return null;
         };
@@ -54138,8 +54569,6 @@ $root.proto = (function() {
                     message.field[keys[i]] = $root.proto.Field.fromObject(object.field[keys[i]], long + 1);
                 }
             }
-            if (object.version != null)
-                message.version = object.version >>> 0;
             return message;
         };
 
@@ -54170,11 +54599,6 @@ $root.proto = (function() {
                         $util.makeProp(object.field, keys2[j]);
                     object.field[keys2[j]] = $root.proto.Field.toObject(message.field[keys2[j]], options, q + 1);
                 }
-            }
-            if (message.version != null && Object.hasOwnProperty.call(message, "version")) {
-                object.version = message.version;
-                if (options.oneofs)
-                    object._version = "version";
             }
             return object;
         };
@@ -56084,6 +56508,8 @@ $root.proto = (function() {
                 case 10:
                 case 11:
                 case 12:
+                case 13:
+                case 14:
                     break;
                 }
             }
@@ -56533,6 +56959,14 @@ $root.proto = (function() {
             case "STREAMED_VIDEO_CHILD":
             case 12:
                 message.pairedMediaType = 12;
+                break;
+            case "ORIGINAL_VIDEO_CHILD":
+            case 13:
+                message.pairedMediaType = 13;
+                break;
+            case "ORIGINAL_IMAGE_CHILD":
+            case 14:
+                message.pairedMediaType = 14;
                 break;
             }
             if (object.rankingVersion != null)
@@ -62952,6 +63386,8 @@ $root.proto = (function() {
          * @property {number} AV1_VIDEO_CHILD=10 AV1_VIDEO_CHILD value
          * @property {number} STREAMED_VIDEO_PARENT=11 STREAMED_VIDEO_PARENT value
          * @property {number} STREAMED_VIDEO_CHILD=12 STREAMED_VIDEO_CHILD value
+         * @property {number} ORIGINAL_VIDEO_CHILD=13 ORIGINAL_VIDEO_CHILD value
+         * @property {number} ORIGINAL_IMAGE_CHILD=14 ORIGINAL_IMAGE_CHILD value
          */
         ContextInfo.PairedMediaType = (function() {
             var valuesById = {}, values = Object.create(valuesById);
@@ -62968,6 +63404,8 @@ $root.proto = (function() {
             values[valuesById[10] = "AV1_VIDEO_CHILD"] = 10;
             values[valuesById[11] = "STREAMED_VIDEO_PARENT"] = 11;
             values[valuesById[12] = "STREAMED_VIDEO_CHILD"] = 12;
+            values[valuesById[13] = "ORIGINAL_VIDEO_CHILD"] = 13;
+            values[valuesById[14] = "ORIGINAL_IMAGE_CHILD"] = 14;
             return values;
         })();
 
@@ -64378,6 +64816,7 @@ $root.proto = (function() {
          * @property {proto.IIdentityVerificationState|null} [identityVerification] Conversation identityVerification
          * @property {proto.IACP2Setting|null} [acp2Setting] Conversation acp2Setting
          * @property {boolean|null} [acp2HistoryWithheld] Conversation acp2HistoryWithheld
+         * @property {Array.<proto.IGroupRootKey>|null} [groupRootKeys] Conversation groupRootKeys
          */
 
         /**
@@ -64391,6 +64830,7 @@ $root.proto = (function() {
         function Conversation(properties) {
             this.messages = [];
             this.participant = [];
+            this.groupRootKeys = [];
             if (properties)
                 for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null && keys[i] !== "__proto__")
@@ -64916,6 +65356,14 @@ $root.proto = (function() {
          * @instance
          */
         Conversation.prototype.acp2HistoryWithheld = null;
+
+        /**
+         * Conversation groupRootKeys.
+         * @member {Array.<proto.IGroupRootKey>} groupRootKeys
+         * @memberof proto.Conversation
+         * @instance
+         */
+        Conversation.prototype.groupRootKeys = $util.emptyArray;
 
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
@@ -65458,6 +65906,9 @@ $root.proto = (function() {
                 $root.proto.ACP2Setting.encode(message.acp2Setting, writer.uint32(/* id 64, wireType 2 =*/514).fork(), q + 1).ldelim();
             if (message.acp2HistoryWithheld != null && Object.hasOwnProperty.call(message, "acp2HistoryWithheld"))
                 writer.uint32(/* id 65, wireType 0 =*/520).bool(message.acp2HistoryWithheld);
+            if (message.groupRootKeys != null && message.groupRootKeys.length)
+                for (var i = 0; i < message.groupRootKeys.length; ++i)
+                    $root.proto.GroupRootKey.encode(message.groupRootKeys[i], writer.uint32(/* id 66, wireType 2 =*/530).fork(), q + 1).ldelim();
             return writer;
         };
 
@@ -65770,6 +66221,12 @@ $root.proto = (function() {
                     }
                 case 65: {
                         message.acp2HistoryWithheld = reader.bool();
+                        break;
+                    }
+                case 66: {
+                        if (!(message.groupRootKeys && message.groupRootKeys.length))
+                            message.groupRootKeys = [];
+                        message.groupRootKeys.push($root.proto.GroupRootKey.decode(reader, reader.uint32(), undefined, long + 1));
                         break;
                     }
                 default:
@@ -66195,6 +66652,15 @@ $root.proto = (function() {
                 if (typeof message.acp2HistoryWithheld !== "boolean")
                     return "acp2HistoryWithheld: boolean expected";
             }
+            if (message.groupRootKeys != null && Object.hasOwnProperty.call(message, "groupRootKeys")) {
+                if (!Array.isArray(message.groupRootKeys))
+                    return "groupRootKeys: array expected";
+                for (var i = 0; i < message.groupRootKeys.length; ++i) {
+                    var error = $root.proto.GroupRootKey.verify(message.groupRootKeys[i], long + 1);
+                    if (error)
+                        return "groupRootKeys." + error;
+                }
+            }
             return null;
         };
 
@@ -66545,6 +67011,16 @@ $root.proto = (function() {
             }
             if (object.acp2HistoryWithheld != null)
                 message.acp2HistoryWithheld = Boolean(object.acp2HistoryWithheld);
+            if (object.groupRootKeys) {
+                if (!Array.isArray(object.groupRootKeys))
+                    throw TypeError(".proto.Conversation.groupRootKeys: array expected");
+                message.groupRootKeys = [];
+                for (var i = 0; i < object.groupRootKeys.length; ++i) {
+                    if (!$util.isObject(object.groupRootKeys[i]))
+                        throw TypeError(".proto.Conversation.groupRootKeys: object expected");
+                    message.groupRootKeys[i] = $root.proto.GroupRootKey.fromObject(object.groupRootKeys[i], long + 1);
+                }
+            }
             return message;
         };
 
@@ -66568,6 +67044,7 @@ $root.proto = (function() {
             if (options.arrays || options.defaults) {
                 object.messages = [];
                 object.participant = [];
+                object.groupRootKeys = [];
             }
             if (message.id != null && Object.hasOwnProperty.call(message, "id")) {
                 object.id = message.id;
@@ -66939,6 +67416,11 @@ $root.proto = (function() {
                 if (options.oneofs)
                     object._acp2HistoryWithheld = "acp2HistoryWithheld";
             }
+            if (message.groupRootKeys && message.groupRootKeys.length) {
+                object.groupRootKeys = [];
+                for (var j = 0; j < message.groupRootKeys.length; ++j)
+                    object.groupRootKeys[j] = $root.proto.GroupRootKey.toObject(message.groupRootKeys[j], options, q + 1);
+            }
             return object;
         };
 
@@ -67026,6 +67508,7 @@ $root.proto = (function() {
          * @property {proto.DeviceCapabilities.INewsletterChatsMigration|null} [newsletterChatsMigration] DeviceCapabilities newsletterChatsMigration
          * @property {proto.DeviceCapabilities.IHostWriteMutationSupport|null} [hostWriteMutationSupport] DeviceCapabilities hostWriteMutationSupport
          * @property {proto.DeviceCapabilities.IBizAiWebOnboarding|null} [bizAiWebOnboarding] DeviceCapabilities bizAiWebOnboarding
+         * @property {proto.DeviceCapabilities.IPhoneNumberSharing|null} [phoneNumberSharing] DeviceCapabilities phoneNumberSharing
          */
 
         /**
@@ -67147,6 +67630,14 @@ $root.proto = (function() {
          */
         DeviceCapabilities.prototype.bizAiWebOnboarding = null;
 
+        /**
+         * DeviceCapabilities phoneNumberSharing.
+         * @member {proto.DeviceCapabilities.IPhoneNumberSharing|null|undefined} phoneNumberSharing
+         * @memberof proto.DeviceCapabilities
+         * @instance
+         */
+        DeviceCapabilities.prototype.phoneNumberSharing = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -67228,6 +67719,12 @@ $root.proto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(DeviceCapabilities.prototype, "_phoneNumberSharing", {
+            get: $util.oneOfGetter($oneOfFields = ["phoneNumberSharing"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new DeviceCapabilities instance using the specified properties.
          * @function create
@@ -67282,6 +67779,8 @@ $root.proto = (function() {
                 $root.proto.DeviceCapabilities.HostWriteMutationSupport.encode(message.hostWriteMutationSupport, writer.uint32(/* id 12, wireType 2 =*/98).fork(), q + 1).ldelim();
             if (message.bizAiWebOnboarding != null && Object.hasOwnProperty.call(message, "bizAiWebOnboarding"))
                 $root.proto.DeviceCapabilities.BizAiWebOnboarding.encode(message.bizAiWebOnboarding, writer.uint32(/* id 13, wireType 2 =*/106).fork(), q + 1).ldelim();
+            if (message.phoneNumberSharing != null && Object.hasOwnProperty.call(message, "phoneNumberSharing"))
+                $root.proto.DeviceCapabilities.PhoneNumberSharing.encode(message.phoneNumberSharing, writer.uint32(/* id 14, wireType 2 =*/114).fork(), q + 1).ldelim();
             return writer;
         };
 
@@ -67382,6 +67881,10 @@ $root.proto = (function() {
                     }
                 case 13: {
                         message.bizAiWebOnboarding = $root.proto.DeviceCapabilities.BizAiWebOnboarding.decode(reader, reader.uint32(), undefined, long + 1);
+                        break;
+                    }
+                case 14: {
+                        message.phoneNumberSharing = $root.proto.DeviceCapabilities.PhoneNumberSharing.decode(reader, reader.uint32(), undefined, long + 1);
                         break;
                     }
                 default:
@@ -67539,6 +68042,14 @@ $root.proto = (function() {
                         return "bizAiWebOnboarding." + error;
                 }
             }
+            if (message.phoneNumberSharing != null && Object.hasOwnProperty.call(message, "phoneNumberSharing")) {
+                properties._phoneNumberSharing = 1;
+                {
+                    var error = $root.proto.DeviceCapabilities.PhoneNumberSharing.verify(message.phoneNumberSharing, long + 1);
+                    if (error)
+                        return "phoneNumberSharing." + error;
+                }
+            }
             return null;
         };
 
@@ -67655,6 +68166,11 @@ $root.proto = (function() {
                     throw TypeError(".proto.DeviceCapabilities.bizAiWebOnboarding: object expected");
                 message.bizAiWebOnboarding = $root.proto.DeviceCapabilities.BizAiWebOnboarding.fromObject(object.bizAiWebOnboarding, long + 1);
             }
+            if (object.phoneNumberSharing != null) {
+                if (!$util.isObject(object.phoneNumberSharing))
+                    throw TypeError(".proto.DeviceCapabilities.phoneNumberSharing: object expected");
+                message.phoneNumberSharing = $root.proto.DeviceCapabilities.PhoneNumberSharing.fromObject(object.phoneNumberSharing, long + 1);
+            }
             return message;
         };
 
@@ -67739,6 +68255,11 @@ $root.proto = (function() {
                 object.bizAiWebOnboarding = $root.proto.DeviceCapabilities.BizAiWebOnboarding.toObject(message.bizAiWebOnboarding, options, q + 1);
                 if (options.oneofs)
                     object._bizAiWebOnboarding = "bizAiWebOnboarding";
+            }
+            if (message.phoneNumberSharing != null && Object.hasOwnProperty.call(message, "phoneNumberSharing")) {
+                object.phoneNumberSharing = $root.proto.DeviceCapabilities.PhoneNumberSharing.toObject(message.phoneNumberSharing, options, q + 1);
+                if (options.oneofs)
+                    object._phoneNumberSharing = "phoneNumberSharing";
             }
             return object;
         };
@@ -70437,6 +70958,261 @@ $root.proto = (function() {
             };
 
             return NewsletterChatsMigration;
+        })();
+
+        DeviceCapabilities.PhoneNumberSharing = (function() {
+
+            /**
+             * Properties of a PhoneNumberSharing.
+             * @memberof proto.DeviceCapabilities
+             * @interface IPhoneNumberSharing
+             * @property {boolean|null} [phoneSharingSupported] PhoneNumberSharing phoneSharingSupported
+             */
+
+            /**
+             * Constructs a new PhoneNumberSharing.
+             * @memberof proto.DeviceCapabilities
+             * @classdesc Represents a PhoneNumberSharing.
+             * @implements IPhoneNumberSharing
+             * @constructor
+             * @param {proto.DeviceCapabilities.IPhoneNumberSharing=} [properties] Properties to set
+             */
+            function PhoneNumberSharing(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * PhoneNumberSharing phoneSharingSupported.
+             * @member {boolean|null|undefined} phoneSharingSupported
+             * @memberof proto.DeviceCapabilities.PhoneNumberSharing
+             * @instance
+             */
+            PhoneNumberSharing.prototype.phoneSharingSupported = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(PhoneNumberSharing.prototype, "_phoneSharingSupported", {
+                get: $util.oneOfGetter($oneOfFields = ["phoneSharingSupported"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new PhoneNumberSharing instance using the specified properties.
+             * @function create
+             * @memberof proto.DeviceCapabilities.PhoneNumberSharing
+             * @static
+             * @param {proto.DeviceCapabilities.IPhoneNumberSharing=} [properties] Properties to set
+             * @returns {proto.DeviceCapabilities.PhoneNumberSharing} PhoneNumberSharing instance
+             */
+            PhoneNumberSharing.create = function create(properties) {
+                return new PhoneNumberSharing(properties);
+            };
+
+            /**
+             * Encodes the specified PhoneNumberSharing message. Does not implicitly {@link proto.DeviceCapabilities.PhoneNumberSharing.verify|verify} messages.
+             * @function encode
+             * @memberof proto.DeviceCapabilities.PhoneNumberSharing
+             * @static
+             * @param {proto.DeviceCapabilities.IPhoneNumberSharing} message PhoneNumberSharing message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            PhoneNumberSharing.encode = function encode(message, writer, q) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                if (message.phoneSharingSupported != null && Object.hasOwnProperty.call(message, "phoneSharingSupported"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).bool(message.phoneSharingSupported);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified PhoneNumberSharing message, length delimited. Does not implicitly {@link proto.DeviceCapabilities.PhoneNumberSharing.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof proto.DeviceCapabilities.PhoneNumberSharing
+             * @static
+             * @param {proto.DeviceCapabilities.IPhoneNumberSharing} message PhoneNumberSharing message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            PhoneNumberSharing.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer && writer.len ? writer.fork() : writer).ldelim();
+            };
+
+            /**
+             * Decodes a PhoneNumberSharing message from the specified reader or buffer.
+             * @function decode
+             * @memberof proto.DeviceCapabilities.PhoneNumberSharing
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {proto.DeviceCapabilities.PhoneNumberSharing} PhoneNumberSharing
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            PhoneNumberSharing.decode = function decode(reader, length, error, long) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (long === undefined)
+                    long = 0;
+                if (long > $Reader.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var end, message;
+                if (length === undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = new $root.proto.DeviceCapabilities.PhoneNumberSharing();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.phoneSharingSupported = reader.bool();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7, long);
+                        break;
+                    }
+                }
+                if (length !== undefined) {
+                    if (reader.pos !== end)
+                        throw RangeError("index out of range");
+                    reader.len = length;
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a PhoneNumberSharing message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof proto.DeviceCapabilities.PhoneNumberSharing
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {proto.DeviceCapabilities.PhoneNumberSharing} PhoneNumberSharing
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            PhoneNumberSharing.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a PhoneNumberSharing message.
+             * @function verify
+             * @memberof proto.DeviceCapabilities.PhoneNumberSharing
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            PhoneNumberSharing.verify = function verify(message, long) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    return "maximum nesting depth exceeded";
+                var properties = {};
+                if (message.phoneSharingSupported != null && Object.hasOwnProperty.call(message, "phoneSharingSupported")) {
+                    properties._phoneSharingSupported = 1;
+                    if (typeof message.phoneSharingSupported !== "boolean")
+                        return "phoneSharingSupported: boolean expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a PhoneNumberSharing message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof proto.DeviceCapabilities.PhoneNumberSharing
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {proto.DeviceCapabilities.PhoneNumberSharing} PhoneNumberSharing
+             */
+            PhoneNumberSharing.fromObject = function fromObject(object, long) {
+                if (object instanceof $root.proto.DeviceCapabilities.PhoneNumberSharing)
+                    return object;
+                if (!$util.isObject(object))
+                    throw TypeError(".proto.DeviceCapabilities.PhoneNumberSharing: object expected");
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var message = new $root.proto.DeviceCapabilities.PhoneNumberSharing();
+                if (object.phoneSharingSupported != null)
+                    message.phoneSharingSupported = Boolean(object.phoneSharingSupported);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a PhoneNumberSharing message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof proto.DeviceCapabilities.PhoneNumberSharing
+             * @static
+             * @param {proto.DeviceCapabilities.PhoneNumberSharing} message PhoneNumberSharing
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            PhoneNumberSharing.toObject = function toObject(message, options, q) {
+                if (!options)
+                    options = {};
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                var object = {};
+                if (message.phoneSharingSupported != null && Object.hasOwnProperty.call(message, "phoneSharingSupported")) {
+                    object.phoneSharingSupported = message.phoneSharingSupported;
+                    if (options.oneofs)
+                        object._phoneSharingSupported = "phoneSharingSupported";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this PhoneNumberSharing to JSON.
+             * @function toJSON
+             * @memberof proto.DeviceCapabilities.PhoneNumberSharing
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            PhoneNumberSharing.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for PhoneNumberSharing
+             * @function getTypeUrl
+             * @memberof proto.DeviceCapabilities.PhoneNumberSharing
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            PhoneNumberSharing.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/proto.DeviceCapabilities.PhoneNumberSharing";
+            };
+
+            return PhoneNumberSharing;
         })();
 
         DeviceCapabilities.ReverseHistorySync = (function() {
@@ -78061,7 +78837,6 @@ $root.proto = (function() {
          * @interface IField
          * @property {number|null} [minVersion] Field minVersion
          * @property {number|null} [maxVersion] Field maxVersion
-         * @property {number|null} [notReportableMinVersion] Field notReportableMinVersion
          * @property {boolean|null} [isMessage] Field isMessage
          * @property {Object.<string,proto.IField>|null} [subfield] Field subfield
          */
@@ -78099,14 +78874,6 @@ $root.proto = (function() {
         Field.prototype.maxVersion = null;
 
         /**
-         * Field notReportableMinVersion.
-         * @member {number|null|undefined} notReportableMinVersion
-         * @memberof proto.Field
-         * @instance
-         */
-        Field.prototype.notReportableMinVersion = null;
-
-        /**
          * Field isMessage.
          * @member {boolean|null|undefined} isMessage
          * @memberof proto.Field
@@ -78134,12 +78901,6 @@ $root.proto = (function() {
         // Virtual OneOf for proto3 optional field
         Object.defineProperty(Field.prototype, "_maxVersion", {
             get: $util.oneOfGetter($oneOfFields = ["maxVersion"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
-        // Virtual OneOf for proto3 optional field
-        Object.defineProperty(Field.prototype, "_notReportableMinVersion", {
-            get: $util.oneOfGetter($oneOfFields = ["notReportableMinVersion"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -78181,8 +78942,6 @@ $root.proto = (function() {
                 writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.minVersion);
             if (message.maxVersion != null && Object.hasOwnProperty.call(message, "maxVersion"))
                 writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.maxVersion);
-            if (message.notReportableMinVersion != null && Object.hasOwnProperty.call(message, "notReportableMinVersion"))
-                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.notReportableMinVersion);
             if (message.isMessage != null && Object.hasOwnProperty.call(message, "isMessage"))
                 writer.uint32(/* id 4, wireType 0 =*/32).bool(message.isMessage);
             if (message.subfield != null && Object.hasOwnProperty.call(message, "subfield"))
@@ -78246,10 +79005,6 @@ $root.proto = (function() {
                     }
                 case 2: {
                         message.maxVersion = reader.uint32();
-                        break;
-                    }
-                case 3: {
-                        message.notReportableMinVersion = reader.uint32();
                         break;
                     }
                 case 4: {
@@ -78340,11 +79095,6 @@ $root.proto = (function() {
                 if (!$util.isInteger(message.maxVersion))
                     return "maxVersion: integer expected";
             }
-            if (message.notReportableMinVersion != null && Object.hasOwnProperty.call(message, "notReportableMinVersion")) {
-                properties._notReportableMinVersion = 1;
-                if (!$util.isInteger(message.notReportableMinVersion))
-                    return "notReportableMinVersion: integer expected";
-            }
             if (message.isMessage != null && Object.hasOwnProperty.call(message, "isMessage")) {
                 properties._isMessage = 1;
                 if (typeof message.isMessage !== "boolean")
@@ -78389,8 +79139,6 @@ $root.proto = (function() {
                 message.minVersion = object.minVersion >>> 0;
             if (object.maxVersion != null)
                 message.maxVersion = object.maxVersion >>> 0;
-            if (object.notReportableMinVersion != null)
-                message.notReportableMinVersion = object.notReportableMinVersion >>> 0;
             if (object.isMessage != null)
                 message.isMessage = Boolean(object.isMessage);
             if (object.subfield) {
@@ -78436,11 +79184,6 @@ $root.proto = (function() {
                 object.maxVersion = message.maxVersion;
                 if (options.oneofs)
                     object._maxVersion = "maxVersion";
-            }
-            if (message.notReportableMinVersion != null && Object.hasOwnProperty.call(message, "notReportableMinVersion")) {
-                object.notReportableMinVersion = message.notReportableMinVersion;
-                if (options.oneofs)
-                    object._notReportableMinVersion = "notReportableMinVersion";
             }
             if (message.isMessage != null && Object.hasOwnProperty.call(message, "isMessage")) {
                 object.isMessage = message.isMessage;
@@ -81095,6 +81838,585 @@ $root.proto = (function() {
         })();
 
         return GroupParticipant;
+    })();
+
+    proto.GroupRootKey = (function() {
+
+        /**
+         * Properties of a GroupRootKey.
+         * @memberof proto
+         * @interface IGroupRootKey
+         * @property {string|null} [keyId] GroupRootKey keyId
+         * @property {Uint8Array|null} [rootKey] GroupRootKey rootKey
+         * @property {boolean|null} [isCurrent] GroupRootKey isCurrent
+         */
+
+        /**
+         * Constructs a new GroupRootKey.
+         * @memberof proto
+         * @classdesc Represents a GroupRootKey.
+         * @implements IGroupRootKey
+         * @constructor
+         * @param {proto.IGroupRootKey=} [properties] Properties to set
+         */
+        function GroupRootKey(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * GroupRootKey keyId.
+         * @member {string|null|undefined} keyId
+         * @memberof proto.GroupRootKey
+         * @instance
+         */
+        GroupRootKey.prototype.keyId = null;
+
+        /**
+         * GroupRootKey rootKey.
+         * @member {Uint8Array|null|undefined} rootKey
+         * @memberof proto.GroupRootKey
+         * @instance
+         */
+        GroupRootKey.prototype.rootKey = null;
+
+        /**
+         * GroupRootKey isCurrent.
+         * @member {boolean|null|undefined} isCurrent
+         * @memberof proto.GroupRootKey
+         * @instance
+         */
+        GroupRootKey.prototype.isCurrent = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(GroupRootKey.prototype, "_keyId", {
+            get: $util.oneOfGetter($oneOfFields = ["keyId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(GroupRootKey.prototype, "_rootKey", {
+            get: $util.oneOfGetter($oneOfFields = ["rootKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(GroupRootKey.prototype, "_isCurrent", {
+            get: $util.oneOfGetter($oneOfFields = ["isCurrent"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new GroupRootKey instance using the specified properties.
+         * @function create
+         * @memberof proto.GroupRootKey
+         * @static
+         * @param {proto.IGroupRootKey=} [properties] Properties to set
+         * @returns {proto.GroupRootKey} GroupRootKey instance
+         */
+        GroupRootKey.create = function create(properties) {
+            return new GroupRootKey(properties);
+        };
+
+        /**
+         * Encodes the specified GroupRootKey message. Does not implicitly {@link proto.GroupRootKey.verify|verify} messages.
+         * @function encode
+         * @memberof proto.GroupRootKey
+         * @static
+         * @param {proto.IGroupRootKey} message GroupRootKey message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        GroupRootKey.encode = function encode(message, writer, q) {
+            if (!writer)
+                writer = $Writer.create();
+            if (q === undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw Error("max depth exceeded");
+            if (message.keyId != null && Object.hasOwnProperty.call(message, "keyId"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.keyId);
+            if (message.rootKey != null && Object.hasOwnProperty.call(message, "rootKey"))
+                writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.rootKey);
+            if (message.isCurrent != null && Object.hasOwnProperty.call(message, "isCurrent"))
+                writer.uint32(/* id 3, wireType 0 =*/24).bool(message.isCurrent);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified GroupRootKey message, length delimited. Does not implicitly {@link proto.GroupRootKey.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof proto.GroupRootKey
+         * @static
+         * @param {proto.IGroupRootKey} message GroupRootKey message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        GroupRootKey.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer && writer.len ? writer.fork() : writer).ldelim();
+        };
+
+        /**
+         * Decodes a GroupRootKey message from the specified reader or buffer.
+         * @function decode
+         * @memberof proto.GroupRootKey
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {proto.GroupRootKey} GroupRootKey
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        GroupRootKey.decode = function decode(reader, length, error, long) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (long === undefined)
+                long = 0;
+            if (long > $Reader.recursionLimit)
+                throw Error("maximum nesting depth exceeded");
+            var end, message;
+            if (length === undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = new $root.proto.GroupRootKey();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.keyId = reader.string();
+                        break;
+                    }
+                case 2: {
+                        message.rootKey = reader.bytes();
+                        break;
+                    }
+                case 3: {
+                        message.isCurrent = reader.bool();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7, long);
+                    break;
+                }
+            }
+            if (length !== undefined) {
+                if (reader.pos !== end)
+                    throw RangeError("index out of range");
+                reader.len = length;
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a GroupRootKey message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof proto.GroupRootKey
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {proto.GroupRootKey} GroupRootKey
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        GroupRootKey.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a GroupRootKey message.
+         * @function verify
+         * @memberof proto.GroupRootKey
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        GroupRootKey.verify = function verify(message, long) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (long === undefined)
+                long = 0;
+            if (long > $util.recursionLimit)
+                return "maximum nesting depth exceeded";
+            var properties = {};
+            if (message.keyId != null && Object.hasOwnProperty.call(message, "keyId")) {
+                properties._keyId = 1;
+                if (!$util.isString(message.keyId))
+                    return "keyId: string expected";
+            }
+            if (message.rootKey != null && Object.hasOwnProperty.call(message, "rootKey")) {
+                properties._rootKey = 1;
+                if (!(message.rootKey && typeof message.rootKey.length === "number" || $util.isString(message.rootKey)))
+                    return "rootKey: buffer expected";
+            }
+            if (message.isCurrent != null && Object.hasOwnProperty.call(message, "isCurrent")) {
+                properties._isCurrent = 1;
+                if (typeof message.isCurrent !== "boolean")
+                    return "isCurrent: boolean expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a GroupRootKey message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof proto.GroupRootKey
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {proto.GroupRootKey} GroupRootKey
+         */
+        GroupRootKey.fromObject = function fromObject(object, long) {
+            if (object instanceof $root.proto.GroupRootKey)
+                return object;
+            if (!$util.isObject(object))
+                throw TypeError(".proto.GroupRootKey: object expected");
+            if (long === undefined)
+                long = 0;
+            if (long > $util.recursionLimit)
+                throw Error("maximum nesting depth exceeded");
+            var message = new $root.proto.GroupRootKey();
+            if (object.keyId != null)
+                message.keyId = String(object.keyId);
+            if (object.rootKey != null)
+                if (typeof object.rootKey === "string")
+                    $util.base64.decode(object.rootKey, message.rootKey = $util.newBuffer($util.base64.length(object.rootKey)), 0);
+                else if (object.rootKey.length >= 0)
+                    message.rootKey = object.rootKey;
+            if (object.isCurrent != null)
+                message.isCurrent = Boolean(object.isCurrent);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a GroupRootKey message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof proto.GroupRootKey
+         * @static
+         * @param {proto.GroupRootKey} message GroupRootKey
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        GroupRootKey.toObject = function toObject(message, options, q) {
+            if (!options)
+                options = {};
+            if (q === undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw Error("max depth exceeded");
+            var object = {};
+            if (message.keyId != null && Object.hasOwnProperty.call(message, "keyId")) {
+                object.keyId = message.keyId;
+                if (options.oneofs)
+                    object._keyId = "keyId";
+            }
+            if (message.rootKey != null && Object.hasOwnProperty.call(message, "rootKey")) {
+                object.rootKey = options.bytes === String ? $util.base64.encode(message.rootKey, 0, message.rootKey.length) : options.bytes === Array ? Array.prototype.slice.call(message.rootKey) : message.rootKey;
+                if (options.oneofs)
+                    object._rootKey = "rootKey";
+            }
+            if (message.isCurrent != null && Object.hasOwnProperty.call(message, "isCurrent")) {
+                object.isCurrent = message.isCurrent;
+                if (options.oneofs)
+                    object._isCurrent = "isCurrent";
+            }
+            return object;
+        };
+
+        /**
+         * Converts this GroupRootKey to JSON.
+         * @function toJSON
+         * @memberof proto.GroupRootKey
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        GroupRootKey.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for GroupRootKey
+         * @function getTypeUrl
+         * @memberof proto.GroupRootKey
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        GroupRootKey.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/proto.GroupRootKey";
+        };
+
+        return GroupRootKey;
+    })();
+
+    proto.GroupRootKeyRequest = (function() {
+
+        /**
+         * Properties of a GroupRootKeyRequest.
+         * @memberof proto
+         * @interface IGroupRootKeyRequest
+         * @property {string|null} [keyId] GroupRootKeyRequest keyId
+         */
+
+        /**
+         * Constructs a new GroupRootKeyRequest.
+         * @memberof proto
+         * @classdesc Represents a GroupRootKeyRequest.
+         * @implements IGroupRootKeyRequest
+         * @constructor
+         * @param {proto.IGroupRootKeyRequest=} [properties] Properties to set
+         */
+        function GroupRootKeyRequest(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * GroupRootKeyRequest keyId.
+         * @member {string|null|undefined} keyId
+         * @memberof proto.GroupRootKeyRequest
+         * @instance
+         */
+        GroupRootKeyRequest.prototype.keyId = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(GroupRootKeyRequest.prototype, "_keyId", {
+            get: $util.oneOfGetter($oneOfFields = ["keyId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new GroupRootKeyRequest instance using the specified properties.
+         * @function create
+         * @memberof proto.GroupRootKeyRequest
+         * @static
+         * @param {proto.IGroupRootKeyRequest=} [properties] Properties to set
+         * @returns {proto.GroupRootKeyRequest} GroupRootKeyRequest instance
+         */
+        GroupRootKeyRequest.create = function create(properties) {
+            return new GroupRootKeyRequest(properties);
+        };
+
+        /**
+         * Encodes the specified GroupRootKeyRequest message. Does not implicitly {@link proto.GroupRootKeyRequest.verify|verify} messages.
+         * @function encode
+         * @memberof proto.GroupRootKeyRequest
+         * @static
+         * @param {proto.IGroupRootKeyRequest} message GroupRootKeyRequest message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        GroupRootKeyRequest.encode = function encode(message, writer, q) {
+            if (!writer)
+                writer = $Writer.create();
+            if (q === undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw Error("max depth exceeded");
+            if (message.keyId != null && Object.hasOwnProperty.call(message, "keyId"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.keyId);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified GroupRootKeyRequest message, length delimited. Does not implicitly {@link proto.GroupRootKeyRequest.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof proto.GroupRootKeyRequest
+         * @static
+         * @param {proto.IGroupRootKeyRequest} message GroupRootKeyRequest message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        GroupRootKeyRequest.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer && writer.len ? writer.fork() : writer).ldelim();
+        };
+
+        /**
+         * Decodes a GroupRootKeyRequest message from the specified reader or buffer.
+         * @function decode
+         * @memberof proto.GroupRootKeyRequest
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {proto.GroupRootKeyRequest} GroupRootKeyRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        GroupRootKeyRequest.decode = function decode(reader, length, error, long) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (long === undefined)
+                long = 0;
+            if (long > $Reader.recursionLimit)
+                throw Error("maximum nesting depth exceeded");
+            var end, message;
+            if (length === undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = new $root.proto.GroupRootKeyRequest();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.keyId = reader.string();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7, long);
+                    break;
+                }
+            }
+            if (length !== undefined) {
+                if (reader.pos !== end)
+                    throw RangeError("index out of range");
+                reader.len = length;
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a GroupRootKeyRequest message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof proto.GroupRootKeyRequest
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {proto.GroupRootKeyRequest} GroupRootKeyRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        GroupRootKeyRequest.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a GroupRootKeyRequest message.
+         * @function verify
+         * @memberof proto.GroupRootKeyRequest
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        GroupRootKeyRequest.verify = function verify(message, long) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (long === undefined)
+                long = 0;
+            if (long > $util.recursionLimit)
+                return "maximum nesting depth exceeded";
+            var properties = {};
+            if (message.keyId != null && Object.hasOwnProperty.call(message, "keyId")) {
+                properties._keyId = 1;
+                if (!$util.isString(message.keyId))
+                    return "keyId: string expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a GroupRootKeyRequest message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof proto.GroupRootKeyRequest
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {proto.GroupRootKeyRequest} GroupRootKeyRequest
+         */
+        GroupRootKeyRequest.fromObject = function fromObject(object, long) {
+            if (object instanceof $root.proto.GroupRootKeyRequest)
+                return object;
+            if (!$util.isObject(object))
+                throw TypeError(".proto.GroupRootKeyRequest: object expected");
+            if (long === undefined)
+                long = 0;
+            if (long > $util.recursionLimit)
+                throw Error("maximum nesting depth exceeded");
+            var message = new $root.proto.GroupRootKeyRequest();
+            if (object.keyId != null)
+                message.keyId = String(object.keyId);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a GroupRootKeyRequest message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof proto.GroupRootKeyRequest
+         * @static
+         * @param {proto.GroupRootKeyRequest} message GroupRootKeyRequest
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        GroupRootKeyRequest.toObject = function toObject(message, options, q) {
+            if (!options)
+                options = {};
+            if (q === undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw Error("max depth exceeded");
+            var object = {};
+            if (message.keyId != null && Object.hasOwnProperty.call(message, "keyId")) {
+                object.keyId = message.keyId;
+                if (options.oneofs)
+                    object._keyId = "keyId";
+            }
+            return object;
+        };
+
+        /**
+         * Converts this GroupRootKeyRequest to JSON.
+         * @function toJSON
+         * @memberof proto.GroupRootKeyRequest
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        GroupRootKeyRequest.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for GroupRootKeyRequest
+         * @function getTypeUrl
+         * @memberof proto.GroupRootKeyRequest
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        GroupRootKeyRequest.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/proto.GroupRootKeyRequest";
+        };
+
+        return GroupRootKeyRequest;
     })();
 
     proto.GroupRootKeyShare = (function() {
@@ -94474,6 +95796,7 @@ $root.proto = (function() {
          * @interface IMemberLabel
          * @property {string|null} [label] MemberLabel label
          * @property {number|Long|null} [labelTimestamp] MemberLabel labelTimestamp
+         * @property {boolean|null} [showAdminBadge] MemberLabel showAdminBadge
          */
 
         /**
@@ -94507,6 +95830,14 @@ $root.proto = (function() {
          */
         MemberLabel.prototype.labelTimestamp = null;
 
+        /**
+         * MemberLabel showAdminBadge.
+         * @member {boolean|null|undefined} showAdminBadge
+         * @memberof proto.MemberLabel
+         * @instance
+         */
+        MemberLabel.prototype.showAdminBadge = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -94519,6 +95850,12 @@ $root.proto = (function() {
         // Virtual OneOf for proto3 optional field
         Object.defineProperty(MemberLabel.prototype, "_labelTimestamp", {
             get: $util.oneOfGetter($oneOfFields = ["labelTimestamp"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(MemberLabel.prototype, "_showAdminBadge", {
+            get: $util.oneOfGetter($oneOfFields = ["showAdminBadge"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -94554,6 +95891,8 @@ $root.proto = (function() {
                 writer.uint32(/* id 1, wireType 2 =*/10).string(message.label);
             if (message.labelTimestamp != null && Object.hasOwnProperty.call(message, "labelTimestamp"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int64(message.labelTimestamp);
+            if (message.showAdminBadge != null && Object.hasOwnProperty.call(message, "showAdminBadge"))
+                writer.uint32(/* id 3, wireType 0 =*/24).bool(message.showAdminBadge);
             return writer;
         };
 
@@ -94612,6 +95951,10 @@ $root.proto = (function() {
                         message.labelTimestamp = reader.int64();
                         break;
                     }
+                case 3: {
+                        message.showAdminBadge = reader.bool();
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7, long);
                     break;
@@ -94667,6 +96010,11 @@ $root.proto = (function() {
                 if (!$util.isInteger(message.labelTimestamp) && !(message.labelTimestamp && $util.isInteger(message.labelTimestamp.low) && $util.isInteger(message.labelTimestamp.high)))
                     return "labelTimestamp: integer|Long expected";
             }
+            if (message.showAdminBadge != null && Object.hasOwnProperty.call(message, "showAdminBadge")) {
+                properties._showAdminBadge = 1;
+                if (typeof message.showAdminBadge !== "boolean")
+                    return "showAdminBadge: boolean expected";
+            }
             return null;
         };
 
@@ -94699,6 +96047,8 @@ $root.proto = (function() {
                     message.labelTimestamp = object.labelTimestamp;
                 else if (typeof object.labelTimestamp === "object")
                     message.labelTimestamp = new $util.LongBits(object.labelTimestamp.low >>> 0, object.labelTimestamp.high >>> 0).toNumber();
+            if (object.showAdminBadge != null)
+                message.showAdminBadge = Boolean(object.showAdminBadge);
             return message;
         };
 
@@ -94734,6 +96084,11 @@ $root.proto = (function() {
                 if (options.oneofs)
                     object._labelTimestamp = "labelTimestamp";
             }
+            if (message.showAdminBadge != null && Object.hasOwnProperty.call(message, "showAdminBadge")) {
+                object.showAdminBadge = message.showAdminBadge;
+                if (options.oneofs)
+                    object._showAdminBadge = "showAdminBadge";
+            }
             return object;
         };
 
@@ -94764,6 +96119,330 @@ $root.proto = (function() {
         };
 
         return MemberLabel;
+    })();
+
+    proto.MembershipFormKeyFingerprintVerification = (function() {
+
+        /**
+         * Properties of a MembershipFormKeyFingerprintVerification.
+         * @memberof proto
+         * @interface IMembershipFormKeyFingerprintVerification
+         * @property {string|null} [requestId] MembershipFormKeyFingerprintVerification requestId
+         * @property {string|null} [keyId] MembershipFormKeyFingerprintVerification keyId
+         * @property {Uint8Array|null} [keyFingerprint] MembershipFormKeyFingerprintVerification keyFingerprint
+         */
+
+        /**
+         * Constructs a new MembershipFormKeyFingerprintVerification.
+         * @memberof proto
+         * @classdesc Represents a MembershipFormKeyFingerprintVerification.
+         * @implements IMembershipFormKeyFingerprintVerification
+         * @constructor
+         * @param {proto.IMembershipFormKeyFingerprintVerification=} [properties] Properties to set
+         */
+        function MembershipFormKeyFingerprintVerification(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * MembershipFormKeyFingerprintVerification requestId.
+         * @member {string|null|undefined} requestId
+         * @memberof proto.MembershipFormKeyFingerprintVerification
+         * @instance
+         */
+        MembershipFormKeyFingerprintVerification.prototype.requestId = null;
+
+        /**
+         * MembershipFormKeyFingerprintVerification keyId.
+         * @member {string|null|undefined} keyId
+         * @memberof proto.MembershipFormKeyFingerprintVerification
+         * @instance
+         */
+        MembershipFormKeyFingerprintVerification.prototype.keyId = null;
+
+        /**
+         * MembershipFormKeyFingerprintVerification keyFingerprint.
+         * @member {Uint8Array|null|undefined} keyFingerprint
+         * @memberof proto.MembershipFormKeyFingerprintVerification
+         * @instance
+         */
+        MembershipFormKeyFingerprintVerification.prototype.keyFingerprint = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(MembershipFormKeyFingerprintVerification.prototype, "_requestId", {
+            get: $util.oneOfGetter($oneOfFields = ["requestId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(MembershipFormKeyFingerprintVerification.prototype, "_keyId", {
+            get: $util.oneOfGetter($oneOfFields = ["keyId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(MembershipFormKeyFingerprintVerification.prototype, "_keyFingerprint", {
+            get: $util.oneOfGetter($oneOfFields = ["keyFingerprint"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new MembershipFormKeyFingerprintVerification instance using the specified properties.
+         * @function create
+         * @memberof proto.MembershipFormKeyFingerprintVerification
+         * @static
+         * @param {proto.IMembershipFormKeyFingerprintVerification=} [properties] Properties to set
+         * @returns {proto.MembershipFormKeyFingerprintVerification} MembershipFormKeyFingerprintVerification instance
+         */
+        MembershipFormKeyFingerprintVerification.create = function create(properties) {
+            return new MembershipFormKeyFingerprintVerification(properties);
+        };
+
+        /**
+         * Encodes the specified MembershipFormKeyFingerprintVerification message. Does not implicitly {@link proto.MembershipFormKeyFingerprintVerification.verify|verify} messages.
+         * @function encode
+         * @memberof proto.MembershipFormKeyFingerprintVerification
+         * @static
+         * @param {proto.IMembershipFormKeyFingerprintVerification} message MembershipFormKeyFingerprintVerification message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        MembershipFormKeyFingerprintVerification.encode = function encode(message, writer, q) {
+            if (!writer)
+                writer = $Writer.create();
+            if (q === undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw Error("max depth exceeded");
+            if (message.requestId != null && Object.hasOwnProperty.call(message, "requestId"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.requestId);
+            if (message.keyId != null && Object.hasOwnProperty.call(message, "keyId"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.keyId);
+            if (message.keyFingerprint != null && Object.hasOwnProperty.call(message, "keyFingerprint"))
+                writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.keyFingerprint);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified MembershipFormKeyFingerprintVerification message, length delimited. Does not implicitly {@link proto.MembershipFormKeyFingerprintVerification.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof proto.MembershipFormKeyFingerprintVerification
+         * @static
+         * @param {proto.IMembershipFormKeyFingerprintVerification} message MembershipFormKeyFingerprintVerification message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        MembershipFormKeyFingerprintVerification.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer && writer.len ? writer.fork() : writer).ldelim();
+        };
+
+        /**
+         * Decodes a MembershipFormKeyFingerprintVerification message from the specified reader or buffer.
+         * @function decode
+         * @memberof proto.MembershipFormKeyFingerprintVerification
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {proto.MembershipFormKeyFingerprintVerification} MembershipFormKeyFingerprintVerification
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        MembershipFormKeyFingerprintVerification.decode = function decode(reader, length, error, long) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (long === undefined)
+                long = 0;
+            if (long > $Reader.recursionLimit)
+                throw Error("maximum nesting depth exceeded");
+            var end, message;
+            if (length === undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = new $root.proto.MembershipFormKeyFingerprintVerification();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.requestId = reader.string();
+                        break;
+                    }
+                case 2: {
+                        message.keyId = reader.string();
+                        break;
+                    }
+                case 3: {
+                        message.keyFingerprint = reader.bytes();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7, long);
+                    break;
+                }
+            }
+            if (length !== undefined) {
+                if (reader.pos !== end)
+                    throw RangeError("index out of range");
+                reader.len = length;
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a MembershipFormKeyFingerprintVerification message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof proto.MembershipFormKeyFingerprintVerification
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {proto.MembershipFormKeyFingerprintVerification} MembershipFormKeyFingerprintVerification
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        MembershipFormKeyFingerprintVerification.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a MembershipFormKeyFingerprintVerification message.
+         * @function verify
+         * @memberof proto.MembershipFormKeyFingerprintVerification
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        MembershipFormKeyFingerprintVerification.verify = function verify(message, long) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (long === undefined)
+                long = 0;
+            if (long > $util.recursionLimit)
+                return "maximum nesting depth exceeded";
+            var properties = {};
+            if (message.requestId != null && Object.hasOwnProperty.call(message, "requestId")) {
+                properties._requestId = 1;
+                if (!$util.isString(message.requestId))
+                    return "requestId: string expected";
+            }
+            if (message.keyId != null && Object.hasOwnProperty.call(message, "keyId")) {
+                properties._keyId = 1;
+                if (!$util.isString(message.keyId))
+                    return "keyId: string expected";
+            }
+            if (message.keyFingerprint != null && Object.hasOwnProperty.call(message, "keyFingerprint")) {
+                properties._keyFingerprint = 1;
+                if (!(message.keyFingerprint && typeof message.keyFingerprint.length === "number" || $util.isString(message.keyFingerprint)))
+                    return "keyFingerprint: buffer expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a MembershipFormKeyFingerprintVerification message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof proto.MembershipFormKeyFingerprintVerification
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {proto.MembershipFormKeyFingerprintVerification} MembershipFormKeyFingerprintVerification
+         */
+        MembershipFormKeyFingerprintVerification.fromObject = function fromObject(object, long) {
+            if (object instanceof $root.proto.MembershipFormKeyFingerprintVerification)
+                return object;
+            if (!$util.isObject(object))
+                throw TypeError(".proto.MembershipFormKeyFingerprintVerification: object expected");
+            if (long === undefined)
+                long = 0;
+            if (long > $util.recursionLimit)
+                throw Error("maximum nesting depth exceeded");
+            var message = new $root.proto.MembershipFormKeyFingerprintVerification();
+            if (object.requestId != null)
+                message.requestId = String(object.requestId);
+            if (object.keyId != null)
+                message.keyId = String(object.keyId);
+            if (object.keyFingerprint != null)
+                if (typeof object.keyFingerprint === "string")
+                    $util.base64.decode(object.keyFingerprint, message.keyFingerprint = $util.newBuffer($util.base64.length(object.keyFingerprint)), 0);
+                else if (object.keyFingerprint.length >= 0)
+                    message.keyFingerprint = object.keyFingerprint;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a MembershipFormKeyFingerprintVerification message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof proto.MembershipFormKeyFingerprintVerification
+         * @static
+         * @param {proto.MembershipFormKeyFingerprintVerification} message MembershipFormKeyFingerprintVerification
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        MembershipFormKeyFingerprintVerification.toObject = function toObject(message, options, q) {
+            if (!options)
+                options = {};
+            if (q === undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw Error("max depth exceeded");
+            var object = {};
+            if (message.requestId != null && Object.hasOwnProperty.call(message, "requestId")) {
+                object.requestId = message.requestId;
+                if (options.oneofs)
+                    object._requestId = "requestId";
+            }
+            if (message.keyId != null && Object.hasOwnProperty.call(message, "keyId")) {
+                object.keyId = message.keyId;
+                if (options.oneofs)
+                    object._keyId = "keyId";
+            }
+            if (message.keyFingerprint != null && Object.hasOwnProperty.call(message, "keyFingerprint")) {
+                object.keyFingerprint = options.bytes === String ? $util.base64.encode(message.keyFingerprint, 0, message.keyFingerprint.length) : options.bytes === Array ? Array.prototype.slice.call(message.keyFingerprint) : message.keyFingerprint;
+                if (options.oneofs)
+                    object._keyFingerprint = "keyFingerprint";
+            }
+            return object;
+        };
+
+        /**
+         * Converts this MembershipFormKeyFingerprintVerification to JSON.
+         * @function toJSON
+         * @memberof proto.MembershipFormKeyFingerprintVerification
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        MembershipFormKeyFingerprintVerification.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for MembershipFormKeyFingerprintVerification
+         * @function getTypeUrl
+         * @memberof proto.MembershipFormKeyFingerprintVerification
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        MembershipFormKeyFingerprintVerification.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/proto.MembershipFormKeyFingerprintVerification";
+        };
+
+        return MembershipFormKeyFingerprintVerification;
     })();
 
     proto.Message = (function() {
@@ -94889,6 +96568,7 @@ $root.proto = (function() {
          * @property {proto.Message.IRequestLocationMessage|null} [requestLocationMessage] Message requestLocationMessage
          * @property {proto.Message.IFutureProofMessage|null} [botGroupParticipantMessage] Message botGroupParticipantMessage
          * @property {proto.Message.IRequestLocationUpdateMessage|null} [requestLocationUpdateMessage] Message requestLocationUpdateMessage
+         * @property {proto.Message.IVpcRequestMessage|null} [vpcRequestMessage] Message vpcRequestMessage
          */
 
         /**
@@ -95842,6 +97522,14 @@ $root.proto = (function() {
          */
         Message.prototype.requestLocationUpdateMessage = null;
 
+        /**
+         * Message vpcRequestMessage.
+         * @member {proto.Message.IVpcRequestMessage|null|undefined} vpcRequestMessage
+         * @memberof proto.Message
+         * @instance
+         */
+        Message.prototype.vpcRequestMessage = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -96547,6 +98235,12 @@ $root.proto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(Message.prototype, "_vpcRequestMessage", {
+            get: $util.oneOfGetter($oneOfFields = ["vpcRequestMessage"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new Message instance using the specified properties.
          * @function create
@@ -96809,6 +98503,8 @@ $root.proto = (function() {
                 $root.proto.Message.FutureProofMessage.encode(message.botGroupParticipantMessage, writer.uint32(/* id 137, wireType 2 =*/1098).fork(), q + 1).ldelim();
             if (message.requestLocationUpdateMessage != null && Object.hasOwnProperty.call(message, "requestLocationUpdateMessage"))
                 $root.proto.Message.RequestLocationUpdateMessage.encode(message.requestLocationUpdateMessage, writer.uint32(/* id 138, wireType 2 =*/1106).fork(), q + 1).ldelim();
+            if (message.vpcRequestMessage != null && Object.hasOwnProperty.call(message, "vpcRequestMessage"))
+                $root.proto.Message.VpcRequestMessage.encode(message.vpcRequestMessage, writer.uint32(/* id 139, wireType 2 =*/1114).fork(), q + 1).ldelim();
             return writer;
         };
 
@@ -97325,6 +99021,10 @@ $root.proto = (function() {
                     }
                 case 138: {
                         message.requestLocationUpdateMessage = $root.proto.Message.RequestLocationUpdateMessage.decode(reader, reader.uint32(), undefined, long + 1);
+                        break;
+                    }
+                case 139: {
+                        message.vpcRequestMessage = $root.proto.Message.VpcRequestMessage.decode(reader, reader.uint32(), undefined, long + 1);
                         break;
                     }
                 default:
@@ -98305,6 +100005,14 @@ $root.proto = (function() {
                         return "requestLocationUpdateMessage." + error;
                 }
             }
+            if (message.vpcRequestMessage != null && Object.hasOwnProperty.call(message, "vpcRequestMessage")) {
+                properties._vpcRequestMessage = 1;
+                {
+                    var error = $root.proto.Message.VpcRequestMessage.verify(message.vpcRequestMessage, long + 1);
+                    if (error)
+                        return "vpcRequestMessage." + error;
+                }
+            }
             return null;
         };
 
@@ -98907,6 +100615,11 @@ $root.proto = (function() {
                 if (!$util.isObject(object.requestLocationUpdateMessage))
                     throw TypeError(".proto.Message.requestLocationUpdateMessage: object expected");
                 message.requestLocationUpdateMessage = $root.proto.Message.RequestLocationUpdateMessage.fromObject(object.requestLocationUpdateMessage, long + 1);
+            }
+            if (object.vpcRequestMessage != null) {
+                if (!$util.isObject(object.vpcRequestMessage))
+                    throw TypeError(".proto.Message.vpcRequestMessage: object expected");
+                message.vpcRequestMessage = $root.proto.Message.VpcRequestMessage.fromObject(object.vpcRequestMessage, long + 1);
             }
             return message;
         };
@@ -99512,6 +101225,11 @@ $root.proto = (function() {
                 object.requestLocationUpdateMessage = $root.proto.Message.RequestLocationUpdateMessage.toObject(message.requestLocationUpdateMessage, options, q + 1);
                 if (options.oneofs)
                     object._requestLocationUpdateMessage = "requestLocationUpdateMessage";
+            }
+            if (message.vpcRequestMessage != null && Object.hasOwnProperty.call(message, "vpcRequestMessage")) {
+                object.vpcRequestMessage = $root.proto.Message.VpcRequestMessage.toObject(message.vpcRequestMessage, options, q + 1);
+                if (options.oneofs)
+                    object._vpcRequestMessage = "vpcRequestMessage";
             }
             return object;
         };
@@ -159891,6 +161609,9 @@ $root.proto = (function() {
              * @property {proto.Message.ISharedDeviceContactHashKeyShare|null} [sharedDeviceContactHashKeyShare] ProtocolMessage sharedDeviceContactHashKeyShare
              * @property {proto.Message.ISharedDeviceContactHashKeyRequest|null} [sharedDeviceContactHashKeyRequest] ProtocolMessage sharedDeviceContactHashKeyRequest
              * @property {Array.<string>|null} [additionalPromptIds] ProtocolMessage additionalPromptIds
+             * @property {proto.IGroupRootKeyRequest|null} [groupRootKeyRequest] ProtocolMessage groupRootKeyRequest
+             * @property {proto.IMembershipFormKeyFingerprintVerification|null} [membershipFormKeyFingerprintVerification] ProtocolMessage membershipFormKeyFingerprintVerification
+             * @property {proto.IGroupRootKeyShare|null} [groupRootKeyShare] ProtocolMessage groupRootKeyShare
              */
 
             /**
@@ -160181,6 +161902,30 @@ $root.proto = (function() {
              */
             ProtocolMessage.prototype.additionalPromptIds = $util.emptyArray;
 
+            /**
+             * ProtocolMessage groupRootKeyRequest.
+             * @member {proto.IGroupRootKeyRequest|null|undefined} groupRootKeyRequest
+             * @memberof proto.Message.ProtocolMessage
+             * @instance
+             */
+            ProtocolMessage.prototype.groupRootKeyRequest = null;
+
+            /**
+             * ProtocolMessage membershipFormKeyFingerprintVerification.
+             * @member {proto.IMembershipFormKeyFingerprintVerification|null|undefined} membershipFormKeyFingerprintVerification
+             * @memberof proto.Message.ProtocolMessage
+             * @instance
+             */
+            ProtocolMessage.prototype.membershipFormKeyFingerprintVerification = null;
+
+            /**
+             * ProtocolMessage groupRootKeyShare.
+             * @member {proto.IGroupRootKeyShare|null|undefined} groupRootKeyShare
+             * @memberof proto.Message.ProtocolMessage
+             * @instance
+             */
+            ProtocolMessage.prototype.groupRootKeyShare = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
@@ -160382,6 +162127,24 @@ $root.proto = (function() {
                 set: $util.oneOfSetter($oneOfFields)
             });
 
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(ProtocolMessage.prototype, "_groupRootKeyRequest", {
+                get: $util.oneOfGetter($oneOfFields = ["groupRootKeyRequest"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(ProtocolMessage.prototype, "_membershipFormKeyFingerprintVerification", {
+                get: $util.oneOfGetter($oneOfFields = ["membershipFormKeyFingerprintVerification"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(ProtocolMessage.prototype, "_groupRootKeyShare", {
+                get: $util.oneOfGetter($oneOfFields = ["groupRootKeyShare"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
             /**
              * Creates a new ProtocolMessage instance using the specified properties.
              * @function create
@@ -160479,6 +162242,12 @@ $root.proto = (function() {
                 if (message.additionalPromptIds != null && message.additionalPromptIds.length)
                     for (var i = 0; i < message.additionalPromptIds.length; ++i)
                         writer.uint32(/* id 38, wireType 2 =*/306).string(message.additionalPromptIds[i]);
+                if (message.groupRootKeyRequest != null && Object.hasOwnProperty.call(message, "groupRootKeyRequest"))
+                    $root.proto.GroupRootKeyRequest.encode(message.groupRootKeyRequest, writer.uint32(/* id 39, wireType 2 =*/314).fork(), q + 1).ldelim();
+                if (message.membershipFormKeyFingerprintVerification != null && Object.hasOwnProperty.call(message, "membershipFormKeyFingerprintVerification"))
+                    $root.proto.MembershipFormKeyFingerprintVerification.encode(message.membershipFormKeyFingerprintVerification, writer.uint32(/* id 40, wireType 2 =*/322).fork(), q + 1).ldelim();
+                if (message.groupRootKeyShare != null && Object.hasOwnProperty.call(message, "groupRootKeyShare"))
+                    $root.proto.GroupRootKeyShare.encode(message.groupRootKeyShare, writer.uint32(/* id 41, wireType 2 =*/330).fork(), q + 1).ldelim();
                 return writer;
             };
 
@@ -160667,6 +162436,18 @@ $root.proto = (function() {
                             message.additionalPromptIds.push(reader.string());
                             break;
                         }
+                    case 39: {
+                            message.groupRootKeyRequest = $root.proto.GroupRootKeyRequest.decode(reader, reader.uint32(), undefined, long + 1);
+                            break;
+                        }
+                    case 40: {
+                            message.membershipFormKeyFingerprintVerification = $root.proto.MembershipFormKeyFingerprintVerification.decode(reader, reader.uint32(), undefined, long + 1);
+                            break;
+                        }
+                    case 41: {
+                            message.groupRootKeyShare = $root.proto.GroupRootKeyShare.decode(reader, reader.uint32(), undefined, long + 1);
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7, long);
                         break;
@@ -160760,6 +162541,9 @@ $root.proto = (function() {
                     case 39:
                     case 40:
                     case 41:
+                    case 42:
+                    case 43:
+                    case 44:
                         break;
                     }
                 }
@@ -161000,6 +162784,30 @@ $root.proto = (function() {
                         if (!$util.isString(message.additionalPromptIds[i]))
                             return "additionalPromptIds: string[] expected";
                 }
+                if (message.groupRootKeyRequest != null && Object.hasOwnProperty.call(message, "groupRootKeyRequest")) {
+                    properties._groupRootKeyRequest = 1;
+                    {
+                        var error = $root.proto.GroupRootKeyRequest.verify(message.groupRootKeyRequest, long + 1);
+                        if (error)
+                            return "groupRootKeyRequest." + error;
+                    }
+                }
+                if (message.membershipFormKeyFingerprintVerification != null && Object.hasOwnProperty.call(message, "membershipFormKeyFingerprintVerification")) {
+                    properties._membershipFormKeyFingerprintVerification = 1;
+                    {
+                        var error = $root.proto.MembershipFormKeyFingerprintVerification.verify(message.membershipFormKeyFingerprintVerification, long + 1);
+                        if (error)
+                            return "membershipFormKeyFingerprintVerification." + error;
+                    }
+                }
+                if (message.groupRootKeyShare != null && Object.hasOwnProperty.call(message, "groupRootKeyShare")) {
+                    properties._groupRootKeyShare = 1;
+                    {
+                        var error = $root.proto.GroupRootKeyShare.verify(message.groupRootKeyShare, long + 1);
+                        if (error)
+                            return "groupRootKeyShare." + error;
+                    }
+                }
                 return null;
             };
 
@@ -161173,6 +162981,18 @@ $root.proto = (function() {
                 case 41:
                     message.type = 41;
                     break;
+                case "GROUP_ROOT_KEY_REQUEST":
+                case 42:
+                    message.type = 42;
+                    break;
+                case "MEMBERSHIP_FORM_KEY_FINGERPRINT_VERIFICATION":
+                case 43:
+                    message.type = 43;
+                    break;
+                case "GROUP_ROOT_KEY_SHARE":
+                case 44:
+                    message.type = 44;
+                    break;
                 }
                 if (object.ephemeralExpiration != null)
                     message.ephemeralExpiration = object.ephemeralExpiration >>> 0;
@@ -161334,6 +163154,21 @@ $root.proto = (function() {
                     message.additionalPromptIds = [];
                     for (var i = 0; i < object.additionalPromptIds.length; ++i)
                         message.additionalPromptIds[i] = String(object.additionalPromptIds[i]);
+                }
+                if (object.groupRootKeyRequest != null) {
+                    if (!$util.isObject(object.groupRootKeyRequest))
+                        throw TypeError(".proto.Message.ProtocolMessage.groupRootKeyRequest: object expected");
+                    message.groupRootKeyRequest = $root.proto.GroupRootKeyRequest.fromObject(object.groupRootKeyRequest, long + 1);
+                }
+                if (object.membershipFormKeyFingerprintVerification != null) {
+                    if (!$util.isObject(object.membershipFormKeyFingerprintVerification))
+                        throw TypeError(".proto.Message.ProtocolMessage.membershipFormKeyFingerprintVerification: object expected");
+                    message.membershipFormKeyFingerprintVerification = $root.proto.MembershipFormKeyFingerprintVerification.fromObject(object.membershipFormKeyFingerprintVerification, long + 1);
+                }
+                if (object.groupRootKeyShare != null) {
+                    if (!$util.isObject(object.groupRootKeyShare))
+                        throw TypeError(".proto.Message.ProtocolMessage.groupRootKeyShare: object expected");
+                    message.groupRootKeyShare = $root.proto.GroupRootKeyShare.fromObject(object.groupRootKeyShare, long + 1);
                 }
                 return message;
             };
@@ -161537,6 +163372,21 @@ $root.proto = (function() {
                     for (var j = 0; j < message.additionalPromptIds.length; ++j)
                         object.additionalPromptIds[j] = message.additionalPromptIds[j];
                 }
+                if (message.groupRootKeyRequest != null && Object.hasOwnProperty.call(message, "groupRootKeyRequest")) {
+                    object.groupRootKeyRequest = $root.proto.GroupRootKeyRequest.toObject(message.groupRootKeyRequest, options, q + 1);
+                    if (options.oneofs)
+                        object._groupRootKeyRequest = "groupRootKeyRequest";
+                }
+                if (message.membershipFormKeyFingerprintVerification != null && Object.hasOwnProperty.call(message, "membershipFormKeyFingerprintVerification")) {
+                    object.membershipFormKeyFingerprintVerification = $root.proto.MembershipFormKeyFingerprintVerification.toObject(message.membershipFormKeyFingerprintVerification, options, q + 1);
+                    if (options.oneofs)
+                        object._membershipFormKeyFingerprintVerification = "membershipFormKeyFingerprintVerification";
+                }
+                if (message.groupRootKeyShare != null && Object.hasOwnProperty.call(message, "groupRootKeyShare")) {
+                    object.groupRootKeyShare = $root.proto.GroupRootKeyShare.toObject(message.groupRootKeyShare, options, q + 1);
+                    if (options.oneofs)
+                        object._groupRootKeyShare = "groupRootKeyShare";
+                }
                 return object;
             };
 
@@ -161605,6 +163455,9 @@ $root.proto = (function() {
              * @property {number} ACP2_SETTING=39 ACP2_SETTING value
              * @property {number} SHARED_DEVICE_CONTACT_HASH_KEY_SHARE=40 SHARED_DEVICE_CONTACT_HASH_KEY_SHARE value
              * @property {number} SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST=41 SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST value
+             * @property {number} GROUP_ROOT_KEY_REQUEST=42 GROUP_ROOT_KEY_REQUEST value
+             * @property {number} MEMBERSHIP_FORM_KEY_FINGERPRINT_VERIFICATION=43 MEMBERSHIP_FORM_KEY_FINGERPRINT_VERIFICATION value
+             * @property {number} GROUP_ROOT_KEY_SHARE=44 GROUP_ROOT_KEY_SHARE value
              */
             ProtocolMessage.Type = (function() {
                 var valuesById = {}, values = Object.create(valuesById);
@@ -161643,6 +163496,9 @@ $root.proto = (function() {
                 values[valuesById[39] = "ACP2_SETTING"] = 39;
                 values[valuesById[40] = "SHARED_DEVICE_CONTACT_HASH_KEY_SHARE"] = 40;
                 values[valuesById[41] = "SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST"] = 41;
+                values[valuesById[42] = "GROUP_ROOT_KEY_REQUEST"] = 42;
+                values[valuesById[43] = "MEMBERSHIP_FORM_KEY_FINGERPRINT_VERIFICATION"] = 43;
+                values[valuesById[44] = "GROUP_ROOT_KEY_SHARE"] = 44;
                 return values;
             })();
 
@@ -176855,6 +178711,466 @@ $root.proto = (function() {
             return VideoMessage;
         })();
 
+        Message.VpcRequestMessage = (function() {
+
+            /**
+             * Properties of a VpcRequestMessage.
+             * @memberof proto.Message
+             * @interface IVpcRequestMessage
+             * @property {number|null} [payloadSchemaVersion] VpcRequestMessage payloadSchemaVersion
+             * @property {string|null} [requestId] VpcRequestMessage requestId
+             * @property {string|null} [launchRef] VpcRequestMessage launchRef
+             * @property {number|Long|null} [invitationExpiresAtMs] VpcRequestMessage invitationExpiresAtMs
+             * @property {proto.Message.VpcRequestMessage.ScopeHint|null} [scopeHint] VpcRequestMessage scopeHint
+             */
+
+            /**
+             * Constructs a new VpcRequestMessage.
+             * @memberof proto.Message
+             * @classdesc Represents a VpcRequestMessage.
+             * @implements IVpcRequestMessage
+             * @constructor
+             * @param {proto.Message.IVpcRequestMessage=} [properties] Properties to set
+             */
+            function VpcRequestMessage(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * VpcRequestMessage payloadSchemaVersion.
+             * @member {number|null|undefined} payloadSchemaVersion
+             * @memberof proto.Message.VpcRequestMessage
+             * @instance
+             */
+            VpcRequestMessage.prototype.payloadSchemaVersion = null;
+
+            /**
+             * VpcRequestMessage requestId.
+             * @member {string|null|undefined} requestId
+             * @memberof proto.Message.VpcRequestMessage
+             * @instance
+             */
+            VpcRequestMessage.prototype.requestId = null;
+
+            /**
+             * VpcRequestMessage launchRef.
+             * @member {string|null|undefined} launchRef
+             * @memberof proto.Message.VpcRequestMessage
+             * @instance
+             */
+            VpcRequestMessage.prototype.launchRef = null;
+
+            /**
+             * VpcRequestMessage invitationExpiresAtMs.
+             * @member {number|Long|null|undefined} invitationExpiresAtMs
+             * @memberof proto.Message.VpcRequestMessage
+             * @instance
+             */
+            VpcRequestMessage.prototype.invitationExpiresAtMs = null;
+
+            /**
+             * VpcRequestMessage scopeHint.
+             * @member {proto.Message.VpcRequestMessage.ScopeHint|null|undefined} scopeHint
+             * @memberof proto.Message.VpcRequestMessage
+             * @instance
+             */
+            VpcRequestMessage.prototype.scopeHint = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(VpcRequestMessage.prototype, "_payloadSchemaVersion", {
+                get: $util.oneOfGetter($oneOfFields = ["payloadSchemaVersion"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(VpcRequestMessage.prototype, "_requestId", {
+                get: $util.oneOfGetter($oneOfFields = ["requestId"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(VpcRequestMessage.prototype, "_launchRef", {
+                get: $util.oneOfGetter($oneOfFields = ["launchRef"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(VpcRequestMessage.prototype, "_invitationExpiresAtMs", {
+                get: $util.oneOfGetter($oneOfFields = ["invitationExpiresAtMs"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(VpcRequestMessage.prototype, "_scopeHint", {
+                get: $util.oneOfGetter($oneOfFields = ["scopeHint"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new VpcRequestMessage instance using the specified properties.
+             * @function create
+             * @memberof proto.Message.VpcRequestMessage
+             * @static
+             * @param {proto.Message.IVpcRequestMessage=} [properties] Properties to set
+             * @returns {proto.Message.VpcRequestMessage} VpcRequestMessage instance
+             */
+            VpcRequestMessage.create = function create(properties) {
+                return new VpcRequestMessage(properties);
+            };
+
+            /**
+             * Encodes the specified VpcRequestMessage message. Does not implicitly {@link proto.Message.VpcRequestMessage.verify|verify} messages.
+             * @function encode
+             * @memberof proto.Message.VpcRequestMessage
+             * @static
+             * @param {proto.Message.IVpcRequestMessage} message VpcRequestMessage message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            VpcRequestMessage.encode = function encode(message, writer, q) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                if (message.payloadSchemaVersion != null && Object.hasOwnProperty.call(message, "payloadSchemaVersion"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.payloadSchemaVersion);
+                if (message.requestId != null && Object.hasOwnProperty.call(message, "requestId"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.requestId);
+                if (message.launchRef != null && Object.hasOwnProperty.call(message, "launchRef"))
+                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.launchRef);
+                if (message.invitationExpiresAtMs != null && Object.hasOwnProperty.call(message, "invitationExpiresAtMs"))
+                    writer.uint32(/* id 4, wireType 0 =*/32).int64(message.invitationExpiresAtMs);
+                if (message.scopeHint != null && Object.hasOwnProperty.call(message, "scopeHint"))
+                    writer.uint32(/* id 5, wireType 0 =*/40).int32(message.scopeHint);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified VpcRequestMessage message, length delimited. Does not implicitly {@link proto.Message.VpcRequestMessage.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof proto.Message.VpcRequestMessage
+             * @static
+             * @param {proto.Message.IVpcRequestMessage} message VpcRequestMessage message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            VpcRequestMessage.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer && writer.len ? writer.fork() : writer).ldelim();
+            };
+
+            /**
+             * Decodes a VpcRequestMessage message from the specified reader or buffer.
+             * @function decode
+             * @memberof proto.Message.VpcRequestMessage
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {proto.Message.VpcRequestMessage} VpcRequestMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            VpcRequestMessage.decode = function decode(reader, length, error, long) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (long === undefined)
+                    long = 0;
+                if (long > $Reader.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var end, message;
+                if (length === undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = new $root.proto.Message.VpcRequestMessage();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.payloadSchemaVersion = reader.uint32();
+                            break;
+                        }
+                    case 2: {
+                            message.requestId = reader.string();
+                            break;
+                        }
+                    case 3: {
+                            message.launchRef = reader.string();
+                            break;
+                        }
+                    case 4: {
+                            message.invitationExpiresAtMs = reader.int64();
+                            break;
+                        }
+                    case 5: {
+                            message.scopeHint = reader.int32();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7, long);
+                        break;
+                    }
+                }
+                if (length !== undefined) {
+                    if (reader.pos !== end)
+                        throw RangeError("index out of range");
+                    reader.len = length;
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a VpcRequestMessage message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof proto.Message.VpcRequestMessage
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {proto.Message.VpcRequestMessage} VpcRequestMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            VpcRequestMessage.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a VpcRequestMessage message.
+             * @function verify
+             * @memberof proto.Message.VpcRequestMessage
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            VpcRequestMessage.verify = function verify(message, long) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    return "maximum nesting depth exceeded";
+                var properties = {};
+                if (message.payloadSchemaVersion != null && Object.hasOwnProperty.call(message, "payloadSchemaVersion")) {
+                    properties._payloadSchemaVersion = 1;
+                    if (!$util.isInteger(message.payloadSchemaVersion))
+                        return "payloadSchemaVersion: integer expected";
+                }
+                if (message.requestId != null && Object.hasOwnProperty.call(message, "requestId")) {
+                    properties._requestId = 1;
+                    if (!$util.isString(message.requestId))
+                        return "requestId: string expected";
+                }
+                if (message.launchRef != null && Object.hasOwnProperty.call(message, "launchRef")) {
+                    properties._launchRef = 1;
+                    if (!$util.isString(message.launchRef))
+                        return "launchRef: string expected";
+                }
+                if (message.invitationExpiresAtMs != null && Object.hasOwnProperty.call(message, "invitationExpiresAtMs")) {
+                    properties._invitationExpiresAtMs = 1;
+                    if (!$util.isInteger(message.invitationExpiresAtMs) && !(message.invitationExpiresAtMs && $util.isInteger(message.invitationExpiresAtMs.low) && $util.isInteger(message.invitationExpiresAtMs.high)))
+                        return "invitationExpiresAtMs: integer|Long expected";
+                }
+                if (message.scopeHint != null && Object.hasOwnProperty.call(message, "scopeHint")) {
+                    properties._scopeHint = 1;
+                    switch (message.scopeHint) {
+                    default:
+                        return "scopeHint: enum value expected";
+                    case 0:
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                        break;
+                    }
+                }
+                return null;
+            };
+
+            /**
+             * Creates a VpcRequestMessage message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof proto.Message.VpcRequestMessage
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {proto.Message.VpcRequestMessage} VpcRequestMessage
+             */
+            VpcRequestMessage.fromObject = function fromObject(object, long) {
+                if (object instanceof $root.proto.Message.VpcRequestMessage)
+                    return object;
+                if (!$util.isObject(object))
+                    throw TypeError(".proto.Message.VpcRequestMessage: object expected");
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var message = new $root.proto.Message.VpcRequestMessage();
+                if (object.payloadSchemaVersion != null)
+                    message.payloadSchemaVersion = object.payloadSchemaVersion >>> 0;
+                if (object.requestId != null)
+                    message.requestId = String(object.requestId);
+                if (object.launchRef != null)
+                    message.launchRef = String(object.launchRef);
+                if (object.invitationExpiresAtMs != null)
+                    if ($util.Long)
+                        message.invitationExpiresAtMs = $util.Long.fromValue(object.invitationExpiresAtMs, false);
+                    else if (typeof object.invitationExpiresAtMs === "string")
+                        message.invitationExpiresAtMs = parseInt(object.invitationExpiresAtMs, 10);
+                    else if (typeof object.invitationExpiresAtMs === "number")
+                        message.invitationExpiresAtMs = object.invitationExpiresAtMs;
+                    else if (typeof object.invitationExpiresAtMs === "object")
+                        message.invitationExpiresAtMs = new $util.LongBits(object.invitationExpiresAtMs.low >>> 0, object.invitationExpiresAtMs.high >>> 0).toNumber();
+                switch (object.scopeHint) {
+                default:
+                    if (typeof object.scopeHint === "number") {
+                        message.scopeHint = object.scopeHint;
+                        break;
+                    }
+                    break;
+                case "UNKNOWN":
+                case 0:
+                    message.scopeHint = 0;
+                    break;
+                case "WA_ONLY":
+                case 1:
+                    message.scopeHint = 1;
+                    break;
+                case "WAFFLE":
+                case 2:
+                    message.scopeHint = 2;
+                    break;
+                case "WA_META_AI":
+                case 3:
+                    message.scopeHint = 3;
+                    break;
+                case "META_AI_ONLY":
+                case 4:
+                    message.scopeHint = 4;
+                    break;
+                case "FOA_ONLY":
+                case 5:
+                    message.scopeHint = 5;
+                    break;
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a VpcRequestMessage message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof proto.Message.VpcRequestMessage
+             * @static
+             * @param {proto.Message.VpcRequestMessage} message VpcRequestMessage
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            VpcRequestMessage.toObject = function toObject(message, options, q) {
+                if (!options)
+                    options = {};
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                var object = {};
+                if (message.payloadSchemaVersion != null && Object.hasOwnProperty.call(message, "payloadSchemaVersion")) {
+                    object.payloadSchemaVersion = message.payloadSchemaVersion;
+                    if (options.oneofs)
+                        object._payloadSchemaVersion = "payloadSchemaVersion";
+                }
+                if (message.requestId != null && Object.hasOwnProperty.call(message, "requestId")) {
+                    object.requestId = message.requestId;
+                    if (options.oneofs)
+                        object._requestId = "requestId";
+                }
+                if (message.launchRef != null && Object.hasOwnProperty.call(message, "launchRef")) {
+                    object.launchRef = message.launchRef;
+                    if (options.oneofs)
+                        object._launchRef = "launchRef";
+                }
+                if (message.invitationExpiresAtMs != null && Object.hasOwnProperty.call(message, "invitationExpiresAtMs")) {
+                    if (typeof BigInt !== "undefined" && options.longs === BigInt)
+                        object.invitationExpiresAtMs = typeof message.invitationExpiresAtMs === "number" ? BigInt(message.invitationExpiresAtMs) : $util.Long.fromBits(message.invitationExpiresAtMs.low >>> 0, message.invitationExpiresAtMs.high >>> 0, false).toBigInt();
+                    else if (typeof message.invitationExpiresAtMs === "number")
+                        object.invitationExpiresAtMs = options.longs === String ? String(message.invitationExpiresAtMs) : message.invitationExpiresAtMs;
+                    else
+                        object.invitationExpiresAtMs = options.longs === String ? $util.Long.prototype.toString.call(message.invitationExpiresAtMs) : options.longs === Number ? new $util.LongBits(message.invitationExpiresAtMs.low >>> 0, message.invitationExpiresAtMs.high >>> 0).toNumber() : message.invitationExpiresAtMs;
+                    if (options.oneofs)
+                        object._invitationExpiresAtMs = "invitationExpiresAtMs";
+                }
+                if (message.scopeHint != null && Object.hasOwnProperty.call(message, "scopeHint")) {
+                    object.scopeHint = options.enums === String ? $root.proto.Message.VpcRequestMessage.ScopeHint[message.scopeHint] === undefined ? message.scopeHint : $root.proto.Message.VpcRequestMessage.ScopeHint[message.scopeHint] : message.scopeHint;
+                    if (options.oneofs)
+                        object._scopeHint = "scopeHint";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this VpcRequestMessage to JSON.
+             * @function toJSON
+             * @memberof proto.Message.VpcRequestMessage
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            VpcRequestMessage.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for VpcRequestMessage
+             * @function getTypeUrl
+             * @memberof proto.Message.VpcRequestMessage
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            VpcRequestMessage.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/proto.Message.VpcRequestMessage";
+            };
+
+            /**
+             * ScopeHint enum.
+             * @name proto.Message.VpcRequestMessage.ScopeHint
+             * @enum {number}
+             * @property {number} UNKNOWN=0 UNKNOWN value
+             * @property {number} WA_ONLY=1 WA_ONLY value
+             * @property {number} WAFFLE=2 WAFFLE value
+             * @property {number} WA_META_AI=3 WA_META_AI value
+             * @property {number} META_AI_ONLY=4 META_AI_ONLY value
+             * @property {number} FOA_ONLY=5 FOA_ONLY value
+             */
+            VpcRequestMessage.ScopeHint = (function() {
+                var valuesById = {}, values = Object.create(valuesById);
+                values[valuesById[0] = "UNKNOWN"] = 0;
+                values[valuesById[1] = "WA_ONLY"] = 1;
+                values[valuesById[2] = "WAFFLE"] = 2;
+                values[valuesById[3] = "WA_META_AI"] = 3;
+                values[valuesById[4] = "META_AI_ONLY"] = 4;
+                values[valuesById[5] = "FOA_ONLY"] = 5;
+                return values;
+            })();
+
+            return VpcRequestMessage;
+        })();
+
         return Message;
     })();
 
@@ -178039,6 +180355,8 @@ $root.proto = (function() {
                 case 20:
                 case 21:
                 case 22:
+                case 23:
+                case 24:
                     break;
                 }
             }
@@ -178175,6 +180493,14 @@ $root.proto = (function() {
             case 22:
                 message.associationType = 22;
                 break;
+            case "ORIGINAL_VIDEO_DUAL_UPLOAD":
+            case 23:
+                message.associationType = 23;
+                break;
+            case "ORIGINAL_IMAGE_DUAL_UPLOAD":
+            case 24:
+                message.associationType = 24;
+                break;
             }
             if (object.parentMessageKey != null) {
                 if (!$util.isObject(object.parentMessageKey))
@@ -178274,6 +180600,8 @@ $root.proto = (function() {
          * @property {number} POLL_ADD_OPTION=20 POLL_ADD_OPTION value
          * @property {number} AV1_VIDEO_DUAL_UPLOAD=21 AV1_VIDEO_DUAL_UPLOAD value
          * @property {number} STREAMED_HD_VIDEO_DUAL_UPLOAD=22 STREAMED_HD_VIDEO_DUAL_UPLOAD value
+         * @property {number} ORIGINAL_VIDEO_DUAL_UPLOAD=23 ORIGINAL_VIDEO_DUAL_UPLOAD value
+         * @property {number} ORIGINAL_IMAGE_DUAL_UPLOAD=24 ORIGINAL_IMAGE_DUAL_UPLOAD value
          */
         MessageAssociation.AssociationType = (function() {
             var valuesById = {}, values = Object.create(valuesById);
@@ -178300,6 +180628,8 @@ $root.proto = (function() {
             values[valuesById[20] = "POLL_ADD_OPTION"] = 20;
             values[valuesById[21] = "AV1_VIDEO_DUAL_UPLOAD"] = 21;
             values[valuesById[22] = "STREAMED_HD_VIDEO_DUAL_UPLOAD"] = 22;
+            values[valuesById[23] = "ORIGINAL_VIDEO_DUAL_UPLOAD"] = 23;
+            values[valuesById[24] = "ORIGINAL_IMAGE_DUAL_UPLOAD"] = 24;
             return values;
         })();
 
@@ -180454,6 +182784,10 @@ $root.proto = (function() {
          * @property {string|null} [qrUrl] MsgOpaqueData qrUrl
          * @property {proto.MsgOpaqueData.IMusicData|null} [musicData] MsgOpaqueData musicData
          * @property {string|null} [pollAddedOptionName] MsgOpaqueData pollAddedOptionName
+         * @property {string|null} [sharableEventInviteStatus] MsgOpaqueData sharableEventInviteStatus
+         * @property {string|null} [sharableEventInviteLocationName] MsgOpaqueData sharableEventInviteLocationName
+         * @property {string|null} [sharableEventInviteCoverImageHandle] MsgOpaqueData sharableEventInviteCoverImageHandle
+         * @property {number|Long|null} [sharableEventInviteLastUpdatedTsUsec] MsgOpaqueData sharableEventInviteLastUpdatedTsUsec
          */
 
         /**
@@ -180944,6 +183278,38 @@ $root.proto = (function() {
          */
         MsgOpaqueData.prototype.pollAddedOptionName = null;
 
+        /**
+         * MsgOpaqueData sharableEventInviteStatus.
+         * @member {string|null|undefined} sharableEventInviteStatus
+         * @memberof proto.MsgOpaqueData
+         * @instance
+         */
+        MsgOpaqueData.prototype.sharableEventInviteStatus = null;
+
+        /**
+         * MsgOpaqueData sharableEventInviteLocationName.
+         * @member {string|null|undefined} sharableEventInviteLocationName
+         * @memberof proto.MsgOpaqueData
+         * @instance
+         */
+        MsgOpaqueData.prototype.sharableEventInviteLocationName = null;
+
+        /**
+         * MsgOpaqueData sharableEventInviteCoverImageHandle.
+         * @member {string|null|undefined} sharableEventInviteCoverImageHandle
+         * @memberof proto.MsgOpaqueData
+         * @instance
+         */
+        MsgOpaqueData.prototype.sharableEventInviteCoverImageHandle = null;
+
+        /**
+         * MsgOpaqueData sharableEventInviteLastUpdatedTsUsec.
+         * @member {number|Long|null|undefined} sharableEventInviteLastUpdatedTsUsec
+         * @memberof proto.MsgOpaqueData
+         * @instance
+         */
+        MsgOpaqueData.prototype.sharableEventInviteLastUpdatedTsUsec = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -181295,6 +183661,30 @@ $root.proto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(MsgOpaqueData.prototype, "_sharableEventInviteStatus", {
+            get: $util.oneOfGetter($oneOfFields = ["sharableEventInviteStatus"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(MsgOpaqueData.prototype, "_sharableEventInviteLocationName", {
+            get: $util.oneOfGetter($oneOfFields = ["sharableEventInviteLocationName"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(MsgOpaqueData.prototype, "_sharableEventInviteCoverImageHandle", {
+            get: $util.oneOfGetter($oneOfFields = ["sharableEventInviteCoverImageHandle"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(MsgOpaqueData.prototype, "_sharableEventInviteLastUpdatedTsUsec", {
+            get: $util.oneOfGetter($oneOfFields = ["sharableEventInviteLastUpdatedTsUsec"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new MsgOpaqueData instance using the specified properties.
          * @function create
@@ -181442,6 +183832,14 @@ $root.proto = (function() {
                 $root.proto.MsgOpaqueData.MusicData.encode(message.musicData, writer.uint32(/* id 63, wireType 2 =*/506).fork(), q + 1).ldelim();
             if (message.pollAddedOptionName != null && Object.hasOwnProperty.call(message, "pollAddedOptionName"))
                 writer.uint32(/* id 64, wireType 2 =*/514).string(message.pollAddedOptionName);
+            if (message.sharableEventInviteStatus != null && Object.hasOwnProperty.call(message, "sharableEventInviteStatus"))
+                writer.uint32(/* id 65, wireType 2 =*/522).string(message.sharableEventInviteStatus);
+            if (message.sharableEventInviteLocationName != null && Object.hasOwnProperty.call(message, "sharableEventInviteLocationName"))
+                writer.uint32(/* id 66, wireType 2 =*/530).string(message.sharableEventInviteLocationName);
+            if (message.sharableEventInviteCoverImageHandle != null && Object.hasOwnProperty.call(message, "sharableEventInviteCoverImageHandle"))
+                writer.uint32(/* id 67, wireType 2 =*/538).string(message.sharableEventInviteCoverImageHandle);
+            if (message.sharableEventInviteLastUpdatedTsUsec != null && Object.hasOwnProperty.call(message, "sharableEventInviteLastUpdatedTsUsec"))
+                writer.uint32(/* id 68, wireType 0 =*/544).int64(message.sharableEventInviteLastUpdatedTsUsec);
             return writer;
         };
 
@@ -181728,6 +184126,22 @@ $root.proto = (function() {
                     }
                 case 64: {
                         message.pollAddedOptionName = reader.string();
+                        break;
+                    }
+                case 65: {
+                        message.sharableEventInviteStatus = reader.string();
+                        break;
+                    }
+                case 66: {
+                        message.sharableEventInviteLocationName = reader.string();
+                        break;
+                    }
+                case 67: {
+                        message.sharableEventInviteCoverImageHandle = reader.string();
+                        break;
+                    }
+                case 68: {
+                        message.sharableEventInviteLastUpdatedTsUsec = reader.int64();
                         break;
                     }
                 default:
@@ -182097,6 +184511,26 @@ $root.proto = (function() {
                 if (!$util.isString(message.pollAddedOptionName))
                     return "pollAddedOptionName: string expected";
             }
+            if (message.sharableEventInviteStatus != null && Object.hasOwnProperty.call(message, "sharableEventInviteStatus")) {
+                properties._sharableEventInviteStatus = 1;
+                if (!$util.isString(message.sharableEventInviteStatus))
+                    return "sharableEventInviteStatus: string expected";
+            }
+            if (message.sharableEventInviteLocationName != null && Object.hasOwnProperty.call(message, "sharableEventInviteLocationName")) {
+                properties._sharableEventInviteLocationName = 1;
+                if (!$util.isString(message.sharableEventInviteLocationName))
+                    return "sharableEventInviteLocationName: string expected";
+            }
+            if (message.sharableEventInviteCoverImageHandle != null && Object.hasOwnProperty.call(message, "sharableEventInviteCoverImageHandle")) {
+                properties._sharableEventInviteCoverImageHandle = 1;
+                if (!$util.isString(message.sharableEventInviteCoverImageHandle))
+                    return "sharableEventInviteCoverImageHandle: string expected";
+            }
+            if (message.sharableEventInviteLastUpdatedTsUsec != null && Object.hasOwnProperty.call(message, "sharableEventInviteLastUpdatedTsUsec")) {
+                properties._sharableEventInviteLastUpdatedTsUsec = 1;
+                if (!$util.isInteger(message.sharableEventInviteLastUpdatedTsUsec) && !(message.sharableEventInviteLastUpdatedTsUsec && $util.isInteger(message.sharableEventInviteLastUpdatedTsUsec.low) && $util.isInteger(message.sharableEventInviteLastUpdatedTsUsec.high)))
+                    return "sharableEventInviteLastUpdatedTsUsec: integer|Long expected";
+            }
             return null;
         };
 
@@ -182357,6 +184791,21 @@ $root.proto = (function() {
             }
             if (object.pollAddedOptionName != null)
                 message.pollAddedOptionName = String(object.pollAddedOptionName);
+            if (object.sharableEventInviteStatus != null)
+                message.sharableEventInviteStatus = String(object.sharableEventInviteStatus);
+            if (object.sharableEventInviteLocationName != null)
+                message.sharableEventInviteLocationName = String(object.sharableEventInviteLocationName);
+            if (object.sharableEventInviteCoverImageHandle != null)
+                message.sharableEventInviteCoverImageHandle = String(object.sharableEventInviteCoverImageHandle);
+            if (object.sharableEventInviteLastUpdatedTsUsec != null)
+                if ($util.Long)
+                    message.sharableEventInviteLastUpdatedTsUsec = $util.Long.fromValue(object.sharableEventInviteLastUpdatedTsUsec, false);
+                else if (typeof object.sharableEventInviteLastUpdatedTsUsec === "string")
+                    message.sharableEventInviteLastUpdatedTsUsec = parseInt(object.sharableEventInviteLastUpdatedTsUsec, 10);
+                else if (typeof object.sharableEventInviteLastUpdatedTsUsec === "number")
+                    message.sharableEventInviteLastUpdatedTsUsec = object.sharableEventInviteLastUpdatedTsUsec;
+                else if (typeof object.sharableEventInviteLastUpdatedTsUsec === "object")
+                    message.sharableEventInviteLastUpdatedTsUsec = new $util.LongBits(object.sharableEventInviteLastUpdatedTsUsec.low >>> 0, object.sharableEventInviteLastUpdatedTsUsec.high >>> 0).toNumber();
             return message;
         };
 
@@ -182703,6 +185152,31 @@ $root.proto = (function() {
                 object.pollAddedOptionName = message.pollAddedOptionName;
                 if (options.oneofs)
                     object._pollAddedOptionName = "pollAddedOptionName";
+            }
+            if (message.sharableEventInviteStatus != null && Object.hasOwnProperty.call(message, "sharableEventInviteStatus")) {
+                object.sharableEventInviteStatus = message.sharableEventInviteStatus;
+                if (options.oneofs)
+                    object._sharableEventInviteStatus = "sharableEventInviteStatus";
+            }
+            if (message.sharableEventInviteLocationName != null && Object.hasOwnProperty.call(message, "sharableEventInviteLocationName")) {
+                object.sharableEventInviteLocationName = message.sharableEventInviteLocationName;
+                if (options.oneofs)
+                    object._sharableEventInviteLocationName = "sharableEventInviteLocationName";
+            }
+            if (message.sharableEventInviteCoverImageHandle != null && Object.hasOwnProperty.call(message, "sharableEventInviteCoverImageHandle")) {
+                object.sharableEventInviteCoverImageHandle = message.sharableEventInviteCoverImageHandle;
+                if (options.oneofs)
+                    object._sharableEventInviteCoverImageHandle = "sharableEventInviteCoverImageHandle";
+            }
+            if (message.sharableEventInviteLastUpdatedTsUsec != null && Object.hasOwnProperty.call(message, "sharableEventInviteLastUpdatedTsUsec")) {
+                if (typeof BigInt !== "undefined" && options.longs === BigInt)
+                    object.sharableEventInviteLastUpdatedTsUsec = typeof message.sharableEventInviteLastUpdatedTsUsec === "number" ? BigInt(message.sharableEventInviteLastUpdatedTsUsec) : $util.Long.fromBits(message.sharableEventInviteLastUpdatedTsUsec.low >>> 0, message.sharableEventInviteLastUpdatedTsUsec.high >>> 0, false).toBigInt();
+                else if (typeof message.sharableEventInviteLastUpdatedTsUsec === "number")
+                    object.sharableEventInviteLastUpdatedTsUsec = options.longs === String ? String(message.sharableEventInviteLastUpdatedTsUsec) : message.sharableEventInviteLastUpdatedTsUsec;
+                else
+                    object.sharableEventInviteLastUpdatedTsUsec = options.longs === String ? $util.Long.prototype.toString.call(message.sharableEventInviteLastUpdatedTsUsec) : options.longs === Number ? new $util.LongBits(message.sharableEventInviteLastUpdatedTsUsec.low >>> 0, message.sharableEventInviteLastUpdatedTsUsec.high >>> 0).toNumber() : message.sharableEventInviteLastUpdatedTsUsec;
+                if (options.oneofs)
+                    object._sharableEventInviteLastUpdatedTsUsec = "sharableEventInviteLastUpdatedTsUsec";
             }
             return object;
         };
@@ -198963,360 +201437,6 @@ $root.proto = (function() {
         return RecordStructure;
     })();
 
-    proto.Reportable = (function() {
-
-        /**
-         * Properties of a Reportable.
-         * @memberof proto
-         * @interface IReportable
-         * @property {number|null} [minVersion] Reportable minVersion
-         * @property {number|null} [maxVersion] Reportable maxVersion
-         * @property {number|null} [notReportableMinVersion] Reportable notReportableMinVersion
-         * @property {boolean|null} [never] Reportable never
-         */
-
-        /**
-         * Constructs a new Reportable.
-         * @memberof proto
-         * @classdesc Represents a Reportable.
-         * @implements IReportable
-         * @constructor
-         * @param {proto.IReportable=} [properties] Properties to set
-         */
-        function Reportable(properties) {
-            if (properties)
-                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * Reportable minVersion.
-         * @member {number|null|undefined} minVersion
-         * @memberof proto.Reportable
-         * @instance
-         */
-        Reportable.prototype.minVersion = null;
-
-        /**
-         * Reportable maxVersion.
-         * @member {number|null|undefined} maxVersion
-         * @memberof proto.Reportable
-         * @instance
-         */
-        Reportable.prototype.maxVersion = null;
-
-        /**
-         * Reportable notReportableMinVersion.
-         * @member {number|null|undefined} notReportableMinVersion
-         * @memberof proto.Reportable
-         * @instance
-         */
-        Reportable.prototype.notReportableMinVersion = null;
-
-        /**
-         * Reportable never.
-         * @member {boolean|null|undefined} never
-         * @memberof proto.Reportable
-         * @instance
-         */
-        Reportable.prototype.never = null;
-
-        // OneOf field names bound to virtual getters and setters
-        var $oneOfFields;
-
-        // Virtual OneOf for proto3 optional field
-        Object.defineProperty(Reportable.prototype, "_minVersion", {
-            get: $util.oneOfGetter($oneOfFields = ["minVersion"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
-        // Virtual OneOf for proto3 optional field
-        Object.defineProperty(Reportable.prototype, "_maxVersion", {
-            get: $util.oneOfGetter($oneOfFields = ["maxVersion"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
-        // Virtual OneOf for proto3 optional field
-        Object.defineProperty(Reportable.prototype, "_notReportableMinVersion", {
-            get: $util.oneOfGetter($oneOfFields = ["notReportableMinVersion"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
-        // Virtual OneOf for proto3 optional field
-        Object.defineProperty(Reportable.prototype, "_never", {
-            get: $util.oneOfGetter($oneOfFields = ["never"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
-        /**
-         * Creates a new Reportable instance using the specified properties.
-         * @function create
-         * @memberof proto.Reportable
-         * @static
-         * @param {proto.IReportable=} [properties] Properties to set
-         * @returns {proto.Reportable} Reportable instance
-         */
-        Reportable.create = function create(properties) {
-            return new Reportable(properties);
-        };
-
-        /**
-         * Encodes the specified Reportable message. Does not implicitly {@link proto.Reportable.verify|verify} messages.
-         * @function encode
-         * @memberof proto.Reportable
-         * @static
-         * @param {proto.IReportable} message Reportable message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        Reportable.encode = function encode(message, writer, q) {
-            if (!writer)
-                writer = $Writer.create();
-            if (q === undefined)
-                q = 0;
-            if (q > $util.recursionLimit)
-                throw Error("max depth exceeded");
-            if (message.minVersion != null && Object.hasOwnProperty.call(message, "minVersion"))
-                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.minVersion);
-            if (message.maxVersion != null && Object.hasOwnProperty.call(message, "maxVersion"))
-                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.maxVersion);
-            if (message.notReportableMinVersion != null && Object.hasOwnProperty.call(message, "notReportableMinVersion"))
-                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.notReportableMinVersion);
-            if (message.never != null && Object.hasOwnProperty.call(message, "never"))
-                writer.uint32(/* id 4, wireType 0 =*/32).bool(message.never);
-            return writer;
-        };
-
-        /**
-         * Encodes the specified Reportable message, length delimited. Does not implicitly {@link proto.Reportable.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof proto.Reportable
-         * @static
-         * @param {proto.IReportable} message Reportable message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        Reportable.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer && writer.len ? writer.fork() : writer).ldelim();
-        };
-
-        /**
-         * Decodes a Reportable message from the specified reader or buffer.
-         * @function decode
-         * @memberof proto.Reportable
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {proto.Reportable} Reportable
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        Reportable.decode = function decode(reader, length, error, long) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            if (long === undefined)
-                long = 0;
-            if (long > $Reader.recursionLimit)
-                throw Error("maximum nesting depth exceeded");
-            var end, message;
-            if (length === undefined)
-                end = reader.len;
-            else {
-                end = reader.pos + length;
-                if (end > reader.len)
-                    throw RangeError("index out of range");
-                length = reader.len;
-                reader.len = end;
-            }
-            message = new $root.proto.Reportable();
-            while (reader.pos < end) {
-                var tag = reader.uint32();
-                if (tag === error)
-                    break;
-                switch (tag >>> 3) {
-                case 1: {
-                        message.minVersion = reader.uint32();
-                        break;
-                    }
-                case 2: {
-                        message.maxVersion = reader.uint32();
-                        break;
-                    }
-                case 3: {
-                        message.notReportableMinVersion = reader.uint32();
-                        break;
-                    }
-                case 4: {
-                        message.never = reader.bool();
-                        break;
-                    }
-                default:
-                    reader.skipType(tag & 7, long);
-                    break;
-                }
-            }
-            if (length !== undefined) {
-                if (reader.pos !== end)
-                    throw RangeError("index out of range");
-                reader.len = length;
-            }
-            return message;
-        };
-
-        /**
-         * Decodes a Reportable message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof proto.Reportable
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {proto.Reportable} Reportable
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        Reportable.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies a Reportable message.
-         * @function verify
-         * @memberof proto.Reportable
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        Reportable.verify = function verify(message, long) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (long === undefined)
-                long = 0;
-            if (long > $util.recursionLimit)
-                return "maximum nesting depth exceeded";
-            var properties = {};
-            if (message.minVersion != null && Object.hasOwnProperty.call(message, "minVersion")) {
-                properties._minVersion = 1;
-                if (!$util.isInteger(message.minVersion))
-                    return "minVersion: integer expected";
-            }
-            if (message.maxVersion != null && Object.hasOwnProperty.call(message, "maxVersion")) {
-                properties._maxVersion = 1;
-                if (!$util.isInteger(message.maxVersion))
-                    return "maxVersion: integer expected";
-            }
-            if (message.notReportableMinVersion != null && Object.hasOwnProperty.call(message, "notReportableMinVersion")) {
-                properties._notReportableMinVersion = 1;
-                if (!$util.isInteger(message.notReportableMinVersion))
-                    return "notReportableMinVersion: integer expected";
-            }
-            if (message.never != null && Object.hasOwnProperty.call(message, "never")) {
-                properties._never = 1;
-                if (typeof message.never !== "boolean")
-                    return "never: boolean expected";
-            }
-            return null;
-        };
-
-        /**
-         * Creates a Reportable message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof proto.Reportable
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {proto.Reportable} Reportable
-         */
-        Reportable.fromObject = function fromObject(object, long) {
-            if (object instanceof $root.proto.Reportable)
-                return object;
-            if (!$util.isObject(object))
-                throw TypeError(".proto.Reportable: object expected");
-            if (long === undefined)
-                long = 0;
-            if (long > $util.recursionLimit)
-                throw Error("maximum nesting depth exceeded");
-            var message = new $root.proto.Reportable();
-            if (object.minVersion != null)
-                message.minVersion = object.minVersion >>> 0;
-            if (object.maxVersion != null)
-                message.maxVersion = object.maxVersion >>> 0;
-            if (object.notReportableMinVersion != null)
-                message.notReportableMinVersion = object.notReportableMinVersion >>> 0;
-            if (object.never != null)
-                message.never = Boolean(object.never);
-            return message;
-        };
-
-        /**
-         * Creates a plain object from a Reportable message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof proto.Reportable
-         * @static
-         * @param {proto.Reportable} message Reportable
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        Reportable.toObject = function toObject(message, options, q) {
-            if (!options)
-                options = {};
-            if (q === undefined)
-                q = 0;
-            if (q > $util.recursionLimit)
-                throw Error("max depth exceeded");
-            var object = {};
-            if (message.minVersion != null && Object.hasOwnProperty.call(message, "minVersion")) {
-                object.minVersion = message.minVersion;
-                if (options.oneofs)
-                    object._minVersion = "minVersion";
-            }
-            if (message.maxVersion != null && Object.hasOwnProperty.call(message, "maxVersion")) {
-                object.maxVersion = message.maxVersion;
-                if (options.oneofs)
-                    object._maxVersion = "maxVersion";
-            }
-            if (message.notReportableMinVersion != null && Object.hasOwnProperty.call(message, "notReportableMinVersion")) {
-                object.notReportableMinVersion = message.notReportableMinVersion;
-                if (options.oneofs)
-                    object._notReportableMinVersion = "notReportableMinVersion";
-            }
-            if (message.never != null && Object.hasOwnProperty.call(message, "never")) {
-                object.never = message.never;
-                if (options.oneofs)
-                    object._never = "never";
-            }
-            return object;
-        };
-
-        /**
-         * Converts this Reportable to JSON.
-         * @function toJSON
-         * @memberof proto.Reportable
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        Reportable.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the default type url for Reportable
-         * @function getTypeUrl
-         * @memberof proto.Reportable
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        Reportable.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/proto.Reportable";
-        };
-
-        return Reportable;
-    })();
-
     proto.ReportingTokenInfo = (function() {
 
         /**
@@ -206137,6 +208257,7 @@ $root.proto = (function() {
          * @property {proto.StatusAttribution.IGroupStatus|null} [groupStatus] StatusAttribution groupStatus
          * @property {proto.StatusAttribution.IRLAttribution|null} [rlAttribution] StatusAttribution rlAttribution
          * @property {proto.StatusAttribution.IAiCreatedAttribution|null} [aiCreatedAttribution] StatusAttribution aiCreatedAttribution
+         * @property {proto.StatusAttribution.IStatusTemplate|null} [statusTemplate] StatusAttribution statusTemplate
          */
 
         /**
@@ -206218,6 +208339,14 @@ $root.proto = (function() {
          */
         StatusAttribution.prototype.aiCreatedAttribution = null;
 
+        /**
+         * StatusAttribution statusTemplate.
+         * @member {proto.StatusAttribution.IStatusTemplate|null|undefined} statusTemplate
+         * @memberof proto.StatusAttribution
+         * @instance
+         */
+        StatusAttribution.prototype.statusTemplate = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -206235,12 +208364,12 @@ $root.proto = (function() {
 
         /**
          * StatusAttribution attributionData.
-         * @member {"statusReshare"|"externalShare"|"music"|"groupStatus"|"rlAttribution"|"aiCreatedAttribution"|undefined} attributionData
+         * @member {"statusReshare"|"externalShare"|"music"|"groupStatus"|"rlAttribution"|"aiCreatedAttribution"|"statusTemplate"|undefined} attributionData
          * @memberof proto.StatusAttribution
          * @instance
          */
         Object.defineProperty(StatusAttribution.prototype, "attributionData", {
-            get: $util.oneOfGetter($oneOfFields = ["statusReshare", "externalShare", "music", "groupStatus", "rlAttribution", "aiCreatedAttribution"]),
+            get: $util.oneOfGetter($oneOfFields = ["statusReshare", "externalShare", "music", "groupStatus", "rlAttribution", "aiCreatedAttribution", "statusTemplate"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -206288,6 +208417,8 @@ $root.proto = (function() {
                 $root.proto.StatusAttribution.RLAttribution.encode(message.rlAttribution, writer.uint32(/* id 7, wireType 2 =*/58).fork(), q + 1).ldelim();
             if (message.aiCreatedAttribution != null && Object.hasOwnProperty.call(message, "aiCreatedAttribution"))
                 $root.proto.StatusAttribution.AiCreatedAttribution.encode(message.aiCreatedAttribution, writer.uint32(/* id 8, wireType 2 =*/66).fork(), q + 1).ldelim();
+            if (message.statusTemplate != null && Object.hasOwnProperty.call(message, "statusTemplate"))
+                $root.proto.StatusAttribution.StatusTemplate.encode(message.statusTemplate, writer.uint32(/* id 9, wireType 2 =*/74).fork(), q + 1).ldelim();
             return writer;
         };
 
@@ -206370,6 +208501,10 @@ $root.proto = (function() {
                         message.aiCreatedAttribution = $root.proto.StatusAttribution.AiCreatedAttribution.decode(reader, reader.uint32(), undefined, long + 1);
                         break;
                     }
+                case 9: {
+                        message.statusTemplate = $root.proto.StatusAttribution.StatusTemplate.decode(reader, reader.uint32(), undefined, long + 1);
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7, long);
                     break;
@@ -206433,6 +208568,7 @@ $root.proto = (function() {
                 case 10:
                 case 11:
                 case 12:
+                case 13:
                     break;
                 }
             }
@@ -206497,6 +208633,16 @@ $root.proto = (function() {
                     var error = $root.proto.StatusAttribution.AiCreatedAttribution.verify(message.aiCreatedAttribution, long + 1);
                     if (error)
                         return "aiCreatedAttribution." + error;
+                }
+            }
+            if (message.statusTemplate != null && Object.hasOwnProperty.call(message, "statusTemplate")) {
+                if (properties.attributionData === 1)
+                    return "attributionData: multiple values";
+                properties.attributionData = 1;
+                {
+                    var error = $root.proto.StatusAttribution.StatusTemplate.verify(message.statusTemplate, long + 1);
+                    if (error)
+                        return "statusTemplate." + error;
                 }
             }
             return null;
@@ -206579,6 +208725,10 @@ $root.proto = (function() {
             case 12:
                 message.type = 12;
                 break;
+            case "STATUS_TEMPLATES":
+            case 13:
+                message.type = 13;
+                break;
             }
             if (object.actionUrl != null)
                 message.actionUrl = String(object.actionUrl);
@@ -206611,6 +208761,11 @@ $root.proto = (function() {
                 if (!$util.isObject(object.aiCreatedAttribution))
                     throw TypeError(".proto.StatusAttribution.aiCreatedAttribution: object expected");
                 message.aiCreatedAttribution = $root.proto.StatusAttribution.AiCreatedAttribution.fromObject(object.aiCreatedAttribution, long + 1);
+            }
+            if (object.statusTemplate != null) {
+                if (!$util.isObject(object.statusTemplate))
+                    throw TypeError(".proto.StatusAttribution.statusTemplate: object expected");
+                message.statusTemplate = $root.proto.StatusAttribution.StatusTemplate.fromObject(object.statusTemplate, long + 1);
             }
             return message;
         };
@@ -206671,6 +208826,11 @@ $root.proto = (function() {
                 object.aiCreatedAttribution = $root.proto.StatusAttribution.AiCreatedAttribution.toObject(message.aiCreatedAttribution, options, q + 1);
                 if (options.oneofs)
                     object.attributionData = "aiCreatedAttribution";
+            }
+            if (message.statusTemplate != null && Object.hasOwnProperty.call(message, "statusTemplate")) {
+                object.statusTemplate = $root.proto.StatusAttribution.StatusTemplate.toObject(message.statusTemplate, options, q + 1);
+                if (options.oneofs)
+                    object.attributionData = "statusTemplate";
             }
             return object;
         };
@@ -209139,6 +211299,327 @@ $root.proto = (function() {
             return StatusReshare;
         })();
 
+        StatusAttribution.StatusTemplate = (function() {
+
+            /**
+             * Properties of a StatusTemplate.
+             * @memberof proto.StatusAttribution
+             * @interface IStatusTemplate
+             * @property {string|null} [templateId] StatusTemplate templateId
+             * @property {string|null} [templateName] StatusTemplate templateName
+             * @property {string|null} [thumbnailUrl] StatusTemplate thumbnailUrl
+             */
+
+            /**
+             * Constructs a new StatusTemplate.
+             * @memberof proto.StatusAttribution
+             * @classdesc Represents a StatusTemplate.
+             * @implements IStatusTemplate
+             * @constructor
+             * @param {proto.StatusAttribution.IStatusTemplate=} [properties] Properties to set
+             */
+            function StatusTemplate(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * StatusTemplate templateId.
+             * @member {string|null|undefined} templateId
+             * @memberof proto.StatusAttribution.StatusTemplate
+             * @instance
+             */
+            StatusTemplate.prototype.templateId = null;
+
+            /**
+             * StatusTemplate templateName.
+             * @member {string|null|undefined} templateName
+             * @memberof proto.StatusAttribution.StatusTemplate
+             * @instance
+             */
+            StatusTemplate.prototype.templateName = null;
+
+            /**
+             * StatusTemplate thumbnailUrl.
+             * @member {string|null|undefined} thumbnailUrl
+             * @memberof proto.StatusAttribution.StatusTemplate
+             * @instance
+             */
+            StatusTemplate.prototype.thumbnailUrl = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(StatusTemplate.prototype, "_templateId", {
+                get: $util.oneOfGetter($oneOfFields = ["templateId"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(StatusTemplate.prototype, "_templateName", {
+                get: $util.oneOfGetter($oneOfFields = ["templateName"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(StatusTemplate.prototype, "_thumbnailUrl", {
+                get: $util.oneOfGetter($oneOfFields = ["thumbnailUrl"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new StatusTemplate instance using the specified properties.
+             * @function create
+             * @memberof proto.StatusAttribution.StatusTemplate
+             * @static
+             * @param {proto.StatusAttribution.IStatusTemplate=} [properties] Properties to set
+             * @returns {proto.StatusAttribution.StatusTemplate} StatusTemplate instance
+             */
+            StatusTemplate.create = function create(properties) {
+                return new StatusTemplate(properties);
+            };
+
+            /**
+             * Encodes the specified StatusTemplate message. Does not implicitly {@link proto.StatusAttribution.StatusTemplate.verify|verify} messages.
+             * @function encode
+             * @memberof proto.StatusAttribution.StatusTemplate
+             * @static
+             * @param {proto.StatusAttribution.IStatusTemplate} message StatusTemplate message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            StatusTemplate.encode = function encode(message, writer, q) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                if (message.templateId != null && Object.hasOwnProperty.call(message, "templateId"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.templateId);
+                if (message.templateName != null && Object.hasOwnProperty.call(message, "templateName"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.templateName);
+                if (message.thumbnailUrl != null && Object.hasOwnProperty.call(message, "thumbnailUrl"))
+                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.thumbnailUrl);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified StatusTemplate message, length delimited. Does not implicitly {@link proto.StatusAttribution.StatusTemplate.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof proto.StatusAttribution.StatusTemplate
+             * @static
+             * @param {proto.StatusAttribution.IStatusTemplate} message StatusTemplate message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            StatusTemplate.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer && writer.len ? writer.fork() : writer).ldelim();
+            };
+
+            /**
+             * Decodes a StatusTemplate message from the specified reader or buffer.
+             * @function decode
+             * @memberof proto.StatusAttribution.StatusTemplate
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {proto.StatusAttribution.StatusTemplate} StatusTemplate
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            StatusTemplate.decode = function decode(reader, length, error, long) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (long === undefined)
+                    long = 0;
+                if (long > $Reader.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var end, message;
+                if (length === undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = new $root.proto.StatusAttribution.StatusTemplate();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    if (tag === error)
+                        break;
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.templateId = reader.string();
+                            break;
+                        }
+                    case 2: {
+                            message.templateName = reader.string();
+                            break;
+                        }
+                    case 3: {
+                            message.thumbnailUrl = reader.string();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7, long);
+                        break;
+                    }
+                }
+                if (length !== undefined) {
+                    if (reader.pos !== end)
+                        throw RangeError("index out of range");
+                    reader.len = length;
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a StatusTemplate message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof proto.StatusAttribution.StatusTemplate
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {proto.StatusAttribution.StatusTemplate} StatusTemplate
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            StatusTemplate.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a StatusTemplate message.
+             * @function verify
+             * @memberof proto.StatusAttribution.StatusTemplate
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            StatusTemplate.verify = function verify(message, long) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    return "maximum nesting depth exceeded";
+                var properties = {};
+                if (message.templateId != null && Object.hasOwnProperty.call(message, "templateId")) {
+                    properties._templateId = 1;
+                    if (!$util.isString(message.templateId))
+                        return "templateId: string expected";
+                }
+                if (message.templateName != null && Object.hasOwnProperty.call(message, "templateName")) {
+                    properties._templateName = 1;
+                    if (!$util.isString(message.templateName))
+                        return "templateName: string expected";
+                }
+                if (message.thumbnailUrl != null && Object.hasOwnProperty.call(message, "thumbnailUrl")) {
+                    properties._thumbnailUrl = 1;
+                    if (!$util.isString(message.thumbnailUrl))
+                        return "thumbnailUrl: string expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a StatusTemplate message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof proto.StatusAttribution.StatusTemplate
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {proto.StatusAttribution.StatusTemplate} StatusTemplate
+             */
+            StatusTemplate.fromObject = function fromObject(object, long) {
+                if (object instanceof $root.proto.StatusAttribution.StatusTemplate)
+                    return object;
+                if (!$util.isObject(object))
+                    throw TypeError(".proto.StatusAttribution.StatusTemplate: object expected");
+                if (long === undefined)
+                    long = 0;
+                if (long > $util.recursionLimit)
+                    throw Error("maximum nesting depth exceeded");
+                var message = new $root.proto.StatusAttribution.StatusTemplate();
+                if (object.templateId != null)
+                    message.templateId = String(object.templateId);
+                if (object.templateName != null)
+                    message.templateName = String(object.templateName);
+                if (object.thumbnailUrl != null)
+                    message.thumbnailUrl = String(object.thumbnailUrl);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a StatusTemplate message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof proto.StatusAttribution.StatusTemplate
+             * @static
+             * @param {proto.StatusAttribution.StatusTemplate} message StatusTemplate
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            StatusTemplate.toObject = function toObject(message, options, q) {
+                if (!options)
+                    options = {};
+                if (q === undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw Error("max depth exceeded");
+                var object = {};
+                if (message.templateId != null && Object.hasOwnProperty.call(message, "templateId")) {
+                    object.templateId = message.templateId;
+                    if (options.oneofs)
+                        object._templateId = "templateId";
+                }
+                if (message.templateName != null && Object.hasOwnProperty.call(message, "templateName")) {
+                    object.templateName = message.templateName;
+                    if (options.oneofs)
+                        object._templateName = "templateName";
+                }
+                if (message.thumbnailUrl != null && Object.hasOwnProperty.call(message, "thumbnailUrl")) {
+                    object.thumbnailUrl = message.thumbnailUrl;
+                    if (options.oneofs)
+                        object._thumbnailUrl = "thumbnailUrl";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this StatusTemplate to JSON.
+             * @function toJSON
+             * @memberof proto.StatusAttribution.StatusTemplate
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            StatusTemplate.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for StatusTemplate
+             * @function getTypeUrl
+             * @memberof proto.StatusAttribution.StatusTemplate
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            StatusTemplate.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/proto.StatusAttribution.StatusTemplate";
+            };
+
+            return StatusTemplate;
+        })();
+
         /**
          * Type enum.
          * @name proto.StatusAttribution.Type
@@ -209156,6 +211637,7 @@ $root.proto = (function() {
          * @property {number} STATUS_CLOSE_SHARING=10 STATUS_CLOSE_SHARING value
          * @property {number} PAID_PARTNERSHIP=11 PAID_PARTNERSHIP value
          * @property {number} USERNAME_STATUS=12 USERNAME_STATUS value
+         * @property {number} STATUS_TEMPLATES=13 STATUS_TEMPLATES value
          */
         StatusAttribution.Type = (function() {
             var valuesById = {}, values = Object.create(valuesById);
@@ -209172,6 +211654,7 @@ $root.proto = (function() {
             values[valuesById[10] = "STATUS_CLOSE_SHARING"] = 10;
             values[valuesById[11] = "PAID_PARTNERSHIP"] = 11;
             values[valuesById[12] = "USERNAME_STATUS"] = 12;
+            values[valuesById[13] = "STATUS_TEMPLATES"] = 13;
             return values;
         })();
 
@@ -258027,6 +260510,7 @@ $root.proto = (function() {
          * @property {string|null} [decisionId] WebMessageInfo decisionId
          * @property {Array.<string>|null} [decisionSources] WebMessageInfo decisionSources
          * @property {proto.IEventInviteAdditionalMetadata|null} [eventInviteAdditionalMetadata] WebMessageInfo eventInviteAdditionalMetadata
+         * @property {number|Long|null} [groupHistoryLastCountedMessageTimestamp] WebMessageInfo groupHistoryLastCountedMessageTimestamp
          */
 
         /**
@@ -258639,6 +261123,14 @@ $root.proto = (function() {
          */
         WebMessageInfo.prototype.eventInviteAdditionalMetadata = null;
 
+        /**
+         * WebMessageInfo groupHistoryLastCountedMessageTimestamp.
+         * @member {number|Long|null|undefined} groupHistoryLastCountedMessageTimestamp
+         * @memberof proto.WebMessageInfo
+         * @instance
+         */
+        WebMessageInfo.prototype.groupHistoryLastCountedMessageTimestamp = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -259014,6 +261506,12 @@ $root.proto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(WebMessageInfo.prototype, "_groupHistoryLastCountedMessageTimestamp", {
+            get: $util.oneOfGetter($oneOfFields = ["groupHistoryLastCountedMessageTimestamp"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new WebMessageInfo instance using the specified properties.
          * @function create
@@ -259199,6 +261697,8 @@ $root.proto = (function() {
                     writer.uint32(/* id 83, wireType 2 =*/666).string(message.decisionSources[i]);
             if (message.eventInviteAdditionalMetadata != null && Object.hasOwnProperty.call(message, "eventInviteAdditionalMetadata"))
                 $root.proto.EventInviteAdditionalMetadata.encode(message.eventInviteAdditionalMetadata, writer.uint32(/* id 84, wireType 2 =*/674).fork(), q + 1).ldelim();
+            if (message.groupHistoryLastCountedMessageTimestamp != null && Object.hasOwnProperty.call(message, "groupHistoryLastCountedMessageTimestamp"))
+                writer.uint32(/* id 85, wireType 0 =*/680).uint64(message.groupHistoryLastCountedMessageTimestamp);
             return writer;
         };
 
@@ -259561,6 +262061,10 @@ $root.proto = (function() {
                     }
                 case 84: {
                         message.eventInviteAdditionalMetadata = $root.proto.EventInviteAdditionalMetadata.decode(reader, reader.uint32(), undefined, long + 1);
+                        break;
+                    }
+                case 85: {
+                        message.groupHistoryLastCountedMessageTimestamp = reader.uint64();
                         break;
                     }
                 default:
@@ -260364,6 +262868,11 @@ $root.proto = (function() {
                     if (error)
                         return "eventInviteAdditionalMetadata." + error;
                 }
+            }
+            if (message.groupHistoryLastCountedMessageTimestamp != null && Object.hasOwnProperty.call(message, "groupHistoryLastCountedMessageTimestamp")) {
+                properties._groupHistoryLastCountedMessageTimestamp = 1;
+                if (!$util.isInteger(message.groupHistoryLastCountedMessageTimestamp) && !(message.groupHistoryLastCountedMessageTimestamp && $util.isInteger(message.groupHistoryLastCountedMessageTimestamp.low) && $util.isInteger(message.groupHistoryLastCountedMessageTimestamp.high)))
+                    return "groupHistoryLastCountedMessageTimestamp: integer|Long expected";
             }
             return null;
         };
@@ -261854,6 +264363,15 @@ $root.proto = (function() {
                     throw TypeError(".proto.WebMessageInfo.eventInviteAdditionalMetadata: object expected");
                 message.eventInviteAdditionalMetadata = $root.proto.EventInviteAdditionalMetadata.fromObject(object.eventInviteAdditionalMetadata, long + 1);
             }
+            if (object.groupHistoryLastCountedMessageTimestamp != null)
+                if ($util.Long)
+                    message.groupHistoryLastCountedMessageTimestamp = $util.Long.fromValue(object.groupHistoryLastCountedMessageTimestamp, true);
+                else if (typeof object.groupHistoryLastCountedMessageTimestamp === "string")
+                    message.groupHistoryLastCountedMessageTimestamp = parseInt(object.groupHistoryLastCountedMessageTimestamp, 10);
+                else if (typeof object.groupHistoryLastCountedMessageTimestamp === "number")
+                    message.groupHistoryLastCountedMessageTimestamp = object.groupHistoryLastCountedMessageTimestamp;
+                else if (typeof object.groupHistoryLastCountedMessageTimestamp === "object")
+                    message.groupHistoryLastCountedMessageTimestamp = new $util.LongBits(object.groupHistoryLastCountedMessageTimestamp.low >>> 0, object.groupHistoryLastCountedMessageTimestamp.high >>> 0).toNumber(true);
             return message;
         };
 
@@ -262281,6 +264799,16 @@ $root.proto = (function() {
                 object.eventInviteAdditionalMetadata = $root.proto.EventInviteAdditionalMetadata.toObject(message.eventInviteAdditionalMetadata, options, q + 1);
                 if (options.oneofs)
                     object._eventInviteAdditionalMetadata = "eventInviteAdditionalMetadata";
+            }
+            if (message.groupHistoryLastCountedMessageTimestamp != null && Object.hasOwnProperty.call(message, "groupHistoryLastCountedMessageTimestamp")) {
+                if (typeof BigInt !== "undefined" && options.longs === BigInt)
+                    object.groupHistoryLastCountedMessageTimestamp = typeof message.groupHistoryLastCountedMessageTimestamp === "number" ? BigInt(message.groupHistoryLastCountedMessageTimestamp) : $util.Long.fromBits(message.groupHistoryLastCountedMessageTimestamp.low >>> 0, message.groupHistoryLastCountedMessageTimestamp.high >>> 0, true).toBigInt();
+                else if (typeof message.groupHistoryLastCountedMessageTimestamp === "number")
+                    object.groupHistoryLastCountedMessageTimestamp = options.longs === String ? String(message.groupHistoryLastCountedMessageTimestamp) : message.groupHistoryLastCountedMessageTimestamp;
+                else
+                    object.groupHistoryLastCountedMessageTimestamp = options.longs === String ? $util.Long.prototype.toString.call(message.groupHistoryLastCountedMessageTimestamp) : options.longs === Number ? new $util.LongBits(message.groupHistoryLastCountedMessageTimestamp.low >>> 0, message.groupHistoryLastCountedMessageTimestamp.high >>> 0).toNumber(true) : message.groupHistoryLastCountedMessageTimestamp;
+                if (options.oneofs)
+                    object._groupHistoryLastCountedMessageTimestamp = "groupHistoryLastCountedMessageTimestamp";
             }
             return object;
         };

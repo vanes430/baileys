@@ -4245,6 +4245,9 @@ export namespace proto {
 
         /** Account isUsernameDeleted */
         isUsernameDeleted?: (boolean|null);
+
+        /** Account pnLearnState */
+        pnLearnState?: (proto.Account.PnLearnState|null);
     }
 
     /** Represents an Account. */
@@ -4267,6 +4270,9 @@ export namespace proto {
 
         /** Account isUsernameDeleted. */
         public isUsernameDeleted?: (boolean|null);
+
+        /** Account pnLearnState. */
+        public pnLearnState?: (proto.Account.PnLearnState|null);
 
         /**
          * Creates a new Account instance using the specified properties.
@@ -4344,6 +4350,16 @@ export namespace proto {
          * @returns The default type url
          */
         public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace Account {
+
+        /** PnLearnState enum. */
+        enum PnLearnState {
+            UNSET = 0,
+            SHARED = 1,
+            HIDDEN = 2
+        }
     }
 
     /** Properties of an ActionLink. */
@@ -5890,7 +5906,10 @@ export namespace proto {
             AI_MUSE_JARVIS_SCHEMA_ENABLED = 81,
             AI_STUDY_QUIZ_ENABLED = 82,
             HATCH_CVM_ENABLED = 83,
-            RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED = 84
+            RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED = 84,
+            AI_MUSE_JARVIS_EXTENDED_CARDS_ENABLED = 85,
+            AI_INTERJECTIONS_ENABLED = 86,
+            AI_RICH_RESPONSE_READ_ALOUD_ENABLED = 87
         }
     }
 
@@ -14161,6 +14180,9 @@ export namespace proto {
 
         /** ClientPairingProps companionAddPeerPayload */
         companionAddPeerPayload?: (Uint8Array|null);
+
+        /** ClientPairingProps isCompanionRegistrationFgsEnabled */
+        isCompanionRegistrationFgsEnabled?: (boolean|null);
     }
 
     /** Represents a ClientPairingProps. */
@@ -14192,6 +14214,9 @@ export namespace proto {
 
         /** ClientPairingProps companionAddPeerPayload. */
         public companionAddPeerPayload?: (Uint8Array|null);
+
+        /** ClientPairingProps isCompanionRegistrationFgsEnabled. */
+        public isCompanionRegistrationFgsEnabled?: (boolean|null);
 
         /**
          * Creates a new ClientPairingProps instance using the specified properties.
@@ -14384,6 +14409,9 @@ export namespace proto {
 
         /** ClientPayload messageSts */
         messageSts?: (number|Long|null);
+
+        /** ClientPayload integrationAttestation */
+        integrationAttestation?: (proto.ClientPayload.IIntegrationAttestation|null);
     }
 
     /** Represents a ClientPayload. */
@@ -14505,6 +14533,9 @@ export namespace proto {
 
         /** ClientPayload messageSts. */
         public messageSts?: (number|Long|null);
+
+        /** ClientPayload integrationAttestation. */
+        public integrationAttestation?: (proto.ClientPayload.IIntegrationAttestation|null);
 
         /**
          * Creates a new ClientPayload instance using the specified properties.
@@ -14884,6 +14915,109 @@ export namespace proto {
             SHARE_EXTENSION = 0,
             SERVICE_EXTENSION = 1,
             INTENTS_EXTENSION = 2
+        }
+
+        /** Properties of an IntegrationAttestation. */
+        interface IIntegrationAttestation {
+
+            /** IntegrationAttestation staticUnbound */
+            staticUnbound?: (string|null);
+
+            /** IntegrationAttestation onlineSigned */
+            onlineSigned?: (string|null);
+        }
+
+        /** Represents an IntegrationAttestation. */
+        class IntegrationAttestation implements IIntegrationAttestation {
+
+            /**
+             * Constructs a new IntegrationAttestation.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: proto.ClientPayload.IIntegrationAttestation);
+
+            /** IntegrationAttestation staticUnbound. */
+            public staticUnbound?: (string|null);
+
+            /** IntegrationAttestation onlineSigned. */
+            public onlineSigned?: (string|null);
+
+            /**
+             * Creates a new IntegrationAttestation instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns IntegrationAttestation instance
+             */
+            public static create(properties?: proto.ClientPayload.IIntegrationAttestation): proto.ClientPayload.IntegrationAttestation;
+
+            /**
+             * Encodes the specified IntegrationAttestation message. Does not implicitly {@link proto.ClientPayload.IntegrationAttestation.verify|verify} messages.
+             * @param message IntegrationAttestation message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: proto.ClientPayload.IIntegrationAttestation, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified IntegrationAttestation message, length delimited. Does not implicitly {@link proto.ClientPayload.IntegrationAttestation.verify|verify} messages.
+             * @param message IntegrationAttestation message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: proto.ClientPayload.IIntegrationAttestation, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes an IntegrationAttestation message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns IntegrationAttestation
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.ClientPayload.IntegrationAttestation;
+
+            /**
+             * Decodes an IntegrationAttestation message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns IntegrationAttestation
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.ClientPayload.IntegrationAttestation;
+
+            /**
+             * Verifies an IntegrationAttestation message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates an IntegrationAttestation message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns IntegrationAttestation
+             */
+            public static fromObject(object: { [k: string]: any }): proto.ClientPayload.IntegrationAttestation;
+
+            /**
+             * Creates a plain object from an IntegrationAttestation message. Also converts values to other types if specified.
+             * @param message IntegrationAttestation
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: proto.ClientPayload.IntegrationAttestation, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this IntegrationAttestation to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for IntegrationAttestation
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
         }
 
         /** Properties of an InteropData. */
@@ -15334,7 +15468,8 @@ export namespace proto {
                 WEARABLE = 3,
                 VR = 4,
                 SMART_DISPLAY = 5,
-                SMART_SPEAKER = 6
+                SMART_SPEAKER = 6,
+                AGENT = 7
             }
 
             /** DistributionChannel enum. */
@@ -16340,9 +16475,6 @@ export namespace proto {
 
         /** Config field */
         field?: ({ [k: string]: proto.IField }|null);
-
-        /** Config version */
-        version?: (number|null);
     }
 
     /** Represents a Config. */
@@ -16356,9 +16488,6 @@ export namespace proto {
 
         /** Config field. */
         public field: { [k: string]: proto.IField };
-
-        /** Config version. */
-        public version?: (number|null);
 
         /**
          * Creates a new Config instance using the specified properties.
@@ -18623,7 +18752,9 @@ export namespace proto {
             AV1_VIDEO_PARENT = 9,
             AV1_VIDEO_CHILD = 10,
             STREAMED_VIDEO_PARENT = 11,
-            STREAMED_VIDEO_CHILD = 12
+            STREAMED_VIDEO_CHILD = 12,
+            ORIGINAL_VIDEO_CHILD = 13,
+            ORIGINAL_IMAGE_CHILD = 14
         }
 
         /** Properties of a PartiallySelectedContent. */
@@ -19284,6 +19415,9 @@ export namespace proto {
 
         /** Conversation acp2HistoryWithheld */
         acp2HistoryWithheld?: (boolean|null);
+
+        /** Conversation groupRootKeys */
+        groupRootKeys?: (proto.IGroupRootKey[]|null);
     }
 
     /** Represents a Conversation. */
@@ -19490,6 +19624,9 @@ export namespace proto {
         /** Conversation acp2HistoryWithheld. */
         public acp2HistoryWithheld?: (boolean|null);
 
+        /** Conversation groupRootKeys. */
+        public groupRootKeys: proto.IGroupRootKey[];
+
         /**
          * Creates a new Conversation instance using the specified properties.
          * @param [properties] Properties to set
@@ -19628,6 +19765,9 @@ export namespace proto {
 
         /** DeviceCapabilities bizAiWebOnboarding */
         bizAiWebOnboarding?: (proto.DeviceCapabilities.IBizAiWebOnboarding|null);
+
+        /** DeviceCapabilities phoneNumberSharing */
+        phoneNumberSharing?: (proto.DeviceCapabilities.IPhoneNumberSharing|null);
     }
 
     /** Represents a DeviceCapabilities. */
@@ -19677,6 +19817,9 @@ export namespace proto {
 
         /** DeviceCapabilities bizAiWebOnboarding. */
         public bizAiWebOnboarding?: (proto.DeviceCapabilities.IBizAiWebOnboarding|null);
+
+        /** DeviceCapabilities phoneNumberSharing. */
+        public phoneNumberSharing?: (proto.DeviceCapabilities.IPhoneNumberSharing|null);
 
         /**
          * Creates a new DeviceCapabilities instance using the specified properties.
@@ -20697,6 +20840,103 @@ export namespace proto {
 
             /**
              * Gets the default type url for NewsletterChatsMigration
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** Properties of a PhoneNumberSharing. */
+        interface IPhoneNumberSharing {
+
+            /** PhoneNumberSharing phoneSharingSupported */
+            phoneSharingSupported?: (boolean|null);
+        }
+
+        /** Represents a PhoneNumberSharing. */
+        class PhoneNumberSharing implements IPhoneNumberSharing {
+
+            /**
+             * Constructs a new PhoneNumberSharing.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: proto.DeviceCapabilities.IPhoneNumberSharing);
+
+            /** PhoneNumberSharing phoneSharingSupported. */
+            public phoneSharingSupported?: (boolean|null);
+
+            /**
+             * Creates a new PhoneNumberSharing instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns PhoneNumberSharing instance
+             */
+            public static create(properties?: proto.DeviceCapabilities.IPhoneNumberSharing): proto.DeviceCapabilities.PhoneNumberSharing;
+
+            /**
+             * Encodes the specified PhoneNumberSharing message. Does not implicitly {@link proto.DeviceCapabilities.PhoneNumberSharing.verify|verify} messages.
+             * @param message PhoneNumberSharing message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: proto.DeviceCapabilities.IPhoneNumberSharing, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified PhoneNumberSharing message, length delimited. Does not implicitly {@link proto.DeviceCapabilities.PhoneNumberSharing.verify|verify} messages.
+             * @param message PhoneNumberSharing message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: proto.DeviceCapabilities.IPhoneNumberSharing, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a PhoneNumberSharing message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns PhoneNumberSharing
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.DeviceCapabilities.PhoneNumberSharing;
+
+            /**
+             * Decodes a PhoneNumberSharing message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns PhoneNumberSharing
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.DeviceCapabilities.PhoneNumberSharing;
+
+            /**
+             * Verifies a PhoneNumberSharing message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a PhoneNumberSharing message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns PhoneNumberSharing
+             */
+            public static fromObject(object: { [k: string]: any }): proto.DeviceCapabilities.PhoneNumberSharing;
+
+            /**
+             * Creates a plain object from a PhoneNumberSharing message. Also converts values to other types if specified.
+             * @param message PhoneNumberSharing
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: proto.DeviceCapabilities.PhoneNumberSharing, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this PhoneNumberSharing to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for PhoneNumberSharing
              * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns The default type url
              */
@@ -22956,9 +23196,6 @@ export namespace proto {
         /** Field maxVersion */
         maxVersion?: (number|null);
 
-        /** Field notReportableMinVersion */
-        notReportableMinVersion?: (number|null);
-
         /** Field isMessage */
         isMessage?: (boolean|null);
 
@@ -22980,9 +23217,6 @@ export namespace proto {
 
         /** Field maxVersion. */
         public maxVersion?: (number|null);
-
-        /** Field notReportableMinVersion. */
-        public notReportableMinVersion?: (number|null);
 
         /** Field isMessage. */
         public isMessage?: (boolean|null);
@@ -23827,6 +24061,212 @@ export namespace proto {
             ADMIN = 1,
             SUPERADMIN = 2
         }
+    }
+
+    /** Properties of a GroupRootKey. */
+    interface IGroupRootKey {
+
+        /** GroupRootKey keyId */
+        keyId?: (string|null);
+
+        /** GroupRootKey rootKey */
+        rootKey?: (Uint8Array|null);
+
+        /** GroupRootKey isCurrent */
+        isCurrent?: (boolean|null);
+    }
+
+    /** Represents a GroupRootKey. */
+    class GroupRootKey implements IGroupRootKey {
+
+        /**
+         * Constructs a new GroupRootKey.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: proto.IGroupRootKey);
+
+        /** GroupRootKey keyId. */
+        public keyId?: (string|null);
+
+        /** GroupRootKey rootKey. */
+        public rootKey?: (Uint8Array|null);
+
+        /** GroupRootKey isCurrent. */
+        public isCurrent?: (boolean|null);
+
+        /**
+         * Creates a new GroupRootKey instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns GroupRootKey instance
+         */
+        public static create(properties?: proto.IGroupRootKey): proto.GroupRootKey;
+
+        /**
+         * Encodes the specified GroupRootKey message. Does not implicitly {@link proto.GroupRootKey.verify|verify} messages.
+         * @param message GroupRootKey message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: proto.IGroupRootKey, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified GroupRootKey message, length delimited. Does not implicitly {@link proto.GroupRootKey.verify|verify} messages.
+         * @param message GroupRootKey message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: proto.IGroupRootKey, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a GroupRootKey message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns GroupRootKey
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.GroupRootKey;
+
+        /**
+         * Decodes a GroupRootKey message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns GroupRootKey
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.GroupRootKey;
+
+        /**
+         * Verifies a GroupRootKey message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a GroupRootKey message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns GroupRootKey
+         */
+        public static fromObject(object: { [k: string]: any }): proto.GroupRootKey;
+
+        /**
+         * Creates a plain object from a GroupRootKey message. Also converts values to other types if specified.
+         * @param message GroupRootKey
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: proto.GroupRootKey, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this GroupRootKey to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for GroupRootKey
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a GroupRootKeyRequest. */
+    interface IGroupRootKeyRequest {
+
+        /** GroupRootKeyRequest keyId */
+        keyId?: (string|null);
+    }
+
+    /** Represents a GroupRootKeyRequest. */
+    class GroupRootKeyRequest implements IGroupRootKeyRequest {
+
+        /**
+         * Constructs a new GroupRootKeyRequest.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: proto.IGroupRootKeyRequest);
+
+        /** GroupRootKeyRequest keyId. */
+        public keyId?: (string|null);
+
+        /**
+         * Creates a new GroupRootKeyRequest instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns GroupRootKeyRequest instance
+         */
+        public static create(properties?: proto.IGroupRootKeyRequest): proto.GroupRootKeyRequest;
+
+        /**
+         * Encodes the specified GroupRootKeyRequest message. Does not implicitly {@link proto.GroupRootKeyRequest.verify|verify} messages.
+         * @param message GroupRootKeyRequest message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: proto.IGroupRootKeyRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified GroupRootKeyRequest message, length delimited. Does not implicitly {@link proto.GroupRootKeyRequest.verify|verify} messages.
+         * @param message GroupRootKeyRequest message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: proto.IGroupRootKeyRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a GroupRootKeyRequest message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns GroupRootKeyRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.GroupRootKeyRequest;
+
+        /**
+         * Decodes a GroupRootKeyRequest message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns GroupRootKeyRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.GroupRootKeyRequest;
+
+        /**
+         * Verifies a GroupRootKeyRequest message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a GroupRootKeyRequest message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns GroupRootKeyRequest
+         */
+        public static fromObject(object: { [k: string]: any }): proto.GroupRootKeyRequest;
+
+        /**
+         * Creates a plain object from a GroupRootKeyRequest message. Also converts values to other types if specified.
+         * @param message GroupRootKeyRequest
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: proto.GroupRootKeyRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this GroupRootKeyRequest to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for GroupRootKeyRequest
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
     }
 
     /** Properties of a GroupRootKeyShare. */
@@ -27932,6 +28372,9 @@ export namespace proto {
 
         /** MemberLabel labelTimestamp */
         labelTimestamp?: (number|Long|null);
+
+        /** MemberLabel showAdminBadge */
+        showAdminBadge?: (boolean|null);
     }
 
     /** Represents a MemberLabel. */
@@ -27948,6 +28391,9 @@ export namespace proto {
 
         /** MemberLabel labelTimestamp. */
         public labelTimestamp?: (number|Long|null);
+
+        /** MemberLabel showAdminBadge. */
+        public showAdminBadge?: (boolean|null);
 
         /**
          * Creates a new MemberLabel instance using the specified properties.
@@ -28021,6 +28467,115 @@ export namespace proto {
 
         /**
          * Gets the default type url for MemberLabel
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a MembershipFormKeyFingerprintVerification. */
+    interface IMembershipFormKeyFingerprintVerification {
+
+        /** MembershipFormKeyFingerprintVerification requestId */
+        requestId?: (string|null);
+
+        /** MembershipFormKeyFingerprintVerification keyId */
+        keyId?: (string|null);
+
+        /** MembershipFormKeyFingerprintVerification keyFingerprint */
+        keyFingerprint?: (Uint8Array|null);
+    }
+
+    /** Represents a MembershipFormKeyFingerprintVerification. */
+    class MembershipFormKeyFingerprintVerification implements IMembershipFormKeyFingerprintVerification {
+
+        /**
+         * Constructs a new MembershipFormKeyFingerprintVerification.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: proto.IMembershipFormKeyFingerprintVerification);
+
+        /** MembershipFormKeyFingerprintVerification requestId. */
+        public requestId?: (string|null);
+
+        /** MembershipFormKeyFingerprintVerification keyId. */
+        public keyId?: (string|null);
+
+        /** MembershipFormKeyFingerprintVerification keyFingerprint. */
+        public keyFingerprint?: (Uint8Array|null);
+
+        /**
+         * Creates a new MembershipFormKeyFingerprintVerification instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns MembershipFormKeyFingerprintVerification instance
+         */
+        public static create(properties?: proto.IMembershipFormKeyFingerprintVerification): proto.MembershipFormKeyFingerprintVerification;
+
+        /**
+         * Encodes the specified MembershipFormKeyFingerprintVerification message. Does not implicitly {@link proto.MembershipFormKeyFingerprintVerification.verify|verify} messages.
+         * @param message MembershipFormKeyFingerprintVerification message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: proto.IMembershipFormKeyFingerprintVerification, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified MembershipFormKeyFingerprintVerification message, length delimited. Does not implicitly {@link proto.MembershipFormKeyFingerprintVerification.verify|verify} messages.
+         * @param message MembershipFormKeyFingerprintVerification message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: proto.IMembershipFormKeyFingerprintVerification, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a MembershipFormKeyFingerprintVerification message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns MembershipFormKeyFingerprintVerification
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.MembershipFormKeyFingerprintVerification;
+
+        /**
+         * Decodes a MembershipFormKeyFingerprintVerification message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns MembershipFormKeyFingerprintVerification
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.MembershipFormKeyFingerprintVerification;
+
+        /**
+         * Verifies a MembershipFormKeyFingerprintVerification message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a MembershipFormKeyFingerprintVerification message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns MembershipFormKeyFingerprintVerification
+         */
+        public static fromObject(object: { [k: string]: any }): proto.MembershipFormKeyFingerprintVerification;
+
+        /**
+         * Creates a plain object from a MembershipFormKeyFingerprintVerification message. Also converts values to other types if specified.
+         * @param message MembershipFormKeyFingerprintVerification
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: proto.MembershipFormKeyFingerprintVerification, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this MembershipFormKeyFingerprintVerification to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for MembershipFormKeyFingerprintVerification
          * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns The default type url
          */
@@ -28380,6 +28935,9 @@ export namespace proto {
 
         /** Message requestLocationUpdateMessage */
         requestLocationUpdateMessage?: (proto.Message.IRequestLocationUpdateMessage|null);
+
+        /** Message vpcRequestMessage */
+        vpcRequestMessage?: (proto.Message.IVpcRequestMessage|null);
     }
 
     /** Represents a Message. */
@@ -28741,6 +29299,9 @@ export namespace proto {
 
         /** Message requestLocationUpdateMessage. */
         public requestLocationUpdateMessage?: (proto.Message.IRequestLocationUpdateMessage|null);
+
+        /** Message vpcRequestMessage. */
+        public vpcRequestMessage?: (proto.Message.IVpcRequestMessage|null);
 
         /**
          * Creates a new Message instance using the specified properties.
@@ -47076,6 +47637,15 @@ export namespace proto {
 
             /** ProtocolMessage additionalPromptIds */
             additionalPromptIds?: (string[]|null);
+
+            /** ProtocolMessage groupRootKeyRequest */
+            groupRootKeyRequest?: (proto.IGroupRootKeyRequest|null);
+
+            /** ProtocolMessage membershipFormKeyFingerprintVerification */
+            membershipFormKeyFingerprintVerification?: (proto.IMembershipFormKeyFingerprintVerification|null);
+
+            /** ProtocolMessage groupRootKeyShare */
+            groupRootKeyShare?: (proto.IGroupRootKeyShare|null);
         }
 
         /** Represents a ProtocolMessage. */
@@ -47188,6 +47758,15 @@ export namespace proto {
 
             /** ProtocolMessage additionalPromptIds. */
             public additionalPromptIds: string[];
+
+            /** ProtocolMessage groupRootKeyRequest. */
+            public groupRootKeyRequest?: (proto.IGroupRootKeyRequest|null);
+
+            /** ProtocolMessage membershipFormKeyFingerprintVerification. */
+            public membershipFormKeyFingerprintVerification?: (proto.IMembershipFormKeyFingerprintVerification|null);
+
+            /** ProtocolMessage groupRootKeyShare. */
+            public groupRootKeyShare?: (proto.IGroupRootKeyShare|null);
 
             /**
              * Creates a new ProtocolMessage instance using the specified properties.
@@ -47305,7 +47884,10 @@ export namespace proto {
                 COEX_STATE_SYNC = 37,
                 ACP2_SETTING = 39,
                 SHARED_DEVICE_CONTACT_HASH_KEY_SHARE = 40,
-                SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST = 41
+                SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST = 41,
+                GROUP_ROOT_KEY_REQUEST = 42,
+                MEMBERSHIP_FORM_KEY_FINGERPRINT_VERIFICATION = 43,
+                GROUP_ROOT_KEY_SHARE = 44
             }
         }
 
@@ -51784,6 +52366,140 @@ export namespace proto {
                 AI_GENERATED = 1
             }
         }
+
+        /** Properties of a VpcRequestMessage. */
+        interface IVpcRequestMessage {
+
+            /** VpcRequestMessage payloadSchemaVersion */
+            payloadSchemaVersion?: (number|null);
+
+            /** VpcRequestMessage requestId */
+            requestId?: (string|null);
+
+            /** VpcRequestMessage launchRef */
+            launchRef?: (string|null);
+
+            /** VpcRequestMessage invitationExpiresAtMs */
+            invitationExpiresAtMs?: (number|Long|null);
+
+            /** VpcRequestMessage scopeHint */
+            scopeHint?: (proto.Message.VpcRequestMessage.ScopeHint|null);
+        }
+
+        /** Represents a VpcRequestMessage. */
+        class VpcRequestMessage implements IVpcRequestMessage {
+
+            /**
+             * Constructs a new VpcRequestMessage.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: proto.Message.IVpcRequestMessage);
+
+            /** VpcRequestMessage payloadSchemaVersion. */
+            public payloadSchemaVersion?: (number|null);
+
+            /** VpcRequestMessage requestId. */
+            public requestId?: (string|null);
+
+            /** VpcRequestMessage launchRef. */
+            public launchRef?: (string|null);
+
+            /** VpcRequestMessage invitationExpiresAtMs. */
+            public invitationExpiresAtMs?: (number|Long|null);
+
+            /** VpcRequestMessage scopeHint. */
+            public scopeHint?: (proto.Message.VpcRequestMessage.ScopeHint|null);
+
+            /**
+             * Creates a new VpcRequestMessage instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns VpcRequestMessage instance
+             */
+            public static create(properties?: proto.Message.IVpcRequestMessage): proto.Message.VpcRequestMessage;
+
+            /**
+             * Encodes the specified VpcRequestMessage message. Does not implicitly {@link proto.Message.VpcRequestMessage.verify|verify} messages.
+             * @param message VpcRequestMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: proto.Message.IVpcRequestMessage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified VpcRequestMessage message, length delimited. Does not implicitly {@link proto.Message.VpcRequestMessage.verify|verify} messages.
+             * @param message VpcRequestMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: proto.Message.IVpcRequestMessage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a VpcRequestMessage message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns VpcRequestMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.Message.VpcRequestMessage;
+
+            /**
+             * Decodes a VpcRequestMessage message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns VpcRequestMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.Message.VpcRequestMessage;
+
+            /**
+             * Verifies a VpcRequestMessage message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a VpcRequestMessage message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns VpcRequestMessage
+             */
+            public static fromObject(object: { [k: string]: any }): proto.Message.VpcRequestMessage;
+
+            /**
+             * Creates a plain object from a VpcRequestMessage message. Also converts values to other types if specified.
+             * @param message VpcRequestMessage
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: proto.Message.VpcRequestMessage, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this VpcRequestMessage to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for VpcRequestMessage
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace VpcRequestMessage {
+
+            /** ScopeHint enum. */
+            enum ScopeHint {
+                UNKNOWN = 0,
+                WA_ONLY = 1,
+                WAFFLE = 2,
+                WA_META_AI = 3,
+                META_AI_ONLY = 4,
+                FOA_ONLY = 5
+            }
+        }
     }
 
     /** Properties of a MessageAddOn. */
@@ -52176,7 +52892,9 @@ export namespace proto {
             HEVC_VIDEO_DUAL_UPLOAD = 19,
             POLL_ADD_OPTION = 20,
             AV1_VIDEO_DUAL_UPLOAD = 21,
-            STREAMED_HD_VIDEO_DUAL_UPLOAD = 22
+            STREAMED_HD_VIDEO_DUAL_UPLOAD = 22,
+            ORIGINAL_VIDEO_DUAL_UPLOAD = 23,
+            ORIGINAL_IMAGE_DUAL_UPLOAD = 24
         }
     }
 
@@ -52924,6 +53642,18 @@ export namespace proto {
 
         /** MsgOpaqueData pollAddedOptionName */
         pollAddedOptionName?: (string|null);
+
+        /** MsgOpaqueData sharableEventInviteStatus */
+        sharableEventInviteStatus?: (string|null);
+
+        /** MsgOpaqueData sharableEventInviteLocationName */
+        sharableEventInviteLocationName?: (string|null);
+
+        /** MsgOpaqueData sharableEventInviteCoverImageHandle */
+        sharableEventInviteCoverImageHandle?: (string|null);
+
+        /** MsgOpaqueData sharableEventInviteLastUpdatedTsUsec */
+        sharableEventInviteLastUpdatedTsUsec?: (number|Long|null);
     }
 
     /** Represents a MsgOpaqueData. */
@@ -53111,6 +53841,18 @@ export namespace proto {
 
         /** MsgOpaqueData pollAddedOptionName. */
         public pollAddedOptionName?: (string|null);
+
+        /** MsgOpaqueData sharableEventInviteStatus. */
+        public sharableEventInviteStatus?: (string|null);
+
+        /** MsgOpaqueData sharableEventInviteLocationName. */
+        public sharableEventInviteLocationName?: (string|null);
+
+        /** MsgOpaqueData sharableEventInviteCoverImageHandle. */
+        public sharableEventInviteCoverImageHandle?: (string|null);
+
+        /** MsgOpaqueData sharableEventInviteLastUpdatedTsUsec. */
+        public sharableEventInviteLastUpdatedTsUsec?: (number|Long|null);
 
         /**
          * Creates a new MsgOpaqueData instance using the specified properties.
@@ -58170,121 +58912,6 @@ export namespace proto {
         public static getTypeUrl(typeUrlPrefix?: string): string;
     }
 
-    /** Properties of a Reportable. */
-    interface IReportable {
-
-        /** Reportable minVersion */
-        minVersion?: (number|null);
-
-        /** Reportable maxVersion */
-        maxVersion?: (number|null);
-
-        /** Reportable notReportableMinVersion */
-        notReportableMinVersion?: (number|null);
-
-        /** Reportable never */
-        never?: (boolean|null);
-    }
-
-    /** Represents a Reportable. */
-    class Reportable implements IReportable {
-
-        /**
-         * Constructs a new Reportable.
-         * @param [properties] Properties to set
-         */
-        constructor(properties?: proto.IReportable);
-
-        /** Reportable minVersion. */
-        public minVersion?: (number|null);
-
-        /** Reportable maxVersion. */
-        public maxVersion?: (number|null);
-
-        /** Reportable notReportableMinVersion. */
-        public notReportableMinVersion?: (number|null);
-
-        /** Reportable never. */
-        public never?: (boolean|null);
-
-        /**
-         * Creates a new Reportable instance using the specified properties.
-         * @param [properties] Properties to set
-         * @returns Reportable instance
-         */
-        public static create(properties?: proto.IReportable): proto.Reportable;
-
-        /**
-         * Encodes the specified Reportable message. Does not implicitly {@link proto.Reportable.verify|verify} messages.
-         * @param message Reportable message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        public static encode(message: proto.IReportable, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Encodes the specified Reportable message, length delimited. Does not implicitly {@link proto.Reportable.verify|verify} messages.
-         * @param message Reportable message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        public static encodeDelimited(message: proto.IReportable, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Decodes a Reportable message from the specified reader or buffer.
-         * @param reader Reader or buffer to decode from
-         * @param [length] Message length if known beforehand
-         * @returns Reportable
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.Reportable;
-
-        /**
-         * Decodes a Reportable message from the specified reader or buffer, length delimited.
-         * @param reader Reader or buffer to decode from
-         * @returns Reportable
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.Reportable;
-
-        /**
-         * Verifies a Reportable message.
-         * @param message Plain object to verify
-         * @returns `null` if valid, otherwise the reason why it is not
-         */
-        public static verify(message: { [k: string]: any }): (string|null);
-
-        /**
-         * Creates a Reportable message from a plain object. Also converts values to their respective internal types.
-         * @param object Plain object
-         * @returns Reportable
-         */
-        public static fromObject(object: { [k: string]: any }): proto.Reportable;
-
-        /**
-         * Creates a plain object from a Reportable message. Also converts values to other types if specified.
-         * @param message Reportable
-         * @param [options] Conversion options
-         * @returns Plain object
-         */
-        public static toObject(message: proto.Reportable, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-        /**
-         * Converts this Reportable to JSON.
-         * @returns JSON object
-         */
-        public toJSON(): { [k: string]: any };
-
-        /**
-         * Gets the default type url for Reportable
-         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns The default type url
-         */
-        public static getTypeUrl(typeUrlPrefix?: string): string;
-    }
-
     /** Properties of a ReportingTokenInfo. */
     interface IReportingTokenInfo {
 
@@ -60481,6 +61108,9 @@ export namespace proto {
 
         /** StatusAttribution aiCreatedAttribution */
         aiCreatedAttribution?: (proto.StatusAttribution.IAiCreatedAttribution|null);
+
+        /** StatusAttribution statusTemplate */
+        statusTemplate?: (proto.StatusAttribution.IStatusTemplate|null);
     }
 
     /** Represents a StatusAttribution. */
@@ -60516,8 +61146,11 @@ export namespace proto {
         /** StatusAttribution aiCreatedAttribution. */
         public aiCreatedAttribution?: (proto.StatusAttribution.IAiCreatedAttribution|null);
 
+        /** StatusAttribution statusTemplate. */
+        public statusTemplate?: (proto.StatusAttribution.IStatusTemplate|null);
+
         /** StatusAttribution attributionData. */
-        public attributionData?: ("statusReshare"|"externalShare"|"music"|"groupStatus"|"rlAttribution"|"aiCreatedAttribution");
+        public attributionData?: ("statusReshare"|"externalShare"|"music"|"groupStatus"|"rlAttribution"|"aiCreatedAttribution"|"statusTemplate");
 
         /**
          * Creates a new StatusAttribution instance using the specified properties.
@@ -61403,6 +62036,115 @@ export namespace proto {
             }
         }
 
+        /** Properties of a StatusTemplate. */
+        interface IStatusTemplate {
+
+            /** StatusTemplate templateId */
+            templateId?: (string|null);
+
+            /** StatusTemplate templateName */
+            templateName?: (string|null);
+
+            /** StatusTemplate thumbnailUrl */
+            thumbnailUrl?: (string|null);
+        }
+
+        /** Represents a StatusTemplate. */
+        class StatusTemplate implements IStatusTemplate {
+
+            /**
+             * Constructs a new StatusTemplate.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: proto.StatusAttribution.IStatusTemplate);
+
+            /** StatusTemplate templateId. */
+            public templateId?: (string|null);
+
+            /** StatusTemplate templateName. */
+            public templateName?: (string|null);
+
+            /** StatusTemplate thumbnailUrl. */
+            public thumbnailUrl?: (string|null);
+
+            /**
+             * Creates a new StatusTemplate instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns StatusTemplate instance
+             */
+            public static create(properties?: proto.StatusAttribution.IStatusTemplate): proto.StatusAttribution.StatusTemplate;
+
+            /**
+             * Encodes the specified StatusTemplate message. Does not implicitly {@link proto.StatusAttribution.StatusTemplate.verify|verify} messages.
+             * @param message StatusTemplate message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: proto.StatusAttribution.IStatusTemplate, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified StatusTemplate message, length delimited. Does not implicitly {@link proto.StatusAttribution.StatusTemplate.verify|verify} messages.
+             * @param message StatusTemplate message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: proto.StatusAttribution.IStatusTemplate, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a StatusTemplate message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns StatusTemplate
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): proto.StatusAttribution.StatusTemplate;
+
+            /**
+             * Decodes a StatusTemplate message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns StatusTemplate
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): proto.StatusAttribution.StatusTemplate;
+
+            /**
+             * Verifies a StatusTemplate message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a StatusTemplate message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns StatusTemplate
+             */
+            public static fromObject(object: { [k: string]: any }): proto.StatusAttribution.StatusTemplate;
+
+            /**
+             * Creates a plain object from a StatusTemplate message. Also converts values to other types if specified.
+             * @param message StatusTemplate
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: proto.StatusAttribution.StatusTemplate, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this StatusTemplate to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for StatusTemplate
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
         /** Type enum. */
         enum Type {
             UNKNOWN = 0,
@@ -61417,7 +62159,8 @@ export namespace proto {
             NEWSLETTER_STATUS = 9,
             STATUS_CLOSE_SHARING = 10,
             PAID_PARTNERSHIP = 11,
-            USERNAME_STATUS = 12
+            USERNAME_STATUS = 12,
+            STATUS_TEMPLATES = 13
         }
     }
 
@@ -76578,6 +77321,9 @@ export namespace proto {
 
         /** WebMessageInfo eventInviteAdditionalMetadata */
         eventInviteAdditionalMetadata?: (proto.IEventInviteAdditionalMetadata|null);
+
+        /** WebMessageInfo groupHistoryLastCountedMessageTimestamp */
+        groupHistoryLastCountedMessageTimestamp?: (number|Long|null);
     }
 
     /** Represents a WebMessageInfo. */
@@ -76807,6 +77553,9 @@ export namespace proto {
 
         /** WebMessageInfo eventInviteAdditionalMetadata. */
         public eventInviteAdditionalMetadata?: (proto.IEventInviteAdditionalMetadata|null);
+
+        /** WebMessageInfo groupHistoryLastCountedMessageTimestamp. */
+        public groupHistoryLastCountedMessageTimestamp?: (number|Long|null);
 
         /**
          * Creates a new WebMessageInfo instance using the specified properties.
